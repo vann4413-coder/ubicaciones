@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plataforma de Ubicaciones</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<aside id="panel">
+  <header>
+    <h1>Plataforma de Ubicaciones</h1>
+    <p>Informe de idoneidad de una parcela en Cataluña</p>
+  </header>
+
+  <form id="buscador" autocomplete="off">
+    <label for="q">Dirección, referencia catastral o coordenadas</label>
+    <div class="fila">
+      <input id="q" name="q" placeholder="Ej.: Carrer Prat de la Riba 110, Mataró" required>
+      <button type="submit">Buscar</button>
+    </div>
+    <small>También puedes hacer clic sobre una parcela en el mapa.</small>
+  </form>
+  <ul id="resultados"></ul>
+
+  <div id="mensaje" hidden></div>
+
+  <div id="ficha" hidden>
+    <h2 id="f-direccion"></h2>
+    <dl>
+      <dt>Referencia catastral</dt><dd id="f-rc"></dd>
+      <dt>Superficie</dt><dd id="f-sup"></dd>
+    </dl>
+    <div id="otras" hidden>
+      <p>En este punto hay varias parcelas. Elige una:</p>
+      <ul id="lista-parcelas"></ul>
+    </div>
+
+    <form id="generar">
+      <label for="perfil">Perfil de uso (solo cambia la puntuación destacada)</label>
+      <select id="perfil"></select>
+      <details>
+        <summary>Opciones</summary>
+        <label for="potencia">Potencia eléctrica necesaria (MW)</label>
+        <input id="potencia" type="number" step="0.05" min="0" placeholder="Por defecto según perfil">
+        <label for="supmin">Superficie mínima que necesitas (m²)</label>
+        <input id="supmin" type="number" step="50" min="0" placeholder="Opcional">
+      </details>
+      <button type="submit" id="btn-generar">Generar informe</button>
+    </form>
+    <div id="progreso" hidden><div class="spinner"></div><span>Consultando Catastro, urbanismo, inundabilidad, tráfico, red y entorno… (30–60 s)</span></div>
+    <div id="resultado" hidden></div>
+  </div>
+
+  <footer>
+    <label><input type="radio" name="base" value="mapa" checked> Mapa</label>
+    <label><input type="radio" name="base" value="orto"> Ortofoto</label>
+    <label><input type="checkbox" id="capa-catastro" checked> Catastro</label>
+  </footer>
+</aside>
+<main id="mapa"></main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
