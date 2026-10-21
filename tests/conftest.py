@@ -117,6 +117,21 @@ def carburantes():
     ]}
 
 
+def suelos():
+    """Mismo formato que la API del ICGC: un emplazamiento que pisa la esquina de la parcela y otro cercano."""
+    esquina = geo.geom_a_wgs84(box(MINX - 20, MINY - 20, MINX + 30, MINY + 30))
+    cerca = geo.geom_a_wgs84(box(MAXX + 80, MAXY + 80, MAXX + 120, MAXY + 120))
+    lejos = geo.geom_a_wgs84(box(MAXX + 5000, MAXY, MAXX + 5100, MAXY + 100))
+    def f(g, nombre, tipus, estat):
+        return {"type": "Feature", "geometry": mapping(g), "properties": {
+            "Denominació finca": nombre, "Tipus": tipus, "Estat": estat, "Data de declaració": "20210315",
+            "Municipi": "MATARÓ", "Adreça": "C/ PROVA", "Data de desclassificació": None}}
+    return {"type": "FeatureCollection", "numberMatched": 3, "features": [
+        f(esquina, "SC_00001 - ANTIGA INDÚSTRIA", "Declaració de sòl contaminat", "Actiu"),
+        f(cerca, "SC_00002 - TALLER", "Recuperació voluntària", "Inactiu"),
+        f(lejos, "SC_00003 - LLUNY", "Recuperació voluntària", "Inactiu")]}
+
+
 @pytest.fixture
 def datos_locales(tmp_path, monkeypatch):
     lon, lat = geo.a_wgs84(MAXX + 800, MAXY + 400)
@@ -156,6 +171,7 @@ def fuentes_simuladas(datos_locales):
         m.get(url__startswith="https://sedeaplicaciones.minetur.gob.es").respond(json=carburantes())
         m.get(url__startswith=config.IDESCAT_EMEX).respond(json=json.loads(leer("idescat.json")))
         m.get(url__startswith=f"{config.ICGC_GEOCODER}/invers").respond(json=json.loads(leer("icgc_invers.json")))
+        m.get(url__startswith="https://api.icgc.cat/territorial/collections/sols-contaminats").respond(json=suelos())
         m.get(url__startswith="https://planejamenturbanisme.territori.gencat.cat").respond(json=json.loads(leer("rpuc.json")))
         yield m
 

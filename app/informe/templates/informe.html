@@ -195,7 +195,7 @@
 
 {# ============ 4. EVOLUCIÓN HISTÓRICA ============ #}
 <section class="salto">
-  <h2>4. Evolución histórica de la parcela</h2>
+  <h2>4. Evolución histórica y suelo contaminado</h2>
   {% set e = inf.evolucion %}
   <div class="tira">
   {% for img in e.imagenes %}
@@ -212,6 +212,19 @@
     <div class="info">Compare las imágenes para detectar usos anteriores (antigua gasolinera o industria: posible suelo contaminado), construcciones recientes o si la parcela ha estado siempre libre.</div>
   {% endif %}
   <p class="pie">Fuente: {{ e.fuente }}.</p>
+  <h3>Registro de suelos contaminados</h3>
+  {% set sc = inf.suelos_contaminados %}
+  {% if sc.estado == "ok" %}
+    {% if sc.en_parcela %}
+      {% for c in sc.en_parcela %}<div class="{{ 'bloqueo' if c.activo else 'aviso' }}"><b>{{ c.tipo }}</b> · {{ c.estado }} · {{ c.pct }}% de la parcela<br>{{ c.nombre }}<br><small>Declaración {{ c.fecha_declaracion|fecha }}{% if c.fecha_desclasificacion %} · desclasificación {{ c.fecha_desclasificacion|fecha }}{% endif %}</small></div>{% endfor %}
+    {% else %}<p>La parcela no figura en el registro.</p>{% endif %}
+    {% if sc.cercanos %}
+    <table><tr><th>Emplazamiento cercano</th><th>Tipo</th><th>Estado</th><th class="n">Distancia</th></tr>
+    {% for c in sc.cercanos %}<tr><td>{{ c.nombre }}</td><td>{{ c.tipo }}</td><td>{{ c.estado }}</td><td class="n">{{ c.distancia_m|num }} m</td></tr>{% endfor %}
+    </table>
+    {% endif %}
+    <div class="info">{{ sc.aviso }}</div>
+  {% else %}<p class="sin">{{ sc.mensaje or "Sin datos." }}</p>{% endif %}
 </section>
 
 {# ============ 5. INUNDABILIDAD ============ #}

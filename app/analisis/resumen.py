@@ -104,6 +104,16 @@ def riesgos_y_pasos(inf: dict) -> list[dict]:
         pasos.append({"tipo": "paso", "texto": "Pedir a la distribuidora un estudio de acceso y conexión para la potencia necesaria."})
     else:
         pasos.append({"tipo": "paso", "texto": "Consultar la capacidad de red con la distribuidora de la zona."})
+    sc = inf.get("suelos_contaminados") or {}
+    for e in sc.get("en_parcela", []):
+        if e["tipo"].startswith("Declaració") and e["activo"]:
+            pasos.append({"tipo": "riesgo", "texto": f"Suelo declarado contaminado y aún activo en el registro de la ARC ({e['nombre']}). "
+                          "Pedir el expediente: la descontaminación corresponde al causante y, subsidiariamente, al propietario."})
+        else:
+            pasos.append({"tipo": "riesgo", "texto": f"La parcela figura en el registro de suelos contaminados de la ARC ({e['tipo'].lower()}, "
+                          f"{e['estado'].lower()}). Pedir el expediente y comprobar las restricciones de uso que imponga la resolución."})
+    if sc.get("cercanos") and not sc.get("en_parcela"):
+        pasos.append({"tipo": "riesgo", "texto": f"Hay {len(sc['cercanos'])} emplazamiento(s) con suelo contaminado a menos de {sc['radio_m']} m."})
     if ev.get("alerta_contaminacion"):
         pasos.append({"tipo": "riesgo", "texto": "Uso anterior con posible afectación del suelo: valorar un estudio de caracterización del suelo."})
     if not any(c.get("imd") for c in t.get("carreteras", [])):

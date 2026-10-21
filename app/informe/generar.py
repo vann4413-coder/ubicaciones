@@ -6,7 +6,7 @@ from datetime import datetime
 from app import geo
 from app.analisis import evolucion, parcela_metricas, puntuacion, resumen
 from app.fuentes import (catastro, gasolineras, geocoder, inundabilidad, osm, poblacion, red_electrica, suelo,
-                         trafico, urbanismo)
+                         suelos_contaminados, trafico, urbanismo)
 from app.fuentes.base import error, resultado
 
 log = logging.getLogger(__name__)
@@ -36,7 +36,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     nombre_muni = muni.get("nombre") or parcela.get("municipio", "").title()
     prov = (cod_ine or "")[:2] or parcela.get("cod_ine_prov", "")
 
-    urb, aca, snczi, entorno, gas, pob, cambios, evo = await asyncio.gather(
+    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam = await asyncio.gather(
         _seguro(urbanismo.consultar(g), urbanismo.FUENTE),
         _seguro(inundabilidad.consultar_aca(g), inundabilidad.FUENTE_ACA),
         _seguro(inundabilidad.consultar_snczi(g), inundabilidad.FUENTE_SNCZI),
@@ -45,6 +45,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         _seguro(poblacion.consultar(cod6), poblacion.FUENTE),
         _seguro(urbanismo.cambios_planeamiento(cod_ine, nombre_muni), "RPUC"),
         _seguro(evolucion.consultar(g), "ICGC"),
+        _seguro(suelos_contaminados.consultar(g), suelos_contaminados.FUENTE),
     )
     traf = await _seguro(trafico.consultar(g, entorno if entorno.get("estado") == "ok" else {}), "Aforos")
     red = red_electrica.consultar(g)
@@ -66,6 +67,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         "urbanismo": urb,
         "cambios": cambios,
         "evolucion": evo,
+        "suelos_contaminados": contam,
         "inundabilidad_aca": aca,
         "inundabilidad_snczi": snczi,
         "inundabilidad_resumen": inund_res,
@@ -88,7 +90,7 @@ def anexo(inf: dict) -> list[dict]:
     """Fuente, fecha y estado de cada dato."""
     filas = []
     for seccion, clave in [
-        ("Parcela", "parcela"), ("Urbanismo", "urbanismo"), ("Cambios de planeamiento", "cambios"),
+        ("Parcela", "parcela"), ("Urbanismo", "urbanismo"), ("Cambios de planeamiento", "cambios"), ("Suelos contaminados", "suelos_contaminados"),
         ("Inundabilidad (ACA)", "inundabilidad_aca"), ("Inundabilidad (SNCZI)", "inundabilidad_snczi"),
         ("Tráfico", "trafico"), ("Red eléctrica", "red"), ("Entorno", "entorno"), ("Gasolineras", "gasolineras"),
         ("Población", "poblacion"), ("Valor del suelo", "suelo"),

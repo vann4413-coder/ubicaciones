@@ -106,6 +106,13 @@ def test_informe_completo(fuentes_simuladas):
         assert p["total"] is None or 0 <= p["total"] <= 100
     assert inf["puntuaciones"]["promotor"]["subnotas"]["trafico"]["nota"] is not None
 
+    # Suelos contaminados: el de la esquina está en la parcela, el lejano se descarta
+    sc = inf["suelos_contaminados"]
+    assert [e["nombre"] for e in sc["en_parcela"]] == ["SC_00001 - ANTIGA INDÚSTRIA"]
+    assert 0 < sc["en_parcela"][0]["pct"] < 10
+    assert [e["nombre"] for e in sc["cercanos"]] == ["SC_00002 - TALLER"]
+    assert any("declarado contaminado" in p["texto"] for p in inf["pasos"])
+
     # Cambios de planeamiento
     assert len(inf["cambios"]["recientes"]) == 2
 
@@ -119,7 +126,7 @@ def test_informe_completo(fuentes_simuladas):
 
     # HTML y PDF
     html = render.html(inf)
-    for seccion in ["1. Parcela", "2. Urbanismo", "3. Cambios de planeamiento", "4. Evolución histórica",
+    for seccion in ["1. Parcela", "2. Urbanismo", "3. Cambios de planeamiento", "4. Evolución histórica y suelo contaminado",
                     "5. Inundabilidad", "6. Red eléctrica", "7. Tráfico y accesos", "8. Entorno",
                     "9. Valor de referencia", "10. Mapas", "11. Puntuación detallada", "12. Riesgos", "Anexo"]:
         assert seccion in html, seccion

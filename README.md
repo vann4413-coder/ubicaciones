@@ -21,6 +21,7 @@ Todo sale dentro de la web: el usuario no tiene que ir a ninguna otra página.
 | Urbanismo | MUC, WFS `sig.gencat.cat/ows/wfs` | En vivo |
 | Cambios de planeamiento | RPUC (API del portal) | En vivo |
 | Evolución histórica | Ortofotos ICGC 1956-57, 1998, 2015 y actual | En vivo |
+| Suelos contaminados | ARC, API del ICGC `api.icgc.cat/territorial/collections/sols-contaminats` | En vivo |
 | Inundabilidad | ACA (WFS Generalitat) + SNCZI (WMS IDEE) | En vivo |
 | Tráfico | Visor GAF de la Generalitat (IMD hasta el último año cerrado) + capa de tramos del WFS | Descarga con script + en vivo |
 | Accesos y entorno | OpenStreetMap (Overpass) | En vivo |
