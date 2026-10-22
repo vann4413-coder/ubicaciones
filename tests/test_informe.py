@@ -164,3 +164,11 @@ def test_decodificar_powerbi_real():
     a = aforos[0]
     assert a["anio"] == 2016 and a["carretera"] == "C-31" and a["organismo"] == "Generalitat de Catalunya"
     assert d._pk(195.108) == "195+108"
+
+
+def test_familias_muc():
+    from app.analisis.compatibilidad import familia
+    assert familia("A2", "Activitat econòmica, Serveis") == "terciario"
+    assert familia("A1", "Activitat econòmica, Industrial") == "actividad_economica"
+    assert familia("SH", "Sistemes, Hidràulic") == "otros_sistemas"
+    assert familia("N4", "No urbanitzable, Activitat autoritzada") == "no_urbanizable"

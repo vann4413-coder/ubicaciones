@@ -34,7 +34,8 @@ def familia(codigo: str, descripcion: str) -> str:
     if c.startswith("S") and "sistem" in d:
         return "otros_sistemas"
     if "industri" in d or "logistic" in d or "activitat economica" in d or c.startswith("A"):
-        if "terciari" in d or "comercial" in d:
+        # En el MUC, A1 = industrial y A2 = serveis (terciario, comercial, hotelero).
+        if c.startswith("A2") or "terciari" in d or "comercial" in d or "serveis" in d:
             return "terciario"
         return "actividad_economica"
     if "terciari" in d or "comercial" in d or "hoteler" in d or "oficines" in d:
