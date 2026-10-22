@@ -127,10 +127,11 @@ def test_informe_completo(fuentes_simuladas):
     # HTML y PDF
     html = render.html(inf)
     for seccion in ["1. Parcela", "2. Urbanismo", "3. Cambios de planeamiento", "4. Evolución histórica y suelo contaminado",
-                    "5. Inundabilidad", "6. Red eléctrica", "7. Tráfico y accesos", "8. Entorno",
+                    "5. Agua: flujo preferente e inundabilidad", "6. Red eléctrica", "7. Tráfico y accesos", "8. Entorno",
                     "9. Valor de referencia", "10. Mapas", "11. Puntuación detallada", "12. Riesgos", "Anexo"]:
         assert seccion in html, seccion
     assert "61.234" in html  # formato español
+    assert "No está en zona de flujo preferente" in html
     assert "sin dato" in html.lower()
 
 

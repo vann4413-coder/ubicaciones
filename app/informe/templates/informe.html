@@ -229,11 +229,12 @@
 
 {# ============ 5. INUNDABILIDAD ============ #}
 <section>
-  <h2>5. Inundabilidad</h2>
+  <h2>5. Agua: flujo preferente e inundabilidad</h2>
+  <p><b>{% if inf.inundabilidad_resumen.zfp_pct > 0 %}La parcela está en zona de flujo preferente.{% else %}No está en zona de flujo preferente.{% endif %}</b> {% if inf.inundabilidad_resumen.nivel in ("T10","T100","T500") %}Sí está en zona inundable ({{ inf.inundabilidad_resumen.nivel }}).{% elif inf.inundabilidad_resumen.nivel == "fuera" %}Tampoco está en zona inundable.{% endif %}</p>
   {% set r = inf.inundabilidad_resumen %}{% set a = inf.inundabilidad_aca %}{% set s = inf.inundabilidad_snczi %}
   <table>
     <tr><th>Concepto</th><th class="n">% parcela</th><th>Fuente</th></tr>
-    <tr><td><b>Zona de flujo preferente</b></td><td class="n">{{ r.zfp_pct }}%</td><td>{{ "ACA" if a.estado == "ok" else "sin dato" }}</td></tr>
+    <tr><td><b>Zona de flujo preferente</b></td><td class="n"><b>{% if a.estado != "ok" %}sin dato{% elif r.zfp_pct > 0 %}Sí · {{ r.zfp_pct }}%{% else %}No{% endif %}</b></td><td>{{ "ACA" if a.estado == "ok" else "sin dato" }}</td></tr>
     <tr><td>Lámina T10 (alta probabilidad)</td><td class="n">{{ r.t10_pct }}%</td><td>ACA / SNCZI</td></tr>
     <tr><td>Lámina T100 (media probabilidad)</td><td class="n">{{ r.t100_pct }}%</td><td>ACA / SNCZI</td></tr>
     <tr><td>Lámina T500 (baja probabilidad)</td><td class="n">{{ r.t500_pct }}%</td><td>ACA / SNCZI</td></tr>

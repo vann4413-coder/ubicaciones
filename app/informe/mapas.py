@@ -70,7 +70,7 @@ def construir(inf: dict) -> dict:
     mapas["inundabilidad"] = m
 
     # 4. Tráfico, red y entorno (1 km)
-    m = ortofotos.mapa_base(g, 0.0, 2200)
+    m = ortofotos.mapa_base(g, 0.0, 4400)
     traf = inf["trafico"]
     entorno = inf["entorno"] if inf["entorno"].get("estado") == "ok" else {}
     gas = inf["gasolineras"].get("estaciones", []) if inf["gasolineras"].get("estado") == "ok" else []
@@ -81,13 +81,13 @@ def construir(inf: dict) -> dict:
         {"trazo": "#fff", "relleno": "#dc2626", "opacidad": 1, "ancho": 1.5, "geoms": _pts(gas, 18)},
         {"trazo": "#fff", "relleno": "#7c3aed", "opacidad": 1, "ancho": 1.5, "geoms": _pts(nudos, 22)},
         {"trazo": "#e11d48", "relleno": "#e11d48", "opacidad": 0.6, "ancho": 3, "geoms": [g.buffer(8)]},
-        {"trazo": "#e11d48", "relleno": "none", "ancho": 1.5, "discontinua": True, "opacidad": 0, "geoms": [g.centroid.buffer(500).exterior, g.centroid.buffer(1000).exterior]},
+        {"trazo": "#e11d48", "relleno": "none", "ancho": 1.5, "discontinua": True, "opacidad": 0, "geoms": [g.centroid.buffer(500).exterior, g.centroid.buffer(1000).exterior, g.centroid.buffer(2000).exterior]},
     ]
     m["svg"] = ortofotos.svg_capas(m["bbox"], m["px"], capas)
     m["leyenda"] = [{"color": "#f59e0b", "texto": "Tramos con aforo (IMD)"}, {"color": "#dc2626", "texto": "Gasolineras"},
                     {"color": "#7c3aed", "texto": "Nudos eléctricos"}, {"color": "#64748b", "texto": "Negocios y servicios"},
-                    {"color": "#e11d48", "texto": "Parcela; círculos de 500 m y 1 km"}]
-    m["titulo"] = "Tráfico, red eléctrica y entorno (radio 1 km)"
+                    {"color": "#e11d48", "texto": "Parcela; círculos de 500 m, 1 km y 2 km"}]
+    m["titulo"] = "Competencia, tráfico y red eléctrica (radios de 500 m, 1 km y 2 km)"
     mapas["entorno"] = m
 
     # 5. Evolución histórica: SVG de la parcela para superponer en cada ortofoto
