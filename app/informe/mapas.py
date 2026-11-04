@@ -135,7 +135,7 @@ def construir(inf: dict) -> dict:
     m["leyenda"] = [{"color": c, "texto": NOMBRE_GRUPO[k]} for k, c in COLOR_GRUPO.items()] + [
                     {"color": "#f59e0b", "texto": "Tramos con aforo (IMD)"}, {"color": "#7c3aed", "texto": "Nudos eléctricos"},
                     {"color": "#64748b", "texto": "Negocios y servicios"}, {"color": "#e11d48", "texto": "Parcela"}]
-    m["titulo"] = "Competencia, tráfico y red eléctrica (radios de 500 m, 1 km y 2 km)"
+    m["titulo"] = "Estaciones de servicio, tráfico y red eléctrica (radios de 500 m, 1 km y 2 km)"
     mapas["entorno"] = m
 
     # 4b. Entorno en 5 km: actividad por categorías y polígonos industriales

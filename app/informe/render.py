@@ -86,13 +86,10 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
     else:
         fichas.append({"icono": "red", "titulo": "Red eléctrica", "valor": "Sin dato", "detalle": "Capacidad de acceso no cargada", "estado": "gris"})
 
-    if comp.get("estado") == "ok":
-        cerca = comp["mas_cercana"]
-        fichas.append({"icono": "competencia", "titulo": "Competencia en 2 km", "valor": f"{comp['total']} {'estación' if comp['total'] == 1 else 'estaciones'}",
-                       "detalle": f"La más cercana: {cerca['marca']} a {num(cerca['distancia_m'])} m" if cerca else "Ninguna en 2 km",
-                       "estado": "verde" if comp["por_radio"][500] == 0 else "ambar"})
-    else:
-        fichas.append({"icono": "competencia", "titulo": "Competencia en 2 km", "valor": "Sin dato", "detalle": "", "estado": "gris"})
+    pob = inf["poblacion"]
+    fichas.append({"icono": "entorno", "titulo": "Población", "valor": f"{num(pob['poblacion'])} hab." if pob.get("estado") == "ok" else "Sin dato",
+                   "detalle": f"{inf['municipio']['nombre']} ({pob['fecha_dato']})" if pob.get("estado") == "ok" else inf["municipio"]["nombre"],
+                   "estado": "neutro" if pob.get("estado") == "ok" else "gris"})
 
     sc = inf["suelos_contaminados"]
     if sc.get("estado") == "ok":
