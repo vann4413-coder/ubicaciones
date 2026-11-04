@@ -16,6 +16,21 @@ def _f(v):
         return None
 
 
+GRANDES_MARCAS = ("REPSOL", "CEPSA", "MOEVE", "SHELL", "GALP", "BP", "Q8", "PETRONOR", "CAMPSA", "PETROCAT", "AVIA", "DISA")
+SUPERMERCADOS = ("CARREFOUR", "ALCAMPO", "EROSKI", "BONAREA", "BON AREA", "CAPRABO", "E.LECLERC", "LECLERC", "INTERMARCHE", "COSTCO", "MAKRO", "SIMPLY")
+
+
+def grupo(marca: str) -> str:
+    """Tipo de competidor: gran marca, supermercado o independiente / low cost."""
+    import unicodedata
+    u = "".join(c for c in unicodedata.normalize("NFD", (marca or "").upper()) if unicodedata.category(c) != "Mn")
+    if u.startswith(SUPERMERCADOS):
+        return "supermercado"
+    if u.startswith(GRANDES_MARCAS):
+        return "marca"
+    return "independiente"
+
+
 def parse(d: dict, parcela: BaseGeometry, radio: float) -> list[dict]:
     salida = []
     for e in d.get("ListaEESSPrecio", []):
@@ -28,6 +43,7 @@ def parse(d: dict, parcela: BaseGeometry, radio: float) -> list[dict]:
             continue
         salida.append({
             "marca": (e.get("Rótulo") or "").strip(),
+            "grupo": grupo(e.get("Rótulo") or ""),
             "direccion": (e.get("Dirección") or "").strip(),
             "municipio": e.get("Municipio", ""),
             "horario": e.get("Horario", ""),

@@ -47,6 +47,8 @@ SNCZI_CAPAS = {
 # --- ICGC ---
 ICGC_GEOCODER = "https://eines.icgc.cat/geocodificador"
 ICGC_ORTO_WMS = "https://geoserveis.icgc.cat/servei/catalunya/orto-territorial/wms"
+# Mapa base del ICGC: "orto-hibrida" (ortofoto con calles y nombres) y "topografic".
+ICGC_BASE_WMS = "https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms"
 # Tira histórica: vuelo de 1956-57, 1998, 2015 y la vigente.
 ORTOS_HISTORICAS = [
     ("1956-57", "ortofoto_blanc_i_negre_1956-1957"),
@@ -74,3 +76,10 @@ FICHERO_SUELO = DATOS_DIR / "precio_suelo.csv"     # Precio del suelo urbano por
 
 RADIOS_ENTORNO = [500, 1000, 2000]
 RADIOS_TRAFICO = [500, 1000]
+
+
+# --- Marca ---
+# Nombre provisional de la plataforma: se cambia con la variable de entorno UBI_MARCA.
+import os as _os
+MARCA = _os.getenv("UBI_MARCA", "Parcela 360")
+MARCA_LEMA = _os.getenv("UBI_MARCA_LEMA", "Informe de idoneidad de ubicaciones")

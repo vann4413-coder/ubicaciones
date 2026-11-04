@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 # Librerías del sistema que necesita WeasyPrint para generar el PDF
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libharfbuzz-subset0 libffi8 fonts-dejavu-core \
+      libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b libharfbuzz-subset0 libffi8 fonts-dejavu-core fonts-inter \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

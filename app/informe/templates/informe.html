@@ -2,140 +2,252 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Informe de idoneidad · {{ inf.rc }}</title>
+<title>{{ marca }} · {{ inf.parcela.direccion or inf.rc }}</title>
+{%- macro icono(n, color="currentColor", t=16) -%}
+<svg class="ico" width="{{ t }}" height="{{ t }}" viewBox="0 0 24 24" fill="none" stroke="{{ color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+{%- if n == "parcela" -%}<path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3z"/><path d="M9 4v13M15 7v13"/>
+{%- elif n == "urbanismo" -%}<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+{%- elif n == "agua" -%}<path d="M12 3s7 7.6 7 12a7 7 0 0 1-14 0c0-4.4 7-12 7-12z"/>
+{%- elif n == "trafico" -%}<path d="M5 17h14M6 17l1.5-6h9L18 17"/><circle cx="8" cy="19" r="1.5"/><circle cx="16" cy="19" r="1.5"/><path d="M8 11l1-4h6l1 4"/>
+{%- elif n == "red" -%}<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>
+{%- elif n == "competencia" -%}<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M3 21h12M6 8h6"/><path d="M14 10h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V8l-3-3"/>
+{%- elif n == "suelo" -%}<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>
+{%- elif n == "planeamiento" -%}<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/>
+{%- elif n == "valor" -%}<path d="M17 6.5A6.5 6.5 0 1 0 17 17.5"/><path d="M4 10h9M4 14h9"/>
+{%- elif n == "entorno" -%}<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>
+{%- elif n == "historia" -%}<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+{%- elif n == "puntos" -%}<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+{%- elif n == "riesgo" -%}<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>
+{%- elif n == "fuentes" -%}<path d="M4 5h16M4 12h16M4 19h10"/>
+{%- endif -%}
+</svg>
+{%- endmacro -%}
+{%- macro rosco(valor, estado, t=74) -%}
+{%- set c = {"verde": "#1e9e5a", "ambar": "#e08a00", "rojo": "#d64032", "gris": "#9aa5b1"}[estado] -%}
+<svg width="{{ t }}" height="{{ t }}" viewBox="0 0 80 80">
+  <circle cx="40" cy="40" r="34" fill="none" stroke="#e7ecf1" stroke-width="8"/>
+  {% if valor is not none %}<circle cx="40" cy="40" r="34" fill="none" stroke="{{ c }}" stroke-width="8" stroke-linecap="round"
+    stroke-dasharray="{{ '%.1f' % (213.6 * valor / 100) }} 213.6" transform="rotate(-90 40 40)"/>{% endif %}
+  <text x="40" y="47" text-anchor="middle" font-size="22" font-weight="800" fill="#12263a" font-family="Inter, Arial, sans-serif">{{ valor if valor is not none else "—" }}</text>
+</svg>
+{%- endmacro -%}
+{%- macro cabecera(numero, titulo, ico) -%}
+<div class="cab"><span class="num">{{ numero }}</span>{{ icono(ico, "#12355b", 18) }}<h2>{{ titulo }}</h2></div>
+{%- endmacro -%}
 <style>
-  @page { size: A4; margin: 16mm 14mm 18mm 14mm;
-    @bottom-left { content: "Informe de idoneidad · RC {{ inf.rc }}"; font-size: 8pt; color: #64748b; }
-    @bottom-right { content: "Pág. " counter(page) " de " counter(pages); font-size: 8pt; color: #64748b; } }
-  :root { --tinta:#0f172a; --suave:#475569; --linea:#e2e8f0; --fondo:#f8fafc; --acento:#0f766e;
-          --verde:#16a34a; --ambar:#d97706; --rojo:#dc2626; --gris:#94a3b8; }
+  @page { size: A4; margin: 15mm 13mm 17mm 13mm;
+    @bottom-left { content: "{{ marca }} · RC {{ inf.rc }}"; font: 7.5pt Inter, Arial, sans-serif; color: #7b8794; }
+    @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt Inter, Arial, sans-serif; color: #7b8794; } }
+  @page :first { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+  :root { --tinta:#12263a; --suave:#5b6b7b; --linea:#e3e8ee; --fondo:#f4f6f9; --marca:#12355b; --acento:#f2a516;
+          --verde:#1e9e5a; --ambar:#e08a00; --rojo:#d64032; --gris:#9aa5b1; }
   * { box-sizing: border-box; }
-  body { font-family: "Helvetica Neue", Arial, sans-serif; color: var(--tinta); font-size: 9.5pt; line-height: 1.45; margin: 0; background: #fff; }
-  h1 { font-size: 20pt; margin: 0 0 2mm; }
-  h2 { font-size: 13pt; margin: 0 0 3mm; padding-bottom: 1.5mm; border-bottom: 2px solid var(--acento); color: var(--acento); }
-  h3 { font-size: 10.5pt; margin: 4mm 0 1.5mm; }
-  section { margin-bottom: 7mm; }
-  section.salto { page-break-before: always; }
-  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 3mm; }
-  th, td { text-align: left; padding: 1.4mm 2mm; border-bottom: 1px solid var(--linea); vertical-align: top; }
-  th { background: var(--fondo); font-weight: 600; color: var(--suave); font-size: 8.5pt; }
-  td.n, th.n { text-align: right; white-space: nowrap; }
-  .ficha { display: grid; grid-template-columns: 1fr 1fr; gap: 1mm 6mm; }
-  .ficha div { padding: 1mm 0; border-bottom: 1px solid var(--linea); }
-  .ficha span { color: var(--suave); display: block; font-size: 8pt; }
-  .aviso { background: #fffbeb; border-left: 3px solid var(--ambar); padding: 2mm 3mm; font-size: 8.5pt; color: #78350f; margin: 2mm 0; }
-  .info { background: var(--fondo); border-left: 3px solid var(--gris); padding: 2mm 3mm; font-size: 8.5pt; color: var(--suave); margin: 2mm 0; }
-  .bloqueo { background: #fef2f2; border-left: 3px solid var(--rojo); padding: 2mm 3mm; color: #7f1d1d; margin: 1mm 0; }
-  .sin { color: var(--gris); font-style: italic; }
-  .chip { display: inline-block; padding: 0.4mm 2mm; border-radius: 3mm; font-size: 8pt; font-weight: 600; color: #fff; }
+  body { font-family: Inter, "Helvetica Neue", Arial, sans-serif; color: var(--tinta); font-size: 9pt; line-height: 1.45; margin: 0; }
+  h1, h2, h3 { line-height: 1.15; }
+  h3 { font-size: 10pt; margin: 4.5mm 0 1.8mm; color: var(--marca); }
+  p { margin: 1.5mm 0; }
+  a { color: var(--marca); text-decoration: none; word-break: break-all; }
+  .ico { vertical-align: -3px; }
+
+  /* ---------- Portada ---------- */
+  .portada { height: 297mm; position: relative; page-break-after: always; }
+  .portada .banda { background: var(--marca); color: #fff; padding: 11mm 14mm 9mm; }
+  .portada .logo { font-size: 11pt; font-weight: 800; letter-spacing: .02em; }
+  .portada .logo i { display: inline-block; width: 3.2mm; height: 3.2mm; background: var(--acento); border-radius: 1mm; margin-right: 2mm; vertical-align: -.3mm; }
+  .portada .logo small { font-weight: 400; opacity: .7; margin-left: 2mm; }
+  .portada .fecha { float: right; font-size: 8.5pt; opacity: .75; }
+  .portada h1 { font-size: 21pt; font-weight: 800; margin: 7mm 0 2mm; letter-spacing: -.01em; }
+  .portada .sub { font-size: 10pt; opacity: .85; }
+  .portada .sub b { color: var(--acento); font-weight: 600; }
+  .hero { position: relative; height: 92mm; overflow: hidden; background: #dfe5ec; }
+  .hero img, .hero svg { position: absolute; left: 0; width: 210mm; height: 210mm; top: -59mm; }
+  .notas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; margin: -14mm 14mm 0; position: relative; }
+  .nota { background: #fff; border-radius: 3mm; padding: 3mm 2mm 3mm; text-align: center; box-shadow: 0 1mm 3mm rgba(18,38,58,.18); }
+  .nota .perfil { font-size: 8pt; font-weight: 700; color: var(--suave); text-transform: uppercase; letter-spacing: .04em; }
+  .nota .veredicto { display: inline-block; margin-top: 1mm; padding: .5mm 2.5mm; border-radius: 3mm; font-size: 8pt; font-weight: 700; color: #fff; }
+  .nota .conf { display: block; font-size: 7pt; color: var(--suave); margin-top: 1mm; }
   .verde { background: var(--verde); } .ambar { background: var(--ambar); } .rojo { background: var(--rojo); } .gris { background: var(--gris); }
-  .compatible { color: var(--verde); font-weight: 600; } .condicionado { color: var(--ambar); font-weight: 600; }
-  .plan_especial, .incompatible { color: var(--rojo); font-weight: 600; }
-  .notas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 3mm 0; }
-  .nota { border: 1px solid var(--linea); border-radius: 2mm; padding: 3mm; text-align: center; }
-  .nota b { display: block; font-size: 22pt; line-height: 1.1; }
-  .nota small { color: var(--suave); }
-  .mapa { position: relative; width: 180mm; height: 180mm; overflow: hidden; border: 1px solid var(--linea); margin: 0 auto; }
+  .portada .cuerpo { padding: 5mm 14mm 0; }
+  .resumen { font-size: 9.5pt; line-height: 1.5; }
+  .resumen-tit { font-size: 8pt; font-weight: 700; color: var(--marca); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1.5mm; }
+  .bloqueo { background: #fdecea; border-left: 1.2mm solid var(--rojo); padding: 2.5mm 3.5mm; color: #7d1d14; margin: 2mm 0; border-radius: 0 2mm 2mm 0; font-weight: 600; }
+  .portada .pie-portada { position: absolute; bottom: 9mm; left: 14mm; right: 14mm; font-size: 7.5pt; color: var(--suave); border-top: 1px solid var(--linea); padding-top: 2.5mm; }
+
+  /* ---------- De un vistazo ---------- */
+  .vistazo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 2mm 0 6mm; }
+  .ficha-v { border: 1px solid var(--linea); border-radius: 2.5mm; padding: 2.5mm 3mm; border-top: 1.2mm solid var(--gris); min-height: 25mm; }
+  .ficha-v.e-verde { border-top-color: var(--verde); } .ficha-v.e-ambar { border-top-color: var(--ambar); }
+  .ficha-v.e-rojo { border-top-color: var(--rojo); } .ficha-v.e-neutro { border-top-color: var(--marca); }
+  .ficha-v .t { font-size: 7.5pt; font-weight: 700; color: var(--suave); text-transform: uppercase; letter-spacing: .04em; }
+  .ficha-v .v { font-size: 13pt; font-weight: 800; margin: 1.5mm 0 1mm; color: var(--tinta); }
+  .ficha-v .d { font-size: 7.5pt; color: var(--suave); line-height: 1.35; }
+  .titulo-pag { font-size: 16pt; font-weight: 800; color: var(--marca); margin: 0 0 1mm; }
+  .bajada { color: var(--suave); margin: 0 0 4mm; }
+
+  ul.pasos { padding: 0; margin: 0; list-style: none; }
+  ul.pasos li { padding: 2.2mm 3mm 2.2mm 9mm; margin-bottom: 1.5mm; border-radius: 2mm; position: relative; background: var(--fondo); }
+  ul.pasos li .ico { position: absolute; left: 2.5mm; top: 2.4mm; }
+  ul.pasos li.riesgo { background: #fff6e5; }
+
+  /* ---------- Secciones ---------- */
+  section { margin-bottom: 7mm; }
+  .salto { page-break-before: always; }
+  .cab { display: flex; align-items: center; gap: 2.5mm; border-bottom: 2px solid var(--marca); padding-bottom: 2mm; margin-bottom: 3.5mm; }
+  .cab .num { background: var(--marca); color: #fff; font-weight: 800; font-size: 9pt; width: 7mm; height: 7mm; border-radius: 50%; text-align: center; line-height: 7mm; }
+  .cab h2 { font-size: 14pt; font-weight: 800; margin: 0; color: var(--marca); }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; align-items: start; }
+  .datos { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm; }
+  .dato { background: var(--fondo); border-radius: 2mm; padding: 2mm 2.5mm; }
+  .dato span { display: block; font-size: 7pt; color: var(--suave); text-transform: uppercase; letter-spacing: .04em; }
+  .dato b { font-size: 10pt; }
+  .dato.ancho { grid-column: span 2; }
+  table { width: 100%; border-collapse: collapse; margin: 1.5mm 0 3mm; font-size: 8.5pt; }
+  th, td { text-align: left; padding: 1.6mm 2mm; border-bottom: 1px solid var(--linea); vertical-align: top; }
+  th { font-weight: 700; color: var(--suave); font-size: 7.5pt; text-transform: uppercase; letter-spacing: .03em; border-bottom: 1.5px solid var(--tinta); }
+  td.n, th.n { text-align: right; white-space: nowrap; }
+  .aviso { background: #fff6e5; border-left: 1.2mm solid var(--ambar); padding: 2mm 3mm; font-size: 8pt; color: #6b4300; margin: 2mm 0; border-radius: 0 2mm 2mm 0; }
+  .info { background: var(--fondo); border-left: 1.2mm solid var(--gris); padding: 2mm 3mm; font-size: 8pt; color: var(--suave); margin: 2mm 0; border-radius: 0 2mm 2mm 0; }
+  .sin { color: var(--gris); font-style: italic; }
+  .compatible { color: var(--verde); font-weight: 700; } .condicionado { color: var(--ambar); font-weight: 700; }
+  .plan_especial, .incompatible { color: var(--rojo); font-weight: 700; }
+  .grande { font-size: 12pt; font-weight: 800; }
+  .estado { display: inline-block; padding: .4mm 2.2mm; border-radius: 3mm; color: #fff; font-weight: 700; font-size: 8pt; }
+
+  .mapa { position: relative; width: 100%; padding-bottom: 100%; height: 0; overflow: hidden; border-radius: 2.5mm; background: #dfe5ec; }
   .mapa img, .mapa svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-  .mapa.medio { width: 125mm; height: 125mm; }
-  .leyenda { font-size: 8pt; color: var(--suave); margin: 1.5mm 0 4mm; }
-  .leyenda i { display: inline-block; width: 3mm; height: 3mm; margin: 0 1mm 0 3mm; vertical-align: middle; }
-  .tira { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; }
-  .tira .mapa { width: 43mm; height: 43mm; }
-  .tira p { margin: 1mm 0 0; font-size: 8pt; text-align: center; }
-  .barra { height: 2.2mm; background: var(--linea); border-radius: 1mm; overflow: hidden; }
-  .barra i { display: block; height: 100%; background: var(--acento); }
-  ul.pasos { padding-left: 0; list-style: none; }
-  ul.pasos li { padding: 1.5mm 0 1.5mm 6mm; border-bottom: 1px solid var(--linea); position: relative; }
-  ul.pasos li:before { position: absolute; left: 0; }
-  ul.pasos li.riesgo:before { content: "⚠"; color: var(--ambar); }
-  ul.pasos li.paso:before { content: "→"; color: var(--acento); }
-  .portada { border-bottom: 1px solid var(--linea); padding-bottom: 4mm; margin-bottom: 5mm; }
-  .portada .sub { color: var(--suave); }
-  .resumen { font-size: 10pt; background: var(--fondo); padding: 3mm 4mm; border-radius: 2mm; }
+  .mapa.grande-m { width: 184mm; height: 184mm; padding-bottom: 0; }
+  .leyenda { font-size: 7.5pt; color: var(--suave); margin: 1.5mm 0 3mm; }
+  .leyenda i { display: inline-block; width: 2.6mm; height: 2.6mm; border-radius: 50%; margin: 0 1mm 0 2.5mm; vertical-align: -.2mm; }
+  .tira { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+  .tira p { margin: 1mm 0 0; font-size: 8pt; text-align: center; font-weight: 700; }
+
+  .pin { position: absolute; width: 5.6mm; height: 5.6mm; margin: -2.8mm 0 0 -2.8mm; border-radius: 50%; border: .5mm solid #fff;
+         color: #fff; font-size: 7pt; font-weight: 800; text-align: center; line-height: 4.6mm; box-shadow: 0 .3mm 1mm rgba(0,0,0,.45); }
+  .radio { position: absolute; transform: translate(-50%, -50%); background: rgba(18,38,58,.78); color: #fff; font-size: 7pt; font-weight: 700; padding: .3mm 1.6mm; border-radius: 2mm; }
+  .punto { display: inline-block; width: 4.2mm; height: 4.2mm; border-radius: 50%; color: #fff; font-size: 6.5pt; font-weight: 800; text-align: center; line-height: 4.2mm; }
+  .comp-kpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; margin: 3mm 0; }
+  .precio-barra { position: relative; height: 2mm; background: var(--linea); border-radius: 1mm; margin-top: .8mm; }
+  .precio-barra i { position: absolute; top: 0; bottom: 0; left: 0; background: var(--marca); border-radius: 1mm; }
+  .barato { color: var(--verde); font-weight: 700; } .caro { color: var(--rojo); }
+
+  .barra { height: 2.4mm; background: var(--linea); border-radius: 1.2mm; overflow: hidden; }
+  .barra i { display: block; height: 100%; border-radius: 1.2mm; }
+  .perfil-det { border: 1px solid var(--linea); border-radius: 2.5mm; padding: 3mm 4mm; margin-bottom: 3mm; page-break-inside: avoid; }
+  .perfil-det .top { display: flex; align-items: center; gap: 4mm; }
+  .perfil-det h3 { margin: 0; }
   .pie { font-size: 7.5pt; color: var(--suave); }
-  a { color: var(--acento); text-decoration: none; word-break: break-all; }
 </style>
 </head>
 <body>
 
-{# ============ 0. PORTADA / FICHA RESUMEN ============ #}
-<section class="portada">
-  <div class="sub">Informe de idoneidad de ubicación · {{ inf.generado }}</div>
-  <h1>{{ inf.parcela.direccion or ("Parcela " ~ inf.rc) }}</h1>
-  <div class="ficha">
-    <div><span>Referencia catastral</span>{{ inf.rc }}</div>
-    <div><span>Municipio</span>{{ inf.municipio.nombre }}{% if inf.municipio.comarca %} ({{ inf.municipio.comarca }}){% endif %}</div>
-    <div><span>Coordenadas (WGS84)</span>{{ "%.6f"|format(inf.lat) }}, {{ "%.6f"|format(inf.lon) }}</div>
-    <div><span>Coordenadas (ETRS89 UTM 31N)</span>{{ inf.utm[0] }}, {{ inf.utm[1] }}</div>
-    <div><span>Superficie gráfica</span>{{ inf.parcela.sup_grafica|num }} m²</div>
-    <div><span>Población del municipio</span>{% if inf.poblacion.estado == "ok" %}{{ inf.poblacion.poblacion|num }} hab. ({{ inf.poblacion.fecha_dato }}){% else %}<span class="sin">sin dato</span>{% endif %}</div>
+{# ======================= PORTADA ======================= #}
+<div class="portada">
+  <div class="banda">
+    <span class="fecha">{{ inf.generado }}</span>
+    <div class="logo"><i></i>{{ marca }}<small>{{ lema }}</small></div>
+    <h1>{{ inf.parcela.direccion or ("Parcela " ~ inf.rc) }}</h1>
+    <div class="sub">{{ inf.municipio.nombre }}{% if inf.municipio.comarca %} · {{ inf.municipio.comarca }}{% endif %} · RC <b>{{ inf.rc }}</b> · {{ inf.parcela.sup_grafica|num }} m²</div>
   </div>
-</section>
-
-<section>
-  <h2>Puntuación por perfil</h2>
+  {% set m = mapas.portada %}
+  <div class="hero"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
   <div class="notas">
   {% for k, p in inf.puntuaciones.items() %}
     <div class="nota">
-      <small>{{ p.nombre_perfil }}</small>
-      <b>{% if p.bloqueos %}—{% else %}{{ p.total if p.total is not none else "—" }}{% endif %}</b>
-      <span class="chip {{ p.semaforo }}">{{ p.veredicto }}</span><br>
-      <small>Confianza {{ p.confianza }}</small>
+      <div class="perfil">{{ p.nombre_perfil }}</div>
+      {{ rosco(None if p.bloqueos else p.total, p.semaforo) }}<br>
+      <span class="veredicto {{ p.semaforo }}">{{ p.veredicto }}</span>
+      <span class="conf">Confianza {{ p.confianza }}</span>
     </div>
   {% endfor %}
   </div>
-  {% set bloqueos = [] %}
-  {% for k, p in inf.puntuaciones.items() %}{% for b in p.bloqueos %}{% if b not in bloqueos %}{% set _ = bloqueos.append(b) %}{% endif %}{% endfor %}{% endfor %}
-  {% for b in bloqueos %}<div class="bloqueo">{{ b }}</div>{% endfor %}
-  <h3>Resumen</h3>
-  <div class="resumen">{{ inf.resumen }}</div>
-  {% if inf.resumen_origen == "reglas" %}<div class="pie">Resumen generado automáticamente a partir de los datos del informe.</div>{% endif %}
+  <div class="cuerpo">
+    {% set bloqueos = [] %}
+    {% for k, p in inf.puntuaciones.items() %}{% for b in p.bloqueos %}{% if b not in bloqueos %}{% set _ = bloqueos.append(b) %}{% endif %}{% endfor %}{% endfor %}
+    {% for b in bloqueos %}<div class="bloqueo">{{ icono("riesgo", "#d64032") }} {{ b }}</div>{% endfor %}
+    <div class="resumen-tit">Resumen</div>
+    <div class="resumen">{{ inf.resumen }}</div>
+    <div class="resumen-tit" style="margin-top:5mm">De un vistazo</div>
+    <div class="vistazo">
+    {% for f in panorama %}
+      <div class="ficha-v e-{{ f.estado }}">
+        <div class="t">{{ icono(f.icono, "#5b6b7b", 13) }} {{ f.titulo }}</div>
+        <div class="v">{{ f.valor }}</div>
+        <div class="d">{{ f.detalle }}</div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <div class="pie-portada">Puntuaciones de 0 a 100 por tipo de uso: verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Informe orientativo elaborado con datos públicos oficiales; no sustituye a la cèdula urbanística ni a la consulta a los organismos. Fuentes y fechas en el anexo.</div>
+</div>
+
+{# ======================= RIESGOS ======================= #}
+<section>
+  <div class="cab"><span class="num">!</span>{{ icono("riesgo", "#12355b", 18) }}<h2>Riesgos y próximos pasos</h2></div>
+  <ul class="pasos">{% for p in inf.pasos %}<li class="{{ p.tipo }}">{{ icono("riesgo" if p.tipo == "riesgo" else "planeamiento", "#e08a00" if p.tipo == "riesgo" else "#12355b", 14) }}{{ p.texto }}</li>{% endfor %}</ul>
 </section>
 
-{# ============ 1. PARCELA ============ #}
-<section class="salto">
-  <h2>1. Parcela (Catastro)</h2>
+{# ======================= 1. PARCELA ======================= #}
+<section>
+  {{ cabecera(1, "Parcela", "parcela") }}
   {% set p = inf.parcela %}
-  <div class="ficha">
-    <div><span>Referencia catastral</span>{{ inf.rc }}</div>
-    <div><span>Clase</span>{{ p.clase or "—" }}</div>
-    <div><span>Superficie gráfica</span>{{ p.sup_grafica|num }} m²</div>
-    <div><span>Superficie construida</span>{{ p.sup_construida|num if p.sup_construida else "—" }} m²</div>
-    <div><span>Uso principal</span>{{ p.uso or "—" }}</div>
-    <div><span>Año de construcción</span>{{ p.anio_construccion or "—" }}</div>
-    <div><span>Nº de inmuebles</span>{{ p.num_inmuebles or "—" }}</div>
-    <div><span>Tipo de finca</span>{{ p.tipo_finca or "—" }}</div>
+  <div class="dos">
+    <div>
+      <div class="datos">
+        <div class="dato ancho"><span>Referencia catastral</span><b>{{ inf.rc }}</b></div>
+        <div class="dato"><span>Superficie gráfica</span><b>{{ p.sup_grafica|num }} m²</b></div>
+        <div class="dato"><span>Superficie construida</span><b>{{ (p.sup_construida|num ~ " m²") if p.sup_construida else "—" }}</b></div>
+        <div class="dato"><span>Clase</span><b>{{ p.clase or "—" }}</b></div>
+        <div class="dato"><span>Uso principal</span><b>{{ p.uso or "—" }}</b></div>
+        <div class="dato"><span>Año de construcción</span><b>{{ p.anio_construccion or "—" }}</b></div>
+        <div class="dato"><span>Nº de inmuebles</span><b>{{ p.num_inmuebles or "—" }}</b></div>
+        <div class="dato"><span>Frente a vial (estimado)</span><b>{{ (inf.trafico.accesos.frente_vial_m|num(1) ~ " m") if inf.trafico.accesos and inf.trafico.accesos.frente_vial_m is defined else "—" }}</b></div>
+        <div class="dato"><span>Forma</span><b>{{ inf.metricas.forma|capitalize }}</b> <small>({{ inf.metricas.compacidad }})</small></div>
+        <div class="dato"><span>Lado menor / mayor</span><b>{{ inf.metricas.lado_menor_m|num(0) }} / {{ inf.metricas.lado_mayor_m|num(0) }} m</b></div>
+        <div class="dato"><span>Ancho útil máximo</span><b>{{ inf.metricas.ancho_util_m|num(1) }} m</b></div>
+        <div class="dato ancho"><span>Coordenadas</span><b>{{ "%.6f"|format(inf.lat) }}, {{ "%.6f"|format(inf.lon) }}</b> <small>· UTM 31N {{ inf.utm[0] }}, {{ inf.utm[1] }}</small></div>
+      </div>
+      {% if p.construcciones %}
+      <h3>Construcciones</h3>
+      <table><tr><th>Uso</th><th>Tipología</th><th class="n">Superficie</th></tr>
+      {% for c in p.construcciones %}<tr><td>{{ c.uso }}</td><td>{{ c.tipologia }}</td><td class="n">{{ c.superficie|num }} m²</td></tr>{% endfor %}
+      </table>
+      {% endif %}
+    </div>
+    <div>
+      {% set m = mapas.parcela %}
+      <div class="mapa"><img src="{{ m.orto }}"><img src="{{ m.catastro }}">{{ m.svg|safe }}</div>
+      <div class="leyenda"><i style="background:#e11d48"></i>Parcela <i style="background:#facc15"></i>Colindantes · Ortofoto ICGC y Catastro</div>
+    </div>
   </div>
-  <h3>Indicadores de forma</h3>
-  <div class="ficha">
-    <div><span>Frente a vial (estimado)</span>{{ inf.trafico.accesos.frente_vial_m|num(1) if inf.trafico.accesos and inf.trafico.accesos.frente_vial_m is defined else "—" }} m</div>
-    <div><span>Compacidad</span>{{ inf.metricas.compacidad }} ({{ inf.metricas.forma }})</div>
-    <div><span>Lado menor / mayor (rectángulo envolvente)</span>{{ inf.metricas.lado_menor_m|num(1) }} m / {{ inf.metricas.lado_mayor_m|num(1) }} m</div>
-    <div><span>Ancho útil máximo</span>{{ inf.metricas.ancho_util_m|num(1) }} m</div>
-  </div>
-  {% if p.construcciones %}
-  <h3>Construcciones</h3>
-  <table><tr><th>Uso</th><th>Tipología</th><th class="n">Superficie</th></tr>
-  {% for c in p.construcciones %}<tr><td>{{ c.uso }}</td><td>{{ c.tipologia }}</td><td class="n">{{ c.superficie|num }} m²</td></tr>{% endfor %}
-  </table>
-  {% endif %}
   <h3>Colindantes</h3>
   {% if p.colindantes %}
   <table><tr><th>Referencia catastral</th><th class="n">Superficie</th><th class="n">Lindero común</th></tr>
   {% for c in p.colindantes %}<tr><td>{{ c.rc }}</td><td class="n">{{ c.area|num }} m²</td><td class="n">{{ c.lindero_m|num(1) }} m</td></tr>{% endfor %}
   </table>
   {% else %}<p class="sin">Sin parcelas colindantes registradas (puede lindar solo con viales).</p>{% endif %}
-  {% set m = mapas.parcela %}
-  <div class="mapa medio"><img src="{{ m.orto }}"><img src="{{ m.catastro }}">{{ m.svg|safe }}</div>
-  <div class="leyenda">{{ m.titulo }}. Fuente: ICGC y Catastro.</div>
 </section>
 
-{# ============ 2. URBANISMO ============ #}
+{# ======================= 2. URBANISMO ======================= #}
 <section class="salto">
-  <h2>2. Urbanismo (Mapa Urbanístic de Catalunya)</h2>
+  {{ cabecera(2, "Urbanismo", "urbanismo") }}
   {% set u = inf.urbanismo %}
   {% if u.estado == "ok" %}
+    <div class="dos">
+      <div>
+        <h3 style="margin-top:0">Compatibilidad orientativa por uso</h3>
+        <table><tr><th>Uso</th><th>Valoración</th></tr>
+        {% for k, c in u.compatibilidad.items() %}
+          <tr><td><b>{{ perfiles[k] }}</b><br><small>{{ c.motivo }}{% if c.nota %} {{ c.nota }}{% endif %}</small></td><td class="{{ c.nivel }}">{{ niveles[c.nivel] }}</td></tr>
+        {% endfor %}
+        </table>
+      </div>
+      <div>
+        {% if mapas.urbanismo %}{% set m = mapas.urbanismo %}
+          <div class="mapa"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
+          <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %}</div>
+        {% endif %}
+      </div>
+    </div>
     <h3>Clasificación del suelo</h3>
     <table><tr><th>Clasificación</th><th>Denominación municipal</th><th class="n">% parcela</th></tr>
     {% for c in u.clasificaciones %}<tr><td>{{ c.codigo }} · {{ c.descripcion }}</td><td>{{ c.descripcion_municipal }}</td><td class="n">{{ c.pct }}%</td></tr>{% endfor %}
@@ -158,44 +270,172 @@
     {% endif %}
     {% if u.plan_general %}
     <h3>Planeamiento general vigente</h3>
-    <p>{{ u.plan_general.tipo }} de {{ u.plan_general.municipio }} · expediente {{ u.plan_general.expediente }} · aprobado {{ u.plan_general.aprobacion|fecha }} · DOGC {{ u.plan_general.publicacion_dogc|fecha }}<br>
-    {% if u.plan_general.url_rpuc %}<a href="{{ u.plan_general.url_rpuc }}">{{ u.plan_general.url_rpuc }}</a>{% endif %}</p>
+    <p>{{ u.plan_general.tipo }} de {{ u.plan_general.municipio }} · expediente {{ u.plan_general.expediente }} · aprobado {{ u.plan_general.aprobacion|fecha }} · DOGC {{ u.plan_general.publicacion_dogc|fecha }}
+    {% if u.plan_general.url_rpuc %}· <a href="{{ u.plan_general.url_rpuc }}">ver en el RPUC</a>{% endif %}</p>
     {% endif %}
-    <h3>Compatibilidad orientativa por uso</h3>
-    <table><tr><th>Uso</th><th>Valoración</th><th>Comentario</th></tr>
-    {% for k, c in u.compatibilidad.items() %}
-      <tr><td>{{ perfiles[k] }}</td><td class="{{ c.nivel }}">{{ niveles[c.nivel] }}</td><td>{{ c.motivo }}{% if c.nota %} {{ c.nota }}{% endif %}</td></tr>
-    {% endfor %}
-    </table>
     <div class="aviso">{{ u.aviso }}</div>
-    {% if mapas.urbanismo %}{% set m = mapas.urbanismo %}
-      <div class="mapa medio"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
-      <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %}</div>
-    {% endif %}
   {% else %}
     <p class="sin">{{ u.mensaje or "Sin datos urbanísticos." }}</p>
   {% endif %}
-</section>
 
-{# ============ 3. CAMBIOS DE PLANEAMIENTO ============ #}
-<section>
-  <h2>3. Cambios de planeamiento</h2>
   {% set c = inf.cambios %}
+  <h3>{{ icono("planeamiento", "#12355b", 14) }} Cambios de planeamiento recientes</h3>
   {% if c.estado == "ok" %}
-    <p>{{ c.total_municipio }} instrumentos inscritos en el RPUC para {{ inf.municipio.nombre }}. Aprobados en los últimos {{ c.anios }} años:</p>
+    <p>{{ c.total_municipio }} instrumentos inscritos en el RPUC para {{ inf.municipio.nombre }}; {{ c.recientes|length }} aprobados en los últimos {{ c.anios }} años.</p>
     {% if c.recientes %}
     <table><tr><th>Fecha</th><th>Instrumento</th><th>Título</th></tr>
-    {% for e in c.recientes[:15] %}<tr><td>{{ e.fecha|fecha }}</td><td>{{ e.instrumento }}</td><td><a href="{{ e.url }}">{{ e.titulo }}</a></td></tr>{% endfor %}
+    {% for e in c.recientes[:12] %}<tr><td>{{ e.fecha|fecha }}</td><td>{{ e.instrumento }}</td><td><a href="{{ e.url }}">{{ e.titulo }}</a></td></tr>{% endfor %}
     </table>
-    {% if c.recientes|length > 15 %}<p class="pie">Y {{ c.recientes|length - 15 }} más.</p>{% endif %}
-    {% else %}<p class="sin">Ninguno en ese periodo.</p>{% endif %}
+    {% if c.recientes|length > 12 %}<p class="pie">Y {{ c.recientes|length - 12 }} más.</p>{% endif %}
+    {% endif %}
     <div class="info">{{ c.aviso }}</div>
   {% else %}<p class="sin">{{ c.mensaje or "Sin datos." }}</p>{% endif %}
 </section>
 
-{# ============ 4. EVOLUCIÓN HISTÓRICA ============ #}
+{# ======================= 3. AGUA ======================= #}
 <section class="salto">
-  <h2>4. Evolución histórica y suelo contaminado</h2>
+  {{ cabecera(3, "Agua: flujo preferente e inundabilidad", "agua") }}
+  {% set r = inf.inundabilidad_resumen %}{% set a = inf.inundabilidad_aca %}{% set s = inf.inundabilidad_snczi %}
+  <div class="dos">
+    <div>
+      <div class="datos">
+        <div class="dato ancho"><span>Zona de flujo preferente</span>
+          {% if a.estado != "ok" and s.estado != "ok" %}<b class="sin">sin dato</b>
+          {% elif r.zfp_pct > 0 %}<b class="grande" style="color:var(--rojo)">Sí · {{ r.zfp_pct }}% de la parcela</b>
+          {% else %}<b class="grande" style="color:var(--verde)">No</b>{% endif %}</div>
+        <div class="dato ancho"><span>Zona inundable</span>
+          <b>{% if r.nivel in ("T10", "T100", "T500") %}Sí, {{ {"T10": "alta probabilidad (T10)", "T100": "media probabilidad (T100)", "T500": "baja probabilidad (T500)"}[r.nivel] }}{% elif r.nivel == "fuera" %}No{% else %}—{% endif %}</b></div>
+        <div class="dato"><span>Lámina T10</span><b>{{ r.t10_pct }}%</b></div>
+        <div class="dato"><span>Lámina T100</span><b>{{ r.t100_pct }}%</b></div>
+        <div class="dato"><span>Lámina T500</span><b>{{ r.t500_pct }}%</b></div>
+        {% if s.estado == "ok" %}<div class="dato"><span>Origen marino T100 / T500</span><b>{{ s.MarinaT100_pct }}% / {{ s.MarinaT500_pct }}%</b></div>{% endif %}
+        {% if a.estado == "ok" %}
+        <div class="dato"><span>Distancia al cauce</span><b>{{ (a.distancia_dph_m|num(0) ~ " m") if a.distancia_dph_m is not none else "> 100 m" }}</b></div>
+        <div class="dato"><span>Dominio público hidráulico</span><b>{{ a.dph_pct }}%</b></div>
+        <div class="dato ancho"><span>Zona de servidumbre (5 m) / de policía (100 m)</span><b>{{ "Sí" if a.en_servidumbre else "No" }} / {{ "Sí" if a.en_zona_policia else "No" }}</b></div>
+        {% endif %}
+      </div>
+      {% if a.tramo_zfp %}<p>Tramo: {{ a.tramo_zfp.rio }} · {{ a.tramo_zfp.arpsi }} {% if a.tramo_zfp.ficha %}· <a href="{{ a.tramo_zfp.ficha }}">ficha técnica ACA</a>{% endif %}</p>{% endif %}
+      {% if r.nivel == "zfp" %}<div class="bloqueo">En zona de flujo preferente no se autorizan, con carácter general, estaciones de servicio ni la mayoría de usos edificatorios (art. 9 bis RDPH).</div>{% endif %}
+      {% if a.estado == "ok" and a.en_zona_policia %}<div class="aviso">En zona de policía, cualquier obra necesita autorización de la ACA.</div>{% endif %}
+      {% if a.estado != "ok" %}<div class="aviso">ACA: {{ a.mensaje }}</div>{% endif %}
+      {% if s.estado != "ok" %}<div class="aviso">SNCZI: {{ s.mensaje }}</div>{% endif %}
+      <p class="pie">Fuentes: láminas de inundabilidad de la ACA y SNCZI del Ministerio para la Transición Ecológica.</p>
+    </div>
+    <div>
+      {% set m = mapas.inundabilidad %}
+      <div class="mapa"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
+      <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %}</div>
+    </div>
+  </div>
+</section>
+
+{# ======================= 4. TRÁFICO Y ACCESOS ======================= #}
+<section>
+  {{ cabecera(4, "Tráfico y accesos", "trafico") }}
+  {% set t = inf.trafico %}
+  {% if t.carreteras %}
+  {% set max_imd = t.carreteras|selectattr("imd")|map(attribute="imd")|max if t.carreteras|selectattr("imd")|list else 1 %}
+  <table><tr><th>Carretera</th><th class="n">Distancia</th><th style="width:30%">IMD (veh/día)</th><th class="n">% pesados</th><th class="n">Año</th><th>Titular y fuente</th></tr>
+  {% for c in t.carreteras %}
+    <tr><td><b>{{ c.carretera }}</b>{% if c.nombre %}<br><small>{{ c.nombre }}</small>{% endif %}</td><td class="n">{{ c.distancia_m|num }} m</td>
+    {% if c.imd %}<td><b>{{ c.imd|num }}</b><div class="barra"><i style="width:{{ (100 * c.imd / max_imd)|round(1) }}%; background:var(--marca)"></i></div></td>
+      <td class="n">{{ c.pct_pesados|num(1) if c.pct_pesados is not none else "—" }}</td><td class="n">{{ c.anio }}</td>
+    {% else %}<td class="sin">sin dato</td><td></td><td></td>{% endif %}
+    <td><small>{{ c.titular }}{% if c.titular_inferido %}*{% endif %} · {{ c.fuente or "sin aforo oficial" }}{% if c.estacion %} · estación {{ c.estacion }}{% endif %}{% if c.pk_estacion %} · PK {{ c.pk_estacion }}{% endif %}</small></td></tr>
+  {% endfor %}
+  </table>
+  <p class="pie">IMD: intensidad media diaria. Se muestra el aforo oficial más reciente; si no hay aforo, «sin dato» (nunca se estima). * Titular deducido de la denominación de la vía.</p>
+  {% else %}<p class="sin">No hay carreteras con aforo a menos de 1 km.</p>{% endif %}
+  {% set acc = t.accesos %}
+  {% if acc and acc.estado == "ok" %}
+  <h3>Accesos</h3>
+  <div class="datos">
+    <div class="dato"><span>Vía de acceso más próxima</span><b>{{ acc.via_acceso.nombre }}</b> <small>({{ acc.via_acceso.distancia_m|num }} m · {{ acc.via_acceso.titular }})</small></div>
+    <div class="dato"><span>Carretera más cercana</span><b>{% if acc.carretera_mas_cercana %}{{ acc.carretera_mas_cercana.ref }} a {{ acc.carretera_mas_cercana.distancia_m|num }} m{% else %}—{% endif %}</b></div>
+    <div class="dato"><span>Salida o enlace más cercano</span><b>{% if acc.salida_cercana %}{{ acc.salida_cercana.ref }} {{ acc.salida_cercana.nombre }} a {{ acc.salida_cercana.distancia_m|num }} m{% else %}—{% endif %}</b></div>
+    <div class="dato"><span>Área de servicio más cercana</span><b>{% if acc.area_servicio_cercana %}{{ acc.area_servicio_cercana.nombre }} a {{ acc.area_servicio_cercana.distancia_m|num }} m{% else %}—{% endif %}</b></div>
+  </div>
+  {% if acc.linea_edificacion %}{% set le = acc.linea_edificacion %}
+    <h3>Línea límite de edificación</h3>
+    <p>{{ le.carretera }} ({{ le.tipo }}): {{ le.distancia_limite_m }} m desde la arista exterior de la calzada. Superficie de la parcela dentro de la franja: <b>{{ le.superficie_afectada_m2|num }} m² ({{ le.pct_afectado }}%)</b>.</p>
+    <div class="info">{{ le.aviso }}</div>
+  {% endif %}
+  <div class="aviso">{{ acc.aviso }}</div>
+  {% endif %}
+</section>
+
+{# ======================= 5. COMPETENCIA Y ENTORNO ======================= #}
+<section class="salto">
+  {{ cabecera(5, "Competencia y entorno en 2 km", "competencia") }}
+  {% set gs = inf.gasolineras %}
+  {% if comp.estado == "ok" %}
+  <div class="comp-kpi">
+    <div class="dato"><span>Estaciones en 500 m / 1 km / 2 km</span><b class="grande">{{ comp.por_radio[500] }} · {{ comp.por_radio[1000] }} · {{ comp.por_radio[2000] }}</b></div>
+    <div class="dato"><span>La más cercana</span><b>{% if comp.mas_cercana %}{{ comp.mas_cercana.marca }}</b> <small>a {{ comp.mas_cercana.distancia_m|num }} m</small>{% else %}—</b>{% endif %}</div>
+    <div class="dato"><span>Gasóleo A: mediana de la zona</span><b class="grande">{{ comp.mediana_gasoleo|num(3) if comp.mediana_gasoleo else "—" }}</b> <small>€/l</small></div>
+    <div class="dato"><span>La más barata</span><b>{% if comp.mas_barata %}{{ comp.mas_barata.marca }}</b> <small>{{ comp.mas_barata.gasoleo_a|num(3) }} €/l</small>{% else %}—</b>{% endif %}</div>
+  </div>
+  {% endif %}
+  {% set m = mapas.entorno %}
+  <div class="mapa grande-m"><img src="{{ m.orto }}">{{ m.svg|safe }}
+    {% for r in m.radios %}<div class="radio" style="left:{{ r.x }}%; top:{{ r.y }}%">{{ r.texto }}</div>{% endfor %}
+    {% for p in m.marcas %}<div class="pin" style="left:{{ p.x }}%; top:{{ p.y }}%; background:{{ p.color }}">{{ p.n }}</div>{% endfor %}
+  </div>
+  <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %} · Ortofoto ICGC con callejero</div>
+
+  <h3>Estaciones de servicio</h3>
+  {% if gs.estado == "ok" and gs.estaciones %}
+  {% set pmin = comp.min_gasoleo or 0 %}{% set pmax = comp.max_gasoleo or 1 %}
+  <table><tr><th></th><th>Marca y dirección</th><th class="n">Distancia</th><th style="width:22%">Gasóleo A (€/l)</th><th class="n">Gasolina 95</th><th>Horario</th></tr>
+  {% for s in gs.estaciones %}
+    <tr><td><span class="punto" style="background:{{ comp.colores[s.grupo] or '#1f8a70' }}">{{ loop.index }}</span></td>
+    <td><b>{{ s.marca }}</b><br><small>{{ s.direccion }} · {{ comp.nombres[s.grupo] }}</small></td><td class="n">{{ s.distancia_m|num }} m</td>
+    <td>{% if s.gasoleo_a %}<span class="{{ 'barato' if s.gasoleo_a == pmin else 'caro' if s.gasoleo_a == pmax and pmax > pmin else '' }}">{{ s.gasoleo_a|num(3) }}</span>
+      <div class="precio-barra"><i style="width:{{ (8 + 92 * (s.gasoleo_a - pmin) / ((pmax - pmin) or 1))|round(1) }}%"></i></div>{% else %}—{% endif %}</td>
+    <td class="n">{{ s.gasolina_95|num(3) if s.gasolina_95 else "—" }}</td><td><small>{{ s.horario }}</small></td></tr>
+  {% endfor %}
+  </table>
+  <p class="pie">Precios del geoportal de carburantes a {{ gs.fecha_dato }}. Distancias en línea recta. El número coincide con el del mapa.</p>
+  {% elif gs.estado == "ok" %}<p>No hay estaciones de servicio a menos de 2 km.</p>
+  {% else %}<p class="sin">{{ gs.mensaje }}</p>{% endif %}
+
+  {% set en = inf.entorno %}
+  <h3>{{ icono("entorno", "#12355b", 14) }} Negocios y servicios</h3>
+  {% if en.estado == "ok" %}
+  <table><tr><th>Tipo</th><th class="n">≤ 500 m</th><th class="n">≤ 1 km</th><th class="n">≤ 2 km</th><th>Más cercano</th></tr>
+  {% for g, items in en.pois|groupby("grupo") %}
+    <tr><td>{{ g }}</td>
+    <td class="n">{{ items|selectattr("distancia_m", "le", 500)|list|length }}</td>
+    <td class="n">{{ items|selectattr("distancia_m", "le", 1000)|list|length }}</td>
+    <td class="n">{{ items|list|length }}</td>
+    {% set c = items|sort(attribute="distancia_m")|first %}
+    <td>{{ c.nombre or c.tipo }} ({{ c.distancia_m|num }} m)</td></tr>
+  {% endfor %}
+  </table>
+  {% else %}<p class="sin">{{ en.mensaje }}</p>{% endif %}
+  <p>Población de {{ inf.municipio.nombre }}: {% if inf.poblacion.estado == "ok" %}<b>{{ inf.poblacion.poblacion|num }}</b> habitantes ({{ inf.poblacion.fecha_dato }}){% else %}<span class="sin">sin dato</span>{% endif %}.</p>
+</section>
+
+{# ======================= 6. RED ELÉCTRICA ======================= #}
+<section>
+  {{ cabecera(6, "Red eléctrica", "red") }}
+  {% set red = inf.red %}
+  {% if red.estado == "ok" %}
+  <table><tr><th>Nudo</th><th>Distribuidora</th><th class="n">Tensión</th><th class="n">Distancia</th><th class="n">Disponible</th><th class="n">Ocupada</th><th class="n">En trámite</th><th class="n">Cargadores 150 kW</th></tr>
+  {% for n in red.nudos %}
+    <tr><td><b>{{ n.nudo }}</b>{% if n.marca_0 %} <b>(0*)</b>{% endif %}</td><td>{{ n.gestor }}</td><td class="n">{{ n.tension_kv|num(1) }} kV</td><td class="n">{{ n.distancia_m|num }} m</td>
+    <td class="n"><b>{{ n.disponible_mw|num(2) }} MW</b></td><td class="n">{{ n.ocupada_mw|num(2) }} MW</td><td class="n">{{ n.tramite_mw|num(2) }} MW</td><td class="n">{{ n.cargadores_150kw }}</td></tr>
+  {% endfor %}
+  </table>
+  <p class="pie">{{ red.fecha_dato }}</p>
+  <div class="aviso">{{ red.aviso }}</div>
+  {% else %}<p class="sin">{{ red.mensaje }}</p>{% endif %}
+</section>
+
+{# ======================= 7. HISTORIA Y SUELO ======================= #}
+<section>
+  {{ cabecera(7, "Evolución histórica y suelo contaminado", "historia") }}
   {% set e = inf.evolucion %}
   <div class="tira">
   {% for img in e.imagenes %}
@@ -212,12 +452,12 @@
     <div class="info">Compare las imágenes para detectar usos anteriores (antigua gasolinera o industria: posible suelo contaminado), construcciones recientes o si la parcela ha estado siempre libre.</div>
   {% endif %}
   <p class="pie">Fuente: {{ e.fuente }}.</p>
-  <h3>Registro de suelos contaminados</h3>
+  <h3>{{ icono("suelo", "#12355b", 14) }} Registro de suelos contaminados</h3>
   {% set sc = inf.suelos_contaminados %}
   {% if sc.estado == "ok" %}
     {% if sc.en_parcela %}
       {% for c in sc.en_parcela %}<div class="{{ 'bloqueo' if c.activo else 'aviso' }}"><b>{{ c.tipo }}</b> · {{ c.estado }} · {{ c.pct }}% de la parcela<br>{{ c.nombre }}<br><small>Declaración {{ c.fecha_declaracion|fecha }}{% if c.fecha_desclasificacion %} · desclasificación {{ c.fecha_desclasificacion|fecha }}{% endif %}</small></div>{% endfor %}
-    {% else %}<p>La parcela no figura en el registro.</p>{% endif %}
+    {% else %}<p><b>La parcela no figura en el registro.</b></p>{% endif %}
     {% if sc.cercanos %}
     <table><tr><th>Emplazamiento cercano</th><th>Tipo</th><th>Estado</th><th class="n">Distancia</th></tr>
     {% for c in sc.cercanos %}<tr><td>{{ c.nombre }}</td><td>{{ c.tipo }}</td><td>{{ c.estado }}</td><td class="n">{{ c.distancia_m|num }} m</td></tr>{% endfor %}
@@ -227,163 +467,47 @@
   {% else %}<p class="sin">{{ sc.mensaje or "Sin datos." }}</p>{% endif %}
 </section>
 
-{# ============ 5. INUNDABILIDAD ============ #}
+{# ======================= 8. VALOR DEL SUELO ======================= #}
 <section>
-  <h2>5. Agua: flujo preferente e inundabilidad</h2>
-  <p><b>{% if inf.inundabilidad_resumen.zfp_pct > 0 %}La parcela está en zona de flujo preferente.{% else %}No está en zona de flujo preferente.{% endif %}</b> {% if inf.inundabilidad_resumen.nivel in ("T10","T100","T500") %}Sí está en zona inundable ({{ inf.inundabilidad_resumen.nivel }}).{% elif inf.inundabilidad_resumen.nivel == "fuera" %}Tampoco está en zona inundable.{% endif %}</p>
-  {% set r = inf.inundabilidad_resumen %}{% set a = inf.inundabilidad_aca %}{% set s = inf.inundabilidad_snczi %}
-  <table>
-    <tr><th>Concepto</th><th class="n">% parcela</th><th>Fuente</th></tr>
-    <tr><td><b>Zona de flujo preferente</b></td><td class="n"><b>{% if a.estado != "ok" %}sin dato{% elif r.zfp_pct > 0 %}Sí · {{ r.zfp_pct }}%{% else %}No{% endif %}</b></td><td>{{ "ACA" if a.estado == "ok" else "sin dato" }}</td></tr>
-    <tr><td>Lámina T10 (alta probabilidad)</td><td class="n">{{ r.t10_pct }}%</td><td>ACA / SNCZI</td></tr>
-    <tr><td>Lámina T100 (media probabilidad)</td><td class="n">{{ r.t100_pct }}%</td><td>ACA / SNCZI</td></tr>
-    <tr><td>Lámina T500 (baja probabilidad)</td><td class="n">{{ r.t500_pct }}%</td><td>ACA / SNCZI</td></tr>
-    {% if s.estado == "ok" %}<tr><td>Inundación de origen marino (T100 / T500)</td><td class="n">{{ s.MarinaT100_pct }}% / {{ s.MarinaT500_pct }}%</td><td>SNCZI</td></tr>{% endif %}
-    {% if a.estado == "ok" %}
-    <tr><td>Dominio público hidráulico</td><td class="n">{{ a.dph_pct }}%</td><td>ACA</td></tr>
-    <tr><td>Distancia al cauce (DPH)</td><td class="n">{{ (a.distancia_dph_m|num(0) ~ " m") if a.distancia_dph_m is not none else "> 100 m" }}</td><td>ACA</td></tr>
-    <tr><td>Zona de servidumbre (5 m) / policía (100 m)</td><td class="n">{{ "Sí" if a.en_servidumbre else "No" }} / {{ "Sí" if a.en_zona_policia else "No" }}</td><td>ACA</td></tr>
-    {% endif %}
-  </table>
-  {% if a.tramo_zfp %}<p>Tramo: {{ a.tramo_zfp.rio }} · {{ a.tramo_zfp.arpsi }} {% if a.tramo_zfp.ficha %}· <a href="{{ a.tramo_zfp.ficha }}">ficha técnica ACA</a>{% endif %}</p>{% endif %}
-  {% if r.nivel == "zfp" %}<div class="bloqueo">En zona de flujo preferente no se autorizan, con carácter general, estaciones de servicio ni la mayoría de usos edificatorios (art. 9 bis RDPH).</div>{% endif %}
-  {% if a.estado != "ok" %}<div class="aviso">ACA: {{ a.mensaje }}</div>{% endif %}
-  {% if s.estado != "ok" %}<div class="aviso">SNCZI: {{ s.mensaje }}</div>{% endif %}
-  {% set m = mapas.inundabilidad %}
-  <div class="mapa medio"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
-  <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %}</div>
-</section>
-
-{# ============ 6. RED ELÉCTRICA ============ #}
-<section class="salto">
-  <h2>6. Red eléctrica</h2>
-  {% set red = inf.red %}
-  {% if red.estado == "ok" %}
-  <table><tr><th>Nudo</th><th>Distribuidora</th><th class="n">Tensión</th><th class="n">Distancia</th><th class="n">Disponible</th><th class="n">Ocupada</th><th class="n">En trámite</th><th class="n">Cargadores 150 kW</th></tr>
-  {% for n in red.nudos %}
-    <tr><td>{{ n.nudo }}{% if n.marca_0 %} <b>(0*)</b>{% endif %}</td><td>{{ n.gestor }}</td><td class="n">{{ n.tension_kv|num(1) }} kV</td><td class="n">{{ n.distancia_m|num }} m</td>
-    <td class="n">{{ n.disponible_mw|num(2) }} MW</td><td class="n">{{ n.ocupada_mw|num(2) }} MW</td><td class="n">{{ n.tramite_mw|num(2) }} MW</td><td class="n">{{ n.cargadores_150kw }}</td></tr>
-  {% endfor %}
-  </table>
-  <p class="pie">{{ red.fecha_dato }}</p>
-  <div class="aviso">{{ red.aviso }}</div>
-  {% else %}<p class="sin">{{ red.mensaje }}</p>{% endif %}
-</section>
-
-{# ============ 7. TRÁFICO Y ACCESOS ============ #}
-<section>
-  <h2>7. Tráfico y accesos</h2>
-  {% set t = inf.trafico %}
-  {% if t.carreteras %}
-  <table><tr><th>Carretera</th><th>Titular</th><th class="n">Distancia</th><th class="n">IMD</th><th class="n">% pesados</th><th class="n">Año</th><th>Fuente</th></tr>
-  {% for c in t.carreteras %}
-    <tr><td><b>{{ c.carretera }}</b>{% if c.nombre %}<br><small>{{ c.nombre }}</small>{% endif %}</td>
-    <td>{{ c.titular }}{% if c.titular_inferido %}*{% endif %}</td><td class="n">{{ c.distancia_m|num }} m</td>
-    {% if c.imd %}<td class="n"><b>{{ c.imd|num }}</b></td><td class="n">{{ c.pct_pesados|num(1) if c.pct_pesados is not none else "—" }}</td><td class="n">{{ c.anio }}</td>
-    <td><small>{{ c.fuente }}{% if c.estacion %} · estación {{ c.estacion }}{% endif %}{% if c.pk_estacion %} · PK {{ c.pk_estacion }}{% endif %}</small></td>
-    {% else %}<td class="n sin" colspan="3">sin dato</td><td><small>Sin aforo oficial</small></td>{% endif %}</tr>
-  {% endfor %}
-  </table>
-  <p class="pie">IMD: intensidad media diaria (vehículos/día). Se muestra el aforo más reciente disponible; si no hay aforo, «sin dato» (nunca se estima). * Titular deducido de la denominación de la vía.</p>
-  {% else %}<p class="sin">No hay carreteras con aforo a menos de 1 km.</p>{% endif %}
-  {% set acc = t.accesos %}
-  {% if acc and acc.estado == "ok" %}
-  <h3>Accesos</h3>
-  <div class="ficha">
-    <div><span>Vía de acceso más próxima</span>{{ acc.via_acceso.nombre }} ({{ acc.via_acceso.distancia_m|num }} m) · {{ acc.via_acceso.titular }}</div>
-    <div><span>Carretera más cercana</span>{% if acc.carretera_mas_cercana %}{{ acc.carretera_mas_cercana.ref }} a {{ acc.carretera_mas_cercana.distancia_m|num }} m · {{ acc.carretera_mas_cercana.titular }}{% else %}—{% endif %}</div>
-    <div><span>Salida o enlace más cercano</span>{% if acc.salida_cercana %}{{ acc.salida_cercana.ref }} {{ acc.salida_cercana.nombre }} a {{ acc.salida_cercana.distancia_m|num }} m{% else %}—{% endif %}</div>
-    <div><span>Área de servicio más cercana</span>{% if acc.area_servicio_cercana %}{{ acc.area_servicio_cercana.nombre }} a {{ acc.area_servicio_cercana.distancia_m|num }} m{% else %}—{% endif %}</div>
-  </div>
-  {% if acc.linea_edificacion %}{% set le = acc.linea_edificacion %}
-    <h3>Línea límite de edificación</h3>
-    <p>{{ le.carretera }} ({{ le.tipo }}): {{ le.distancia_limite_m }} m desde la arista exterior de la calzada. Superficie de la parcela dentro de la franja: <b>{{ le.superficie_afectada_m2|num }} m² ({{ le.pct_afectado }}%)</b>.</p>
-    <div class="info">{{ le.aviso }}</div>
-  {% endif %}
-  <div class="aviso">{{ acc.aviso }}</div>
-  {% endif %}
-</section>
-
-{# ============ 8. ENTORNO ============ #}
-<section class="salto">
-  <h2>8. Entorno</h2>
-  {% set en = inf.entorno %}
-  {% if en.estado == "ok" %}
-  <h3>Negocios y servicios por distancia</h3>
-  <table><tr><th>Tipo</th><th class="n">≤ 500 m</th><th class="n">≤ 1 km</th><th class="n">≤ 2 km</th><th>Más cercano</th></tr>
-  {% for g, items in en.pois|groupby("grupo") %}
-    <tr><td>{{ g }}</td>
-    <td class="n">{{ items|selectattr("distancia_m", "le", 500)|list|length }}</td>
-    <td class="n">{{ items|selectattr("distancia_m", "le", 1000)|list|length }}</td>
-    <td class="n">{{ items|list|length }}</td>
-    {% set c = items|sort(attribute="distancia_m")|first %}
-    <td>{{ c.nombre or c.tipo }} ({{ c.distancia_m|num }} m)</td></tr>
-  {% endfor %}
-  </table>
-  {% else %}<p class="sin">{{ en.mensaje }}</p>{% endif %}
-
-  <h3>Estaciones de servicio (2 km)</h3>
-  {% set gs = inf.gasolineras %}
-  {% if gs.estado == "ok" and gs.estaciones %}
-  <table><tr><th>Marca</th><th>Dirección</th><th class="n">Distancia</th><th class="n">Gasóleo A</th><th class="n">Gasolina 95</th><th>Horario</th></tr>
-  {% for s in gs.estaciones %}<tr><td><b>{{ s.marca }}</b></td><td>{{ s.direccion }}</td><td class="n">{{ s.distancia_m|num }} m</td>
-  <td class="n">{{ s.gasoleo_a|num(3) if s.gasoleo_a else "—" }}</td><td class="n">{{ s.gasolina_95|num(3) if s.gasolina_95 else "—" }}</td><td><small>{{ s.horario }}</small></td></tr>{% endfor %}
-  </table>
-  <p class="pie">Precios en €/l a {{ gs.fecha_dato }}.</p>
-  {% elif gs.estado == "ok" %}<p>No hay estaciones de servicio a menos de 2 km.</p>
-  {% else %}<p class="sin">{{ gs.mensaje }}</p>{% endif %}
-  <p>Población de {{ inf.municipio.nombre }}: {% if inf.poblacion.estado == "ok" %}<b>{{ inf.poblacion.poblacion|num }}</b> habitantes ({{ inf.poblacion.fecha_dato }}){% else %}<span class="sin">sin dato</span>{% endif %}.</p>
-</section>
-
-{# ============ 9. VALOR DEL SUELO ============ #}
-<section>
-  <h2>9. Valor de referencia del suelo</h2>
+  {{ cabecera(8, "Valor de referencia del suelo", "valor") }}
   {% set su = inf.suelo %}
   {% if su.estado == "ok" %}
-    <p>Precio medio del suelo urbano en {{ inf.municipio.nombre }}: <b>{{ su.ultimo_precio_m2|num }} €/m²</b> ({{ su.fecha_dato }}). Horquilla del último año: {{ su.horquilla_m2[0]|num }}–{{ su.horquilla_m2[1]|num }} €/m².</p>
+    <p>Precio medio del suelo urbano en {{ inf.municipio.nombre }}: <b class="grande">{{ su.ultimo_precio_m2|num }} €/m²</b> ({{ su.fecha_dato }}). Horquilla del último año: {{ su.horquilla_m2[0]|num }}–{{ su.horquilla_m2[1]|num }} €/m².</p>
   {% else %}<p class="sin">{{ su.mensaje }}</p>{% endif %}
   <div class="aviso">{{ su.aviso }}</div>
 </section>
 
-{# ============ 10. MAPAS ============ #}
-<section class="salto">
-  <h2>10. Mapas</h2>
-  {% set m = mapas.entorno %}
-  <div class="mapa"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
-  <div class="leyenda">{{ m.titulo }}. {% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %}</div>
-</section>
-
-{# ============ 11. PUNTUACIÓN DETALLADA ============ #}
-<section class="salto">
-  <h2>11. Puntuación detallada</h2>
+{# ======================= 9. PUNTUACIÓN DETALLADA ======================= #}
+<section>
+  {{ cabecera(9, "Puntuación detallada", "puntos") }}
+  {% set colores = {"verde": "#1e9e5a", "ambar": "#e08a00", "rojo": "#d64032", "gris": "#9aa5b1"} %}
   {% for k, p in inf.puntuaciones.items() %}
-    <h3>{{ p.nombre_perfil }} · <span class="chip {{ p.semaforo }}">{{ p.veredicto }}{% if p.total is not none and not p.bloqueos %} · {{ p.total }}/100{% endif %}</span> <small>(confianza {{ p.confianza }})</small></h3>
+  <div class="perfil-det">
+    <div class="top">
+      {{ rosco(None if p.bloqueos else p.total, p.semaforo, 52) }}
+      <div><h3>{{ p.nombre_perfil }}</h3><span class="estado {{ p.semaforo }}">{{ p.veredicto }}</span> <small>Confianza {{ p.confianza }}</small></div>
+    </div>
     {% for b in p.bloqueos %}<div class="bloqueo">{{ b }}</div>{% endfor %}
-    <table><tr><th>Bloque</th><th class="n">Peso</th><th class="n">Nota</th><th style="width:30%"></th><th>Motivo</th></tr>
+    <table><tr><th>Bloque</th><th class="n">Peso</th><th class="n">Nota</th><th style="width:26%"></th><th>Motivo</th></tr>
     {% for b, s in p.subnotas.items() %}
       <tr><td>{{ bloques[b] }}</td><td class="n">{{ s.peso }}%{% if s.peso_efectivo and s.peso_efectivo != s.peso %} → {{ s.peso_efectivo }}%{% endif %}</td>
-      <td class="n">{{ s.nota if s.nota is not none else "—" }}</td>
-      <td>{% if s.nota is not none %}<div class="barra"><i style="width:{{ s.nota }}%"></i></div>{% endif %}</td>
+      <td class="n"><b>{{ s.nota if s.nota is not none else "—" }}</b></td>
+      <td>{% if s.nota is not none %}<div class="barra"><i style="width:{{ s.nota }}%; background:{{ colores['verde' if s.nota >= 75 else 'ambar' if s.nota >= 50 else 'rojo'] }}"></i></div>{% endif %}</td>
       <td><small>{{ s.detalle }}</small></td></tr>
     {% endfor %}
     </table>
     {% if p.faltan %}<p class="pie">Sin dato en: {{ p.faltan|map("bloque")|join(", ") }}. Su peso se reparte entre el resto.</p>{% endif %}
+  </div>
   {% endfor %}
   <div class="info">Semáforo: verde ≥ 75 · ámbar 50–74 · rojo &lt; 50. Los filtros eliminatorios (zona de flujo preferente, calificación incompatible o solo con plan especial y, para recarga, nudo sin capacidad y sin marca 0*) dan «No apta» con independencia de la nota.</div>
 </section>
 
-{# ============ 12. RIESGOS Y PRÓXIMOS PASOS ============ #}
-<section>
-  <h2>12. Riesgos y próximos pasos</h2>
-  <ul class="pasos">{% for p in inf.pasos %}<li class="{{ p.tipo }}">{{ p.texto }}</li>{% endfor %}</ul>
-</section>
-
-{# ============ ANEXO ============ #}
+{# ======================= ANEXO ======================= #}
 <section class="salto">
-  <h2>Anexo. Fuentes y fechas</h2>
+  {{ cabecera("A", "Fuentes y fechas", "fuentes") }}
   <table><tr><th>Sección</th><th>Fuente</th><th>Fecha del dato</th><th>Consulta</th><th>Estado</th></tr>
   {% for a in inf.anexo %}
-    <tr><td>{{ a.seccion }}</td><td>{{ a.fuente }}{% if a.url %}<br><a href="{{ a.url }}"><small>{{ a.url }}</small></a>{% endif %}</td>
+    <tr><td><b>{{ a.seccion }}</b></td><td>{{ a.fuente }}{% if a.url %}<br><a href="{{ a.url }}"><small>{{ a.url }}</small></a>{% endif %}</td>
     <td>{{ a.fecha_dato or "—" }}</td><td>{{ a.fecha_consulta|fecha }}</td><td>{{ estados[a.estado] or a.estado }}{% if a.mensaje %}<br><small>{{ a.mensaje }}</small>{% endif %}</td></tr>
   {% endfor %}
   </table>
