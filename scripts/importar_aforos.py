@@ -35,8 +35,9 @@ def convertir(filas: list[dict], anio: int, fuente: str, organismo: str = "") ->
     c_org = columna(cab, "organisme", "organismo", "titular")
     c_tipo = columna(cab, "tipus", "tipo")
     c_est = columna(cab, "codi estacio", "codigo estacion", "estacio", "estacion")
-    c_lon = columna(cab, "lon", "longitud")
     c_lat = columna(cab, "lat", "latitud")
+    # "Longitud" también es la longitud del tramo en km: solo se usa como coordenada si hay latitud.
+    c_lon = columna(cab, "lon", "longitud") if c_lat else None
     c_x = columna(cab, "utm x", "coord x", "x")
     c_y = columna(cab, "utm y", "coord y", "y")
     if not c_carr or not c_imd:
@@ -66,6 +67,18 @@ def convertir(filas: list[dict], anio: int, fuente: str, organismo: str = "") ->
     return salida
 
 
+def mas_recientes(filas: list[dict]) -> list[dict]:
+    """Una fila por estación de aforo: la de la medida más reciente (los planes anuales repiten estaciones)."""
+    sin_codigo = [f for f in filas if not f["codigo_estacion"]]
+    mejor: dict[tuple, dict] = {}
+    for f in filas:
+        if f["codigo_estacion"]:
+            k = (f["carretera"], f["codigo_estacion"])
+            if k not in mejor or f["anio"] > mejor[k]["anio"]:
+                mejor[k] = f
+    return list(mejor.values()) + sin_codigo
+
+
 def guardar(nuevas: list[dict], fuente: str, anio: int, destino: Path = config.FICHERO_AFOROS) -> int:
     existentes = []
     if destino.exists():
@@ -87,7 +100,7 @@ def main():
     ap.add_argument("--organismo", default="")
     ap.add_argument("--hoja")
     a = ap.parse_args()
-    filas = convertir(leer(a.fichero, a.hoja), a.anio, a.fuente, a.organismo)
+    filas = mas_recientes(convertir(leer(a.fichero, a.hoja), a.anio, a.fuente, a.organismo))
     total = guardar(filas, a.fuente, a.anio)
     sin_coord = sum(1 for f in filas if f["lon"] == "")
     print(f"Cargados {len(filas)} aforos ({sin_coord} sin coordenadas: se asignan por carretera y PK). Total en fichero: {total}.")
