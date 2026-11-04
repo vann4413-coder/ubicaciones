@@ -38,12 +38,13 @@ def competencia(inf: dict) -> dict:
     gs = inf["gasolineras"]
     if gs.get("estado") != "ok":
         return {"estado": gs.get("estado"), "mensaje": gs.get("mensaje")}
-    est = gs.get("estaciones", [])
+    todas = gs.get("estaciones", [])  # hasta 5 km (para el mapa de entorno)
+    est = [e for e in todas if e["distancia_m"] <= 2000]
     precios = [e["gasoleo_a"] for e in est if e.get("gasoleo_a")]
-    por_radio = {r: sum(1 for e in est if e["distancia_m"] <= r) for r in (500, 1000, 2000)}
+    por_radio = {r: sum(1 for e in todas if e["distancia_m"] <= r) for r in (500, 1000, 2000, 5000)}
     por_grupo = {k: sum(1 for e in est if e.get("grupo") == k) for k in COLOR_GRUPO}
     mas_barata = min((e for e in est if e.get("gasoleo_a")), key=lambda e: e["gasoleo_a"], default=None)
-    return {"estado": "ok", "total": len(est), "por_radio": por_radio, "por_grupo": por_grupo,
+    return {"estado": "ok", "total": len(est), "estaciones": est, "por_radio": por_radio, "por_grupo": por_grupo,
             "mediana_gasoleo": round(median(precios), 3) if precios else None,
             "min_gasoleo": min(precios) if precios else None, "max_gasoleo": max(precios) if precios else None,
             "mas_cercana": est[0] if est else None, "mas_barata": mas_barata,
@@ -136,6 +137,35 @@ def construir(inf: dict) -> dict:
                     {"color": "#64748b", "texto": "Negocios y servicios"}, {"color": "#e11d48", "texto": "Parcela"}]
     m["titulo"] = "Competencia, tráfico y red eléctrica (radios de 500 m, 1 km y 2 km)"
     mapas["entorno"] = m
+
+    # 4b. Entorno en 5 km: actividad por categorías y polígonos industriales
+    e5 = inf.get("entorno5") or {}
+    if e5.get("estado") == "ok":
+        radio = e5.get("radio_m", 5000)
+        m = ortofotos.mapa_base(g, 0.0, radio * 2 + 400, px=1000)
+        m["orto"] = ortofotos.url_wms(config.ICGC_BASE_WMS, "topografic-gris", m["bbox"], m["px"])
+        from app.fuentes.entorno import CATEGORIAS
+        capas = [{"trazo": "#9575cd", "relleno": "#9575cd", "opacidad": 0.35, "ancho": 1, "geoms": [z["geom"] for z in e5.get("zonas_industriales", [])]}]
+        for clave, (nombre, color, _, _, _) in CATEGORIAS.items():
+            if clave in ("comercios", "oficinas"):
+                continue
+            pts = [p for p in e5.get("puntos", []) if p["cat"] == clave]
+            if clave == "gasolineras" and gas:  # con dato del Ministerio, mejor que OSM
+                pts = gas
+            capas.append({"trazo": "#fff", "relleno": color, "opacidad": 1, "ancho": 1, "geoms": _pts(pts, 28)})
+        capas += [
+            {"trazo": "#12355b", "relleno": "none", "ancho": 2, "discontinua": True, "opacidad": 0,
+             "geoms": [g.centroid.buffer(r).exterior for r in (1000, 2000, 5000) if r <= radio]},
+            {"trazo": "#e11d48", "relleno": "#e11d48", "opacidad": 0.9, "ancho": 2, "geoms": [g.centroid.buffer(45)]},
+        ]
+        m["svg"] = ortofotos.svg_capas(m["bbox"], m["px"], capas)
+        cx, cy = g.centroid.x, g.centroid.y
+        minx, miny, maxx, maxy = m["bbox"]
+        m["radios"] = [{"texto": t, "x": round((cx - minx) / (maxx - minx) * 100, 2), "y": round((maxy - (cy + r)) / (maxy - miny) * 100, 2)}
+                       for r, t in ((1000, "1 km"), (2000, "2 km"), (5000, "5 km")) if r <= radio]
+        m["leyenda"] = [{"color": c[1], "texto": c[0]} for k, c in CATEGORIAS.items() if k not in ("comercios", "oficinas")] + [
+            {"color": "#9575cd", "texto": "Suelo industrial"}]
+        mapas["entorno5"] = m
 
     # 5. Evolución histórica: SVG de la parcela para superponer en cada ortofoto
     evo = inf["evolucion"]

@@ -102,13 +102,20 @@ def overpass(c32):
         {"type": "node", "id": 5, **nodo_wgs(MAXX + 1500, MAXY), "tags": {"shop": "supermarket", "name": "Super B", "brand": "Marca B"}},
         {"type": "node", "id": 6, **nodo_wgs(MINX - 700, MINY), "tags": {"tourism": "hotel", "name": "Hotel C"}},
         {"type": "node", "id": 7, **nodo_wgs(MINX - 200, MINY), "tags": {"amenity": "fuel", "name": "Estació D", "brand": "Plenoil"}},
+        # Entorno de 5 km
+        {"type": "way", "id": 8, "center": nodo_wgs(MAXX + 2500, MAXY), "tags": {"building": "warehouse", "name": "Nau Logística E"}},
+        {"type": "node", "id": 9, **nodo_wgs(MAXX + 3500, MINY), "tags": {"amenity": "charging_station", "operator": "Endesa X"}},
+        {"type": "way", "id": 10, "center": nodo_wgs(MINX - 4000, MINY), "tags": {"shop": "mall", "name": "Centre Comercial F"}},
+        {"type": "node", "id": 11, **nodo_wgs(MAXX + 9000, MINY), "tags": {"tourism": "hotel", "name": "Hotel Lluny"}},
+        {"type": "way", "id": 12, "tags": {"landuse": "industrial", "name": "Polígon G"},
+         "geometry": [nodo_wgs(x, y) for x, y in [(MAXX + 1000, MINY), (MAXX + 1400, MINY), (MAXX + 1400, MINY + 300), (MAXX + 1000, MINY + 300), (MAXX + 1000, MINY)]]},
     ]
     return {"elements": els}
 
 
 def carburantes():
     lon, lat = geo.a_wgs84(MINX - 200, MINY)
-    lon2, lat2 = geo.a_wgs84(MAXX + 5000, MAXY)
+    lon2, lat2 = geo.a_wgs84(MAXX + 8000, MAXY)
     f = lambda v: str(v).replace(".", ",")  # noqa: E731
     return {"Fecha": "16/10/2026 15:52:27", "ListaEESSPrecio": [
         {"Rótulo": "PLENOIL", "Dirección": "CARRETERA PROVA, KM 1", "Municipio": "Mataró", "Horario": "L-D: 24H",

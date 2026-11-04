@@ -59,6 +59,9 @@ ORTOS_HISTORICAS = [
 
 # --- Entorno, gasolineras, población ---
 OVERPASS_URL = os.getenv("UBI_OVERPASS_URL", "https://overpass-api.de/api/interpreter")
+# Réplicas públicas de Overpass para el entorno de 5 km (se prueban en orden si una falla).
+OVERPASS_URLS = [OVERPASS_URL, "https://overpass.kumi.systems/api/interpreter", "https://overpass.private.coffee/api/interpreter"]
+RADIO_ENTORNO_MAX = int(os.getenv("UBI_RADIO_ENTORNO", "5000"))
 CARBURANTES_URL = (
     "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/"
     "EstacionesTerrestres/FiltroProvincia/{prov}"

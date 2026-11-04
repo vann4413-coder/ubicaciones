@@ -3,10 +3,11 @@ import asyncio
 import logging
 from datetime import datetime
 
-from app import geo
+from app import config, geo
 from app.analisis import evolucion, parcela_metricas, puntuacion, resumen
 from app.fuentes import (catastro, gasolineras, geocoder, inundabilidad, osm, poblacion, red_electrica, suelo,
                          suelos_contaminados, trafico, urbanismo)
+from app.fuentes import entorno as entorno_5km
 from app.fuentes.base import error, resultado
 
 log = logging.getLogger(__name__)
@@ -36,16 +37,17 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     nombre_muni = muni.get("nombre") or parcela.get("municipio", "").title()
     prov = (cod_ine or "")[:2] or parcela.get("cod_ine_prov", "")
 
-    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam = await asyncio.gather(
+    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam, entorno5 = await asyncio.gather(
         _seguro(urbanismo.consultar(g), urbanismo.FUENTE),
         _seguro(inundabilidad.consultar_aca(g), inundabilidad.FUENTE_ACA),
         _seguro(inundabilidad.consultar_snczi(g), inundabilidad.FUENTE_SNCZI),
         _seguro(osm.consultar(g), osm.FUENTE),
-        _seguro(gasolineras.consultar(g, prov), gasolineras.FUENTE),
+        _seguro(gasolineras.consultar(g, prov, config.RADIO_ENTORNO_MAX), gasolineras.FUENTE),
         _seguro(poblacion.consultar(cod6), poblacion.FUENTE),
         _seguro(urbanismo.cambios_planeamiento(cod_ine, nombre_muni), "RPUC"),
         _seguro(evolucion.consultar(g), "ICGC"),
         _seguro(suelos_contaminados.consultar(g), suelos_contaminados.FUENTE),
+        _seguro(entorno_5km.consultar(g, config.RADIO_ENTORNO_MAX), entorno_5km.FUENTE),
     )
     traf = await _seguro(trafico.consultar(g, entorno if entorno.get("estado") == "ok" else {}), "Aforos")
     red = red_electrica.consultar(g)
@@ -74,6 +76,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         "red": red,
         "trafico": traf,
         "entorno": entorno,
+        "entorno5": entorno5,
         "gasolineras": gas,
         "poblacion": pob,
         "suelo": precio,
@@ -92,7 +95,8 @@ def anexo(inf: dict) -> list[dict]:
     for seccion, clave in [
         ("Parcela", "parcela"), ("Urbanismo", "urbanismo"), ("Cambios de planeamiento", "cambios"), ("Suelos contaminados", "suelos_contaminados"),
         ("Inundabilidad (ACA)", "inundabilidad_aca"), ("Inundabilidad (SNCZI)", "inundabilidad_snczi"),
-        ("Tráfico", "trafico"), ("Red eléctrica", "red"), ("Entorno", "entorno"), ("Gasolineras", "gasolineras"),
+        ("Tráfico", "trafico"), ("Red eléctrica", "red"), ("Entorno (2 km)", "entorno"), ("Entorno (5 km)", "entorno5"),
+        ("Gasolineras", "gasolineras"),
         ("Población", "poblacion"), ("Valor del suelo", "suelo"),
     ]:
         d = inf.get(clave) or {}

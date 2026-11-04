@@ -97,6 +97,17 @@ def test_informe_completo(fuentes_simuladas):
     grupos = {p["grupo"] for p in inf["entorno"]["pois"]}
     assert {"Restauración", "Alojamiento", "Gasolineras"} <= grupos
 
+    # Entorno de 5 km: categorías, anillos y polígonos; lo que pasa de 5 km se descarta
+    e5 = inf["entorno5"]
+    assert e5["estado"] == "ok"
+    cats = {p["cat"] for p in e5["puntos"]}
+    assert {"logistica", "electrolineras", "comercial", "hoteles", "restauracion"} <= cats
+    assert "Hotel Lluny" not in [p["nombre"] for p in e5["puntos"]]
+    fila = {f["clave"]: f for f in e5["resumen"]}
+    assert fila["hoteles"]["cuenta"][1000] == 1 and fila["logistica"]["cuenta"][2000] == 0 and fila["logistica"]["cuenta"][5000] == 1
+    assert fila["poligonos"]["mas_cercano"]["nombre"] == "Polígon G" and fila["poligonos"]["hectareas"][2000] == 12.0
+    assert fila["comercios"]["cuenta"].get(5000) is None  # otros comercios solo hasta 1 km
+
     # Suelo sin tabla cargada: "sin dato", nunca inventado
     assert inf["suelo"]["estado"] == "sin_dato"
 
@@ -127,7 +138,7 @@ def test_informe_completo(fuentes_simuladas):
     # HTML y PDF
     html = render.html(inf)
     for seccion in ["De un vistazo", "Riesgos y próximos pasos", "Parcela", "Urbanismo", "Cambios de planeamiento recientes",
-                    "Agua: flujo preferente e inundabilidad", "Tráfico y accesos", "Competencia y entorno en 2 km",
+                    "Agua: flujo preferente e inundabilidad", "Tráfico y accesos", "Entorno en 5 km: actividad económica", "Estaciones de servicio en 2 km",
                     "Red eléctrica", "Evolución histórica y suelo contaminado", "Valor de referencia del suelo",
                     "Puntuación detallada", "Fuentes y fechas"]:
         assert seccion in html, seccion

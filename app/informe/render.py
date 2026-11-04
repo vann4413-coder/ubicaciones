@@ -111,9 +111,20 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
         fichas.append({"icono": "planeamiento", "titulo": "Cambios de planeamiento", "valor": f"{n} recientes",
                        "detalle": f"Últimos {c['anios']} años en el municipio", "estado": "ambar" if n else "verde"})
 
-    su = inf["suelo"]
-    fichas.append({"icono": "valor", "titulo": "Valor del suelo", "valor": f"{num(su['ultimo_precio_m2'])} €/m²" if su.get("estado") == "ok" else "Sin dato",
-                   "detalle": f"Media municipal ({su['fecha_dato']})" if su.get("estado") == "ok" else "Estadística no cargada", "estado": "neutro" if su.get("estado") == "ok" else "gris"})
+    e5 = inf.get("entorno5") or {}
+    if e5.get("estado") == "ok":
+        filas = {f["clave"]: f for f in e5["resumen"]}
+        radio = e5.get("radio_m", 5000)
+        clave_r = max(r for r in filas["restauracion"]["cuenta"])
+        negocios = sum((f["cuenta"].get(clave_r) or 0) for k, f in filas.items() if k not in ("comercios", "oficinas", "poligonos", "gasolineras"))
+        partes = [f"Hoteles: {filas['hoteles']['cuenta'][clave_r]}", f"Naves y logística: {filas['logistica']['cuenta'][clave_r]}",
+                  f"Polígonos: {filas['poligonos']['cuenta'][clave_r]}"]
+        fichas.append({"icono": "entorno", "titulo": f"Entorno en {radio // 1000} km", "valor": f"{num(negocios)} actividades",
+                       "detalle": " · ".join(partes), "estado": "neutro"})
+    else:
+        su = inf["suelo"]
+        fichas.append({"icono": "valor", "titulo": "Valor del suelo", "valor": f"{num(su['ultimo_precio_m2'])} €/m²" if su.get("estado") == "ok" else "Sin dato",
+                       "detalle": f"Media municipal ({su['fecha_dato']})" if su.get("estado") == "ok" else "Estadística no cargada", "estado": "neutro" if su.get("estado") == "ok" else "gris"})
     return fichas
 
 

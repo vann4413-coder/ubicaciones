@@ -365,13 +365,49 @@
   {% endif %}
 </section>
 
-{# ======================= 5. COMPETENCIA Y ENTORNO ======================= #}
+{# ======================= 5. ENTORNO EN 5 KM ======================= #}
 <section class="salto">
-  {{ cabecera(5, "Competencia y entorno en 2 km", "competencia") }}
+  {{ cabecera(5, "Entorno en 5 km: actividad económica", "entorno") }}
+  {% set e5 = inf.entorno5 %}
+  {% if e5 and e5.estado == "ok" %}
+  <p class="bajada" style="margin-bottom:3mm">Qué hay alrededor de la parcela, por tipo de actividad y distancia. Útil para retail, logística, recarga, hoteles o promoción.</p>
+  {% if mapas.entorno5 %}{% set m = mapas.entorno5 %}
+  <div class="mapa grande-m" style="width:150mm; height:150mm; margin:0 auto"><img src="{{ m.orto }}">{{ m.svg|safe }}
+    {% for r in m.radios %}<div class="radio" style="left:{{ r.x }}%; top:{{ r.y }}%">{{ r.texto }}</div>{% endfor %}
+  </div>
+  <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %} · Mapa topográfico ICGC</div>
+  {% endif %}
+  <table><tr><th>Actividad</th><th class="n">≤ 500 m</th><th class="n">≤ 1 km</th><th class="n">≤ 2 km</th><th class="n">≤ 5 km</th><th>Lo más cercano</th></tr>
+  {% for f in e5.resumen %}
+    {% if f.clave == "gasolineras" and comp.estado == "ok" %}
+      <tr><td><span class="punto" style="background:{{ f.color }}"></span> <b>{{ f.nombre }}</b></td>{% for r in (500, 1000, 2000, 5000) %}<td class="n">{{ comp.por_radio[r] }}</td>{% endfor %}
+      <td>{% if comp.mas_cercana %}{{ comp.mas_cercana.marca }} ({{ comp.mas_cercana.distancia_m|num }} m){% else %}—{% endif %}</td></tr>
+    {% else %}
+      <tr><td><span class="punto" style="background:{{ f.color }}"></span> <b>{{ f.nombre }}</b>{% if f.hectareas %}<br><small>{{ f.hectareas[5000]|num(0) if 5000 in f.hectareas else "" }} ha en 5 km</small>{% endif %}</td>
+      {% for r in (500, 1000, 2000, 5000) %}<td class="n">{{ f.cuenta[r] if f.cuenta[r] is defined and f.cuenta[r] is not none else "—" }}</td>{% endfor %}
+      <td>{% if f.mas_cercano %}{{ f.mas_cercano.nombre or f.mas_cercano.tipo or "Sin nombre" }} ({{ f.mas_cercano.distancia_m|num }} m){% else %}—{% endif %}</td></tr>
+    {% endif %}
+  {% endfor %}
+  </table>
+  <p class="pie">«Otros comercios» y «Oficinas» se cuentan hasta 1 km. Las gasolineras salen del geoportal del Ministerio; el resto, de OpenStreetMap, que es muy completo en comercio y restauración pero puede no tener todas las naves sin rótulo.</p>
+  {% set zonas = e5.zonas_industriales|selectattr("nombre")|list %}
+  {% if zonas %}
+  <h3>{{ icono("urbanismo", "#12355b", 14) }} Polígonos industriales cercanos</h3>
+  <table><tr><th>Polígono</th><th class="n">Superficie</th><th class="n">Distancia</th></tr>
+  {% for z in zonas[:8] %}<tr><td>{{ z.nombre }}</td><td class="n">{{ z.area_ha|num(1) }} ha</td><td class="n">{{ z.distancia_m|num }} m</td></tr>{% endfor %}
+  </table>
+  {% endif %}
+  {% else %}<p class="sin">{{ (e5 or {}).mensaje or "Sin datos del entorno." }}</p>{% endif %}
+  <p>Población de {{ inf.municipio.nombre }}: {% if inf.poblacion.estado == "ok" %}<b>{{ inf.poblacion.poblacion|num }}</b> habitantes ({{ inf.poblacion.fecha_dato }}){% else %}<span class="sin">sin dato</span>{% endif %}.</p>
+</section>
+
+{# ======================= 6. ESTACIONES DE SERVICIO ======================= #}
+<section class="salto">
+  {{ cabecera(6, "Estaciones de servicio en 2 km", "competencia") }}
   {% set gs = inf.gasolineras %}
   {% if comp.estado == "ok" %}
   <div class="comp-kpi">
-    <div class="dato"><span>Estaciones en 500 m / 1 km / 2 km</span><b class="grande">{{ comp.por_radio[500] }} · {{ comp.por_radio[1000] }} · {{ comp.por_radio[2000] }}</b></div>
+    <div class="dato"><span>Estaciones en 500 m / 1 km / 2 km / 5 km</span><b class="grande">{{ comp.por_radio[500] }} · {{ comp.por_radio[1000] }} · {{ comp.por_radio[2000] }} · {{ comp.por_radio[5000] }}</b></div>
     <div class="dato"><span>La más cercana</span><b>{% if comp.mas_cercana %}{{ comp.mas_cercana.marca }}</b> <small>a {{ comp.mas_cercana.distancia_m|num }} m</small>{% else %}—</b>{% endif %}</div>
     <div class="dato"><span>Gasóleo A: mediana de la zona</span><b class="grande">{{ comp.mediana_gasoleo|num(3) if comp.mediana_gasoleo else "—" }}</b> <small>€/l</small></div>
     <div class="dato"><span>La más barata</span><b>{% if comp.mas_barata %}{{ comp.mas_barata.marca }}</b> <small>{{ comp.mas_barata.gasoleo_a|num(3) }} €/l</small>{% else %}—</b>{% endif %}</div>
@@ -384,11 +420,11 @@
   </div>
   <div class="leyenda">{% for l in m.leyenda %}<i style="background:{{ l.color }}"></i>{{ l.texto }} {% endfor %} · Ortofoto ICGC con callejero</div>
 
-  <h3>Estaciones de servicio</h3>
-  {% if gs.estado == "ok" and gs.estaciones %}
+  <h3>Estaciones en 2 km</h3>
+  {% if gs.estado == "ok" and comp.estaciones %}
   {% set pmin = comp.min_gasoleo or 0 %}{% set pmax = comp.max_gasoleo or 1 %}
   <table><tr><th></th><th>Marca y dirección</th><th class="n">Distancia</th><th style="width:22%">Gasóleo A (€/l)</th><th class="n">Gasolina 95</th><th>Horario</th></tr>
-  {% for s in gs.estaciones %}
+  {% for s in comp.estaciones %}
     <tr><td><span class="punto" style="background:{{ comp.colores[s.grupo] or '#1f8a70' }}">{{ loop.index }}</span></td>
     <td><b>{{ s.marca }}</b><br><small>{{ s.direccion }} · {{ comp.nombres[s.grupo] }}</small></td><td class="n">{{ s.distancia_m|num }} m</td>
     <td>{% if s.gasoleo_a %}<span class="{{ 'barato' if s.gasoleo_a == pmin else 'caro' if s.gasoleo_a == pmax and pmax > pmin else '' }}">{{ s.gasoleo_a|num(3) }}</span>
@@ -400,26 +436,11 @@
   {% elif gs.estado == "ok" %}<p>No hay estaciones de servicio a menos de 2 km.</p>
   {% else %}<p class="sin">{{ gs.mensaje }}</p>{% endif %}
 
-  {% set en = inf.entorno %}
-  <h3>{{ icono("entorno", "#12355b", 14) }} Negocios y servicios</h3>
-  {% if en.estado == "ok" %}
-  <table><tr><th>Tipo</th><th class="n">≤ 500 m</th><th class="n">≤ 1 km</th><th class="n">≤ 2 km</th><th>Más cercano</th></tr>
-  {% for g, items in en.pois|groupby("grupo") %}
-    <tr><td>{{ g }}</td>
-    <td class="n">{{ items|selectattr("distancia_m", "le", 500)|list|length }}</td>
-    <td class="n">{{ items|selectattr("distancia_m", "le", 1000)|list|length }}</td>
-    <td class="n">{{ items|list|length }}</td>
-    {% set c = items|sort(attribute="distancia_m")|first %}
-    <td>{{ c.nombre or c.tipo }} ({{ c.distancia_m|num }} m)</td></tr>
-  {% endfor %}
-  </table>
-  {% else %}<p class="sin">{{ en.mensaje }}</p>{% endif %}
-  <p>Población de {{ inf.municipio.nombre }}: {% if inf.poblacion.estado == "ok" %}<b>{{ inf.poblacion.poblacion|num }}</b> habitantes ({{ inf.poblacion.fecha_dato }}){% else %}<span class="sin">sin dato</span>{% endif %}.</p>
 </section>
 
 {# ======================= 6. RED ELÉCTRICA ======================= #}
 <section>
-  {{ cabecera(6, "Red eléctrica", "red") }}
+  {{ cabecera(7, "Red eléctrica", "red") }}
   {% set red = inf.red %}
   {% if red.estado == "ok" %}
   <table><tr><th>Nudo</th><th>Distribuidora</th><th class="n">Tensión</th><th class="n">Distancia</th><th class="n">Disponible</th><th class="n">Ocupada</th><th class="n">En trámite</th><th class="n">Cargadores 150 kW</th></tr>
@@ -435,7 +456,7 @@
 
 {# ======================= 7. HISTORIA Y SUELO ======================= #}
 <section>
-  {{ cabecera(7, "Evolución histórica y suelo contaminado", "historia") }}
+  {{ cabecera(8, "Evolución histórica y suelo contaminado", "historia") }}
   {% set e = inf.evolucion %}
   <div class="tira">
   {% for img in e.imagenes %}
@@ -469,7 +490,7 @@
 
 {# ======================= 8. VALOR DEL SUELO ======================= #}
 <section>
-  {{ cabecera(8, "Valor de referencia del suelo", "valor") }}
+  {{ cabecera(9, "Valor de referencia del suelo", "valor") }}
   {% set su = inf.suelo %}
   {% if su.estado == "ok" %}
     <p>Precio medio del suelo urbano en {{ inf.municipio.nombre }}: <b class="grande">{{ su.ultimo_precio_m2|num }} €/m²</b> ({{ su.fecha_dato }}). Horquilla del último año: {{ su.horquilla_m2[0]|num }}–{{ su.horquilla_m2[1]|num }} €/m².</p>
@@ -479,7 +500,7 @@
 
 {# ======================= 9. PUNTUACIÓN DETALLADA ======================= #}
 <section>
-  {{ cabecera(9, "Puntuación detallada", "puntos") }}
+  {{ cabecera(10, "Puntuación detallada", "puntos") }}
   {% set colores = {"verde": "#1e9e5a", "ambar": "#e08a00", "rojo": "#d64032", "gris": "#9aa5b1"} %}
   {% for k, p in inf.puntuaciones.items() %}
   <div class="perfil-det">
