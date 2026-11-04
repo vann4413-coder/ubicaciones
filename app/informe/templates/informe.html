@@ -370,7 +370,7 @@
   {{ cabecera(5, "Entorno en 5 km: actividad económica", "entorno") }}
   {% set e5 = inf.entorno5 %}
   {% if e5 and e5.estado == "ok" %}
-  <p class="bajada" style="margin-bottom:3mm">Qué hay alrededor de la parcela, por tipo de actividad y distancia. Útil para retail, logística, recarga, hoteles o promoción.</p>
+  <p class="bajada" style="margin-bottom:3mm">Qué hay alrededor de la parcela.</p>
   {% if mapas.entorno5 %}{% set m = mapas.entorno5 %}
   <div class="mapa grande-m" style="width:150mm; height:150mm; margin:0 auto"><img src="{{ m.orto }}">{{ m.svg|safe }}
     {% for r in m.radios %}<div class="radio" style="left:{{ r.x }}%; top:{{ r.y }}%">{{ r.texto }}</div>{% endfor %}
