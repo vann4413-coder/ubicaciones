@@ -404,6 +404,7 @@
 {# ======================= 6. ESTACIONES DE SERVICIO ======================= #}
 <section class="salto">
   {{ cabecera(6, "Estaciones de servicio en 2 km", "competencia") }}
+  {% if comp.en_parcela %}<div class="info">En la propia parcela ya hay una estación: <b>{{ comp.en_parcela[0].marca }}</b> ({{ comp.en_parcela[0].direccion }}{% if comp.en_parcela[0].gasoleo_a %}, gasóleo A {{ comp.en_parcela[0].gasoleo_a|num(3) }} €/l{% endif %}). No se cuenta en el entorno.</div>{% endif %}
   {% set gs = inf.gasolineras %}
   {% if comp.estado == "ok" %}
   <div class="comp-kpi">

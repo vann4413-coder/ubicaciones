@@ -109,8 +109,13 @@ async def consultar(parcela: BaseGeometry) -> dict:
     # radio desde el centroide: se suma el "radio" de la parcela para no perder nada del borde
     extra = int(parcela.centroid.hausdorff_distance(parcela.boundary)) if not parcela.is_empty else 0
     q = construir_query(lon, lat, max(config.RADIOS_ENTORNO) + extra, max(config.RADIOS_TRAFICO) + extra)
-    try:
-        d = await http.post_json(config.OVERPASS_URL, {"data": q})
-    except (http.ErrorFuente, ValueError) as e:
-        return error(FUENTE, f"OpenStreetMap no responde: {e}", URL)
+    d, ultimo = None, None
+    for url in config.OVERPASS_URLS:  # el servidor principal se satura a menudo: se prueban réplicas
+        try:
+            d = await http.post_json(url, {"data": q})
+            break
+        except (http.ErrorFuente, ValueError) as e:
+            ultimo = e
+    if d is None:
+        return error(FUENTE, f"OpenStreetMap no responde: {ultimo}", URL)
     return resultado("ok", FUENTE, URL, fecha_dato="Datos de OpenStreetMap en la fecha de consulta", **parse(d, parcela))

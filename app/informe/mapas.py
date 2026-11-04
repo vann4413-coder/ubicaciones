@@ -38,13 +38,14 @@ def competencia(inf: dict) -> dict:
     gs = inf["gasolineras"]
     if gs.get("estado") != "ok":
         return {"estado": gs.get("estado"), "mensaje": gs.get("mensaje")}
-    todas = gs.get("estaciones", [])  # hasta 5 km (para el mapa de entorno)
+    en_parcela = [e for e in gs.get("estaciones", []) if e["distancia_m"] == 0]
+    todas = [e for e in gs.get("estaciones", []) if e["distancia_m"] > 0]  # hasta 5 km, sin la de la propia parcela
     est = [e for e in todas if e["distancia_m"] <= 2000]
     precios = [e["gasoleo_a"] for e in est if e.get("gasoleo_a")]
     por_radio = {r: sum(1 for e in todas if e["distancia_m"] <= r) for r in (500, 1000, 2000, 5000)}
     por_grupo = {k: sum(1 for e in est if e.get("grupo") == k) for k in COLOR_GRUPO}
     mas_barata = min((e for e in est if e.get("gasoleo_a")), key=lambda e: e["gasoleo_a"], default=None)
-    return {"estado": "ok", "total": len(est), "estaciones": est, "por_radio": por_radio, "por_grupo": por_grupo,
+    return {"estado": "ok", "total": len(est), "estaciones": est, "en_parcela": en_parcela, "por_radio": por_radio, "por_grupo": por_grupo,
             "mediana_gasoleo": round(median(precios), 3) if precios else None,
             "min_gasoleo": min(precios) if precios else None, "max_gasoleo": max(precios) if precios else None,
             "mas_cercana": est[0] if est else None, "mas_barata": mas_barata,
@@ -112,7 +113,8 @@ def construir(inf: dict) -> dict:
     m["orto"] = ortofotos.url_wms(config.ICGC_BASE_WMS, "orto-hibrida", m["bbox"], m["px"])
     traf = inf["trafico"]
     entorno = inf["entorno"] if inf["entorno"].get("estado") == "ok" else {}
-    gas = inf["gasolineras"].get("estaciones", []) if inf["gasolineras"].get("estado") == "ok" else []
+    # La estación que está en la propia parcela (distancia 0) no se cuenta como entorno.
+    gas = [e for e in (inf["gasolineras"].get("estaciones", []) if inf["gasolineras"].get("estado") == "ok" else []) if e["distancia_m"] > 0]
     nudos = inf["red"].get("nudos", []) if inf["red"].get("estado") == "ok" else []
     capas = [
         {"trazo": "#f59e0b", "relleno": "none", "ancho": 5, "opacidad": 0, "geoms": [t["geom"] for t in traf.get("tramos", [])]},
