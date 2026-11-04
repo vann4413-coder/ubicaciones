@@ -494,7 +494,17 @@
   {{ cabecera(9, "Valor de referencia del suelo", "valor") }}
   {% set su = inf.suelo %}
   {% if su.estado == "ok" %}
-    <p>Precio medio del suelo urbano en {{ inf.municipio.nombre }}: <b class="grande">{{ su.ultimo_precio_m2|num }} €/m²</b> ({{ su.fecha_dato }}). Horquilla del último año: {{ su.horquilla_m2[0]|num }}–{{ su.horquilla_m2[1]|num }} €/m².</p>
+    <div class="datos" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 3mm">
+      <div class="dato"><span>Precio medio del suelo urbano</span><b class="grande">{{ su.ultimo_precio_m2|num }} €/m²</b></div>
+      <div class="dato"><span>Horquilla del último año</span><b>{{ su.horquilla_m2[0]|num }} – {{ su.horquilla_m2[1]|num }} €/m²</b></div>
+      <div class="dato"><span>Variación anual</span><b>{% if su.variacion_anual_pct is not none %}{{ "+" if su.variacion_anual_pct > 0 else "" }}{{ su.variacion_anual_pct|num(1) }} %{% else %}—{% endif %}</b></div>
+      <div class="dato"><span>Media de la provincia</span><b>{{ su.provincia_m2|num }} €/m²</b></div>
+    </div>
+    <p>Referencia: <b>{{ su.ambito }}</b>, compraventas de suelo urbano de {{ su.fecha_dato }}.</p>
+    {% if su.valor_orientativo %}<p>Aplicado a los {{ inf.parcela.sup_grafica|num }} m² de la parcela, el suelo estaría en una horquilla orientativa de <b>{{ su.valor_orientativo[0]|num }} – {{ su.valor_orientativo[1]|num }} €</b>.</p>{% endif %}
+    {% if su.nota %}<div class="aviso">{{ su.nota }}</div>{% endif %}
+    <table><tr><th>Trimestre</th>{% for p in su.periodos %}<th class="n">{{ p.periodo }}</th>{% endfor %}</tr>
+    <tr><td>€/m²</td>{% for p in su.periodos %}<td class="n">{{ p.precio_m2|num }}</td>{% endfor %}</tr></table>
   {% else %}<p class="sin">{{ su.mensaje }}</p>{% endif %}
   <div class="aviso">{{ su.aviso }}</div>
 </section>

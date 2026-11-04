@@ -108,8 +108,11 @@ def test_informe_completo(fuentes_simuladas):
     assert fila["poligonos"]["mas_cercano"]["nombre"] == "Polígon G" and fila["poligonos"]["hectareas"][2000] == 12.0
     assert fila["comercios"]["cuenta"].get(5000) is None  # otros comercios solo hasta 1 km
 
-    # Suelo sin tabla cargada: "sin dato", nunca inventado
-    assert inf["suelo"]["estado"] == "sin_dato"
+    # Suelo: serie oficial de la provincia y el tramo de población (Mataró, más de 50.000 hab.)
+    su = inf["suelo"]
+    assert su["estado"] == "ok" and "más de 50.000" in su["ambito"] and "Barcelona" in su["ambito"]
+    assert su["ultimo_precio_m2"] == 394 and su["horquilla_m2"] == (308, 438) and su["provincia_m2"] == 215
+    assert su["valor_orientativo"][0] > 0
 
     # Puntuaciones coherentes
     for p in inf["puntuaciones"].values():

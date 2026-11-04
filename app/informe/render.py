@@ -121,7 +121,7 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
     else:
         su = inf["suelo"]
         fichas.append({"icono": "valor", "titulo": "Valor del suelo", "valor": f"{num(su['ultimo_precio_m2'])} €/m²" if su.get("estado") == "ok" else "Sin dato",
-                       "detalle": f"Media municipal ({su['fecha_dato']})" if su.get("estado") == "ok" else "Estadística no cargada", "estado": "neutro" if su.get("estado") == "ok" else "gris"})
+                       "detalle": f"Referencia: {su['ambito']}" if su.get("estado") == "ok" else "Estadística no cargada", "estado": "neutro" if su.get("estado") == "ok" else "gris"})
     return fichas
 
 
