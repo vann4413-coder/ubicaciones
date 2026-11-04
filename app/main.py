@@ -9,10 +9,10 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from shapely.geometry import mapping
 
-from app import geo, http
+from app import config, geo, http
 from app.analisis.compatibilidad import PERFILES
 from app.fuentes import catastro, geocoder, poblacion
-from app.informe import generar, render
+from app.informe import generar, mapas, render
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 WEB = Path(__file__).parent / "web" / "static"
@@ -24,7 +24,7 @@ async def ciclo(app: FastAPI):
     await http.cerrar()
 
 
-app = FastAPI(title="Plataforma de Ubicaciones", lifespan=ciclo)
+app = FastAPI(title=config.MARCA, lifespan=ciclo)
 app.mount("/static", StaticFiles(directory=WEB), name="static")
 
 _informes: dict[tuple, tuple[float, dict]] = {}
@@ -49,9 +49,20 @@ def _rc_valida(rc: str) -> str:
     return r[:14]
 
 
-@app.get("/")
+def _pagina(nombre: str) -> HTMLResponse:
+    """Páginas estáticas con el nombre de la marca (provisional, configurable con UBI_MARCA)."""
+    html = (WEB / nombre).read_text(encoding="utf-8")
+    return HTMLResponse(html.replace("{{MARCA}}", config.MARCA).replace("{{LEMA}}", config.MARCA_LEMA))
+
+
+@app.get("/", response_class=HTMLResponse)
 async def inicio():
-    return FileResponse(WEB / "index.html")
+    return _pagina("index.html")
+
+
+@app.get("/app", response_class=HTMLResponse)
+async def herramienta():
+    return _pagina("app.html")
 
 
 @app.get("/api/buscar")
@@ -106,7 +117,12 @@ async def perfiles():
 @app.get("/api/informe/{rc}")
 async def informe_json(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None):
     inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima)
-    return JSONResponse(generar.para_json(inf))
+    comp = mapas.competencia(inf)
+    salida = generar.para_json(inf)
+    salida["panorama"] = render.panorama(inf, comp)
+    salida["competencia"] = generar.para_json(comp)
+    salida["parcela_geojson"] = mapping(geo.geom_a_wgs84(inf["parcela"]["geom"]))
+    return JSONResponse(salida)
 
 
 @app.get("/informe/{rc}.pdf")
