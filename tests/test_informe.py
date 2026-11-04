@@ -185,3 +185,33 @@ def test_familias_muc():
     assert familia("A1", "Activitat econòmica, Industrial") == "actividad_economica"
     assert familia("SH", "Sistemes, Hidràulic") == "otros_sistemas"
     assert familia("N4", "No urbanitzable, Activitat autoritzada") == "no_urbanizable"
+
+
+def test_entorno_base_local(tmp_path, monkeypatch):
+    """Con la base OSM preparada, el entorno se calcula en local (sin Overpass)."""
+    import csv
+    import gzip
+    import json as js
+    from shapely.geometry import box
+    from app import geo
+    from app.fuentes import entorno
+    from tests.conftest import MAXX, MAXY, MINX, MINY
+    parcela = box(MINX, MINY, MAXX, MAXY)
+    pts = tmp_path / "osm_puntos.csv.gz"
+    with gzip.open(pts, "wt", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["cat", "nombre", "tipo", "lon", "lat", "direccion", "municipio"])
+        for cat, nombre, dx in [("hoteles", "Hotel A", 600), ("logistica", "Nau B", 3000), ("comercios", "Botiga lluny", 3000), ("hoteles", "Hotel lluny", 9000)]:
+            lon, lat = geo.a_wgs84(MAXX + dx, MAXY)
+            w.writerow([cat, nombre, "x", lon, lat, "", ""])
+    ind = tmp_path / "osm_industrial.json.gz"
+    pol = geo.geom_a_wgs84(box(MAXX + 1000, MINY, MAXX + 1400, MINY + 300))
+    with gzip.open(ind, "wt", encoding="utf-8") as f:
+        js.dump([{"nombre": "Polígon Local", "area_ha": 12.0, "coords": [list(c) for c in pol.exterior.coords]}], f)
+    monkeypatch.setattr(entorno, "FICHERO_PUNTOS", pts)
+    monkeypatch.setattr(entorno, "FICHERO_INDUSTRIAL", ind)
+    monkeypatch.setattr(entorno, "_base", None)
+    r = correr(entorno.consultar(parcela, 5000))
+    assert r["estado"] == "ok" and "Extracto de OpenStreetMap" in r["fecha_dato"]
+    assert [p["nombre"] for p in r["puntos"]] == ["Hotel A", "Nau B"]  # comercios solo hasta 1 km; lo de 9 km fuera
+    assert r["zonas_industriales"][0]["nombre"] == "Polígon Local" and r["zonas_industriales"][0]["distancia_m"] == 1000

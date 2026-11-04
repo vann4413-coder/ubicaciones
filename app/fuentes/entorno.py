@@ -146,7 +146,85 @@ def resumir(puntos: list[dict], zonas: list[dict], radio: int = 5000) -> list[di
     return filas
 
 
+# ---------- Base local (preparada con scripts/preparar_entorno_osm.py) ----------
+FICHERO_PUNTOS = config.DATOS_DIR / "osm_puntos.csv.gz"
+FICHERO_INDUSTRIAL = config.DATOS_DIR / "osm_industrial.json.gz"
+_base: dict | None = None
+
+
+def _cargar_base() -> dict | None:
+    """Carga una sola vez los puntos y polígonos en memoria (arrays para filtrar por cuadro rápidamente)."""
+    global _base
+    if _base is not None or not FICHERO_PUNTOS.exists():
+        return _base
+    import csv
+    import gzip
+    import json
+    import os
+    import sys
+    from datetime import datetime
+
+    import numpy as np
+    # Tuplas (no diccionarios) para que Cataluña entera quepa en poca memoria.
+    with gzip.open(FICHERO_PUNTOS, "rt", encoding="utf-8") as f:
+        lector = csv.reader(f)
+        cab = next(lector)
+        filas = [tuple(sys.intern(v) if i < 3 else v for i, v in enumerate(r)) for r in lector]
+    zonas = []
+    if FICHERO_INDUSTRIAL.exists():
+        with gzip.open(FICHERO_INDUSTRIAL, "rt", encoding="utf-8") as f:
+            zonas = json.load(f)
+    fecha = datetime.fromtimestamp(os.path.getmtime(FICHERO_PUNTOS)).strftime("%d/%m/%Y")
+    _base = {
+        "filas": filas,
+        "cab": cab,
+        "lon": np.array([float(r[cab.index("lon")]) for r in filas]), "lat": np.array([float(r[cab.index("lat")]) for r in filas]),
+        "zonas": zonas,
+        "zlon": np.array([z["coords"][0][0] for z in zonas] or [0.0]), "zlat": np.array([z["coords"][0][1] for z in zonas] or [0.0]),
+        "fecha": fecha,
+    }
+    return _base
+
+
+def consultar_local(parcela: BaseGeometry, radio: int = 5000) -> dict | None:
+    base = _cargar_base()
+    if not base:
+        return None
+    import math
+
+    import numpy as np
+    lon, lat = geo.a_wgs84(parcela.centroid.x, parcela.centroid.y)
+    margen = radio + 3000  # cuadro amplio; luego se mide la distancia exacta a la parcela
+    dlat, dlon = margen / 110540, margen / (111320 * math.cos(math.radians(lat)))
+    sel = np.nonzero((np.abs(base["lat"] - lat) <= dlat) & (np.abs(base["lon"] - lon) <= dlon))[0]
+    puntos = []
+    for i in sel:
+        r = dict(zip(base["cab"], base["filas"][i]))
+        x, y = geo.a_utm(float(r["lon"]), float(r["lat"]))
+        dist = round(Point(x, y).distance(parcela))
+        if dist <= min(radio, CATEGORIAS[r["cat"]][3]):
+            puntos.append({**r, "lon": float(r["lon"]), "lat": float(r["lat"]), "distancia_m": dist})
+    zonas = []
+    zsel = np.nonzero((np.abs(base["zlat"] - lat) <= dlat + 0.03) & (np.abs(base["zlon"] - lon) <= dlon + 0.04))[0] if base["zonas"] else []
+    for i in zsel:
+        z = base["zonas"][i]
+        pol = geo.geom_a_utm(Polygon(z["coords"]))
+        d = round(pol.distance(parcela))
+        if d <= radio:
+            zonas.append({"nombre": z["nombre"], "area_ha": z["area_ha"], "distancia_m": d,
+                          "geojson": {"type": "Polygon", "coordinates": [z["coords"]]}, "geom": pol})
+    puntos.sort(key=lambda p: p["distancia_m"])
+    zonas.sort(key=lambda z: z["distancia_m"])
+    return resultado("ok", FUENTE, URL, fecha_dato=f"Extracto de OpenStreetMap del {base['fecha']}", radio_m=radio,
+                     puntos=puntos, zonas_industriales=zonas, resumen=resumir(puntos, zonas, radio))
+
+
 async def consultar(parcela: BaseGeometry, radio: int = 5000) -> dict:
+    # 1) Base local: rápida y sin depender de servidores externos
+    local = consultar_local(parcela, radio)
+    if local:
+        return local
+    # 2) Si no se ha preparado la base, se consulta Overpass en directo
     lon, lat = geo.a_wgs84(parcela.centroid.x, parcela.centroid.y)
     extra = int(parcela.centroid.hausdorff_distance(parcela.boundary)) if not parcela.is_empty else 0
     q = construir_query(lon, lat, radio + extra)

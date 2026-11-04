@@ -6,3 +6,4 @@ __pycache__/
 datos/*.csv
 !datos/aforos.csv
 !datos/.gitkeep
+datos/osm_*
