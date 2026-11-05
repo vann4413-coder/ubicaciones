@@ -8,6 +8,7 @@ from app.analisis import evolucion, parcela_metricas, puntuacion, resumen
 from app.fuentes import (catastro, gasolineras, geocoder, inundabilidad, osm, poblacion, red_electrica, suelo,
                          suelos_contaminados, trafico, urbanismo)
 from app.fuentes import entorno as entorno_5km
+from app.fuentes import titulares
 from app.fuentes.base import error, resultado
 
 log = logging.getLogger(__name__)
@@ -38,7 +39,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     nombre_muni = muni.get("nombre") or parcela.get("municipio", "").title()
     prov = (cod_ine or "")[:2] or parcela.get("cod_ine_prov", "")
 
-    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam, entorno5 = await asyncio.gather(
+    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam, entorno5, titul = await asyncio.gather(
         _seguro(urbanismo.consultar(g), urbanismo.FUENTE),
         _seguro(inundabilidad.consultar_aca(g), inundabilidad.FUENTE_ACA),
         _seguro(inundabilidad.consultar_snczi(g), inundabilidad.FUENTE_SNCZI),
@@ -49,7 +50,9 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         _seguro(evolucion.consultar(g), "ICGC"),
         _seguro(suelos_contaminados.consultar(g), suelos_contaminados.FUENTE),
         _seguro(entorno_5km.consultar(g, config.RADIO_ENTORNO_MAX), entorno_5km.FUENTE),
+        _seguro(titulares.consultar(g, parcela["rc"][:14]), titulares.FUENTE),
     )
+    titul = completar_titulares(titul, gas, entorno5)
     traf = await _seguro(trafico.consultar(g, entorno if entorno.get("estado") == "ok" else {}), "Aforos")
     red = red_electrica.consultar(g)
     snu = any(c.get("codigo", "").upper().startswith("SNU") and c.get("pct", 0) >= 50 for c in (urb.get("clasificaciones") or []))
@@ -81,6 +84,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         "trafico": traf,
         "entorno": entorno,
         "entorno5": entorno5,
+        "titulares": titul,
         "gasolineras": gas,
         "poblacion": pob,
         "suelo": precio,
@@ -93,6 +97,25 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     return inf
 
 
+def completar_titulares(titul: dict, gas: dict, entorno5: dict) -> dict:
+    """Añade a los registros públicos la estación de servicio y los negocios con rótulo que están en la parcela."""
+    if titul.get("estado") != "ok":
+        titul = {**titul, "registros": []}
+    extra = []
+    for e in (gas.get("estaciones") or []) if gas.get("estado") == "ok" else []:
+        if e["distancia_m"] == 0:
+            extra.append({"fuente": "Geoportal de carburantes (Ministerio)", "nombre": e["marca"], "actividad": "Estación de servicio",
+                          "empresa": "", "cif": "", "contacto": "", "detalle": e.get("direccion", ""),
+                          "situacion": "En la parcela", "distancia_m": 0})
+    for p in (entorno5.get("puntos") or []) if entorno5.get("estado") == "ok" else []:
+        if p["distancia_m"] == 0 and p.get("nombre") and p["cat"] != "gasolineras":
+            extra.append({"fuente": "OpenStreetMap", "nombre": p["nombre"], "actividad": p.get("tipo", ""),
+                          "empresa": "", "cif": "", "contacto": "", "detalle": p.get("direccion", ""),
+                          "situacion": "En la parcela", "distancia_m": 0})
+    titul["registros"] = extra + (titul.get("registros") or [])
+    return titul
+
+
 def anexo(inf: dict) -> list[dict]:
     """Fuente, fecha y estado de cada dato."""
     filas = []
@@ -100,7 +123,7 @@ def anexo(inf: dict) -> list[dict]:
         ("Parcela", "parcela"), ("Urbanismo", "urbanismo"), ("Cambios de planeamiento", "cambios"), ("Suelos contaminados", "suelos_contaminados"),
         ("Inundabilidad (ACA)", "inundabilidad_aca"), ("Inundabilidad (SNCZI)", "inundabilidad_snczi"),
         ("Tráfico", "trafico"), ("Red eléctrica", "red"), ("Entorno (2 km)", "entorno"), ("Entorno (5 km)", "entorno5"),
-        ("Gasolineras", "gasolineras"),
+        ("Gasolineras", "gasolineras"), ("Actividades y titulares", "titulares"),
         ("Población", "poblacion"), ("Valor del suelo", "suelo"),
     ]:
         d = inf.get(clave) or {}

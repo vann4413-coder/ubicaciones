@@ -132,6 +132,15 @@ def test_informe_completo(fuentes_simuladas):
     assert [e["nombre"] for e in sc["cercanos"]] == ["SC_00002 - TALLER"]
     assert any("declarado contaminado" in p["texto"] for p in inf["pasos"])
 
+    # Actividades y titulares: empresas sí, personas físicas nunca; lo lejano se descarta
+    ti = inf["titulares"]
+    nombres = [r["nombre"] for r in ti["registros"]]
+    assert "HOTEL PROVA" in nombres and "TALLERS PROVA" in nombres and "LLUNY" not in nombres
+    hotel = next(r for r in ti["registros"] if r["nombre"] == "HOTEL PROVA")
+    assert hotel["empresa"] == "HOTELS PROVA SL" and hotel["cif"] == "B12345678"
+    hut = next(r for r in ti["registros"] if r["nombre"] == "APARTAMENT")
+    assert hut["empresa"] == "" and hut["cif"] == "" and "Privat" not in str(ti)
+
     # Cambios de planeamiento
     assert len(inf["cambios"]["recientes"]) == 2
 

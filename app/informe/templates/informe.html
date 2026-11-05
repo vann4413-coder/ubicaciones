@@ -227,6 +227,17 @@
       <div class="leyenda"><i style="background:#e11d48"></i>Parcela <i style="background:#facc15"></i>Colindantes · Ortofoto ICGC y Catastro</div>
     </div>
   </div>
+  {% set ti = inf.titulares %}
+  <h3>Actividades y empresas registradas en la parcela</h3>
+  {% if ti.registros %}
+  <table><tr><th>Establecimiento</th><th>Actividad</th><th>Empresa titular</th><th>Contacto</th><th>Situación</th></tr>
+  {% for r in ti.registros %}<tr><td><b>{{ r.nombre or "—" }}</b><br><small>{{ r.fuente }}</small></td><td>{{ r.actividad }}{% if r.detalle %}<br><small>{{ r.detalle }}</small>{% endif %}</td>
+    <td>{{ r.empresa or "—" }}{% if r.cif %}<br><small>CIF {{ r.cif }}</small>{% endif %}</td><td><small>{{ r.contacto or "—" }}</small></td><td><small>{{ r.situacion }}</small></td></tr>{% endfor %}
+  </table>
+  {% elif ti.estado == "ok" %}<p class="sin">No consta ninguna actividad en los registros públicos consultados.</p>
+  {% else %}<p class="sin">{{ ti.mensaje or "Registros no disponibles." }}</p>{% endif %}
+  <div class="info">La titularidad de la finca no es pública en el Catastro (dato protegido). Para conocer el propietario y las cargas, pide una <b>nota simple</b> en el Registro de la Propiedad indicando la referencia catastral {{ inf.rc }}: <a href="https://sede.registradores.org/">sede.registradores.org</a>. Aquí solo se muestran empresas y establecimientos de registros públicos, nunca datos de personas físicas.</div>
+
   {% if p.fichas_catastro %}
   <h3>Ficha oficial del Catastro</h3>
   {% if p.fichas_catastro|length <= 3 %}<p>La consulta descriptiva y gráfica oficial de {{ "cada inmueble" if p.fichas_catastro|length > 1 else "la finca" }} se adjunta al final de este informe.</p>{% endif %}

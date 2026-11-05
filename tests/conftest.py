@@ -180,6 +180,18 @@ def fuentes_simuladas(datos_locales):
         m.get(url__startswith=f"{config.ICGC_GEOCODER}/invers").respond(json=json.loads(leer("icgc_invers.json")))
         m.get(url__startswith="https://api.icgc.cat/territorial/collections/sols-contaminats").respond(json=suelos())
         m.get(url__startswith="https://planejamenturbanisme.territori.gencat.cat").respond(json=json.loads(leer("rpuc.json")))
+        m.get(url__startswith="https://analisi.transparenciacatalunya.cat/resource/t2h3-cgys").respond(json=[
+            {"r_tol": "HOTEL PROVA", "tipus_establiment": "Hotel", "categoria": "3 estrelles", "cif": "B12345678",
+             "ra_social_del_titular": "HOTELS PROVA SL", "nom_del_titular": "", "total_places": "120"},
+            {"r_tol": "APARTAMENT", "tipus_establiment": "HUT", "cif": "12345678Z", "ra_social_del_titular": "",
+             "nom_del_titular": "Joan", "primer_cognom": "Privat"}])
+        lon_in, lat_in = geo.a_wgs84(MINX + 20, MINY + 20)
+        lon_out, lat_out = geo.a_wgs84(MAXX + 200, MAXY)
+        m.get(url__startswith="https://analisi.transparenciacatalunya.cat/resource/txvw-xc3g").respond(json=[
+            {"nom_comercial": "TALLERS PROVA", "descripcio_activitat": "Taller mecànic", "nom_ens": "Ajuntament de Mataró",
+             "latitud": str(lat_in), "longitud": str(lon_in)},
+            {"nom_comercial": "LLUNY", "descripcio_activitat": "Bar", "latitud": str(lat_out), "longitud": str(lon_out)}])
+        m.get(url__startswith="https://analisi.transparenciacatalunya.cat/resource/").respond(json=[])
         yield m
 
 
