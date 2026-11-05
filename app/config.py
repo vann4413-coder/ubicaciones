@@ -52,7 +52,9 @@ ICGC_BASE_WMS = "https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms"
 # Tira histórica: vuelo de 1956-57, 1998, 2015 y la vigente.
 ORTOS_HISTORICAS = [
     ("1956-57", "ortofoto_blanc_i_negre_1956-1957"),
+    ("1983-89", "ortofoto_blanc_i_negre_1983-1989"),
     ("1998", "ortofoto_blanc_i_negre_1998"),
+    ("2004-05", "ortofoto_color_2004-2005"),
     ("2015", "ortofoto_color_2015"),
     ("Actual", "ortofoto_color_vigent"),
 ]

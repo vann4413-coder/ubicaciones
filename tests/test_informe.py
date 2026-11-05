@@ -292,3 +292,19 @@ def test_capacidad_red_edistribucion():
     filas = convertir(txt, "2026-11")
     assert len(filas) == 1 and filas[0]["nudo"] == "MATARO" and filas[0]["cap_disponible_mw"] == 1.8
     assert 2.3 < filas[0]["lon"] < 2.6 and 41.4 < filas[0]["lat"] < 41.7
+
+
+def test_terreno_icgc(fuentes_simuladas):
+    inf = correr(generar.construir("4595201DF5949N"))
+    te = inf["terreno"]
+    assert te["estado"] == "ok"
+    assert te["relieve"]["desnivel_m"] == 3.5 and te["relieve"]["cota_min"] == 20.0
+    assert te["direccion_postal"]["codigo_postal"] == "08304"
+    assert te["geologia"][0]["codigo"] == "Qpa"
+    assert [a["capa"] for a in te["afecciones"]] == ["patrimoni-arquitectonic"]
+    assert te["capacidad_agrologica"] == "Classe III"
+    assert te["sondeos"][0]["freatico_m"] == "4.5" and te["sondeos"][0]["distancia_m"] is not None
+    assert te["riesgos"]["cubierto"] and te["riesgos"]["peligros"][0]["nivel"] == "mitjana"
+    assert any("Patrimonio" in p["texto"] for p in inf["pasos"])
+    from app.informe import render
+    assert render.pdf(inf)[:4] == b"%PDF"

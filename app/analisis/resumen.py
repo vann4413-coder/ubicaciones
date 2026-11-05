@@ -116,4 +116,15 @@ def riesgos_y_pasos(inf: dict) -> list[dict]:
         pasos.append({"tipo": "riesgo", "texto": f"Hay {len(sc['cercanos'])} emplazamiento(s) con suelo contaminado a menos de {sc['radio_m']} m."})
     if ev.get("alerta_contaminacion"):
         pasos.append({"tipo": "riesgo", "texto": "Uso anterior con posible afectación del suelo: valorar un estudio de caracterización del suelo."})
+    te = inf.get("terreno") or {}
+    for a in te.get("afecciones") or []:
+        if a["grupo"] in ("Protección", "Patrimonio", "Riesgo químico") or a["capa"] in ("zona-servitud-fluvial", "pendents-20-percent"):
+            pasos.append({"tipo": "riesgo", "texto": f"{a['titulo']}{': ' + a['detalle'] if a.get('detalle') else ''}. "
+                          "Consultar las limitaciones con el organismo competente."})
+    for r in (te.get("riesgos") or {}).get("peligros") or []:
+        if r.get("nivel") in ("alta", "mitjana"):
+            pasos.append({"tipo": "riesgo", "texto": f"Peligrosidad geológica ({r['tipo'].lower()}): {r['descripcion']}."})
+    rel = te.get("relieve") or {}
+    if (rel.get("desnivel_m") or 0) >= 3:
+        pasos.append({"tipo": "paso", "texto": f"Desnivel de {rel['desnivel_m']:.1f} m".replace('.', ',', 1) + f" dentro de la parcela: valorar el movimiento de tierras."})
     return pasos

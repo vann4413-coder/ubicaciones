@@ -131,7 +131,8 @@
   .mapa.grande-m { width: 184mm; height: 184mm; padding-bottom: 0; }
   .leyenda { font-size: 7.5pt; color: var(--suave); margin: 1.5mm 0 3mm; }
   .leyenda i { display: inline-block; width: 2.6mm; height: 2.6mm; border-radius: 50%; margin: 0 1mm 0 2.5mm; vertical-align: -.2mm; }
-  .tira { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5mm; }
+  .tira { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5mm; }
+  .enlaces-calle { font-size: 8pt; margin: 1.5mm 0 0; }
   .tira p { margin: 1mm 0 0; font-size: 8pt; text-align: center; font-weight: 700; }
 
   .pin { position: absolute; width: 5.6mm; height: 5.6mm; margin: -2.8mm 0 0 -2.8mm; border-radius: 50%; border: .5mm solid #fff;
@@ -233,6 +234,10 @@
         <div class="dato"><span>Forma</span><b>{{ inf.metricas.forma|capitalize }}</b> <small>({{ inf.metricas.compacidad }})</small></div>
         <div class="dato"><span>Lado menor / mayor</span><b>{{ inf.metricas.lado_menor_m|num(0) }} / {{ inf.metricas.lado_mayor_m|num(0) }} m</b></div>
         <div class="dato"><span>Ancho útil máximo</span><b>{{ inf.metricas.ancho_util_m|num(1) }} m</b></div>
+        {% set te = inf.terreno or {} %}
+        {% if te.direccion_postal %}<div class="dato ancho"><span>Dirección postal (ICGC)</span><b>{{ te.direccion_postal.etiqueta }}</b>{% if te.direccion_postal.codigo_postal %} <small>· CP {{ te.direccion_postal.codigo_postal }}</small>{% endif %}</div>{% endif %}
+        {% if te.relieve %}<div class="dato"><span>Cota</span><b>{{ te.relieve.cota_media|num(0) }} m</b>{% if te.relieve.desnivel_m is defined %} <small>({{ te.relieve.cota_min|num(0) }}–{{ te.relieve.cota_max|num(0) }} m)</small>{% endif %}</div>
+        {% if te.relieve.desnivel_m is defined %}<div class="dato"><span>Desnivel dentro de la parcela</span><b>{{ te.relieve.desnivel_m|num(1) }} m</b>{% if te.relieve.pendiente_pct %} <small>· {{ te.relieve.pendiente_pct|num(1) }} %</small>{% endif %}</div>{% endif %}{% endif %}
         <div class="dato ancho"><span>Coordenadas</span><b>{{ "%.6f"|format(inf.lat) }}, {{ "%.6f"|format(inf.lon) }}</b> <small>· UTM 31N {{ inf.utm[0] }}, {{ inf.utm[1] }}</small></div>
       </div>
       {% if p.construcciones %}
@@ -246,6 +251,7 @@
       {% set m = mapas.parcela %}
       <div class="mapa"><img src="{{ m.orto }}"><img src="{{ m.catastro }}">{{ m.svg|safe }}</div>
       <div class="leyenda"><i style="background:#e11d48"></i>Parcela <i style="background:#facc15"></i>Colindantes · Ortofoto ICGC y Catastro</div>
+      <p class="enlaces-calle">Ver la calle: <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{ inf.lat }},{{ inf.lon }}">Google Street View</a> · <a href="https://visors.icgc.cat/vissir/#loc=18/{{ inf.lat }}/{{ inf.lon }}">Visor ICGC (fotos de calle 3D)</a></p>
     </div>
   </div>
   {% set ti = inf.titulares %}
@@ -383,8 +389,56 @@
 </section>
 
 {# ======================= 4. TRÁFICO Y ACCESOS ======================= #}
+{# ======================= 4. TERRENO ======================= #}
 <section>
-  {{ cabecera(4, "Tráfico y accesos", "trafico") }}
+  {{ cabecera(4, "Terreno, riesgos y afecciones", "riesgo") }}
+  {% set te = inf.terreno or {} %}
+  {% if te.estado == "ok" %}
+  <div class="dos">
+    <div>
+      <h3 style="margin-top:0">Relieve</h3>
+      {% if te.relieve and te.relieve.desnivel_m is defined %}
+      <p>Cota entre <b>{{ te.relieve.cota_min|num(1) }}</b> y <b>{{ te.relieve.cota_max|num(1) }} m</b> (media {{ te.relieve.cota_media|num(1) }} m): desnivel de <b>{{ te.relieve.desnivel_m|num(1) }} m</b>{% if te.relieve.pendiente_pct %}, pendiente media del {{ te.relieve.pendiente_pct|num(1) }} %{% endif %}.
+      {% if te.relieve.desnivel_m >= 3 %}Prever movimiento de tierras o plataformas a distinto nivel.{% elif te.relieve.desnivel_m < 1 %}Parcela prácticamente llana.{% endif %}</p>
+      {% elif te.relieve %}<p>Cota {{ te.relieve.cota_media|num(1) }} m.</p>
+      {% else %}<p class="sin">Cota no disponible.</p>{% endif %}
+      <h3>Geología</h3>
+      {% if te.geologia %}{% for gg in te.geologia %}<p><b>{{ gg.descripcion }}</b> <small>({{ gg.codigo }}{% if gg.edad %} · {{ gg.edad }}{% endif %})</small></p>{% endfor %}
+      {% else %}<p class="sin">Sin dato de geología.</p>{% endif %}
+      {% if te.capacidad_agrologica %}<p><small>Capacidad agrológica: {{ te.capacidad_agrologica }}</small></p>{% endif %}
+    </div>
+    <div>
+      <h3 style="margin-top:0">Riesgos geológicos</h3>
+      {% set rg = te.riesgos or {} %}
+      {% if rg.peligros %}
+        {% for r in rg.peligros %}<div class="{{ 'bloqueo' if r.nivel == 'alta' else 'aviso' }}">{{ r.tipo }}: {{ r.descripcion }}</div>{% endfor %}
+      {% elif rg.cubierto %}<p><b>Sin peligrosidad geológica cartografiada</b> en el mapa de prevención de riesgos geológicos 1:25 000 (hoja {{ rg.hoja }}).</p>
+      {% else %}<p class="sin">La zona aún no está cubierta por el mapa de prevención de riesgos geológicos 1:25 000 del ICGC.</p>{% endif %}
+      {% if rg.estudios_municipales %}<p><small>Estudios de riesgos del municipio: {{ rg.estudios_municipales|join("; ") }}</small></p>{% endif %}
+    </div>
+  </div>
+
+  <h3>Afecciones territoriales sobre la parcela</h3>
+  {% if te.afecciones %}
+  <table><tr><th>Tipo</th><th>Afección</th><th>Detalle</th></tr>
+  {% for a in te.afecciones %}<tr><td>{{ a.grupo }}</td><td><b>{{ a.titulo }}</b></td><td>{{ a.detalle or "—" }}</td></tr>{% endfor %}
+  </table>
+  {% else %}<p><b>Ninguna afección</b> de las consultadas: espacios naturales protegidos (PEIN, Natura 2000), patrimonio arquitectónico y yacimientos, zonas fluviales, riesgo químico, mercancías peligrosas, pendientes superiores al 20 % ni cielo nocturno.</p>{% endif %}
+  {% if te.sin_respuesta %}<p class="pie">Sin respuesta del servicio en: {{ te.sin_respuesta|join(", ") }}.</p>{% endif %}
+
+  <h3>Sondeos geotécnicos a menos de {{ te.radio_sondeos_m }} m</h3>
+  {% if te.sondeos %}
+  <table><tr><th>Sondeo</th><th>Año</th><th>Técnica</th><th class="n">Profundidad</th><th>Nivel freático</th><th class="n">Distancia</th></tr>
+  {% for so in te.sondeos %}<tr><td>{% if so.pdf %}<a href="{{ so.pdf }}">{{ so.informe }} {{ so.sondeo }}</a>{% else %}{{ so.informe }} {{ so.sondeo }}{% endif %}<br><small>{{ so.promotor }}{% if so.ensayos %} · con ensayos{% endif %}</small></td><td>{{ so.anio }}</td><td><small>{{ so.tipo }}</small></td><td class="n">{{ so.profundidad_m|num(1) }} m</td><td>{{ (so.freatico_m ~ " m") if so.freatico_m else "—" }}</td><td class="n">{{ so.distancia_m|num }} m</td></tr>{% endfor %}
+  </table>
+  <p class="pie">Columnas de sondeo de la base de datos geotécnica del ICGC (enlace en cada sondeo): orientan sobre el terreno y la cimentación antes de encargar un estudio geotécnico propio.</p>
+  {% else %}<p class="sin">No hay sondeos geotécnicos publicados a menos de {{ te.radio_sondeos_m }} m.</p>{% endif %}
+  <p class="pie">Fuente: {{ te.fuente }}.</p>
+  {% else %}<p class="sin">{{ te.mensaje or "Servicio del ICGC no disponible." }}</p>{% endif %}
+</section>
+
+<section>
+  {{ cabecera(5, "Tráfico y accesos", "trafico") }}
   {% set t = inf.trafico %}
   {% set vp = t.via_parcela %}
   {% if vp %}
@@ -433,7 +487,7 @@
 
 {# ======================= 5. ENTORNO EN 5 KM ======================= #}
 <section class="salto">
-  {{ cabecera(5, "Entorno en 5 km: actividad económica", "entorno") }}
+  {{ cabecera(6, "Entorno en 5 km: actividad económica", "entorno") }}
   {% set e5 = inf.entorno5 %}
   {% if e5 and e5.estado == "ok" %}
   <p class="bajada" style="margin-bottom:3mm">Qué hay alrededor de la parcela.</p>
@@ -485,7 +539,7 @@
 
 {# ======================= 6. ESTACIONES DE SERVICIO ======================= #}
 <section class="salto">
-  {{ cabecera(6, "Estaciones de servicio en 2 km", "competencia") }}
+  {{ cabecera(7, "Estaciones de servicio en 2 km", "competencia") }}
   {% if comp.en_parcela %}<div class="info">En la propia parcela ya hay una estación: <b>{{ comp.en_parcela[0].marca }}</b> ({{ comp.en_parcela[0].direccion }}{% if comp.en_parcela[0].gasoleo_a %}, gasóleo A {{ comp.en_parcela[0].gasoleo_a|num(3) }} €/l{% endif %}). No se cuenta en el entorno.</div>{% endif %}
   {% set gs = inf.gasolineras %}
   {% if comp.estado == "ok" %}
@@ -523,7 +577,7 @@
 
 {# ======================= 6. RED ELÉCTRICA ======================= #}
 <section>
-  {{ cabecera(7, "Red eléctrica", "red") }}
+  {{ cabecera(8, "Red eléctrica", "red") }}
   {% set red = inf.red %}
   {% if red.estado == "ok" %}
   <table><tr><th>Nudo</th><th>Distribuidora</th><th class="n">Tensión</th><th class="n">Distancia</th><th class="n">Disponible</th><th class="n">Ocupada</th><th class="n">En trámite</th><th class="n">Cargadores 150 kW</th></tr>
@@ -539,7 +593,7 @@
 
 {# ======================= 7. HISTORIA Y SUELO ======================= #}
 <section>
-  {{ cabecera(8, "Evolución histórica y suelo contaminado", "historia") }}
+  {{ cabecera(9, "Evolución histórica y suelo contaminado", "historia") }}
   {% set e = inf.evolucion %}
   <div class="tira">
   {% for img in e.imagenes %}
@@ -573,7 +627,7 @@
 
 {# ======================= 8. VALOR DEL SUELO ======================= #}
 <section>
-  {{ cabecera(9, "Valor de referencia del suelo", "valor") }}
+  {{ cabecera(10, "Valor de referencia del suelo", "valor") }}
   {% set su = inf.suelo %}
   {% if su.estado == "ok" %}
     <div class="datos" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 3mm">
@@ -593,7 +647,7 @@
 
 {# ======================= 9. PUNTUACIÓN DETALLADA ======================= #}
 <section>
-  {{ cabecera(10, "Puntuación detallada", "puntos") }}
+  {{ cabecera(11, "Puntuación detallada", "puntos") }}
   {% set colores = {"verde": "#1e9e5a", "ambar": "#e08a00", "rojo": "#d64032", "gris": "#9aa5b1"} %}
   {% for k, p in inf.puntuaciones.items() %}
   <div class="perfil-det">

@@ -179,6 +179,36 @@ def fuentes_simuladas(datos_locales):
         m.get(url__startswith=config.IDESCAT_EMEX).respond(json=json.loads(leer("idescat.json")))
         m.get(url__startswith=f"{config.ICGC_GEOCODER}/invers").respond(json=json.loads(leer("icgc_invers.json")))
         m.get(url__startswith="https://api.icgc.cat/territorial/collections/sols-contaminats").respond(json=suelos())
+        cotas = iter([20.0, 20.5, 21.0, 22.0, 23.5, 23.0, 22.0, 21.0, 20.2] * 4)
+        m.get(url__startswith="https://api.icgc.cat/territorial/elements/elevacions/").mock(
+            side_effect=lambda r: httpx.Response(200, json={"features": [{"properties": {"value": str(next(cotas))}}]}))
+        m.get(url__startswith="https://api.icgc.cat/territorial/elements/adreces/").respond(json={"features": [
+            {"properties": {"etiqueta": "Carrer Prat de la Riba 110, Mataró", "codi_postal": "08304", "nom": "Prat de la Riba", "distancia": 0.01}}]})
+
+        def interseccion(request):
+            capa = json.loads(request.content)["inputs"]["capa"]
+            datos = {
+                "unitats-geologiques-50000": [{"Codi": "Qpa", "Descripcio": "Graves, sorres i lutites. Plana al·luvial", "Periode": "Quaternari", "Epoca": "Holocè"}],
+                "patrimoni-arquitectonic": [{"NOM_ACTUAL": "Masia de prova", "PROTECCIO": "BCIL"}],
+                "capacitat-agrologica": [{"CAP_TXT": "Classe III"}],
+            }
+            if capa == "prospeccions-geotecniques":
+                lon, lat = geo.a_wgs84(MINX + 150, MINY + 40)
+                return httpx.Response(200, json={"features": [{"geometry": {"type": "Point", "coordinates": [lon, lat]}, "properties": {
+                    "sondeig": "S-2", "informe": "GN_1950", "any": "2000", "tècnica": "Sondeig Rotació", "profunditat": 15,
+                    "profunditat nivell freàtic": "4.5", "promotor": "Administració pública", "columna": "https://datacloud.icgc.cat/x.pdf",
+                    "assaig laboratori": True}}]})
+            if capa in datos:
+                return httpx.Response(200, json={"features": [{"properties": p} for p in datos[capa]]})
+            return httpx.Response(400, json={"type": "string", "details": "No intersecta"})
+        m.post("https://api.icgc.cat/territorial/processes/intersection/execution").mock(side_effect=interseccion)
+
+        def riscos(request):
+            capa = parse_qs(urlparse(str(request.url)).query)["LAYERS"][0]
+            campos = {"G6F25_PA": '<FIELDS Full25Mabsolut="77-21" Estat="Publicat"></FIELDS>',
+                      "G6PE_PA": '<FIELDS Coditipus="MIT" Descripció="Perillositat mitjana"></FIELDS>'}.get(capa, "")
+            return httpx.Response(200, text=f'<?xml version="1.0"?><FeatureInfoResponse xmlns="http://www.esri.com/wms">{campos}</FeatureInfoResponse>')
+        m.get(url__startswith="https://geoserveis.icgc.cat/serveis/catalunya/riscos-geologics/wms").mock(side_effect=riscos)
         m.get(url__startswith="https://planejamenturbanisme.territori.gencat.cat").respond(json=json.loads(leer("rpuc.json")))
         m.get(url__startswith="https://analisi.transparenciacatalunya.cat/resource/t2h3-cgys").respond(json=[
             {"r_tol": "HOTEL PROVA", "tipus_establiment": "Hotel", "categoria": "3 estrelles", "cif": "B12345678",

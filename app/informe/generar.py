@@ -8,7 +8,7 @@ from app.analisis import evolucion, parcela_metricas, puntuacion, resumen
 from app.fuentes import (catastro, gasolineras, geocoder, inundabilidad, osm, poblacion, red_electrica, suelo,
                          suelos_contaminados, trafico, urbanismo)
 from app.fuentes import entorno as entorno_5km
-from app.fuentes import titulares
+from app.fuentes import terreno, titulares
 from app.fuentes.base import error, resultado
 
 log = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     nombre_muni = muni.get("nombre") or parcela.get("municipio", "").title()
     prov = (cod_ine or "")[:2] or parcela.get("cod_ine_prov", "")
 
-    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam, entorno5, titul = await asyncio.gather(
+    urb, aca, snczi, entorno, gas, pob, cambios, evo, contam, entorno5, titul, terr = await asyncio.gather(
         _seguro(urbanismo.consultar(g), urbanismo.FUENTE),
         _seguro(inundabilidad.consultar_aca(g), inundabilidad.FUENTE_ACA),
         _seguro(inundabilidad.consultar_snczi(g), inundabilidad.FUENTE_SNCZI),
@@ -54,6 +54,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         _seguro(suelos_contaminados.consultar(g), suelos_contaminados.FUENTE),
         _seguro(entorno_5km.consultar(g, config.RADIO_ENTORNO_MAX), entorno_5km.FUENTE),
         _seguro(titulares.consultar(g, parcela["rc"][:14]), titulares.FUENTE),
+        _seguro(terreno.consultar(g, parcela["rc"][:14]), terreno.FUENTE),
     )
     titul = completar_titulares(titul, gas, entorno5)
     traf = await _seguro(trafico.consultar(g, entorno if entorno.get("estado") == "ok" else {}), "Aforos")
@@ -81,6 +82,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         "urbanismo": urb,
         "cambios": cambios,
         "evolucion": evo,
+        "terreno": terr,
         "suelos_contaminados": contam,
         "inundabilidad_aca": aca,
         "inundabilidad_snczi": snczi,
@@ -129,7 +131,7 @@ def anexo(inf: dict) -> list[dict]:
         ("Inundabilidad (ACA)", "inundabilidad_aca"), ("Inundabilidad (SNCZI)", "inundabilidad_snczi"),
         ("Tráfico", "trafico"), ("Red eléctrica", "red"), ("Entorno (2 km)", "entorno"), ("Entorno (5 km)", "entorno5"),
         ("Gasolineras", "gasolineras"), ("Actividades y titulares", "titulares"),
-        ("Población", "poblacion"), ("Valor del suelo", "suelo"),
+        ("Población", "poblacion"), ("Valor del suelo", "suelo"), ("Terreno, riesgos y afecciones", "terreno"),
     ]:
         d = inf.get(clave) or {}
         filas.append({
