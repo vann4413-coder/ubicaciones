@@ -4,7 +4,7 @@ Variables de entorno (en Railway):
   STRIPE_SECRET_KEY       clave secreta de Stripe (sk_test_… en pruebas, sk_live_… en real)
   STRIPE_WEBHOOK_SECRET   secreto del webhook (whsec_…) del endpoint /stripe/webhook
   UBI_URL_PUBLICA         dirección pública de la web (p. ej. https://ubicaciones-production.up.railway.app)
-  UBI_IVA                 IVA en % que se suma al precio (21 por defecto; 0 para no cobrarlo)
+  UBI_IVA                 IVA en % incluido en el precio (21 por defecto): 1,99 € es el total que paga el cliente
 
 Sin STRIPE_SECRET_KEY los pagos están desactivados y los informes se ven gratis (modo demostración).
 Los productos, precios y el tipo de IVA se crean solos en Stripe la primera vez (claves lookup_key).
@@ -20,9 +20,9 @@ URL_PUBLICA = os.getenv("UBI_URL_PUBLICA", "").rstrip("/")
 IVA = float(os.getenv("UBI_IVA", "21"))
 
 PRODUCTOS = {
-    "informe": {"lookup_key": "ubi_informe_suelto", "nombre": "Informe completo de parcela", "importe": 199, "recurrente": False},
-    "profesional": {"lookup_key": "ubi_plan_profesional", "nombre": "Plan Profesional (50 informes al mes)", "importe": 9900, "recurrente": True},
-    "premium": {"lookup_key": "ubi_plan_premium", "nombre": "Plan Premium (informes ilimitados)", "importe": 13900, "recurrente": True},
+    "informe": {"lookup_key": "ubi_informe_suelto_iva_incl", "nombre": "Informe completo de parcela", "importe": 199, "recurrente": False},
+    "profesional": {"lookup_key": "ubi_plan_profesional_iva_incl", "nombre": "Plan Profesional (50 informes al mes)", "importe": 9900, "recurrente": True},
+    "premium": {"lookup_key": "ubi_plan_premium_iva_incl", "nombre": "Plan Premium (informes ilimitados)", "importe": 13900, "recurrente": True},
 }
 
 # Datos para una factura completa: dirección de facturación y NIF/CIF del cliente (opcional para particulares).
@@ -54,7 +54,7 @@ def precio(clave: str) -> str:
     else:
         prod = s.Product.create(name=p["nombre"], tax_code="txcd_10000000")  # servicios prestados por vía electrónica
         datos = {"product": prod.id, "currency": "eur", "unit_amount": p["importe"], "lookup_key": p["lookup_key"],
-                 "tax_behavior": "exclusive"}
+                 "tax_behavior": "inclusive"}
         if p["recurrente"]:
             datos["recurring"] = {"interval": "month"}
         _precios[clave] = s.Price.create(**datos).id
@@ -62,19 +62,19 @@ def precio(clave: str) -> str:
 
 
 def tasa_iva() -> list[str]:
-    """Tipo de IVA (se suma al precio). Se reutiliza si ya existe."""
+    """Tipo de IVA incluido en el precio (se desglosa en la factura). Se reutiliza si ya existe."""
     global _tasa_iva
     if IVA <= 0:
         return []
     if not _tasa_iva:
         s = _stripe()
         for t in s.TaxRate.list(active=True, limit=100).data:
-            if (t.metadata or {}).get("ubi") == "iva" and float(t.percentage) == IVA and not t.inclusive:
+            if (t.metadata or {}).get("ubi") == "iva_incl" and float(t.percentage) == IVA and t.inclusive:
                 _tasa_iva = t.id
                 break
         else:
-            _tasa_iva = s.TaxRate.create(display_name="IVA", percentage=IVA, inclusive=False, country="ES",
-                                         jurisdiction="ES", metadata={"ubi": "iva"}).id
+            _tasa_iva = s.TaxRate.create(display_name="IVA", percentage=IVA, inclusive=True, country="ES",
+                                         jurisdiction="ES", metadata={"ubi": "iva_incl"}).id
     return [_tasa_iva]
 
 

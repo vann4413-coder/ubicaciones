@@ -110,7 +110,7 @@ Variables en Railway (pestaña Variables del servicio):
 | `UBI_ADMIN_EMAILS` | Correos con acceso gratis e ilimitado, separados por comas |
 | `UBI_DB` | `/data/ubicaciones.db` (con un volumen de Railway montado en `/data`) |
 | `UBI_URL_PUBLICA` | Dirección pública de la web |
-| `UBI_IVA` | IVA que se suma al precio (21 por defecto) |
+| `UBI_IVA` | IVA incluido en los precios (21 por defecto) |
 
 Sin `STRIPE_SECRET_KEY` los pagos están desactivados y los informes se ven gratis.
 Eventos del webhook: `checkout.session.completed`, `customer.subscription.created`,
