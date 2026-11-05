@@ -191,8 +191,20 @@ function seleccionarParcela(parc, todas = []) {
 }
 
 // ---------- Informe ----------
+// Grupos de uso (catálogo del servidor)
+pedir("/api/perfiles").then((cat) => {
+  const fs = $("grupos");
+  Object.entries(cat).forEach(([g, d]) => {
+    const l = document.createElement("label");
+    l.innerHTML = `<input type="checkbox" value="${g}"><span>${esc(d.nombre)}<em>${esc(Object.values(d.usos).join(", "))}</em></span>`;
+    fs.appendChild(l);
+  });
+}).catch(() => {});
+
 function parametros() {
   const q = new URLSearchParams();
+  const grupos = [...document.querySelectorAll("#grupos input:checked")].map((i) => i.value);
+  if (grupos.length) q.set("grupos", grupos.join(","));
   if ($("potencia").value) q.set("potencia_mw", $("potencia").value);
   if ($("supmin").value) q.set("sup_minima", $("supmin").value);
   return q.toString();
@@ -234,10 +246,11 @@ function rosco(valor, sem) {
 function pintarResultado(inf, rc, qs) {
   const sufijo = qs ? "?" + qs : "";
   const bloqueos = [...new Set(Object.values(inf.puntuaciones).flatMap((p) => p.bloqueos))];
-  let html = `<div class="sec-tit">Puntuación por uso</div><div class="notas">`;
+  const n = Object.keys(inf.puntuaciones).length;
+  let html = `<div class="sec-tit">Puntuación por grupo de uso</div><div class="notas ${n > 4 ? "seis" : ""}">`;
   Object.values(inf.puntuaciones).forEach((p) => {
     const v = p.bloqueos.length ? null : p.total;
-    html += `<div class="nota"><span class="p">${esc(p.nombre_perfil)}</span>${rosco(v, p.semaforo)}<span class="chip ${p.semaforo}">${esc(p.veredicto)}</span></div>`;
+    html += `<div class="nota"><span class="p">${esc(p.nombre_perfil)}</span>${rosco(v, p.semaforo)}<span class="chip ${p.semaforo}">${esc(p.veredicto)}</span><span class="mejor">${esc(p.mejor_uso)}</span></div>`;
   });
   html += `</div>`;
   bloqueos.forEach((b) => (html += `<div class="bloqueo">${esc(b)}</div>`));

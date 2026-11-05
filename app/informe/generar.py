@@ -22,7 +22,8 @@ async def _seguro(coro, fuente: str):
         return error(fuente, f"Error inesperado: {e}")
 
 
-async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None) -> dict:
+async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None,
+                    grupos: list[str] | None = None, usos: dict | None = None) -> dict:
     parcela = await catastro.consultar(rc)
     if parcela["estado"] != "ok":
         return {"error": parcela.get("mensaje", "No se pudo obtener la parcela"), "parcela": parcela}
@@ -57,8 +58,9 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     metr = parcela_metricas.metricas(g)
     inund_res = inundabilidad.combinar(aca, snczi)
 
-    datos_puntuacion = {"urbanismo": urb, "inundabilidad": inund_res, "red": red, "trafico": traf, "metricas": metr}
-    punt = puntuacion.calcular_todos(datos_puntuacion, potencia_mw, sup_minima)
+    datos_puntuacion = {"urbanismo": urb, "inundabilidad": inund_res, "red": red, "trafico": traf, "metricas": metr,
+                        "entorno": entorno5}
+    punt = puntuacion.calcular_todos(datos_puntuacion, potencia_mw, sup_minima, grupos, usos)
 
     inf = {
         "generado": datetime.now().strftime("%d/%m/%Y %H:%M"),
@@ -83,7 +85,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         "poblacion": pob,
         "suelo": precio,
         "puntuaciones": punt,
-        "parametros": {"potencia_mw": potencia_mw, "sup_minima": sup_minima},
+        "parametros": {"potencia_mw": potencia_mw, "sup_minima": sup_minima, "grupos": list(punt), "usos": usos or {}},
     }
     inf["resumen"], inf["resumen_origen"] = await resumen.resumen_ia(inf)
     inf["pasos"] = resumen.riesgos_y_pasos(inf)

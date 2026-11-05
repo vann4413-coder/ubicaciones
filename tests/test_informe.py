@@ -118,7 +118,10 @@ def test_informe_completo(fuentes_simuladas):
     for p in inf["puntuaciones"].values():
         assert p["semaforo"] in ("verde", "ambar", "rojo", "gris")
         assert p["total"] is None or 0 <= p["total"] <= 100
-    assert inf["puntuaciones"]["promotor"]["subnotas"]["trafico"]["nota"] is not None
+    assert set(inf["puntuaciones"]) == {"movilidad", "comercio", "industria", "residencial", "terciario", "energia"}
+    assert inf["puntuaciones"]["comercio"]["subnotas"]["trafico"]["nota"] is not None
+    assert inf["puntuaciones"]["industria"]["mejor_uso"] in [u["nombre_uso"] for u in inf["puntuaciones"]["industria"]["usos"].values()]
+    assert inf["puntuaciones"]["residencial"]["usos"]["promocion"]["subnotas"]["entorno"]["nota"] is not None
 
     # Suelos contaminados: el de la esquina está en la parcela, el lejano se descarta
     sc = inf["suelos_contaminados"]
@@ -158,7 +161,7 @@ def test_fuente_caida_no_tumba_el_informe(fuentes_simuladas):
     assert inf["urbanismo"]["estado"] == "error"
     assert inf["inundabilidad_aca"]["estado"] == "error"
     # Sin urbanismo, el peso se reparte y baja la confianza
-    p = inf["puntuaciones"]["gasolinera"]
+    p = inf["puntuaciones"]["movilidad"]["usos"]["estacion_servicio"]
     assert "urbanismo" in p["faltan"]
     assert p["confianza"] in ("media", "baja")
     assert "No disponible" in render.html(inf)
@@ -218,3 +221,19 @@ def test_entorno_base_local(tmp_path, monkeypatch):
     assert r["estado"] == "ok" and "Extracto de OpenStreetMap" in r["fecha_dato"]
     assert [p["nombre"] for p in r["puntos"]] == ["Hotel A", "Nau B"]  # comercios solo hasta 1 km; lo de 9 km fuera
     assert r["zonas_industriales"][0]["nombre"] == "Polígon Local" and r["zonas_industriales"][0]["distancia_m"] == 1000
+
+
+def test_grupos_de_uso(fuentes_simuladas):
+    """Se puede pedir solo algunos grupos; cada grupo trae todos sus usos y el mejor."""
+    inf = correr(generar.construir("4595201DF5949N", grupos=["energia", "industria"]))
+    assert list(inf["puntuaciones"]) == ["energia", "industria"]
+    ind = inf["puntuaciones"]["industria"]
+    assert set(ind["usos"]) == {"nave_industrial", "logistica", "ultima_milla", "autoalmacenaje"}
+    assert ind["total"] == max(u["total"] for u in ind["usos"].values() if not u["bloqueos"])
+    assert "Mejor encaje" in render.html(inf)
+
+
+def test_energia_en_suelo_no_urbanizable():
+    from app.analisis.compatibilidad import MATRIZ
+    assert MATRIZ["no_urbanizable"]["energia"] == "condicionado"  # proyecto de actuación específica, no bloqueo
+    assert MATRIZ["no_urbanizable"]["industrial"] == "incompatible"

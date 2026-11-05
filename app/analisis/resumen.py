@@ -22,8 +22,9 @@ def hechos_clave(inf: dict) -> dict:
             for c in (t.get("carreteras") or [])[:4]
         ],
         "red_nudo": (r.get("nudos") or [None])[0] and {k: r["nudos"][0][k] for k in ("nudo", "distancia_m", "disponible_mw", "marca_0")},
-        "puntuaciones": {k: {"total": v["total"], "veredicto": v["veredicto"], "bloqueos": v["bloqueos"]}
-                         for k, v in inf["puntuaciones"].items()},
+        "puntuaciones": {v["nombre_perfil"]: {"total": v["total"], "veredicto": v["veredicto"], "mejor_uso": v["mejor_uso"],
+                                              "bloqueos": v["bloqueos"]}
+                         for v in inf["puntuaciones"].values()},
         "usos_previos": inf.get("evolucion", {}).get("nota", ""),
     }
 
@@ -53,9 +54,8 @@ def resumen_reglas(inf: dict) -> str:
         frases.append(f"El nudo eléctrico más cercano ({n['nudo']}, a {_n(n['distancia_m'])} m) publica "
                       f"{_n(n['disponible_mw'] or 0, 2)} MW disponibles.")
     mejores = sorted(h["puntuaciones"].items(), key=lambda kv: -(kv[1]["total"] or 0))
-    nombres = {"gasolinera": "estación de servicio", "recarga": "recarga eléctrica", "retail": "retail/restauración", "promotor": "promoción/inversión"}
-    aptos = [nombres[k] for k, v in mejores if v["veredicto"] in ("Apta", "Apta con condiciones")]
-    frases.append(f"Mejor encaje: {', '.join(aptos)}." if aptos else "Ningún perfil obtiene una valoración favorable.")
+    aptos = [v["mejor_uso"].lower() for k, v in mejores if v["veredicto"] in ("Apta", "Apta con condiciones")]
+    frases.append(f"Mejor encaje: {', '.join(aptos)}." if aptos else "Ningún uso obtiene una valoración favorable.")
     return " ".join(frases)
 
 
@@ -70,7 +70,7 @@ async def resumen_ia(inf: dict) -> tuple[str, str]:
             model=config.ANTHROPIC_MODEL,
             max_tokens=400,
             system=(
-                "Eres analista de suelo para implantaciones (estaciones de servicio, recarga, retail, promoción). "
+                "Eres analista de suelo para implantaciones de cualquier uso (movilidad, comercio, logística, residencial, terciario, energía). "
                 "Redacta en español un resumen ejecutivo de 5 o 6 líneas, en prosa, tono neutro y profesional, "
                 "usando EXCLUSIVAMENTE los datos JSON facilitados. No inventes cifras ni normas. Si un dato falta, "
                 "di que falta. Menciona primero los bloqueos si los hay."

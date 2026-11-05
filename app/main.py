@@ -31,11 +31,18 @@ _informes: dict[tuple, tuple[float, dict]] = {}
 TTL_INFORME = 3600
 
 
-async def _informe(rc: str, potencia_mw: float | None, sup_minima: float | None) -> dict:
-    clave = (rc, potencia_mw, sup_minima)
+def _grupos(grupos: str | None) -> list[str] | None:
+    from app.analisis.perfiles import GRUPOS
+    lista = [g.strip() for g in (grupos or "").split(",") if g.strip() in GRUPOS]
+    return lista or None
+
+
+async def _informe(rc: str, potencia_mw: float | None, sup_minima: float | None, grupos: str | None = None) -> dict:
+    lista = _grupos(grupos)
+    clave = (rc, potencia_mw, sup_minima, tuple(lista or ()))
     if clave in _informes and time.time() - _informes[clave][0] < TTL_INFORME:
         return _informes[clave][1]
-    inf = await generar.construir(rc, potencia_mw, sup_minima)
+    inf = await generar.construir(rc, potencia_mw, sup_minima, lista)
     if "error" in inf:
         raise HTTPException(404, inf["error"])
     _informes[clave] = (time.time(), inf)
@@ -111,12 +118,13 @@ async def municipio(lon: float, lat: float):
 
 @app.get("/api/perfiles")
 async def perfiles():
-    return PERFILES
+    from app.analisis.perfiles import catalogo
+    return catalogo()
 
 
 @app.get("/api/informe/{rc}")
-async def informe_json(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None):
-    inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima)
+async def informe_json(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
+    inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima, grupos)
     comp = mapas.competencia(inf)
     salida = generar.para_json(inf)
     salida["panorama"] = render.panorama(inf, comp)
@@ -126,16 +134,16 @@ async def informe_json(rc: str, potencia_mw: float | None = None, sup_minima: fl
 
 
 @app.get("/informe/{rc}.pdf")
-async def informe_pdf(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None):
+async def informe_pdf(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
     rc = _rc_valida(rc)
-    inf = await _informe(rc, potencia_mw, sup_minima)
+    inf = await _informe(rc, potencia_mw, sup_minima, grupos)
     return Response(render.pdf(inf), media_type="application/pdf",
                     headers={"Content-Disposition": f'attachment; filename="informe_{rc}.pdf"'})
 
 
 @app.get("/informe/{rc}", response_class=HTMLResponse)
-async def informe_html(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None):
-    inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima)
+async def informe_html(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
+    inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima, grupos)
     return render.html(inf)
 
 

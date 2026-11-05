@@ -7,11 +7,15 @@ Niveles: 'compatible', 'condicionado', 'plan_especial', 'incompatible'.
 """
 import unicodedata
 
+# Reglas de compatibilidad (cada uso de perfiles.GRUPOS apunta a una de ellas).
 PERFILES = {
-    "gasolinera": "Estación de servicio",
-    "recarga": "Punto de recarga (CPO)",
-    "retail": "Retail / restauración",
-    "promotor": "Promotor / inversión",
+    "gasolinera": "Estación de servicio y lavado",
+    "recarga": "Recarga eléctrica y aparcamiento",
+    "retail": "Comercio y restauración",
+    "industrial": "Industria, logística e ITV",
+    "residencial": "Residencial",
+    "terciario": "Hotelero, oficinas y equipamientos",
+    "energia": "Fotovoltaica, baterías y subestaciones",
 }
 
 
@@ -51,18 +55,32 @@ def familia(codigo: str, descripcion: str) -> str:
 
 # familia -> perfil -> nivel
 MATRIZ = {
-    "actividad_economica": {"gasolinera": "compatible", "recarga": "compatible", "retail": "condicionado", "promotor": "compatible"},
-    "terciario": {"gasolinera": "condicionado", "recarga": "compatible", "retail": "compatible", "promotor": "compatible"},
-    "mixto": {"gasolinera": "condicionado", "recarga": "compatible", "retail": "compatible", "promotor": "compatible"},
-    "residencial": {"gasolinera": "condicionado", "recarga": "condicionado", "retail": "condicionado", "promotor": "compatible"},
-    "viario": {"gasolinera": "condicionado", "recarga": "condicionado", "retail": "incompatible", "promotor": "incompatible"},
-    "servicios_tecnicos": {"gasolinera": "condicionado", "recarga": "condicionado", "retail": "incompatible", "promotor": "incompatible"},
-    "equipamientos": {"gasolinera": "incompatible", "recarga": "condicionado", "retail": "incompatible", "promotor": "incompatible"},
-    "espacios_libres": {"gasolinera": "incompatible", "recarga": "incompatible", "retail": "incompatible", "promotor": "incompatible"},
-    "otros_sistemas": {"gasolinera": "incompatible", "recarga": "incompatible", "retail": "incompatible", "promotor": "incompatible"},
-    "no_urbanizable": {"gasolinera": "plan_especial", "recarga": "plan_especial", "retail": "incompatible", "promotor": "incompatible"},
-    "otros": {"gasolinera": "condicionado", "recarga": "condicionado", "retail": "condicionado", "promotor": "condicionado"},
+    #                      gasolinera      recarga         retail          industrial      residencial     terciario       energia
+    "actividad_economica": dict(gasolinera="compatible", recarga="compatible", retail="condicionado", industrial="compatible",
+                                residencial="incompatible", terciario="condicionado", energia="compatible"),
+    "terciario": dict(gasolinera="condicionado", recarga="compatible", retail="compatible", industrial="condicionado",
+                      residencial="condicionado", terciario="compatible", energia="condicionado"),
+    "mixto": dict(gasolinera="condicionado", recarga="compatible", retail="compatible", industrial="condicionado",
+                  residencial="compatible", terciario="compatible", energia="condicionado"),
+    "residencial": dict(gasolinera="condicionado", recarga="condicionado", retail="condicionado", industrial="incompatible",
+                        residencial="compatible", terciario="condicionado", energia="incompatible"),
+    "viario": dict(gasolinera="condicionado", recarga="condicionado", retail="incompatible", industrial="incompatible",
+                   residencial="incompatible", terciario="incompatible", energia="incompatible"),
+    "servicios_tecnicos": dict(gasolinera="condicionado", recarga="condicionado", retail="incompatible", industrial="condicionado",
+                               residencial="incompatible", terciario="incompatible", energia="compatible"),
+    "equipamientos": dict(gasolinera="incompatible", recarga="condicionado", retail="incompatible", industrial="incompatible",
+                          residencial="incompatible", terciario="condicionado", energia="incompatible"),
+    "espacios_libres": dict(gasolinera="incompatible", recarga="incompatible", retail="incompatible", industrial="incompatible",
+                            residencial="incompatible", terciario="incompatible", energia="incompatible"),
+    "otros_sistemas": dict(gasolinera="incompatible", recarga="incompatible", retail="incompatible", industrial="incompatible",
+                           residencial="incompatible", terciario="incompatible", energia="incompatible"),
+    # En suelo no urbanizable, la fotovoltaica y las baterías se tramitan por proyecto de actuación específica: se condicionan, no se bloquean.
+    "no_urbanizable": dict(gasolinera="plan_especial", recarga="plan_especial", retail="incompatible", industrial="incompatible",
+                           residencial="incompatible", terciario="incompatible", energia="condicionado"),
+    "otros": dict(gasolinera="condicionado", recarga="condicionado", retail="condicionado", industrial="condicionado",
+                  residencial="condicionado", terciario="condicionado", energia="condicionado"),
 }
+
 
 MOTIVOS = {
     "compatible": "Uso habitualmente admitido en esta calificación.",

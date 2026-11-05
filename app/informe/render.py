@@ -13,7 +13,7 @@ PLANTILLAS = Path(__file__).parent / "templates"
 NIVELES = {"compatible": "Compatible", "condicionado": "Condicionado", "plan_especial": "Solo con plan especial",
            "incompatible": "Incompatible", "sin_dato": "Sin dato"}
 BLOQUES = {"urbanismo": "Urbanismo", "trafico": "Tráfico", "red": "Red eléctrica", "parcela": "Parcela",
-           "inundabilidad": "Inundabilidad"}
+           "inundabilidad": "Inundabilidad", "entorno": "Entorno"}
 ESTADOS = {"ok": "Correcto", "sin_dato": "Sin dato", "error": "No disponible", "no_aplica": "No aplica"}
 
 

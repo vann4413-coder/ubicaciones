@@ -63,6 +63,11 @@
   .hero img, .hero svg { position: absolute; left: 0; width: 210mm; height: 210mm; top: -59mm; }
   .notas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; margin: -14mm 14mm 0; position: relative; }
   .nota { background: #fff; border-radius: 3mm; padding: 3mm 2mm 3mm; text-align: center; box-shadow: 0 1mm 3mm rgba(18,38,58,.18); }
+  .nota .mejor { display: block; font-size: 7pt; color: var(--suave); margin-top: 1.2mm; line-height: 1.25; }
+  .notas.muchas { margin-left: 10mm; margin-right: 10mm; gap: 2.5mm; }
+  .notas.muchas .nota { padding: 2.5mm 1.5mm; }
+  .notas.muchas .perfil { font-size: 6.8pt; min-height: 7mm; }
+  .notas.muchas .veredicto { font-size: 7pt; padding: .4mm 1.6mm; }
   .nota .perfil { font-size: 8pt; font-weight: 700; color: var(--suave); text-transform: uppercase; letter-spacing: .04em; }
   .nota .veredicto { display: inline-block; margin-top: 1mm; padding: .5mm 2.5mm; border-radius: 3mm; font-size: 8pt; font-weight: 700; color: #fff; }
   .nota .conf { display: block; font-size: 7pt; color: var(--suave); margin-top: 1mm; }
@@ -135,6 +140,8 @@
   .perfil-det { border: 1px solid var(--linea); border-radius: 2.5mm; padding: 3mm 4mm; margin-bottom: 3mm; page-break-inside: avoid; }
   .perfil-det .top { display: flex; align-items: center; gap: 4mm; }
   .perfil-det h3 { margin: 0; }
+  .perfil-det .top small { margin-left: 2mm; color: var(--suave); }
+  .usos { display: flex; flex-wrap: wrap; gap: 1.5mm 5mm; margin: 2.5mm 0 1mm; font-size: 8pt; }
   .pie { font-size: 7.5pt; color: var(--suave); }
 </style>
 </head>
@@ -150,12 +157,14 @@
   </div>
   {% set m = mapas.portada %}
   <div class="hero"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
-  <div class="notas">
+  {% set n_grupos = inf.puntuaciones|length %}
+  <div class="notas {{ 'muchas' if n_grupos > 4 else '' }}" style="grid-template-columns: repeat({{ n_grupos if n_grupos <= 6 else 6 }}, 1fr)">
   {% for k, p in inf.puntuaciones.items() %}
     <div class="nota">
       <div class="perfil">{{ p.nombre_perfil }}</div>
-      {{ rosco(None if p.bloqueos else p.total, p.semaforo) }}<br>
+      {{ rosco(None if p.bloqueos else p.total, p.semaforo, 58 if n_grupos > 4 else 74) }}<br>
       <span class="veredicto {{ p.semaforo }}">{{ p.veredicto }}</span>
+      <span class="mejor">{{ "Uso: " if p.uso_elegido else "Mejor encaje: " }}{{ p.mejor_uso }}</span>
     </div>
   {% endfor %}
   </div>
@@ -176,7 +185,7 @@
     {% endfor %}
     </div>
   </div>
-  <div class="pie-portada">Puntuaciones de 0 a 100 por tipo de uso: verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Informe orientativo elaborado con datos públicos oficiales; no sustituye a la cèdula urbanística ni a la consulta a los organismos. Fuentes y fechas en el anexo.</div>
+  <div class="pie-portada">Puntuaciones de 0 a 100 por grupo de uso (la del uso que mejor encaja): verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Informe orientativo elaborado con datos públicos oficiales; no sustituye a la cèdula urbanística ni a la consulta a los organismos. Fuentes y fechas en el anexo.</div>
 </div>
 
 {# ======================= RIESGOS ======================= #}
@@ -516,10 +525,12 @@
   <div class="perfil-det">
     <div class="top">
       {{ rosco(None if p.bloqueos else p.total, p.semaforo, 52) }}
-      <div><h3>{{ p.nombre_perfil }}</h3><span class="estado {{ p.semaforo }}">{{ p.veredicto }}</span></div>
+      <div><h3>{{ p.nombre_perfil }}</h3><span class="estado {{ p.semaforo }}">{{ p.veredicto }}</span>
+        <small>{{ "Uso elegido" if p.uso_elegido else "Mejor encaje" }}: <b>{{ p.mejor_uso }}</b></small></div>
     </div>
+    <div class="usos">{% for u in p.usos.values() %}<span><span class="estado {{ u.semaforo }}">{{ "No apta" if u.bloqueos else (u.total if u.total is not none else "—") }}</span> {{ u.nombre_uso }}</span>{% endfor %}</div>
     {% for b in p.bloqueos %}<div class="bloqueo">{{ b }}</div>{% endfor %}
-    <table><tr><th>Bloque</th><th class="n">Peso</th><th class="n">Nota</th><th style="width:26%"></th><th>Motivo</th></tr>
+    <table><tr><th>Bloque ({{ p.mejor_uso }})</th><th class="n">Peso</th><th class="n">Nota</th><th style="width:24%"></th><th>Motivo</th></tr>
     {% for b, s in p.subnotas.items() %}
       <tr><td>{{ bloques[b] }}</td><td class="n">{{ s.peso }}%{% if s.peso_efectivo and s.peso_efectivo != s.peso %} → {{ s.peso_efectivo }}%{% endif %}</td>
       <td class="n"><b>{{ s.nota if s.nota is not none else "—" }}</b></td>
@@ -530,7 +541,7 @@
     {% if p.faltan %}<p class="pie">Sin dato en: {{ p.faltan|map("bloque")|join(", ") }}. Su peso se reparte entre el resto.</p>{% endif %}
   </div>
   {% endfor %}
-  <div class="info">Semáforo: verde ≥ 75 · ámbar 50–74 · rojo &lt; 50. Los filtros eliminatorios (zona de flujo preferente, calificación incompatible o solo con plan especial y, para recarga, nudo sin capacidad y sin marca 0*) dan «No apta» con independencia de la nota.</div>
+  <div class="info">Semáforo: verde ≥ 75 · ámbar 50–74 · rojo &lt; 50. Los filtros eliminatorios (zona de flujo preferente, calificación incompatible o solo con plan especial y, para recarga, nudo sin capacidad y sin marca 0*) dan «No apta» con independencia de la nota. Los pesos de cada uso son de partida y se ajustan con la experiencia de los clientes.</div>
 </section>
 
 {# ======================= ANEXO ======================= #}
