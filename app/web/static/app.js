@@ -256,6 +256,8 @@ function pintarResultado(inf, rc, qs) {
   bloqueos.forEach((b) => (html += `<div class="bloqueo">${esc(b)}</div>`));
   html += `<div class="acciones"><a href="/informe/${rc}${sufijo}" target="_blank" rel="noopener">Ver informe completo</a>
     <a class="sec" href="/informe/${rc}.pdf${sufijo}">Descargar PDF</a></div>`;
+  const ficha = (inf.parcela.fichas_catastro || [])[0];
+  if (ficha) html += `<a class="enlace-ficha" href="${esc(ficha.url)}" target="_blank" rel="noopener">Ficha oficial del Catastro (consulta descriptiva y gráfica) ↗</a>`;
   html += `<p class="resumen">${esc(inf.resumen)}</p>`;
   html += `<div class="sec-tit">De un vistazo</div><div class="vistazo">`;
   inf.panorama.forEach((f) => (html += `<div class="fv e-${f.estado}"><div class="t">${esc(f.titulo)}</div><div class="v">${esc(f.valor)}</div><div class="d">${esc(f.detalle)}</div></div>`));

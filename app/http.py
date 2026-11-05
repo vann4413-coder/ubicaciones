@@ -88,3 +88,9 @@ async def post_json(url: str, data: dict, cache: bool = True) -> Any:
     if cache:
         _cache[k] = (time.time(), valor)
     return valor
+
+
+async def get_bytes(url: str, params: dict | None = None) -> tuple[bytes, str]:
+    """Descarga binaria (PDF, imágenes). Devuelve (contenido, content-type)."""
+    r = await _pedir("GET", url, params=params)
+    return r.content, r.headers.get("content-type", "")

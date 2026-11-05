@@ -227,6 +227,11 @@
       <div class="leyenda"><i style="background:#e11d48"></i>Parcela <i style="background:#facc15"></i>Colindantes · Ortofoto ICGC y Catastro</div>
     </div>
   </div>
+  {% if p.fichas_catastro %}
+  <h3>Ficha oficial del Catastro</h3>
+  {% if p.fichas_catastro|length <= 3 %}<p>La consulta descriptiva y gráfica oficial de {{ "cada inmueble" if p.fichas_catastro|length > 1 else "la finca" }} se adjunta al final de este informe.</p>{% endif %}
+  <p>{% for f in p.fichas_catastro[:12] %}<a href="{{ f.url }}">{{ f.rc }}</a>{% if f.uso %} <small>({{ f.uso }})</small>{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}{% if p.fichas_catastro|length > 12 %} y {{ p.fichas_catastro|length - 12 }} más{% endif %}</p>
+  {% endif %}
   <h3>Colindantes</h3>
   {% if p.colindantes %}
   <table><tr><th>Referencia catastral</th><th class="n">Superficie</th><th class="n">Lindero común</th></tr>

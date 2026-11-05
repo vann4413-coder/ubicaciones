@@ -79,6 +79,19 @@ def _num(v) -> float | None:
         return None
 
 
+SEDE_CDYG = "https://www1.sedecatastro.gob.es/CYCBienInmueble/SECImprimirCroquisYDatos.aspx"
+
+
+def _rc20(rc: dict | None) -> str:
+    rc = rc or {}
+    return "".join(str(rc.get(k, "")) for k in ("pc1", "pc2", "car", "cc1", "cc2"))
+
+
+def url_cdyg(rc20: str, delegacion: str, municipio_catastro: str) -> str:
+    """Consulta descriptiva y gráfica oficial (PDF) de un inmueble, en la Sede del Catastro."""
+    return f"{SEDE_CDYG}?del={delegacion}&mun={municipio_catastro}&refcat={rc20}"
+
+
 def parse_dnprc(d: dict) -> dict:
     """Interpreta Consulta_DNPRC (un inmueble o lista de inmuebles)."""
     res = d.get("consulta_dnprcResult", d)
@@ -104,6 +117,9 @@ def parse_dnprc(d: dict) -> dict:
             provincia=dt.get("np", ""),
             cod_ine_prov=(dt.get("loine") or {}).get("cp", ""),
             cod_ine_mun=(dt.get("loine") or {}).get("cm", ""),
+            fichas_catastro=[{"rc": _rc20((bi.get("idbi") or {}).get("rc")), "uso": debi.get("luso", ""),
+                              "url": url_cdyg(_rc20((bi.get("idbi") or {}).get("rc")), (dt.get("loine") or {}).get("cp", ""), str(dt.get("cmc", "")))}]
+            if _rc20((bi.get("idbi") or {}).get("rc")) and dt.get("cmc") else [],
             uso=debi.get("luso", ""),
             sup_construida=_num(debi.get("sfc")),
             anio_construccion=int(debi["ant"]) if str(debi.get("ant", "")).isdigit() else None,
@@ -134,6 +150,7 @@ def parse_dnprc(d: dict) -> dict:
                 "provincia": dt.get("np", ""),
                 "cod_ine_prov": (dt.get("loine") or {}).get("cp", ""),
                 "cod_ine_mun": (dt.get("loine") or {}).get("cm", ""),
+                "rc20": _rc20(r.get("rc")), "cmc": str(dt.get("cmc", "")),
             }
         )
     if inmuebles:
@@ -152,6 +169,8 @@ def parse_dnprc(d: dict) -> dict:
             anio_construccion=min(anios) if anios else None,
             tipo_finca="Parcela con división horizontal",
             num_inmuebles=len(inmuebles),
+            fichas_catastro=[{"rc": i["rc20"], "uso": i["uso"], "url": url_cdyg(i["rc20"], i["cod_ine_prov"], i["cmc"])}
+                             for i in inmuebles if i["rc20"] and i["cmc"]],
         )
     return salida
 

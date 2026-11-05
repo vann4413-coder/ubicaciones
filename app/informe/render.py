@@ -133,6 +133,39 @@ def html(inf: dict) -> str:
     )
 
 
-def pdf(inf: dict) -> bytes:
+def pdf(inf: dict, anexos: list[bytes] | None = None) -> bytes:
+    """PDF del informe; los anexos (p. ej. la ficha oficial del Catastro) se añaden al final."""
     from weasyprint import HTML
-    return HTML(string=html(inf)).write_pdf()
+    base = HTML(string=html(inf)).write_pdf()
+    if not anexos:
+        return base
+    import io
+
+    from pypdf import PdfReader, PdfWriter
+    w = PdfWriter()
+    w.append(PdfReader(io.BytesIO(base)))
+    for a in anexos:
+        try:
+            w.append(PdfReader(io.BytesIO(a)))
+        except Exception:  # noqa: BLE001  un anexo dañado no debe impedir el informe
+            continue
+    out = io.BytesIO()
+    w.write(out)
+    return out.getvalue()
+
+
+async def fichas_catastro(inf: dict, maximo: int = 3) -> list[bytes]:
+    """Descarga las consultas descriptivas y gráficas oficiales (solo si la parcela tiene pocos inmuebles)."""
+    from app import http
+    fichas = inf["parcela"].get("fichas_catastro") or []
+    if not fichas or len(fichas) > maximo:
+        return []
+    salida = []
+    for f in fichas:
+        try:
+            contenido, tipo = await http.get_bytes(f["url"])
+            if contenido[:5] == b"%PDF-":
+                salida.append(contenido)
+        except Exception:  # noqa: BLE001
+            continue
+    return salida

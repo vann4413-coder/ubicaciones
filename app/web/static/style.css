@@ -128,3 +128,4 @@ footer input { width: auto; }
 .grupos label:has(input:checked) { border-color: var(--marca); background: #eef3f9; }
 .notas.seis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .nota .mejor { display: block; font-size: 11px; color: var(--suave); margin-top: 4px; line-height: 1.25; padding: 0 2px; }
+.enlace-ficha { display: block; text-align: center; color: var(--marca); font-weight: 600; font-size: 13px; margin-top: -6px; }

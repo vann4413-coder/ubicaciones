@@ -24,6 +24,8 @@ def test_dnprc_real():
     assert d["sup_suelo"] == 10051
     assert d["anio_construccion"] == 1900
     assert d["cod_ine_prov"] + d["cod_ine_mun"] == "08121"
+    f = d["fichas_catastro"][0]
+    assert f["rc"] == "4595201DF5949N0001WF" and "SECImprimirCroquisYDatos.aspx?del=08&mun=120&refcat=4595201DF5949N0001WF" in f["url"]
 
 
 def test_gml_parcela_real():

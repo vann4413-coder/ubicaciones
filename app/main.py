@@ -137,7 +137,8 @@ async def informe_json(rc: str, potencia_mw: float | None = None, sup_minima: fl
 async def informe_pdf(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
     rc = _rc_valida(rc)
     inf = await _informe(rc, potencia_mw, sup_minima, grupos)
-    return Response(render.pdf(inf), media_type="application/pdf",
+    anexos = await render.fichas_catastro(inf)
+    return Response(render.pdf(inf, anexos), media_type="application/pdf",
                     headers={"Content-Disposition": f'attachment; filename="informe_{rc}.pdf"'})
 
 
