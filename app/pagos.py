@@ -25,6 +25,9 @@ PRODUCTOS = {
     "premium": {"lookup_key": "ubi_plan_premium", "nombre": "Plan Premium (informes ilimitados)", "importe": 13900, "recurrente": True},
 }
 
+# Datos para una factura completa: dirección de facturación y NIF/CIF del cliente (opcional para particulares).
+FACTURA = {"locale": "es", "billing_address_collection": "required", "tax_id_collection": {"enabled": True}}
+
 _precios: dict[str, str] = {}
 _tasa_iva: str | None = None
 
@@ -88,10 +91,11 @@ def checkout_informe(rc: str, base: str, usuario: dict | None) -> str:
         cancel_url=_url(f"/comprar/{rc}?cancelado=1", base),
         metadata={"tipo": "informe", "rc": rc, "usuario_id": str(usuario["id"]) if usuario else ""},
         invoice_creation={"enabled": True},
-        locale="es",
+        **FACTURA,
     )
     if usuario and usuario.get("stripe_customer"):
         datos["customer"] = usuario["stripe_customer"]
+        datos["customer_update"] = {"name": "auto", "address": "auto"}
     elif usuario:
         datos["customer_email"] = usuario["email"]
     return s.checkout.Session.create(**datos).url
@@ -106,10 +110,11 @@ def checkout_suscripcion(plan: str, base: str, usuario: dict) -> str:
         cancel_url=_url("/cuenta?cancelado=1", base),
         metadata={"tipo": "suscripcion", "plan": plan, "usuario_id": str(usuario["id"])},
         subscription_data={"metadata": {"plan": plan, "usuario_id": str(usuario["id"])}},
-        locale="es",
+        **FACTURA,
     )
     if usuario.get("stripe_customer"):
         datos["customer"] = usuario["stripe_customer"]
+        datos["customer_update"] = {"name": "auto", "address": "auto"}
     else:
         datos["customer_email"] = usuario["email"]
     return s.checkout.Session.create(**datos).url
