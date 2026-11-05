@@ -52,7 +52,7 @@ def precio(clave: str) -> str:
     if encontrados:
         _precios[clave] = encontrados[0].id
     else:
-        prod = s.Product.create(name=p["nombre"])
+        prod = s.Product.create(name=p["nombre"], tax_code="txcd_10000000")  # servicios prestados por vía electrónica
         datos = {"product": prod.id, "currency": "eur", "unit_amount": p["importe"], "lookup_key": p["lookup_key"],
                  "tax_behavior": "exclusive"}
         if p["recurrente"]:
@@ -78,6 +78,18 @@ def tasa_iva() -> list[str]:
     return [_tasa_iva]
 
 
+def _crear_sesion(datos: dict) -> str:
+    """Crea la sesión de Checkout. El IVA lo ponemos nosotros (tax_rates), así que se desactiva
+    «Managed Payments» de Stripe, que algunas cuentas traen activado y exige códigos fiscales."""
+    s = _stripe()
+    try:
+        return s.checkout.Session.create(**datos, managed_payments={"enabled": False}).url
+    except s.error.InvalidRequestError as e:
+        if "managed_payments" not in str(e):
+            raise
+        return s.checkout.Session.create(**datos).url
+
+
 def _url(ruta: str, base: str) -> str:
     return (URL_PUBLICA or base.rstrip("/")) + ruta
 
@@ -98,7 +110,7 @@ def checkout_informe(rc: str, base: str, usuario: dict | None) -> str:
         datos["customer_update"] = {"name": "auto", "address": "auto"}
     elif usuario:
         datos["customer_email"] = usuario["email"]
-    return s.checkout.Session.create(**datos).url
+    return _crear_sesion(datos)
 
 
 def checkout_suscripcion(plan: str, base: str, usuario: dict) -> str:
@@ -117,7 +129,7 @@ def checkout_suscripcion(plan: str, base: str, usuario: dict) -> str:
         datos["customer_update"] = {"name": "auto", "address": "auto"}
     else:
         datos["customer_email"] = usuario["email"]
-    return s.checkout.Session.create(**datos).url
+    return _crear_sesion(datos)
 
 
 def portal(usuario: dict, base: str) -> str:
