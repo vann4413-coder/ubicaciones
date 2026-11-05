@@ -94,6 +94,11 @@ def aforos_locales() -> list[dict]:
     return _aforos_locales_cache(str(p), p.stat().st_mtime)
 
 
+def _anio_capa(capa: str) -> int | None:
+    m = re.search(r"(20\d\d)", capa or "")
+    return int(m.group(1)) if m else None
+
+
 async def tramos_gencat(parcela: BaseGeometry, radio: float) -> tuple[list[dict], str]:
     """Tramos con IMD a menos de `radio` m. Prueba las capas de más nueva a más vieja."""
     for capa in config.CAPAS_IMD:
@@ -113,7 +118,8 @@ async def tramos_gencat(parcela: BaseGeometry, radio: float) -> tuple[list[dict]
                 "carretera": normalizar_ref(p.get("CARRETERA", "")),
                 "imd": p.get("IMD"),
                 "pct_pesados": p.get("PERCENTATGE_PESANTS"),
-                "anio": p.get("ANY_MESURA"),
+                # Si el tramo no trae año de medida, se toma el de la capa (p. ej. XT_VIARI_IMD_2023 -> 2023)
+                "anio": p.get("ANY_MESURA") or p.get("ANY") or _anio_capa(capa),
                 "pk_estacion": p.get("PK_ESTACIO", ""),
                 "pk_ini_m": pk_a_m(p.get("PKINICI")),
                 "pk_fin_m": pk_a_m(p.get("PKFINAL")),
