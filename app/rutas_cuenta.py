@@ -120,13 +120,24 @@ async def comprar(request: Request, rc: str, cancelado: int = 0, limite: int = 0
                    limite_agotado=limite, limite=cuentas.LIMITES["profesional"])
 
 
+def _error_pago(request: Request, e: Exception) -> HTMLResponse:
+    log.exception("Error con Stripe")
+    detalle = getattr(e, "user_message", None) or str(e).split("\n")[0][:300]
+    return _pintar("cuenta.html", request, titulo="Error en el pago", siguiente="", ok=False,
+                   mensaje=f"No se ha podido iniciar el pago ({type(e).__name__}): {detalle}")
+
+
 @router.post("/comprar/{rc}")
 async def pagar_informe(request: Request, rc: str):
     from app.fuentes import catastro
     rc = (catastro.normalizar_rc(rc) or "")[:14]
     if not rc or not pagos.activos():
         raise HTTPException(400, "No disponible")
-    return RedirectResponse(pagos.checkout_informe(rc, str(request.base_url), usuario_actual(request)), status_code=303)
+    try:
+        url = pagos.checkout_informe(rc, str(request.base_url), usuario_actual(request))
+    except Exception as e:  # noqa: BLE001
+        return _error_pago(request, e)
+    return RedirectResponse(url, status_code=303)
 
 
 @router.get("/suscribirse")
@@ -136,7 +147,11 @@ async def suscribirse(request: Request, plan: str = "profesional", rc: str = "")
     u = usuario_actual(request)
     if not u:
         return RedirectResponse(f"/cuenta?siguiente=/suscribirse?plan={plan}", status_code=303)
-    return RedirectResponse(pagos.checkout_suscripcion(plan, str(request.base_url), u), status_code=303)
+    try:
+        url = pagos.checkout_suscripcion(plan, str(request.base_url), u)
+    except Exception as e:  # noqa: BLE001
+        return _error_pago(request, e)
+    return RedirectResponse(url, status_code=303)
 
 
 @router.get("/pago/ok")
