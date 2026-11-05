@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block contenido %}
+{% if cancelado %}<div class="aviso-web">El pago se ha cancelado. No se te ha cobrado nada.</div>{% endif %}
+{% if limite_agotado %}<div class="aviso-web">Has usado los {{ limite }} informes de tu plan este mes. Puedes comprar este informe suelto o pasar a Premium.</div>{% endif %}
+<h1>Informe completo de la parcela</h1>
+<p class="bajada">Referencia catastral <b>{{ rc }}</b>{% if direccion %} · {{ direccion }}{% endif %}</p>
+<div class="planes">
+  <div class="plan destacado">
+    <h3>Este informe</h3>
+    <p class="precio">1,99 €<small> + IVA</small></p>
+    <ul><li>Informe completo en pantalla y PDF</li><li>Ficha oficial del Catastro adjunta</li><li>Sin registro</li></ul>
+    <form method="post" action="/comprar/{{ rc }}"><button class="btn" type="submit">Pagar y ver el informe</button></form>
+  </div>
+  <div class="plan">
+    <h3>Profesional</h3>
+    <p class="precio">99 €<small> / mes + IVA</small></p>
+    <ul><li>Hasta 50 informes al mes</li><li>Historial de informes</li></ul>
+    <a class="btn btn-sec" href="/suscribirse?plan=profesional&rc={{ rc }}">Suscribirme</a>
+  </div>
+  <div class="plan">
+    <h3>Premium</h3>
+    <p class="precio">139 €<small> / mes + IVA</small></p>
+    <ul><li>Informes ilimitados</li><li>Historial de informes</li></ul>
+    <a class="btn btn-sec" href="/suscribirse?plan=premium&rc={{ rc }}">Suscribirme</a>
+  </div>
+</div>
+{% if not usuario %}<p class="nota-precios">¿Ya tienes suscripción? <a href="/cuenta?siguiente=/informe/{{ rc }}">Entra en tu cuenta</a>.</p>{% endif %}
+{% endblock %}

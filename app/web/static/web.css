@@ -109,3 +109,23 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
   .bloque { padding: 56px 0; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Páginas de cuenta y pago */
+.interior .nav { position: static; }
+.pagina { padding-top: 40px; padding-bottom: 40px; min-height: 60vh; }
+.pagina h1 { font-size: clamp(26px, 3.4vw, 36px); color: var(--marca); font-weight: 800; margin-bottom: 8px; }
+.pagina .bajada { margin-bottom: 24px; }
+.dos-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.caja { border: 1px solid var(--linea); border-radius: 16px; padding: 24px; margin-bottom: 20px; background: #fff; display: grid; gap: 12px; }
+.caja h2 { font-size: 20px; color: var(--marca); }
+.caja label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; }
+.caja input { padding: 12px 14px; border: 1px solid var(--linea); border-radius: 10px; font: inherit; }
+.aviso-web { background: #fff6e5; border-left: 4px solid var(--ambar); padding: 12px 16px; border-radius: 0 10px 10px 0; margin-bottom: 20px; }
+.aviso-web.ok { background: #e9f7ef; border-left-color: var(--verde); }
+.acciones-web { display: flex; flex-wrap: wrap; gap: 10px; }
+.historial { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.historial li { display: flex; gap: 14px; align-items: center; border-bottom: 1px solid var(--linea); padding-bottom: 8px; }
+.historial span { color: var(--suave); font-size: 14px; flex: 1; }
+.plan form { display: contents; }
+.plan form .btn { width: 100%; }
+@media (max-width: 760px) { .dos-col { grid-template-columns: minmax(0, 1fr); } }

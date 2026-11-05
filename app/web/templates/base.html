@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ titulo }} · {{ marca }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/static/web.css">
+</head>
+<body class="interior">
+<nav class="nav">
+  <div class="contenedor nav-in">
+    <a class="logo" href="/"><i></i>{{ marca }}</a>
+    <div class="nav-links">
+      <a href="/#precios">Precios</a>
+      <a href="/app">Analizar parcela</a>
+      {% if usuario %}<a href="/cuenta">Mi cuenta</a>{% else %}<a href="/cuenta">Entrar</a>{% endif %}
+    </div>
+  </div>
+</nav>
+<main class="contenedor pagina">
+{% block contenido %}{% endblock %}
+</main>
+<footer class="pie"><div class="contenedor"><p>Informes orientativos elaborados con datos públicos oficiales. Pagos seguros con Stripe.</p></div></footer>
+</body>
+</html>

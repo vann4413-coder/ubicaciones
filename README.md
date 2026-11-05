@@ -97,3 +97,21 @@ app/
 scripts/        descarga e importación de datos periódicos
 tests/          pruebas y respuestas reales de las fuentes
 ```
+
+## Pagos y cuentas (Stripe)
+
+Variables en Railway (pestaña Variables del servicio):
+
+| Variable | Valor |
+|---|---|
+| `STRIPE_SECRET_KEY` | Clave secreta de Stripe (`sk_test_…` para pruebas, `sk_live_…` en real) |
+| `STRIPE_WEBHOOK_SECRET` | Secreto del webhook `https://TU-DOMINIO/stripe/webhook` (`whsec_…`) |
+| `UBI_SECRETO` | Cadena larga aleatoria para firmar sesiones |
+| `UBI_ADMIN_EMAILS` | Correos con acceso gratis e ilimitado, separados por comas |
+| `UBI_DB` | `/data/ubicaciones.db` (con un volumen de Railway montado en `/data`) |
+| `UBI_URL_PUBLICA` | Dirección pública de la web |
+| `UBI_IVA` | IVA que se suma al precio (21 por defecto) |
+
+Sin `STRIPE_SECRET_KEY` los pagos están desactivados y los informes se ven gratis.
+Eventos del webhook: `checkout.session.completed`, `customer.subscription.created`,
+`customer.subscription.updated`, `customer.subscription.deleted`.

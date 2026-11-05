@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block contenido %}
+{% if mensaje %}<div class="aviso-web {{ 'ok' if ok else '' }}">{{ mensaje }}</div>{% endif %}
+{% if not usuario %}
+  <h1>Tu cuenta</h1>
+  <p class="bajada">Entra o crea una cuenta para suscribirte y guardar tu historial de informes.</p>
+  <div class="dos-col">
+    <form class="caja" method="post" action="/cuenta/entrar">
+      <h2>Entrar</h2>
+      <input type="hidden" name="siguiente" value="{{ siguiente }}">
+      <label>Correo <input type="email" name="email" required autocomplete="email"></label>
+      <label>Contraseña <input type="password" name="clave" required autocomplete="current-password"></label>
+      <button class="btn" type="submit">Entrar</button>
+    </form>
+    <form class="caja" method="post" action="/cuenta/registro">
+      <h2>Crear cuenta</h2>
+      <input type="hidden" name="siguiente" value="{{ siguiente }}">
+      <label>Correo <input type="email" name="email" required autocomplete="email"></label>
+      <label>Contraseña (mínimo 8 caracteres) <input type="password" name="clave" required minlength="8" autocomplete="new-password"></label>
+      <button class="btn btn-sec" type="submit">Crear cuenta</button>
+    </form>
+  </div>
+{% else %}
+  <h1>Hola, {{ usuario.email }}</h1>
+  <div class="caja">
+    <h2>Tu plan</h2>
+    {% if plan %}
+      <p><b>{{ {"profesional": "Profesional", "premium": "Premium"}[plan] }}</b>{% if admin %} (acceso de administración){% endif %}.
+      {% if limite %}Este mes has usado <b>{{ usados }}</b> de {{ limite }} informes.{% else %}Informes ilimitados.{% endif %}</p>
+      {% if usuario.stripe_customer and pagos %}<a class="btn btn-sec" href="/cuenta/facturacion">Facturas, tarjeta y cancelar</a>{% endif %}
+    {% else %}
+      <p>No tienes suscripción. Puedes comprar informes sueltos o suscribirte:</p>
+      <div class="acciones-web">
+        <a class="btn" href="/suscribirse?plan=profesional">Profesional · 99 €/mes · 50 informes</a>
+        <a class="btn btn-sec" href="/suscribirse?plan=premium">Premium · 139 €/mes · ilimitados</a>
+      </div>
+      <p class="nota-precios">Precios sin IVA.</p>
+    {% endif %}
+  </div>
+  <div class="caja">
+    <h2>Tus informes</h2>
+    {% if historial %}
+      <ul class="historial">{% for h in historial %}<li><a href="/informe/{{ h.rc }}">{{ h.rc }}</a> <span>{{ h.fecha }}</span> <a href="/informe/{{ h.rc }}.pdf">PDF</a></li>{% endfor %}</ul>
+    {% else %}<p>Aún no has generado ningún informe. <a href="/app">Analiza una parcela</a>.</p>{% endif %}
+  </div>
+  <form method="post" action="/cuenta/salir"><button class="btn btn-sec" type="submit">Cerrar sesión</button></form>
+{% endif %}
+{% endblock %}

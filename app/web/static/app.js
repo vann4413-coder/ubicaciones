@@ -254,10 +254,16 @@ function pintarResultado(inf, rc, qs) {
   });
   html += `</div>`;
   bloqueos.forEach((b) => (html += `<div class="bloqueo">${esc(b)}</div>`));
-  html += `<div class="acciones"><a href="/informe/${rc}${sufijo}" target="_blank" rel="noopener">Ver informe completo</a>
-    <a class="sec" href="/informe/${rc}.pdf${sufijo}">Descargar PDF</a></div>`;
-  const ficha = (inf.parcela.fichas_catastro || [])[0];
-  if (ficha) html += `<a class="enlace-ficha" href="${esc(ficha.url)}" target="_blank" rel="noopener">Ficha oficial del Catastro (consulta descriptiva y gráfica) ↗</a>`;
+  const acc = inf.acceso || { completo: true };
+  if (acc.completo) {
+    html += `<div class="acciones"><a href="/informe/${rc}${sufijo}" target="_blank" rel="noopener">Ver informe completo</a>
+      <a class="sec" href="/informe/${rc}.pdf${sufijo}">Descargar PDF</a></div>`;
+    const ficha = ((inf.parcela && inf.parcela.fichas_catastro) || [])[0];
+    if (ficha) html += `<a class="enlace-ficha" href="${esc(ficha.url)}" target="_blank" rel="noopener">Ficha oficial del Catastro (consulta descriptiva y gráfica) ↗</a>`;
+  } else {
+    html += `<div class="acciones una"><a href="/comprar/${rc}">${acc.motivo === "limite" ? "Has agotado tus informes del mes · ver opciones" : "Ver informe completo y PDF · " + esc(acc.precio_informe) + " + IVA"}</a></div>
+      <p class="nota-acceso">Incluye urbanismo, agua, tráfico, entorno, valor del suelo, empresas registradas y la ficha oficial del Catastro. <a href="/cuenta">¿Tienes suscripción? Entra</a>.</p>`;
+  }
   html += `<p class="resumen">${esc(inf.resumen)}</p>`;
   html += `<div class="sec-tit">De un vistazo</div><div class="vistazo">`;
   inf.panorama.forEach((f) => (html += `<div class="fv e-${f.estado}"><div class="t">${esc(f.titulo)}</div><div class="v">${esc(f.valor)}</div><div class="d">${esc(f.detalle)}</div></div>`));

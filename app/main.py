@@ -4,12 +4,13 @@ import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from shapely.geometry import mapping
 
-from app import config, geo, http
+from app import config, geo, http, pagos
+from app.rutas_cuenta import acceso, redirigir_a_compra, router as rutas_cuenta
 from app.analisis.compatibilidad import PERFILES
 from app.fuentes import catastro, geocoder, poblacion
 from app.informe import generar, mapas, render
@@ -26,6 +27,7 @@ async def ciclo(app: FastAPI):
 
 app = FastAPI(title=config.MARCA, lifespan=ciclo)
 app.mount("/static", StaticFiles(directory=WEB), name="static")
+app.include_router(rutas_cuenta)
 
 _informes: dict[tuple, tuple[float, dict]] = {}
 TTL_INFORME = 3600
@@ -122,20 +124,39 @@ async def perfiles():
     return catalogo()
 
 
+# Campos que se ven gratis (vista previa en el mapa); el resto solo con acceso al informe completo.
+CAMPOS_PREVIA = {"rc", "lon", "lat", "generado", "municipio", "resumen", "panorama", "gasolineras", "entorno5", "parcela_geojson",
+                 "competencia", "poblacion"}
+
+
 @app.get("/api/informe/{rc}")
-async def informe_json(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
-    inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima, grupos)
+async def informe_json(request: Request, rc: str, potencia_mw: float | None = None, sup_minima: float | None = None,
+                       grupos: str | None = None):
+    rc = _rc_valida(rc)
+    inf = await _informe(rc, potencia_mw, sup_minima, grupos)
     comp = mapas.competencia(inf)
     salida = generar.para_json(inf)
     salida["panorama"] = render.panorama(inf, comp)
     salida["competencia"] = generar.para_json(comp)
     salida["parcela_geojson"] = mapping(geo.geom_a_wgs84(inf["parcela"]["geom"]))
+    permitido, motivo = acceso(request, rc, registrar=False)
+    salida["acceso"] = {"completo": permitido, "motivo": motivo, "pagos": pagos.activos(), "precio_informe": "1,99 €"}
+    if not permitido:
+        previa = {k: v for k, v in salida.items() if k in CAMPOS_PREVIA or k == "acceso"}
+        previa["parcela"] = {k: salida["parcela"].get(k) for k in ("rc", "direccion", "sup_grafica", "municipio")}
+        previa["puntuaciones"] = {g: {k: p.get(k) for k in ("nombre_perfil", "total", "semaforo", "veredicto", "mejor_uso", "bloqueos")}
+                                  for g, p in salida["puntuaciones"].items()}
+        return JSONResponse(previa)
     return JSONResponse(salida)
 
 
 @app.get("/informe/{rc}.pdf")
-async def informe_pdf(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
+async def informe_pdf(request: Request, rc: str, potencia_mw: float | None = None, sup_minima: float | None = None,
+                      grupos: str | None = None):
     rc = _rc_valida(rc)
+    permitido, motivo = acceso(request, rc)
+    if not permitido:
+        return redirigir_a_compra(rc, motivo)
     inf = await _informe(rc, potencia_mw, sup_minima, grupos)
     anexos = await render.fichas_catastro(inf)
     return Response(render.pdf(inf, anexos), media_type="application/pdf",
@@ -143,8 +164,13 @@ async def informe_pdf(rc: str, potencia_mw: float | None = None, sup_minima: flo
 
 
 @app.get("/informe/{rc}", response_class=HTMLResponse)
-async def informe_html(rc: str, potencia_mw: float | None = None, sup_minima: float | None = None, grupos: str | None = None):
-    inf = await _informe(_rc_valida(rc), potencia_mw, sup_minima, grupos)
+async def informe_html(request: Request, rc: str, potencia_mw: float | None = None, sup_minima: float | None = None,
+                       grupos: str | None = None):
+    rc = _rc_valida(rc)
+    permitido, motivo = acceso(request, rc)
+    if not permitido:
+        return redirigir_a_compra(rc, motivo)
+    inf = await _informe(rc, potencia_mw, sup_minima, grupos)
     return render.html(inf)
 
 
