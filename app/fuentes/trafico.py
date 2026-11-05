@@ -58,8 +58,14 @@ def pk_a_m(pk: str | float | None) -> float | None:
         return None
 
 
+ROMANOS = {"1": "I", "2": "II", "3": "III", "4": "IV", "5": "V", "6": "VI"}
+
+
 def normalizar_ref(ref: str) -> str:
-    return re.sub(r"\s+", "", (ref or "").upper())
+    """'n-2' -> 'N-II': las nacionales radiales se escriben en romanos (unas fuentes usan N-2 y otras N-II)."""
+    r = re.sub(r"\s+", "", (ref or "").upper())
+    m = re.fullmatch(r"N-([1-6])", r)
+    return f"N-{ROMANOS[m.group(1)]}" if m else r
 
 
 @lru_cache(maxsize=1)
@@ -329,9 +335,10 @@ def analizar_accesos(parcela: BaseGeometry, osm: dict) -> dict:
     }
 
 
-TIPOS_VIA = {"CL": "Calle", "AV": "Avenida", "RD": "Ronda", "CR": "Carretera", "PS": "Paseo", "PG": "Polígono", "PZ": "Plaza",
-             "TR": "Travesía", "CM": "Camino", "UR": "Urbanización", "LG": "Lugar", "PJ": "Pasaje", "PD": "Partida",
-             "BO": "Barrio", "GV": "Gran Vía", "RB": "Rambla", "AU": "Autovía", "AP": "Autopista", "VR": "Vereda", "CJ": "Calleja"}
+# En Cataluña los nombres de calle del Catastro están en catalán: se usa el tipo de vía en catalán.
+TIPOS_VIA = {"CL": "Carrer", "AV": "Avinguda", "RD": "Ronda", "CR": "Carretera", "PS": "Passeig", "PG": "Polígon", "PZ": "Plaça",
+             "TR": "Travessera", "CM": "Camí", "UR": "Urbanització", "LG": "Lloc", "PJ": "Passatge", "PD": "Partida",
+             "BO": "Barri", "GV": "Gran Via", "RB": "Rambla", "AU": "Autovia", "AP": "Autopista", "VR": "Vereda", "CJ": "Carreró"}
 
 
 def via_de_direccion(direccion: str, municipio: str = "") -> dict:
@@ -400,7 +407,8 @@ def via_de_la_parcela(traf: dict, direccion_catastral: str, municipio: str = "")
                 "distancia_m": c["distancia_m"], "titular": c.get("titular", ""), "referencia": None,
                 "estacion_lejana": c.get("estacion_lejana", False), "estaciones_misma_via": c.get("estaciones_misma_via", []),
                 "pk_estacion": c.get("pk_estacion", "")}
-    nombre = acceso.get("nombre") or dir_via.get("nombre") or (junto[0]["carretera"] if junto else "")
+    # La dirección catastral dice a qué vía da la parcela; la vía OSM más cercana puede ser una lateral.
+    nombre = dir_via.get("nombre") or acceso.get("nombre") or (junto[0]["carretera"] if junto else "")
     return {"estado": "sin_aforo", "nombre": nombre or "Vía de acceso no identificada",
-            "titular": acceso.get("titular") or ("Municipal" if dir_via and not dir_via.get("ref") else ""),
+            "titular": ("Municipal" if dir_via and not dir_via.get("ref") else "") or acceso.get("titular", ""),
             "referencia": cercana and {k: cercana.get(k) for k in ("carretera", "nombre", "imd", "anio", "distancia_m", "fuente")}}

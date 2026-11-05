@@ -87,7 +87,7 @@ def test_informe_completo(fuentes_simuladas):
     assert c32["imd"] == 61234 and c32["anio"] == 2025
     assert c32["titular"] == "Generalitat de Catalunya"
     vp = inf["trafico"]["via_parcela"]
-    assert vp["estado"] == "sin_aforo" and vp["nombre"] == "Carrer de prova"
+    assert vp["estado"] == "sin_aforo" and vp["nombre"] == "Carrer Prat de la Riba"
     assert vp["referencia"]["carretera"] == "C-32" and vp["referencia"]["imd"] == 61234
     acc = inf["trafico"]["accesos"]
     assert acc["frente_vial_m"] > 20  # la calle toca solo el borde sur de la parcela
@@ -266,7 +266,7 @@ def test_via_de_la_parcela_con_aforo():
 
 def test_direccion_con_articulo_al_final():
     from app.fuentes.trafico import via_de_direccion
-    assert via_de_direccion("AV MARESME DEL 1 MATARO (BARCELONA)", "Mataró")["nombre"] == "Avenida del Maresme"
+    assert via_de_direccion("AV MARESME DEL 1 MATARO (BARCELONA)", "Mataró")["nombre"] == "Avinguda del Maresme"
     assert via_de_direccion("CR N-II KM 640")["ref"] == "N-II"
 
 
