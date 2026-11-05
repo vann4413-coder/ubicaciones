@@ -230,11 +230,12 @@ async def consultar(parcela: BaseGeometry, radio: int = 5000) -> dict:
     q = construir_query(lon, lat, radio + extra)
     ultimo = None
     # Overpass a veces se satura: se prueba el servidor principal y dos réplicas públicas.
+    import asyncio
     for url in config.OVERPASS_URLS:
         try:
-            d = await http.post_json(url, {"data": q})
+            d = await asyncio.wait_for(http.post_json(url, {"data": q}), timeout=20)
             return resultado("ok", FUENTE, URL, fecha_dato="Datos de OpenStreetMap en la fecha de consulta",
                              radio_m=radio, **parse(d, parcela, radio))
-        except (http.ErrorFuente, ValueError) as e:
-            ultimo = e
+        except (http.ErrorFuente, ValueError, asyncio.TimeoutError) as e:
+            ultimo = e or "tiempo de espera agotado"
     return error(FUENTE, f"OpenStreetMap no responde: {ultimo}", URL)

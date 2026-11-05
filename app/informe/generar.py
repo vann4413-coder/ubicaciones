@@ -14,10 +14,13 @@ from app.fuentes.base import error, resultado
 log = logging.getLogger(__name__)
 
 
-async def _seguro(coro, fuente: str):
-    """Ninguna fuente puede tumbar el informe: si falla, queda marcada como error."""
+async def _seguro(coro, fuente: str, limite: float = 60):
+    """Ninguna fuente puede tumbar ni bloquear el informe: si falla o tarda demasiado, queda marcada como error."""
     try:
-        return await coro
+        return await asyncio.wait_for(coro, timeout=limite)
+    except asyncio.TimeoutError:
+        log.warning("Tiempo agotado en %s", fuente)
+        return error(fuente, "La fuente no ha respondido a tiempo.")
     except Exception as e:  # noqa: BLE001
         log.exception("Fallo en %s", fuente)
         return error(fuente, f"Error inesperado: {e}")
