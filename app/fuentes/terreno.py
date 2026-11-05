@@ -24,6 +24,29 @@ URL = "https://api.icgc.cat/territorial/docs"
 API = "https://api.icgc.cat/territorial"
 WMS_RIESGOS = "https://geoserveis.icgc.cat/serveis/catalunya/riscos-geologics/wms"
 RADIO_SONDEOS_M = 500
+_LIMITE = None
+
+
+def _turno() -> asyncio.Semaphore:
+    """El ICGC rechaza ráfagas de peticiones: como mucho 4 a la vez."""
+    global _LIMITE
+    if _LIMITE is None:
+        _LIMITE = asyncio.Semaphore(4)
+    return _LIMITE
+
+
+async def _con_reintento(hacer):
+    for intento in range(3):
+        async with _turno():
+            try:
+                r = await asyncio.wait_for(hacer(), timeout=20)
+            except Exception as e:  # noqa: BLE001
+                r = None
+                log.info("ICGC sin respuesta: %s", e)
+        if r is not None and r.status_code < 500 and r.status_code != 429:
+            return r
+        await asyncio.sleep(0.6 * (intento + 1))
+    return r
 
 # capa -> (grupo, título, función que da el detalle a partir de las propiedades)
 AFECCIONES = {
@@ -60,12 +83,10 @@ RIESGOS_WMS = [
 
 
 async def _interseccion(capa: str, rc: str) -> list[dict] | None:
-    try:
-        r = await asyncio.wait_for(http.cliente().post(
-            f"{API}/processes/intersection/execution",
-            json={"inputs": {"capa": capa, "refCadastral": rc, "skipgeometry": True}}), timeout=20)
-    except Exception as e:  # noqa: BLE001
-        log.info("ICGC %s: %s", capa, e)
+    r = await _con_reintento(lambda: http.cliente().post(
+        f"{API}/processes/intersection/execution",
+        json={"inputs": {"capa": capa, "refCadastral": rc, "skipgeometry": True}}))
+    if r is None:
         return None
     if r.status_code == 400:  # «No intersecta»
         return []
@@ -75,10 +96,10 @@ async def _interseccion(capa: str, rc: str) -> list[dict] | None:
 
 
 async def _punto(capas: str, lon: float, lat: float) -> list[dict]:
+    r = await _con_reintento(lambda: http.cliente().get(f"{API}/elements/{capas}/{lon:.6f},{lat:.6f}", params={"f": "json"}))
     try:
-        r = await asyncio.wait_for(http.cliente().get(f"{API}/elements/{capas}/{lon:.6f},{lat:.6f}", params={"f": "json"}), timeout=15)
-        return r.json().get("features") or [] if r.status_code == 200 else []
-    except Exception:  # noqa: BLE001
+        return r.json().get("features") or [] if r is not None and r.status_code == 200 else []
+    except ValueError:
         return []
 
 
@@ -142,13 +163,13 @@ async def geologia(rc: str) -> list[dict]:
 
 
 async def sondeos(lon: float, lat: float, parcela: BaseGeometry) -> list[dict]:
+    r = await _con_reintento(lambda: http.cliente().post(
+        f"{API}/processes/intersection/execution",
+        json={"inputs": {"capa": "prospeccions-geotecniques", "X": lon, "Y": lat, "EPSG": "4326",
+                         "buffer": RADIO_SONDEOS_M, "skipgeometry": False}}))
     try:
-        r = await asyncio.wait_for(http.cliente().post(
-            f"{API}/processes/intersection/execution",
-            json={"inputs": {"capa": "prospeccions-geotecniques", "X": lon, "Y": lat, "EPSG": "4326",
-                             "buffer": RADIO_SONDEOS_M, "skipgeometry": False}}), timeout=20)
-        feats = r.json().get("features") or [] if r.status_code == 200 else []
-    except Exception:  # noqa: BLE001
+        feats = r.json().get("features") or [] if r is not None and r.status_code == 200 else []
+    except ValueError:
         return []
     salida = []
     for f in feats:
