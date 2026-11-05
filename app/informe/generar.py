@@ -152,7 +152,11 @@ def para_json(obj):
     if isinstance(obj, BaseGeometry):
         return None
     if isinstance(obj, dict):
-        return {k: para_json(v) for k, v in obj.items() if k not in ("geom", "geoms")}
+        # La API no revela de qué servicio sale cada dato (solo el informe lleva los créditos legales).
+        fuera = {"geom", "geoms", "fuente", "capa_wfs", "anexo", "aforos_locales_cargados", "sin_respuesta", "organismo"}
+        if "estado" in obj and "fecha_consulta" in obj:
+            fuera |= {"url", "fecha_consulta"}
+        return {k: para_json(v) for k, v in obj.items() if k not in fuera}
     if isinstance(obj, (list, tuple)):
         return [para_json(v) for v in obj]
     return obj

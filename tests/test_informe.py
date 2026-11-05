@@ -160,7 +160,7 @@ def test_informe_completo(fuentes_simuladas):
     for seccion in ["De un vistazo", "Riesgos y próximos pasos", "Parcela", "Urbanismo", "Cambios de planeamiento recientes",
                     "Agua: flujo preferente e inundabilidad", "Tráfico y accesos", "Entorno en 5 km: actividad económica", "Estaciones de servicio en 2 km",
                     "Red eléctrica", "Evolución histórica y suelo contaminado", "Valor de referencia del suelo",
-                    "Puntuación detallada", "Fuentes y fechas"]:
+                    "Puntuación detallada", "Terreno, riesgos y afecciones"]:
         assert seccion in html, seccion
     assert "61.234" in html  # formato español
     assert "Zona de flujo preferente" in html and 'style="color:var(--verde)">No' in html
@@ -178,7 +178,7 @@ def test_fuente_caida_no_tumba_el_informe(fuentes_simuladas):
     p = inf["puntuaciones"]["movilidad"]["usos"]["estacion_servicio"]
     assert "urbanismo" in p["faltan"]
     assert p["confianza"] in ("media", "baja")
-    assert "No disponible" in render.html(inf)
+    assert "no está disponible" in render.html(inf)
 
 
 # ---------- Descarga de aforos del visor de la Generalitat ----------
@@ -308,3 +308,11 @@ def test_terreno_icgc(fuentes_simuladas):
     assert any("Patrimonio" in p["texto"] for p in inf["pasos"])
     from app.informe import render
     assert render.pdf(inf)[:4] == b"%PDF"
+
+
+def test_api_no_revela_fuentes(fuentes_simuladas):
+    import json
+    inf = correr(generar.construir("4595201DF5949N"))
+    texto = json.dumps(generar.para_json(inf), ensure_ascii=False)
+    assert '"fuente"' not in texto and "gencat.cat/visors" not in texto
+    assert "Fuentes" not in render.html(inf)

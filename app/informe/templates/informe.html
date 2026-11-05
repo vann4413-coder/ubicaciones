@@ -207,7 +207,7 @@
     {% endfor %}
     </div>
   </div>
-  <div class="pie-portada">Puntuaciones de 0 a 100 por grupo de uso (la del uso que mejor encaja): verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Elaborado con datos públicos oficiales. Fuentes y fechas en el anexo.</div>
+  <div class="pie-portada">Puntuaciones de 0 a 100 por grupo de uso (la del uso que mejor encaja): verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Elaborado con datos públicos oficiales.</div>
 </div>
 
 {# ======================= RIESGOS ======================= #}
@@ -235,7 +235,7 @@
         <div class="dato"><span>Lado menor / mayor</span><b>{{ inf.metricas.lado_menor_m|num(0) }} / {{ inf.metricas.lado_mayor_m|num(0) }} m</b></div>
         <div class="dato"><span>Ancho útil máximo</span><b>{{ inf.metricas.ancho_util_m|num(1) }} m</b></div>
         {% set te = inf.terreno or {} %}
-        {% if te.direccion_postal %}<div class="dato ancho"><span>Dirección postal (ICGC)</span><b>{{ te.direccion_postal.etiqueta }}</b>{% if te.direccion_postal.codigo_postal %} <small>· CP {{ te.direccion_postal.codigo_postal }}</small>{% endif %}</div>{% endif %}
+        {% if te.direccion_postal %}<div class="dato ancho"><span>Dirección postal</span><b>{{ te.direccion_postal.etiqueta }}</b>{% if te.direccion_postal.codigo_postal %} <small>· CP {{ te.direccion_postal.codigo_postal }}</small>{% endif %}</div>{% endif %}
         {% if te.relieve %}<div class="dato"><span>Cota</span><b>{{ te.relieve.cota_media|num(0) }} m</b>{% if te.relieve.desnivel_m is defined %} <small>({{ te.relieve.cota_min|num(0) }}–{{ te.relieve.cota_max|num(0) }} m)</small>{% endif %}</div>
         {% if te.relieve.desnivel_m is defined %}<div class="dato"><span>Desnivel dentro de la parcela</span><b>{{ te.relieve.desnivel_m|num(1) }} m</b>{% if te.relieve.pendiente_pct %} <small>· {{ te.relieve.pendiente_pct|num(1) }} %</small>{% endif %}</div>{% endif %}{% endif %}
         <div class="dato ancho"><span>Coordenadas</span><b>{{ "%.6f"|format(inf.lat) }}, {{ "%.6f"|format(inf.lon) }}</b> <small>· UTM 31N {{ inf.utm[0] }}, {{ inf.utm[1] }}</small></div>
@@ -251,14 +251,14 @@
       {% set m = mapas.parcela %}
       <div class="mapa"><img src="{{ m.orto }}"><img src="{{ m.catastro }}">{{ m.svg|safe }}</div>
       <div class="leyenda"><i style="background:#e11d48"></i>Parcela <i style="background:#facc15"></i>Colindantes · Ortofoto ICGC y Catastro</div>
-      <p class="enlaces-calle">Ver la calle: <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{ inf.lat }},{{ inf.lon }}">Google Street View</a> · <a href="https://visors.icgc.cat/vissir/#loc=18/{{ inf.lat }}/{{ inf.lon }}">Visor ICGC (fotos de calle 3D)</a></p>
+      <p class="enlaces-calle">Ver la calle: <a href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint={{ inf.lat }},{{ inf.lon }}">Google Street View</a> · <a href="https://visors.icgc.cat/vissir/#loc=18/{{ inf.lat }}/{{ inf.lon }}">Fotos de calle 3D</a></p>
     </div>
   </div>
   {% set ti = inf.titulares %}
   <h3>Actividades y empresas registradas en la parcela</h3>
   {% if ti.registros %}
   <table><tr><th>Establecimiento</th><th>Actividad</th><th>Empresa titular</th><th>Contacto</th><th>Situación</th></tr>
-  {% for r in ti.registros %}<tr><td><b>{{ r.nombre or "—" }}</b><br><small>{{ r.fuente }}</small></td><td>{{ r.actividad }}{% if r.detalle %}<br><small>{{ r.detalle }}</small>{% endif %}</td>
+  {% for r in ti.registros %}<tr><td><b>{{ r.nombre or "—" }}</b></td><td>{{ r.actividad }}{% if r.detalle %}<br><small>{{ r.detalle }}</small>{% endif %}</td>
     <td>{{ r.empresa or "—" }}{% if r.cif %}<br><small>CIF {{ r.cif }}</small>{% endif %}</td><td><small>{{ r.contacto or "—" }}</small></td><td><small>{{ r.situacion }}</small></td></tr>{% endfor %}
   </table>
   {% elif ti.estado == "ok" %}<p class="sin">No consta ninguna actividad en los registros públicos consultados.</p>
@@ -304,7 +304,7 @@
     {% for c in u.clasificaciones %}<tr><td>{{ c.codigo }} · {{ c.descripcion }}</td><td>{{ c.descripcion_municipal }}</td><td class="n">{{ c.pct }}%</td></tr>{% endfor %}
     </table>
     <h3>Calificación</h3>
-    <table><tr><th>Clave municipal</th><th>Clave MUC</th><th class="n">% parcela</th></tr>
+    <table><tr><th>Clave municipal</th><th>Clave homogeneizada</th><th class="n">% parcela</th></tr>
     {% for q in u.calificaciones %}<tr><td><b>{{ q.codigo_municipal }}</b> · {{ q.descripcion_municipal }}</td><td>{{ q.codigo_muc }} · {{ q.descripcion_muc }}</td><td class="n">{{ q.pct }}%</td></tr>{% endfor %}
     </table>
     {% if u.sectores %}
@@ -322,7 +322,7 @@
     {% if u.plan_general %}
     <h3>Planeamiento general vigente</h3>
     <p>{{ u.plan_general.tipo }} de {{ u.plan_general.municipio }} · expediente {{ u.plan_general.expediente }} · aprobado {{ u.plan_general.aprobacion|fecha }} · DOGC {{ u.plan_general.publicacion_dogc|fecha }}
-    {% if u.plan_general.url_rpuc %}· <a href="{{ u.plan_general.url_rpuc }}">ver en el RPUC</a>{% endif %}</p>
+    {% if u.plan_general.url_rpuc %}· <a href="{{ u.plan_general.url_rpuc }}">ver el plan</a>{% endif %}</p>
     {% endif %}
     {% if u.aviso %}<div class="aviso">{{ u.aviso }}</div>{% endif %}
   {% else %}
@@ -330,16 +330,14 @@
   {% endif %}
   <h3>{{ icono("planeamiento", "#12355b", 14) }} Documentación de planeamiento de {{ inf.municipio.nombre }}</h3>
   <ul class="enlaces">
-    {% if u.plan_general and u.plan_general.url_rpuc %}<li><a href="{{ u.plan_general.url_rpuc }}">Plan general vigente en el Registre de Planejament Urbanístic (normativa, planos y memoria)</a></li>{% endif %}
+    {% if u.plan_general and u.plan_general.url_rpuc %}<li><a href="{{ u.plan_general.url_rpuc }}">Plan general vigente (normativa, planos y memoria)</a></li>{% endif %}
     {% for e in (inf.cambios.recientes or [])[:5] %}<li><a href="{{ e.url }}">{{ e.fecha|fecha }} · {{ e.titulo }}</a></li>{% endfor %}
-    <li><a href="https://planejamenturbanisme.territori.gencat.cat/rpucportal/">Todo el planeamiento inscrito del municipio (RPUC)</a></li>
-    <li><a href="https://sig.gencat.cat/visors/hipermapa.html">Mapa Urbanístic de Catalunya en el Hipermapa</a></li>
   </ul>
 
   {% set c = inf.cambios %}
   <h3>{{ icono("planeamiento", "#12355b", 14) }} Cambios de planeamiento recientes</h3>
   {% if c.estado == "ok" %}
-    <p>{{ c.total_municipio }} instrumentos inscritos en el RPUC para {{ inf.municipio.nombre }}; {{ c.recientes|length }} aprobados en los últimos {{ c.anios }} años.</p>
+    <p>{{ c.total_municipio }} instrumentos de planeamiento inscritos para {{ inf.municipio.nombre }}; {{ c.recientes|length }} aprobados en los últimos {{ c.anios }} años.</p>
     {% if c.recientes %}
     <table><tr><th>Fecha</th><th>Instrumento</th><th>Título</th></tr>
     {% for e in c.recientes[:12] %}<tr><td>{{ e.fecha|fecha }}</td><td>{{ e.instrumento }}</td><td><a href="{{ e.url }}">{{ e.titulo }}</a></td></tr>{% endfor %}
@@ -373,12 +371,10 @@
         <div class="dato ancho"><span>Zona de servidumbre (5 m) / de policía (100 m)</span><b>{{ "Sí" if a.en_servidumbre else "No" }} / {{ "Sí" if a.en_zona_policia else "No" }}</b></div>
         {% endif %}
       </div>
-      {% if a.tramo_zfp %}<p>Tramo: {{ a.tramo_zfp.rio }} · {{ a.tramo_zfp.arpsi }} {% if a.tramo_zfp.ficha %}· <a href="{{ a.tramo_zfp.ficha }}">ficha técnica ACA</a>{% endif %}</p>{% endif %}
+      {% if a.tramo_zfp %}<p>Tramo: {{ a.tramo_zfp.rio }} · {{ a.tramo_zfp.arpsi }} {% if a.tramo_zfp.ficha %}· <a href="{{ a.tramo_zfp.ficha }}">ficha técnica del tramo</a>{% endif %}</p>{% endif %}
       {% if r.nivel == "zfp" %}<div class="bloqueo">En zona de flujo preferente no se autorizan, con carácter general, estaciones de servicio ni la mayoría de usos edificatorios (art. 9 bis RDPH).</div>{% endif %}
       {% if a.estado == "ok" and a.en_zona_policia %}<div class="aviso">En zona de policía, cualquier obra necesita autorización de la ACA.</div>{% endif %}
-      {% if a.estado != "ok" %}<div class="aviso">ACA: {{ a.mensaje }}</div>{% endif %}
-      {% if s.estado != "ok" %}<div class="aviso">SNCZI: {{ s.mensaje }}</div>{% endif %}
-      <p class="pie">Fuentes: láminas de inundabilidad de la ACA y SNCZI del Ministerio para la Transición Ecológica.</p>
+      {% if a.estado != "ok" or s.estado != "ok" %}<div class="aviso">Parte de la información de inundabilidad no está disponible en este momento.</div>{% endif %}
     </div>
     <div>
       {% set m = mapas.inundabilidad %}
@@ -424,16 +420,14 @@
   {% for a in te.afecciones %}<tr><td>{{ a.grupo }}</td><td><b>{{ a.titulo }}</b></td><td>{{ a.detalle or "—" }}</td></tr>{% endfor %}
   </table>
   {% else %}<p><b>Ninguna afección</b> de las consultadas: espacios naturales protegidos (PEIN, Natura 2000), patrimonio arquitectónico y yacimientos, zonas fluviales, riesgo químico, mercancías peligrosas, pendientes superiores al 20 % ni cielo nocturno.</p>{% endif %}
-  {% if te.sin_respuesta %}<p class="pie">Sin respuesta del servicio en: {{ te.sin_respuesta|join(", ") }}.</p>{% endif %}
 
   <h3>Sondeos geotécnicos a menos de {{ te.radio_sondeos_m }} m</h3>
   {% if te.sondeos %}
   <table><tr><th>Sondeo</th><th>Año</th><th>Técnica</th><th class="n">Profundidad</th><th>Nivel freático</th><th class="n">Distancia</th></tr>
   {% for so in te.sondeos %}<tr><td>{% if so.pdf %}<a href="{{ so.pdf }}">{{ so.informe }} {{ so.sondeo }}</a>{% else %}{{ so.informe }} {{ so.sondeo }}{% endif %}<br><small>{{ so.promotor }}{% if so.ensayos %} · con ensayos{% endif %}</small></td><td>{{ so.anio }}</td><td><small>{{ so.tipo }}</small></td><td class="n">{{ so.profundidad_m|num(1) }} m</td><td>{{ (so.freatico_m ~ " m") if so.freatico_m else "—" }}</td><td class="n">{{ so.distancia_m|num }} m</td></tr>{% endfor %}
   </table>
-  <p class="pie">Columnas de sondeo de la base de datos geotécnica del ICGC (enlace en cada sondeo): orientan sobre el terreno y la cimentación antes de encargar un estudio geotécnico propio.</p>
+  <p class="pie">Columnas de sondeo publicadas (enlace en cada sondeo): orientan sobre el terreno y la cimentación antes de encargar un estudio geotécnico propio.</p>
   {% else %}<p class="sin">No hay sondeos geotécnicos publicados a menos de {{ te.radio_sondeos_m }} m.</p>{% endif %}
-  <p class="pie">Fuente: {{ te.fuente }}.</p>
   {% else %}<p class="sin">{{ te.mensaje or "Servicio del ICGC no disponible." }}</p>{% endif %}
 </section>
 
@@ -456,13 +450,13 @@
   {% set t = inf.trafico %}
   {% if t.carreteras %}
   {% set max_imd = t.carreteras|selectattr("imd")|map(attribute="imd")|max if t.carreteras|selectattr("imd")|list else 1 %}
-  <table><tr><th>Carretera</th><th class="n">Distancia</th><th style="width:30%">IMD (veh/día)</th><th class="n">% pesados</th><th class="n">Año</th><th>Titular y fuente</th></tr>
+  <table><tr><th>Carretera</th><th class="n">Distancia</th><th style="width:30%">IMD (veh/día)</th><th class="n">% pesados</th><th class="n">Año</th><th>Titular</th></tr>
   {% for c in t.carreteras %}
     <tr><td><b>{{ c.carretera }}</b>{% if c.nombre %}<br><small>{{ c.nombre }}</small>{% endif %}</td><td class="n">{{ c.distancia_m|num }} m</td>
     {% if c.imd %}<td><b>{{ c.imd|num }}</b><div class="barra"><i style="width:{{ (100 * c.imd / max_imd)|round(1) }}%; background:var(--marca)"></i></div></td>
       <td class="n">{{ c.pct_pesados|num(1) if c.pct_pesados is not none else "—" }}</td><td class="n">{{ c.anio }}</td>
     {% else %}<td class="sin">sin dato</td><td></td><td></td>{% endif %}
-    <td><small>{{ c.titular }}{% if c.titular_inferido %}*{% endif %} · {{ c.fuente or "sin aforo oficial" }}{% if c.estacion %} · estación {{ c.estacion }}{% endif %}{% if c.pk_estacion %} · PK {{ c.pk_estacion }}{% endif %}</small></td></tr>
+    <td><small>{{ c.titular }}{% if c.titular_inferido %}*{% endif %}{% if not c.imd %} · sin aforo oficial{% endif %}{% if c.pk_estacion %} · aforo en PK {{ c.pk_estacion }}{% endif %}</small></td></tr>
   {% endfor %}
   </table>
   <p class="pie">IMD: intensidad media diaria. Se muestra el aforo oficial más reciente; si no hay aforo, «sin dato» (nunca se estima). * Titular deducido de la denominación de la vía.</p>
@@ -509,7 +503,7 @@
     {% endif %}
   {% endfor %}
   </table>
-  <p class="pie">«Otros comercios» y «Oficinas» se cuentan hasta 1 km. Las gasolineras salen del geoportal del Ministerio; el resto, de OpenStreetMap, que es muy completo en comercio y restauración pero puede no tener todas las naves sin rótulo.</p>
+  <p class="pie">«Otros comercios» y «Oficinas» se cuentan hasta 1 km. Puede no incluir naves o locales sin rótulo.</p>
   <h3>{{ icono("entorno", "#12355b", 14) }} Lugares más cercanos por tipo</h3>
   <div class="lugares">
   {% for f in e5.resumen if f.clave not in ("poligonos", "oficinas") %}
@@ -569,7 +563,7 @@
     <td class="n">{{ s.gasolina_95|num(3) if s.gasolina_95 else "—" }}</td><td><small>{{ s.horario }}</small></td></tr>
   {% endfor %}
   </table>
-  <p class="pie">Precios del geoportal de carburantes a {{ gs.fecha_dato }}. Distancias en línea recta. El número coincide con el del mapa.</p>
+  <p class="pie">Precios a {{ gs.fecha_dato }}. Distancias en línea recta. El número coincide con el del mapa.</p>
   {% elif gs.estado == "ok" %}<p>No hay estaciones de servicio a menos de 2 km.</p>
   {% else %}<p class="sin">{{ gs.mensaje }}</p>{% endif %}
 
@@ -609,7 +603,6 @@
   {% else %}
     <div class="info">Compare las imágenes para detectar usos anteriores (antigua gasolinera o industria: posible suelo contaminado), construcciones recientes o si la parcela ha estado siempre libre.</div>
   {% endif %}
-  <p class="pie">Fuente: {{ e.fuente }}.</p>
   <h3>{{ icono("suelo", "#12355b", 14) }} Registro de suelos contaminados</h3>
   {% set sc = inf.suelos_contaminados %}
   {% if sc.estado == "ok" %}
@@ -672,16 +665,9 @@
   <div class="info">Semáforo: verde ≥ 75 · ámbar 50–74 · rojo &lt; 50. Los filtros eliminatorios (zona de flujo preferente, calificación incompatible o solo con plan especial y, para recarga, nudo sin capacidad y sin marca 0*) dan «No apta» con independencia de la nota. Los pesos de cada uso son de partida y se ajustan con la experiencia de los clientes.</div>
 </section>
 
-{# ======================= ANEXO ======================= #}
-<section class="salto">
-  {{ cabecera("A", "Fuentes y fechas", "fuentes") }}
-  <table><tr><th>Sección</th><th>Fuente</th><th>Fecha del dato</th><th>Consulta</th><th>Estado</th></tr>
-  {% for a in inf.anexo %}
-    <tr><td><b>{{ a.seccion }}</b></td><td>{{ a.fuente }}{% if a.url %}<br><a href="{{ a.url }}"><small>{{ a.url }}</small></a>{% endif %}</td>
-    <td>{{ a.fecha_dato or "—" }}</td><td>{{ a.fecha_consulta|fecha }}</td><td>{{ estados[a.estado] or a.estado }}{% if a.mensaje %}<br><small>{{ a.mensaje }}</small>{% endif %}</td></tr>
-  {% endfor %}
-  </table>
-  <p class="pie">Este informe recopila información pública con fines orientativos. No sustituye a la cèdula urbanística, a los informes de los organismos competentes ni a una tasación oficial. Datos catastrales: © Dirección General del Catastro. Cartografía: © ICGC. Datos de OpenStreetMap © colaboradores de OpenStreetMap (ODbL).</p>
+{# ======================= AVISO LEGAL ======================= #}
+<section>
+  <p class="pie" style="margin-top:6mm; border-top: 1px solid var(--linea); padding-top: 2.5mm">Informe elaborado a partir de información pública oficial, con fines orientativos. No sustituye a la cédula urbanística, a los informes de los organismos competentes ni a una tasación oficial. Datos: © Dirección General del Catastro · © Institut Cartogràfic i Geològic de Catalunya · © colaboradores de OpenStreetMap (ODbL) · administraciones públicas.</p>
 </section>
 
 </body>
