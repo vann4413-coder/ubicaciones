@@ -84,5 +84,5 @@ RADIOS_TRAFICO = [500, 1000]
 # --- Marca ---
 # Nombre provisional de la plataforma: se cambia con la variable de entorno UBI_MARCA.
 import os as _os
-MARCA = _os.getenv("UBI_MARCA", "Parcela 360")
+MARCA = _os.getenv("UBI_MARCA", "Parcelas 360")
 MARCA_LEMA = _os.getenv("UBI_MARCA_LEMA", "Informe de idoneidad de ubicaciones")

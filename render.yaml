@@ -9,7 +9,7 @@ services:
     autoDeploy: true
     envVars:
       - key: UBI_MARCA
-        value: Parcela 360
+        value: Parcelas 360
       - key: UBI_MARCA_LEMA
         value: Informe de idoneidad de ubicaciones
       - key: ANTHROPIC_API_KEY
