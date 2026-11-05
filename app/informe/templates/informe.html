@@ -143,6 +143,11 @@
   .perfil-det .top small { margin-left: 2mm; color: var(--suave); }
   .usos { display: flex; flex-wrap: wrap; gap: 1.5mm 5mm; margin: 2.5mm 0 1mm; font-size: 8pt; }
   .pie { font-size: 7.5pt; color: var(--suave); }
+  .lugares { columns: 2; column-gap: 7mm; margin-bottom: 3mm; }
+  .lugar-grupo { break-inside: avoid; margin-bottom: 3mm; }
+  .lugar-tit { font-weight: 700; font-size: 8.5pt; color: var(--marca); border-bottom: 1.5px solid var(--tinta); padding-bottom: .8mm; margin-bottom: .8mm; }
+  .lugar { display: flex; justify-content: space-between; gap: 3mm; font-size: 8pt; padding: .6mm 0; border-bottom: 1px solid var(--linea); }
+  .lugar .d { color: var(--suave); white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -414,6 +419,22 @@
   {% endfor %}
   </table>
   <p class="pie">«Otros comercios» y «Oficinas» se cuentan hasta 1 km. Las gasolineras salen del geoportal del Ministerio; el resto, de OpenStreetMap, que es muy completo en comercio y restauración pero puede no tener todas las naves sin rótulo.</p>
+  <h3>{{ icono("entorno", "#12355b", 14) }} Lugares más cercanos por tipo</h3>
+  <div class="lugares">
+  {% for f in e5.resumen if f.clave not in ("poligonos", "oficinas") %}
+    {% if f.clave == "gasolineras" and comp.estado == "ok" %}
+      {% set lista = comp.estaciones[:6] %}
+    {% else %}
+      {% set lista = (e5.puntos|selectattr("cat", "equalto", f.clave)|selectattr("nombre")|list)[:6] %}
+    {% endif %}
+    {% if lista %}
+    <div class="lugar-grupo">
+      <div class="lugar-tit"><span class="punto" style="background:{{ f.color }}"></span> {{ f.nombre }}</div>
+      {% for x in lista %}<div class="lugar"><span>{{ x.marca if f.clave == "gasolineras" and comp.estado == "ok" else x.nombre }}{% if f.clave == "gasolineras" and x.gasoleo_a %} <small>· {{ x.gasoleo_a|num(3) }} €/l</small>{% endif %}</span><span class="d">{{ x.distancia_m|num }} m</span></div>{% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+  </div>
   {% set zonas = e5.zonas_industriales|selectattr("nombre")|list %}
   {% if zonas %}
   <h3>{{ icono("urbanismo", "#12355b", 14) }} Polígonos industriales cercanos</h3>
