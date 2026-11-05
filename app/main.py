@@ -194,4 +194,6 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
 
 @app.get("/salud")
 async def salud():
-    return {"ok": True}
+    from app.fuentes import red_electrica
+    nudos = red_electrica.nudos()
+    return {"ok": True, "capacidad_red": {"posiciones": len(nudos), "fichero": nudos[0]["fecha_fichero"] if nudos else None}}

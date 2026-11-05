@@ -287,8 +287,8 @@ def test_aforo_de_la_misma_via_lejos():
 
 def test_capacidad_red_edistribucion():
     from scripts.descargar_capacidad_red import convertir
-    txt = ("cab\nR1-299;08;08121;454402,58;4599346,09;123;25;1,80;0;12,50;0,60;;;0; ;09 - Cataluña;MATARO;Barcelona;Mataró\n"
+    txt = ("cab\nR1-299;08;08121;953000,00;4609000,00;123;25;1,80;0;12,50;0,60;;;0; ;09 - Cataluña;MATARO;Barcelona;Mataró\n"
            "R1-299;04;04079;535771,67;4074262,07;5;66;0,00;0;0,00;0,00;;;0; ;01 - Andalucía;X;Almería;Y\n")
     filas = convertir(txt, "2026-11")
     assert len(filas) == 1 and filas[0]["nudo"] == "MATARO" and filas[0]["cap_disponible_mw"] == 1.8
-    assert 2.4 < filas[0]["lon"] < 2.5
+    assert 2.3 < filas[0]["lon"] < 2.6 and 41.4 < filas[0]["lat"] < 41.7

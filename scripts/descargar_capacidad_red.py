@@ -42,7 +42,8 @@ def enlace_csv(html: str) -> tuple[str, str]:
 
 
 def convertir(texto: str, fecha: str) -> list[dict]:
-    a_wgs = Transformer.from_crs(config.EPSG_UTM, config.EPSG_WGS84, always_xy=True)
+    # e-distribución da las coordenadas de toda España en ETRS89 UTM huso 30 (también las de Cataluña).
+    a_wgs = Transformer.from_crs(25830, config.EPSG_WGS84, always_xy=True)
     filas = list(csv.reader(io.StringIO(texto), delimiter=";"))
     salida = []
     for r in filas[1:]:
@@ -70,6 +71,8 @@ def main():
     except UnicodeDecodeError:
         texto = datos.decode("latin-1")
     filas = convertir(texto, fecha)
+    if not filas:
+        raise SystemExit("El fichero de e-distribución no trae filas de Cataluña.")
     config.FICHERO_RED.parent.mkdir(parents=True, exist_ok=True)
     with open(config.FICHERO_RED, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=CAMPOS)

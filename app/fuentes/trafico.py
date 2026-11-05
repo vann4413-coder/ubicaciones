@@ -364,6 +364,15 @@ def via_de_direccion(direccion: str, municipio: str = "") -> dict:
     return {"tipo": TIPOS_VIA.get(tipo, tipo), "nombre": bonito, "ref": ref}
 
 
+def _clave_nombre(nombre: str) -> str:
+    """Parte significativa del nombre de una calle, sin tipo de vía ni artículos: 'Avinguda del Maresme' -> 'MARESME'."""
+    import unicodedata
+    t = "".join(c for c in unicodedata.normalize("NFD", (nombre or "").upper()) if unicodedata.category(c) != "Mn")
+    vacias = {"AVENIDA", "AVINGUDA", "AV", "CALLE", "CARRER", "CL", "RONDA", "PASEO", "PASSEIG", "CARRETERA", "CAMI", "CAMINO",
+              "PLAZA", "PLACA", "DE", "DEL", "DELS", "LA", "LES", "LOS", "LAS", "EL", "ELS", "D", "L", "I", "Y"}
+    return " ".join(p for p in re.split(r"[^A-Z0-9]+", t) if p and p not in vacias)
+
+
 def via_de_la_parcela(traf: dict, direccion_catastral: str, municipio: str = "") -> dict:
     """La vía a la que da la parcela y su IMD (dato clave del informe).
 
@@ -377,6 +386,11 @@ def via_de_la_parcela(traf: dict, direccion_catastral: str, municipio: str = "")
     junto = [c for c in carreteras if c["distancia_m"] <= 40]
     if dir_via.get("ref"):
         junto = [c for c in carreteras if normalizar_ref(c["carretera"]) == dir_via["ref"]] or junto
+    elif dir_via.get("nombre"):
+        # La dirección es el nombre urbano de una carretera (p. ej. Av. del Maresme = N-II en Mataró)
+        clave = _clave_nombre(dir_via["nombre"])
+        por_nombre = [c for c in carreteras if clave and c["distancia_m"] <= 150 and clave in _clave_nombre(c.get("nombre", ""))]
+        junto = por_nombre or junto
     con_imd = [c for c in junto if c.get("imd")]
     cercana = min((c for c in carreteras if c.get("imd")), key=lambda c: c["distancia_m"], default=None)
     if con_imd:
