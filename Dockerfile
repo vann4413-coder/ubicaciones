@@ -27,5 +27,6 @@ COPY --from=entorno_osm /datos_osm/ ./datos/
 
 ENV PORT=8000
 EXPOSE 8000
-# Al arrancar: si no hay aforos, se bajan del visor de la Generalitat (no bloquea si falla).
-CMD sh -c "[ -f datos/aforos.csv ] || python -m scripts.descargar_aforos_gencat || true; uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"
+# Al arrancar: si no hay aforos, se bajan del visor de la Generalitat; la capacidad de red de e-distribución
+# se refresca en segundo plano (publica un fichero nuevo cada mes). Nada de esto bloquea si falla.
+CMD sh -c "[ -f datos/aforos.csv ] || python -m scripts.descargar_aforos_gencat || true; (timeout 180 python -m scripts.descargar_capacidad_red || true) & uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"

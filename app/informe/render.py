@@ -72,8 +72,15 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
     carr = [c for c in inf["trafico"].get("carreteras", []) if c.get("imd")]
     if vp.get("estado") == "ok":
         estado = "verde" if vp["imd"] >= 10000 else "ambar" if vp["imd"] >= 3000 else "rojo"
-        fichas.append({"icono": "trafico", "titulo": "IMD de la vía de la parcela", "valor": f"{num(vp['imd'])} veh/día",
-                       "detalle": f"{vp['nombre']} ({vp['anio']})", "estado": estado})
+        ests = vp.get("estaciones_misma_via") or []
+        if vp.get("estacion_lejana") and len(ests) > 1:
+            lo, hi = sorted(e["imd"] for e in ests[:2])
+            valor, det = f"{num(lo)}–{num(hi)} veh/día", f"{vp['nombre']} · estaciones a ambos lados ({vp['anio']})"
+        elif vp.get("estacion_lejana"):
+            valor, det = f"{num(vp['imd'])} veh/día", f"{vp['nombre']} · estación a {num(ests[0]['distancia_estacion_m'] / 1000, 1)} km ({vp['anio']})"
+        else:
+            valor, det = f"{num(vp['imd'])} veh/día", f"{vp['nombre']} ({vp['anio']})"
+        fichas.append({"icono": "trafico", "titulo": "IMD de la vía de la parcela", "valor": valor, "detalle": det, "estado": estado})
     elif vp:
         ref = vp.get("referencia")
         fichas.append({"icono": "trafico", "titulo": "IMD de la vía de la parcela", "valor": "Sin aforo oficial",

@@ -116,6 +116,4 @@ def riesgos_y_pasos(inf: dict) -> list[dict]:
         pasos.append({"tipo": "riesgo", "texto": f"Hay {len(sc['cercanos'])} emplazamiento(s) con suelo contaminado a menos de {sc['radio_m']} m."})
     if ev.get("alerta_contaminacion"):
         pasos.append({"tipo": "riesgo", "texto": "Uso anterior con posible afectación del suelo: valorar un estudio de caracterización del suelo."})
-    if not any(c.get("imd") for c in t.get("carreteras", [])):
-        pasos.append({"tipo": "paso", "texto": "Sin aforos oficiales cercanos: valorar un conteo de tráfico propio."})
     return pasos

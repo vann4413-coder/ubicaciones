@@ -1,4 +1,4 @@
-"""Compatibilidad orientativa de usos según la calificación sintética del MUC.
+"""Compatibilidad de usos según la calificación sintética del MUC.
 
 Es una lectura de la clave sintética y su descripción, no de la normativa
 municipal. Por eso el resultado siempre se presenta como orientativo.

@@ -50,7 +50,15 @@
   .ico { vertical-align: -3px; }
 
   /* ---------- Portada ---------- */
-  .portada { height: 297mm; position: relative; page-break-after: always; }
+  .portada { height: 297mm; position: relative; page-break-after: always; display: flex; flex-direction: column; overflow: hidden; }
+  .portada.compacta .hero { height: 70mm; }
+  .portada.compacta .hero img, .portada.compacta .hero svg { top: -70mm; }
+  .portada.compacta h1 { font-size: 18pt; margin-top: 5mm; }
+  .portada.compacta .banda { padding-bottom: 7mm; }
+  .portada.compacta .resumen { font-size: 8.8pt; line-height: 1.42; }
+  .portada.compacta .vistazo { gap: 2.2mm; margin-bottom: 0; }
+  .portada.compacta .ficha-v { padding: 2mm 2.4mm; }
+  .portada.compacta .ficha-v .d { font-size: 6.8pt; }
   .portada .banda { background: var(--marca); color: #fff; padding: 11mm 14mm 9mm; }
   .portada .logo { font-size: 11pt; font-weight: 800; letter-spacing: .02em; }
   .portada .logo i { display: inline-block; width: 3.2mm; height: 3.2mm; background: var(--acento); border-radius: 1mm; margin-right: 2mm; vertical-align: -.3mm; }
@@ -72,11 +80,11 @@
   .nota .veredicto { display: inline-block; margin-top: 1mm; padding: .5mm 2.5mm; border-radius: 3mm; font-size: 8pt; font-weight: 700; color: #fff; }
   .nota .conf { display: block; font-size: 7pt; color: var(--suave); margin-top: 1mm; }
   .verde { background: var(--verde); } .ambar { background: var(--ambar); } .rojo { background: var(--rojo); } .gris { background: var(--gris); }
-  .portada .cuerpo { padding: 5mm 14mm 0; }
+  .portada .cuerpo { padding: 5mm 14mm 4mm; flex: none; }
   .resumen { font-size: 9.5pt; line-height: 1.5; }
   .resumen-tit { font-size: 8pt; font-weight: 700; color: var(--marca); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1.5mm; }
   .bloqueo { background: #fdecea; border-left: 1.2mm solid var(--rojo); padding: 2.5mm 3.5mm; color: #7d1d14; margin: 2mm 0; border-radius: 0 2mm 2mm 0; font-weight: 600; }
-  .portada .pie-portada { position: absolute; bottom: 9mm; left: 14mm; right: 14mm; font-size: 7.5pt; color: var(--suave); border-top: 1px solid var(--linea); padding-top: 2.5mm; }
+  .portada .pie-portada { margin: auto 14mm 8mm; flex: none; font-size: 7.5pt; color: var(--suave); border-top: 1px solid var(--linea); padding-top: 2.5mm; }
 
   /* ---------- De un vistazo ---------- */
   .vistazo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; margin: 2mm 0 6mm; }
@@ -160,7 +168,9 @@
 <body>
 
 {# ======================= PORTADA ======================= #}
-<div class="portada">
+{% set n_grupos = inf.puntuaciones|length %}
+{% set n_bloq = namespace(n=0) %}{% for k, p in inf.puntuaciones.items() %}{% set n_bloq.n = n_bloq.n + p.bloqueos|length %}{% endfor %}
+<div class="portada {{ 'compacta' if n_grupos > 4 or n_bloq.n or panorama|length > 4 else '' }}">
   <div class="banda">
     <span class="fecha">{{ inf.generado }}</span>
     <div class="logo"><i></i>{{ marca }}<small>{{ lema }}</small></div>
@@ -169,7 +179,6 @@
   </div>
   {% set m = mapas.portada %}
   <div class="hero"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
-  {% set n_grupos = inf.puntuaciones|length %}
   <div class="notas {{ 'muchas' if n_grupos > 4 else '' }}" style="grid-template-columns: repeat({{ n_grupos if n_grupos <= 6 else 6 }}, 1fr)">
   {% for k, p in inf.puntuaciones.items() %}
     <div class="nota">
@@ -181,9 +190,9 @@
   {% endfor %}
   </div>
   <div class="cuerpo">
-    {% set bloqueos = [] %}
-    {% for k, p in inf.puntuaciones.items() %}{% for b in p.bloqueos %}{% if b not in bloqueos %}{% set _ = bloqueos.append(b) %}{% endif %}{% endfor %}{% endfor %}
-    {% for b in bloqueos %}<div class="bloqueo">{{ icono("riesgo", "#d64032") }} {{ b }}</div>{% endfor %}
+    {% set bloqueos = {} %}
+    {% for k, p in inf.puntuaciones.items() %}{% for b in p.bloqueos %}{% if b not in bloqueos %}{% set _ = bloqueos.update({b: []}) %}{% endif %}{% set _ = bloqueos[b].append(p.nombre_perfil) %}{% endfor %}{% endfor %}
+    {% for b, gs in bloqueos.items() %}<div class="bloqueo">{{ icono("riesgo", "#d64032") }} {% if gs|length < n_grupos %}{{ b.replace(" con el uso.", " con").replace("Uso solo admisible", "Solo admisible").rstrip(".") }}: {{ gs|join(", ") }}.{% else %}{{ b }}{% endif %}</div>{% endfor %}
     <div class="resumen-tit">Resumen</div>
     <div class="resumen">{{ inf.resumen }}</div>
     <div class="resumen-tit" style="margin-top:5mm">De un vistazo</div>
@@ -197,7 +206,7 @@
     {% endfor %}
     </div>
   </div>
-  <div class="pie-portada">Puntuaciones de 0 a 100 por grupo de uso (la del uso que mejor encaja): verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Informe orientativo elaborado con datos públicos oficiales; no sustituye a la cèdula urbanística ni a la consulta a los organismos. Fuentes y fechas en el anexo.</div>
+  <div class="pie-portada">Puntuaciones de 0 a 100 por grupo de uso (la del uso que mejor encaja): verde a partir de 75, ámbar de 50 a 74, rojo por debajo de 50. En «De un vistazo», verde favorece, ámbar condiciona y rojo complica la implantación; gris es sin dato. Elaborado con datos públicos oficiales. Fuentes y fechas en el anexo.</div>
 </div>
 
 {# ======================= RIESGOS ======================= #}
@@ -270,7 +279,7 @@
   {% if u.estado == "ok" %}
     <div class="dos">
       <div>
-        <h3 style="margin-top:0">Compatibilidad orientativa por uso</h3>
+        <h3 style="margin-top:0">Compatibilidad por uso</h3>
         <table><tr><th>Uso</th><th>Valoración</th></tr>
         {% for k, c in u.compatibilidad.items() %}
           <tr><td><b>{{ perfiles[k] }}</b><br><small>{{ c.motivo }}{% if c.nota %} {{ c.nota }}{% endif %}</small></td><td class="{{ c.nivel }}">{{ niveles[c.nivel] }}</td></tr>
@@ -309,7 +318,7 @@
     <p>{{ u.plan_general.tipo }} de {{ u.plan_general.municipio }} · expediente {{ u.plan_general.expediente }} · aprobado {{ u.plan_general.aprobacion|fecha }} · DOGC {{ u.plan_general.publicacion_dogc|fecha }}
     {% if u.plan_general.url_rpuc %}· <a href="{{ u.plan_general.url_rpuc }}">ver en el RPUC</a>{% endif %}</p>
     {% endif %}
-    <div class="aviso">{{ u.aviso }}</div>
+    {% if u.aviso %}<div class="aviso">{{ u.aviso }}</div>{% endif %}
   {% else %}
     <p class="sin">{{ u.mensaje or "Sin datos urbanísticos." }}</p>
   {% endif %}
@@ -387,6 +396,7 @@
       <div class="imd"><span>IMD</span><b>Sin aforo oficial</b> <small>{{ "vía municipal o local" if vp.titular == "Municipal" else "no hay estación de aforo en esta vía" }}</small></div>
     {% endif %}
   </div>
+  {% if vp.estado == "ok" and vp.estacion_lejana %}<p>No hay estación de aforo en el tramo urbano de la {{ vp.carretera }}: {% for e in vp.estaciones_misma_via %}{% if not loop.first %}; {% endif %}estación del PK {{ e.pk_estacion }} a {{ (e.distancia_estacion_m / 1000)|num(1) }} km, <b>{{ e.imd|num }} veh/día</b> ({{ e.anio }}){% endfor %}. La IMD del tramo frente a la parcela estará {% if vp.estaciones_misma_via|length > 1 %}entre esos valores{% else %}cerca de ese valor{% endif %}.</p>{% endif %}
   {% if vp.estado != "ok" and vp.referencia %}<p>Referencia más cercana con aforo: <b>{{ vp.referencia.carretera }}</b> a {{ vp.referencia.distancia_m|num }} m, con <b>{{ vp.referencia.imd|num }} veh/día</b> ({{ vp.referencia.anio }}). Los ayuntamientos pueden tener aforos propios de sus calles.</p>{% endif %}
   {% endif %}
   {% set t = inf.trafico %}

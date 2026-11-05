@@ -19,9 +19,27 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 WEB = Path(__file__).parent / "web" / "static"
 
 
+async def _refrescar_capacidad_red():
+    """La distribuidora publica la capacidad cada mes: se vuelve a descargar si el fichero tiene más de 10 días."""
+    import asyncio
+    import time
+    while True:
+        await asyncio.sleep(6 * 3600)
+        f = config.FICHERO_RED
+        if not f.exists() or time.time() - f.stat().st_mtime > 10 * 86400:
+            try:
+                from scripts import descargar_capacidad_red
+                await asyncio.to_thread(descargar_capacidad_red.main)
+            except BaseException as e:  # noqa: BLE001 - SystemExit incluido: no debe tumbar el servidor
+                logging.getLogger(__name__).warning("No se pudo refrescar la capacidad de red: %s", e)
+
+
 @asynccontextmanager
 async def ciclo(app: FastAPI):
+    import asyncio
+    tarea = asyncio.create_task(_refrescar_capacidad_red())
     yield
+    tarea.cancel()
     await http.cerrar()
 
 

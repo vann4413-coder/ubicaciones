@@ -14,10 +14,7 @@ URL_MUC = "https://sig.gencat.cat/visors/hipermapa.html"
 RPUC_API = "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta"
 RPUC_FICHA = "https://planejamenturbanisme.territori.gencat.cat/rpucportal/#/consulta/detallExpedient/{codi}"
 
-AVISO = (
-    "Dato sintético del MUC: orientativo. La calificación y los usos admitidos se deben "
-    "verificar con la cèdula urbanística o el certificado de compatibilidad del ayuntamiento."
-)
+AVISO = ""
 
 
 async def consultar(parcela: BaseGeometry) -> dict:

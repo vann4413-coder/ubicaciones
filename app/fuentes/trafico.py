@@ -163,6 +163,37 @@ def elegir_aforo(ref: str, tramo: dict | None, parcela: BaseGeometry, locales: l
     return max(candidatos, key=lambda c: (c.get("anio") or 0, -(c.get("_dist") or 0)))
 
 
+DIST_MAX_MISMA_VIA = 15_000
+
+
+def aforos_misma_via(ref: str, parcela: BaseGeometry, locales: list[dict]) -> list[dict]:
+    """Estaciones de aforo de la misma carretera más allá de 3 km (p. ej. la N-II al cruzar Mataró).
+
+    Devuelve la más cercana a cada lado de la parcela (como mucho dos), para dar el rango del tramo.
+    """
+    cx, cy = parcela.centroid.x, parcela.centroid.y
+    estaciones = []
+    for a in locales:
+        if a["carretera"] != ref or a["lon"] is None or not a["imd"]:
+            continue
+        x, y = geo.a_utm(a["lon"], a["lat"])
+        d = Point(x, y).distance(parcela)
+        if d <= DIST_MAX_MISMA_VIA:
+            estaciones.append({**a, "_dist": d, "_dx": x - cx, "_dy": y - cy})
+    if not estaciones:
+        return []
+    estaciones.sort(key=lambda e: e["_dist"])
+    primera = estaciones[0]
+    # El otro lado: la más cercana en dirección contraria a la primera
+    otra = next((e for e in estaciones[1:] if e["_dx"] * primera["_dx"] + e["_dy"] * primera["_dy"] < 0), None)
+    salida = []
+    for e in filter(None, [primera, otra]):
+        salida.append({"carretera": ref, "imd": e["imd"], "pct_pesados": e["pct_pesados"], "anio": e["anio"],
+                       "pk_estacion": e["pk"], "estacion": e["estacion"], "organismo": e["organismo"], "tipo": e["tipo"],
+                       "fuente": e["fuente"], "distancia_estacion_m": round(e["_dist"], -2)})
+    return salida
+
+
 async def consultar(parcela: BaseGeometry, osm: dict) -> dict:
     radio = max(config.RADIOS_TRAFICO)
     tramos, capa = await tramos_gencat(parcela, radio)
@@ -197,6 +228,12 @@ async def consultar(parcela: BaseGeometry, osm: dict) -> dict:
         tramos_ref = sorted([t for t in tramos if t["carretera"] == ref], key=lambda t: t["distancia_m"])
         tramo = tramos_ref[0] if tramos_ref else None
         dato = elegir_aforo(ref, tramo, parcela, locales)
+        lejanas = []
+        if not dato and info["distancia_m"] <= 60 and not info.get("aproximada"):
+            # La parcela da a esta carretera pero su estación de aforo está lejos: se usa la de la misma vía.
+            lejanas = aforos_misma_via(ref, parcela, locales)
+            if lejanas:
+                dato = {**lejanas[0], "lejana": True}
         titular = (dato or {}).get("organismo") or (tramo or {}).get("organismo") or ""
         carreteras.append({
             "carretera": ref,
@@ -212,6 +249,8 @@ async def consultar(parcela: BaseGeometry, osm: dict) -> dict:
             "estacion": dato.get("estacion", "") if dato else "",
             "pk_estacion": dato.get("pk_estacion", "") if dato else "",
             "tipo_aforo": dato.get("tipo", "") if dato else "",
+            "estacion_lejana": bool(dato and dato.get("lejana")),
+            "estaciones_misma_via": lejanas,
         })
 
     # Si la distancia viene de la estación de aforo (no de la vía), se intenta afinar con el tramo o la vía
@@ -308,16 +347,21 @@ def via_de_direccion(direccion: str, municipio: str = "") -> dict:
     if not m:
         return {}
     tipo, nombre = m.group(1), m.group(2).strip()
+    # El Catastro pone el artículo al final: 'MARESME DEL' -> 'DEL MARESME', 'RIERA DE LA' -> 'DE LA RIERA'.
+    art = re.search(r"\s+(DE LA|DE LES|DE L'|DELS|DEL|DE|LA|LES|ELS|EL|L')$", nombre)
+    if art:
+        nombre = f"{art.group(1)} {nombre[: art.start()]}".replace("' ", "'")
     ref = ""
     r = re.search(r"\b([A-Z]{1,4}-\d{1,4}[A-Z]?|[A-Z]{1,3}-[IVX]+)\b", nombre)
     if r:
         ref = normalizar_ref(r.group(1))
-    bonito = nombre.title()
+    bonito = f"{TIPOS_VIA.get(tipo, tipo)} {nombre.title()}"
     if ref:
         bonito = re.sub(re.escape(ref), ref, bonito, flags=re.I)
-    for minuscula in (" De ", " Del ", " La ", " Les ", " Els ", " El ", " I ", " A ", " D'"):
+    for minuscula in (" De ", " Del ", " Dels ", " La ", " Les ", " Els ", " El ", " I ", " A ", " D'", " L'"):
         bonito = bonito.replace(minuscula, minuscula.lower())
-    return {"tipo": TIPOS_VIA.get(tipo, tipo), "nombre": f"{TIPOS_VIA.get(tipo, tipo)} {bonito}", "ref": ref}
+    bonito = re.sub(r"\b(D|L)'(\w)", lambda x: x.group(1).lower() + "'" + x.group(2).upper(), bonito)
+    return {"tipo": TIPOS_VIA.get(tipo, tipo), "nombre": bonito, "ref": ref}
 
 
 def via_de_la_parcela(traf: dict, direccion_catastral: str, municipio: str = "") -> dict:
@@ -339,7 +383,9 @@ def via_de_la_parcela(traf: dict, direccion_catastral: str, municipio: str = "")
         c = max(con_imd, key=lambda c: c["imd"])
         return {"estado": "ok", "nombre": f"{c['carretera']}{' · ' + c['nombre'] if c.get('nombre') else ''}", "carretera": c["carretera"],
                 "imd": c["imd"], "anio": c["anio"], "pct_pesados": c.get("pct_pesados"), "fuente": c.get("fuente", ""),
-                "distancia_m": c["distancia_m"], "titular": c.get("titular", ""), "referencia": None}
+                "distancia_m": c["distancia_m"], "titular": c.get("titular", ""), "referencia": None,
+                "estacion_lejana": c.get("estacion_lejana", False), "estaciones_misma_via": c.get("estaciones_misma_via", []),
+                "pk_estacion": c.get("pk_estacion", "")}
     nombre = acceso.get("nombre") or dir_via.get("nombre") or (junto[0]["carretera"] if junto else "")
     return {"estado": "sin_aforo", "nombre": nombre or "Vía de acceso no identificada",
             "titular": acceso.get("titular") or ("Municipal" if dir_via and not dir_via.get("ref") else ""),

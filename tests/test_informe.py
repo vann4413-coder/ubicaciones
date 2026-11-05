@@ -262,3 +262,33 @@ def test_via_de_la_parcela_con_aforo():
     assert vp["estado"] == "ok" and vp["carretera"] == "N-II" and vp["imd"] == 18959
     vp = trafico.via_de_la_parcela({"carreteras": traf["carreteras"][1:], "accesos": {}}, "RD SUD 13 FIGUERES (GIRONA)", "Figueres")
     assert vp["estado"] == "sin_aforo" and vp["nombre"] == "Ronda Sud" and vp["titular"] == "Municipal" and vp["referencia"]["imd"] == 30000
+
+
+def test_direccion_con_articulo_al_final():
+    from app.fuentes.trafico import via_de_direccion
+    assert via_de_direccion("AV MARESME DEL 1 MATARO (BARCELONA)", "Mataró")["nombre"] == "Avenida del Maresme"
+    assert via_de_direccion("CR N-II KM 640")["ref"] == "N-II"
+
+
+def test_aforo_de_la_misma_via_lejos():
+    from shapely.geometry import Point
+
+    from app import geo
+    from app.fuentes.trafico import aforos_misma_via
+    base = {"carretera": "N-II", "pct_pesados": 0.04, "anio": 2025, "organismo": "Generalitat", "tipo": "Secundària",
+            "fuente": "x", "pk_m": None}
+    locales = [{**base, "pk": "640", "estacion": "A", "imd": 30867, "lon": 2.384715, "lat": 41.498327},
+               {**base, "pk": "655.6", "estacion": "B", "imd": 9739, "lon": 2.539321, "lat": 41.573528},
+               {**base, "carretera": "C-32", "pk": "1", "estacion": "C", "imd": 50000, "lon": 2.45, "lat": 41.54}]
+    parcela = Point(*geo.a_utm(2.4533, 41.5445)).buffer(15)
+    est = aforos_misma_via("N-II", parcela, locales)
+    assert {e["imd"] for e in est} == {30867, 9739}
+
+
+def test_capacidad_red_edistribucion():
+    from scripts.descargar_capacidad_red import convertir
+    txt = ("cab\nR1-299;08;08121;454402,58;4599346,09;123;25;1,80;0;12,50;0,60;;;0; ;09 - Cataluña;MATARO;Barcelona;Mataró\n"
+           "R1-299;04;04079;535771,67;4074262,07;5;66;0,00;0;0,00;0,00;;;0; ;01 - Andalucía;X;Almería;Y\n")
+    filas = convertir(txt, "2026-11")
+    assert len(filas) == 1 and filas[0]["nudo"] == "MATARO" and filas[0]["cap_disponible_mw"] == 1.8
+    assert 2.4 < filas[0]["lon"] < 2.5
