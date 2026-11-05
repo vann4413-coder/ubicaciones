@@ -81,7 +81,7 @@ GRUPOS = {
                              entorno=[("supermercados", 1000, 3), ("equipamientos", 2000, 1), ("restauracion", 1000, 5)]),
             "hotel": uso("Hotel", "terciario", P(35, 20, 5, 15, 10, 15), IMD_MEDIA, potencia_mw=0.3, frente_m=15, superficie_m2=2000,
                          entorno=[("restauracion", 1000, 15), ("comercial", 5000, 3), ("poligonos", 5000, 2)]),
-            "residencia": uso("Residencia (mayores, estudiantes)", "terciario", P(40, 5, 5, 20, 15, 15), IMD_NEUTRA, potencia_mw=0.2,
+            "residencia": uso("Residencia (mayores, estudiantes)", "residencial", P(40, 5, 5, 20, 15, 15), IMD_NEUTRA, potencia_mw=0.2,
                               frente_m=15, superficie_m2=2500, entorno=[("equipamientos", 2000, 1), ("supermercados", 1000, 2)]),
         },
     },
