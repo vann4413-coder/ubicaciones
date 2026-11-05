@@ -156,7 +156,6 @@
       <div class="perfil">{{ p.nombre_perfil }}</div>
       {{ rosco(None if p.bloqueos else p.total, p.semaforo) }}<br>
       <span class="veredicto {{ p.semaforo }}">{{ p.veredicto }}</span>
-      <span class="conf">Confianza {{ p.confianza }}</span>
     </div>
   {% endfor %}
   </div>
@@ -517,7 +516,7 @@
   <div class="perfil-det">
     <div class="top">
       {{ rosco(None if p.bloqueos else p.total, p.semaforo, 52) }}
-      <div><h3>{{ p.nombre_perfil }}</h3><span class="estado {{ p.semaforo }}">{{ p.veredicto }}</span> <small>Confianza {{ p.confianza }}</small></div>
+      <div><h3>{{ p.nombre_perfil }}</h3><span class="estado {{ p.semaforo }}">{{ p.veredicto }}</span></div>
     </div>
     {% for b in p.bloqueos %}<div class="bloqueo">{{ b }}</div>{% endfor %}
     <table><tr><th>Bloque</th><th class="n">Peso</th><th class="n">Nota</th><th style="width:26%"></th><th>Motivo</th></tr>

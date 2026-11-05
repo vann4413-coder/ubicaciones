@@ -76,6 +76,18 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
 .paso h3 { font-size: 19px; margin-bottom: 6px; }
 .paso p { margin: 0; color: var(--suave); }
 .fuentes { margin-top: 48px; padding: 18px 22px; border-radius: 12px; background: var(--fondo); color: var(--suave); font-size: 14px; }
+.planes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.plan { background: #fff; border: 1px solid var(--linea); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 10px; position: relative; }
+.plan.destacado { border: 2px solid var(--acento); box-shadow: 0 12px 30px rgba(18,53,91,.12); }
+.plan .etiqueta { position: absolute; top: -12px; left: 24px; background: var(--acento); color: #1d1300; font-weight: 700; font-size: 12px; padding: 3px 10px; border-radius: 99px; }
+.plan h3 { font-size: 19px; color: var(--marca); }
+.plan .precio { font-size: 38px; font-weight: 800; margin: 4px 0; letter-spacing: -0.02em; }
+.plan .precio small { font-size: 15px; font-weight: 500; color: var(--suave); }
+.plan ul { list-style: none; padding: 0; margin: 0 0 12px; color: var(--suave); display: grid; gap: 6px; flex: 1; }
+.plan li::before { content: "✓"; color: var(--verde); font-weight: 800; margin-right: 8px; }
+.btn-sec { background: #fff; color: var(--marca); border: 1.5px solid var(--marca); text-align: center; }
+.plan .btn { text-align: center; }
+.nota-precios { color: var(--suave); font-size: 14px; margin-top: 16px; }
 .cta { background: var(--marca); color: #fff; padding: 56px 0; }
 .cta-in { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
 .cta h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; }
@@ -87,12 +99,13 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
   .muestra { margin: 8px auto 0; transform: none; }
   .rejilla-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rejilla-5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .planes { grid-template-columns: minmax(0, 1fr); max-width: 460px; }
 }
 @media (max-width: 640px) {
   .nav-links a:not(.btn) { display: none; }
   .hero { padding: 40px 0 56px; }
   .buscador-grande { flex-direction: column; }
-  .rejilla-4, .rejilla-5, .pasos { grid-template-columns: minmax(0, 1fr); }
+  .rejilla-4, .rejilla-5, .pasos, .planes { grid-template-columns: minmax(0, 1fr); }
   .bloque { padding: 56px 0; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
