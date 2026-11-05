@@ -143,6 +143,13 @@
   .perfil-det .top small { margin-left: 2mm; color: var(--suave); }
   .usos { display: flex; flex-wrap: wrap; gap: 1.5mm 5mm; margin: 2.5mm 0 1mm; font-size: 8pt; }
   .pie { font-size: 7.5pt; color: var(--suave); }
+  ul.enlaces { margin: 1mm 0 3mm; padding-left: 4.5mm; font-size: 8.5pt; }
+  ul.enlaces li { margin: .8mm 0; }
+  .via-parcela { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4mm; border-radius: 2.5mm; padding: 3mm 4mm; margin-bottom: 3mm; border-left: 1.5mm solid var(--marca); background: #eef3f9; }
+  .via-parcela.sin { border-left-color: var(--ambar); background: #fff6e5; }
+  .via-parcela span { display: block; font-size: 7pt; color: var(--suave); text-transform: uppercase; letter-spacing: .04em; }
+  .via-parcela b { font-size: 12pt; }
+  .via-parcela .imd b { font-size: 15pt; }
   .lugares { columns: 2; column-gap: 7mm; margin-bottom: 3mm; }
   .lugar-grupo { break-inside: avoid; margin-bottom: 3mm; }
   .lugar-tit { font-weight: 700; font-size: 8.5pt; color: var(--marca); border-bottom: 1.5px solid var(--tinta); padding-bottom: .8mm; margin-bottom: .8mm; }
@@ -306,6 +313,13 @@
   {% else %}
     <p class="sin">{{ u.mensaje or "Sin datos urbanísticos." }}</p>
   {% endif %}
+  <h3>{{ icono("planeamiento", "#12355b", 14) }} Documentación de planeamiento de {{ inf.municipio.nombre }}</h3>
+  <ul class="enlaces">
+    {% if u.plan_general and u.plan_general.url_rpuc %}<li><a href="{{ u.plan_general.url_rpuc }}">Plan general vigente en el Registre de Planejament Urbanístic (normativa, planos y memoria)</a></li>{% endif %}
+    {% for e in (inf.cambios.recientes or [])[:5] %}<li><a href="{{ e.url }}">{{ e.fecha|fecha }} · {{ e.titulo }}</a></li>{% endfor %}
+    <li><a href="https://planejamenturbanisme.territori.gencat.cat/rpucportal/">Todo el planeamiento inscrito del municipio (RPUC)</a></li>
+    <li><a href="https://sig.gencat.cat/visors/hipermapa.html">Mapa Urbanístic de Catalunya en el Hipermapa</a></li>
+  </ul>
 
   {% set c = inf.cambios %}
   <h3>{{ icono("planeamiento", "#12355b", 14) }} Cambios de planeamiento recientes</h3>
@@ -362,6 +376,19 @@
 {# ======================= 4. TRÁFICO Y ACCESOS ======================= #}
 <section>
   {{ cabecera(4, "Tráfico y accesos", "trafico") }}
+  {% set t = inf.trafico %}
+  {% set vp = t.via_parcela %}
+  {% if vp %}
+  <div class="via-parcela {{ 'con' if vp.estado == 'ok' else 'sin' }}">
+    <div><span>Vía de la parcela</span><b>{{ vp.nombre }}</b>{% if vp.titular %} <small>· {{ vp.titular }}</small>{% endif %}</div>
+    {% if vp.estado == "ok" %}
+      <div class="imd"><span>IMD</span><b>{{ vp.imd|num }}</b> <small>veh/día · {{ vp.anio }}{% if vp.pct_pesados is not none %} · {{ vp.pct_pesados|num(1) }} % pesados{% endif %}</small></div>
+    {% else %}
+      <div class="imd"><span>IMD</span><b>Sin aforo oficial</b> <small>{{ "vía municipal o local" if vp.titular == "Municipal" else "no hay estación de aforo en esta vía" }}</small></div>
+    {% endif %}
+  </div>
+  {% if vp.estado != "ok" and vp.referencia %}<p>Referencia más cercana con aforo: <b>{{ vp.referencia.carretera }}</b> a {{ vp.referencia.distancia_m|num }} m, con <b>{{ vp.referencia.imd|num }} veh/día</b> ({{ vp.referencia.anio }}). Los ayuntamientos pueden tener aforos propios de sus calles.</p>{% endif %}
+  {% endif %}
   {% set t = inf.trafico %}
   {% if t.carreteras %}
   {% set max_imd = t.carreteras|selectattr("imd")|map(attribute="imd")|max if t.carreteras|selectattr("imd")|list else 1 %}

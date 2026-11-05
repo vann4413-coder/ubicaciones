@@ -173,6 +173,18 @@ async def consultar(parcela: BaseGeometry, osm: dict) -> dict:
     for t in tramos:
         if t["carretera"] not in refs or t["distancia_m"] < refs[t["carretera"]]["distancia_m"]:
             refs[t["carretera"]] = {**refs.get(t["carretera"], {}), "distancia_m": t["distancia_m"]}
+    # Estaciones de aforo cargadas (Excel oficial de la Generalitat, Ministerio…) cercanas: así no dependemos
+    # de OpenStreetMap para saber qué carreteras hay alrededor.
+    for a in locales:
+        try:
+            x, y = geo.a_utm(float(a["lon"]), float(a["lat"]))
+        except (KeyError, TypeError, ValueError):
+            continue
+        d = round(Point(x, y).distance(parcela))
+        if d <= radio:
+            r = normalizar_ref(a.get("carretera", ""))
+            if r and r not in refs:
+                refs[r] = {"distancia_m": d, "aproximada": True}
 
     carreteras = []
     for ref, info in sorted(refs.items(), key=lambda kv: kv[1]["distancia_m"]):
@@ -196,6 +208,7 @@ async def consultar(parcela: BaseGeometry, osm: dict) -> dict:
             "tipo_aforo": dato.get("tipo", "") if dato else "",
         })
 
+    # Si la distancia viene de la estación de aforo (no de la vía), se intenta afinar con el tramo o la vía
     accesos = analizar_accesos(parcela, osm)
     estado = "ok" if any(c["imd"] for c in carreteras) else "sin_dato"
     anios = sorted({c["anio"] for c in carreteras if c["anio"]})
@@ -269,3 +282,59 @@ def analizar_accesos(parcela: BaseGeometry, osm: dict) -> dict:
         "area_servicio_cercana": (osm.get("areas_servicio") or [None])[0],
         "aviso": "Cualquier acceso nuevo o modificado desde una carretera requiere autorización de su titular.",
     }
+
+
+TIPOS_VIA = {"CL": "Calle", "AV": "Avenida", "RD": "Ronda", "CR": "Carretera", "PS": "Paseo", "PG": "Polígono", "PZ": "Plaza",
+             "TR": "Travesía", "CM": "Camino", "UR": "Urbanización", "LG": "Lugar", "PJ": "Pasaje", "PD": "Partida",
+             "BO": "Barrio", "GV": "Gran Vía", "RB": "Rambla", "AU": "Autovía", "AP": "Autopista", "VR": "Vereda", "CJ": "Calleja"}
+
+
+def via_de_direccion(direccion: str, municipio: str = "") -> dict:
+    """Vía de la dirección catastral: 'RD SUD 13 FIGUERES (GIRONA)' -> Ronda Sud; 'CR N-II KM 5' -> carretera N-II."""
+    import re
+    import unicodedata
+    quitar = lambda t: "".join(c for c in unicodedata.normalize("NFD", t) if unicodedata.category(c) != "Mn")  # noqa: E731
+    d = re.sub(r"\s*\(.*\)\s*$", "", quitar((direccion or "").strip().upper()))
+    muni = quitar((municipio or "").upper().strip())
+    if muni and d.endswith(" " + muni):
+        d = d[: -len(muni) - 1]
+    m = re.match(r"^([A-Z]{2})\s+(.+?)(?:\s+(?:KM\.?\s*[\d,\.]+|\d+[A-Z]?|S/N|N\s*\d+)\b.*)?$", d)
+    if not m:
+        return {}
+    tipo, nombre = m.group(1), m.group(2).strip()
+    ref = ""
+    r = re.search(r"\b([A-Z]{1,4}-\d{1,4}[A-Z]?|[A-Z]{1,3}-[IVX]+)\b", nombre)
+    if r:
+        ref = normalizar_ref(r.group(1))
+    bonito = nombre.title()
+    if ref:
+        bonito = re.sub(re.escape(ref), ref, bonito, flags=re.I)
+    for minuscula in (" De ", " Del ", " La ", " Les ", " Els ", " El ", " I ", " A ", " D'"):
+        bonito = bonito.replace(minuscula, minuscula.lower())
+    return {"tipo": TIPOS_VIA.get(tipo, tipo), "nombre": f"{TIPOS_VIA.get(tipo, tipo)} {bonito}", "ref": ref}
+
+
+def via_de_la_parcela(traf: dict, direccion_catastral: str, municipio: str = "") -> dict:
+    """La vía a la que da la parcela y su IMD (dato clave del informe).
+
+    1) Carretera con aforo a menos de 40 m de la parcela: es la vía de la parcela.
+    2) Si la dirección catastral es una carretera (CR N-II…), se busca su aforo.
+    3) Si es una calle municipal sin aforo oficial, se dice así y se da la carretera aforada más cercana.
+    """
+    carreteras = traf.get("carreteras") or []
+    dir_via = via_de_direccion(direccion_catastral, municipio)
+    acceso = (traf.get("accesos") or {}).get("via_acceso") or {}
+    junto = [c for c in carreteras if c["distancia_m"] <= 40]
+    if dir_via.get("ref"):
+        junto = [c for c in carreteras if normalizar_ref(c["carretera"]) == dir_via["ref"]] or junto
+    con_imd = [c for c in junto if c.get("imd")]
+    cercana = min((c for c in carreteras if c.get("imd")), key=lambda c: c["distancia_m"], default=None)
+    if con_imd:
+        c = max(con_imd, key=lambda c: c["imd"])
+        return {"estado": "ok", "nombre": f"{c['carretera']}{' · ' + c['nombre'] if c.get('nombre') else ''}", "carretera": c["carretera"],
+                "imd": c["imd"], "anio": c["anio"], "pct_pesados": c.get("pct_pesados"), "fuente": c.get("fuente", ""),
+                "distancia_m": c["distancia_m"], "titular": c.get("titular", ""), "referencia": None}
+    nombre = acceso.get("nombre") or dir_via.get("nombre") or (junto[0]["carretera"] if junto else "")
+    return {"estado": "sin_aforo", "nombre": nombre or "Vía de acceso no identificada",
+            "titular": acceso.get("titular") or ("Municipal" if dir_via and not dir_via.get("ref") else ""),
+            "referencia": cercana and {k: cercana.get(k) for k in ("carretera", "nombre", "imd", "anio", "distancia_m", "fuente")}}

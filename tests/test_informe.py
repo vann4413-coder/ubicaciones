@@ -86,6 +86,9 @@ def test_informe_completo(fuentes_simuladas):
     c32 = next(c for c in inf["trafico"]["carreteras"] if c["carretera"] == "C-32")
     assert c32["imd"] == 61234 and c32["anio"] == 2025
     assert c32["titular"] == "Generalitat de Catalunya"
+    vp = inf["trafico"]["via_parcela"]
+    assert vp["estado"] == "sin_aforo" and vp["nombre"] == "Carrer de prova"
+    assert vp["referencia"]["carretera"] == "C-32" and vp["referencia"]["imd"] == 61234
     acc = inf["trafico"]["accesos"]
     assert acc["frente_vial_m"] > 20  # la calle toca solo el borde sur de la parcela
     assert acc["salida_cercana"]["ref"] == "95"
@@ -248,3 +251,14 @@ def test_energia_en_suelo_no_urbanizable():
     from app.analisis.compatibilidad import MATRIZ
     assert MATRIZ["no_urbanizable"]["energia"] == "condicionado"  # proyecto de actuación específica, no bloqueo
     assert MATRIZ["no_urbanizable"]["industrial"] == "incompatible"
+
+
+def test_via_de_la_parcela_con_aforo():
+    from app.fuentes import trafico
+    traf = {"carreteras": [{"carretera": "N-II", "nombre": "", "distancia_m": 12, "imd": 18959, "anio": 2022, "pct_pesados": 10.5,
+                            "fuente": "Generalitat", "titular": "Estado"},
+                           {"carretera": "C-31", "nombre": "", "distancia_m": 600, "imd": 30000, "anio": 2025}], "accesos": {}}
+    vp = trafico.via_de_la_parcela(traf, "CR N-II KM 5 FIGUERES (GIRONA)", "Figueres")
+    assert vp["estado"] == "ok" and vp["carretera"] == "N-II" and vp["imd"] == 18959
+    vp = trafico.via_de_la_parcela({"carreteras": traf["carreteras"][1:], "accesos": {}}, "RD SUD 13 FIGUERES (GIRONA)", "Figueres")
+    assert vp["estado"] == "sin_aforo" and vp["nombre"] == "Ronda Sud" and vp["titular"] == "Municipal" and vp["referencia"]["imd"] == 30000

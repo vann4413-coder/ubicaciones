@@ -68,12 +68,21 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
         estado = "rojo" if zfp or nivel == "T10" else "ambar" if nivel in ("T100", "T500") else "verde"
         fichas.append({"icono": "agua", "titulo": "Flujo preferente", "valor": "Sí" if zfp else "No", "detalle": inund, "estado": estado})
 
+    vp = inf["trafico"].get("via_parcela") or {}
     carr = [c for c in inf["trafico"].get("carreteras", []) if c.get("imd")]
-    if carr:
-        c = max(carr, key=lambda c: c["imd"] if c["distancia_m"] <= 500 else 0) if any(c["distancia_m"] <= 500 for c in carr) else min(carr, key=lambda c: c["distancia_m"])
-        estado = "verde" if c["imd"] >= 10000 and c["distancia_m"] <= 300 else "ambar" if c["imd"] >= 3000 else "rojo"
+    if vp.get("estado") == "ok":
+        estado = "verde" if vp["imd"] >= 10000 else "ambar" if vp["imd"] >= 3000 else "rojo"
+        fichas.append({"icono": "trafico", "titulo": "IMD de la vía de la parcela", "valor": f"{num(vp['imd'])} veh/día",
+                       "detalle": f"{vp['nombre']} ({vp['anio']})", "estado": estado})
+    elif vp:
+        ref = vp.get("referencia")
+        fichas.append({"icono": "trafico", "titulo": "IMD de la vía de la parcela", "valor": "Sin aforo oficial",
+                       "detalle": f"{vp['nombre']}" + (f" · cercana: {ref['carretera']} {num(ref['imd'])} veh/día a {num(ref['distancia_m'])} m" if ref else ""),
+                       "estado": "gris"})
+    elif carr:
+        c = min(carr, key=lambda c: c["distancia_m"])
         fichas.append({"icono": "trafico", "titulo": "Tráfico", "valor": f"{num(c['imd'])} veh/día",
-                       "detalle": f"{c['carretera']} a {num(c['distancia_m'])} m ({c['anio']})", "estado": estado})
+                       "detalle": f"{c['carretera']} a {num(c['distancia_m'])} m ({c['anio']})", "estado": "ambar"})
     else:
         fichas.append({"icono": "trafico", "titulo": "Tráfico", "valor": "Sin aforo", "detalle": "Ninguna vía con aforo cerca", "estado": "gris"})
 

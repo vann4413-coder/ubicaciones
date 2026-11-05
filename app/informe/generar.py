@@ -57,6 +57,8 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     )
     titul = completar_titulares(titul, gas, entorno5)
     traf = await _seguro(trafico.consultar(g, entorno if entorno.get("estado") == "ok" else {}), "Aforos")
+    if traf.get("estado") in ("ok", "sin_dato"):
+        traf["via_parcela"] = trafico.via_de_la_parcela(traf, parcela.get("direccion", ""), nombre_muni)
     red = red_electrica.consultar(g)
     snu = any(c.get("codigo", "").upper().startswith("SNU") and c.get("pct", 0) >= 50 for c in (urb.get("clasificaciones") or []))
     precio = suelo.consultar(cod_ine, pob.get("poblacion") if pob.get("estado") == "ok" else None,
