@@ -316,3 +316,13 @@ def test_api_no_revela_fuentes(fuentes_simuladas):
     texto = json.dumps(generar.para_json(inf), ensure_ascii=False)
     assert '"fuente"' not in texto and "gencat.cat/visors" not in texto
     assert "Fuentes" not in render.html(inf)
+
+
+def test_parametros_pgou_mataro(fuentes_simuladas):
+    inf = correr(generar.construir("4595201DF5949N"))
+    pg = inf["urbanismo"]["parametros_pgou"]
+    fila = next(f for f in pg["zonas"] if f["clave_parcela"] == "2d1")
+    assert fila["zona"]["parcela_minima_m2"] == 2500 and fila["zona"]["articulo"] == "Art. 304"
+    assert pg["parcela_minima_m2"] == 2500
+    html = render.html(inf)
+    assert "Parámetros de la zona según el plan general" in html and "2.500 m²" in html

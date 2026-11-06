@@ -53,8 +53,10 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
         clas = u["clasificaciones"][0]["descripcion"] if u.get("clasificaciones") else ""
         niveles = [c["nivel"] for c in u["compatibilidad"].values()]
         estado = "verde" if "compatible" in niveles else "ambar" if "condicionado" in niveles else "rojo"
+        pmin = (u.get("parametros_pgou") or {}).get("parcela_minima_m2")
         fichas.append({"icono": "urbanismo", "titulo": "Urbanismo", "valor": q["codigo_municipal"] or q["codigo_muc"],
-                       "detalle": f"{clas} · {q['descripcion_municipal'] or q['descripcion_muc']}", "estado": estado})
+                       "detalle": f"{clas} · {q['descripcion_municipal'] or q['descripcion_muc']}"
+                                  + (f" · parcela mín. {num(pmin)} m²" if pmin else ""), "estado": estado})
     else:
         fichas.append({"icono": "urbanismo", "titulo": "Urbanismo", "valor": "Sin dato", "detalle": "", "estado": "gris"})
 

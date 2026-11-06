@@ -45,7 +45,7 @@ def capas_wfs():
     c32 = LineString([(MINX - 400, MINY - 300), (MAXX + 400, MINY - 250)])
     return {
         config.CAPA_MUC_QUALIF: fc([
-            feat(oeste, {"CODI_QUAL_MUC": "A1", "DESC_QUAL_MUC": "Activitat econòmica, Indústria", "CODI_QUAL_AJUNT": "22a",
+            feat(oeste, {"CODI_QUAL_MUC": "A1", "DESC_QUAL_MUC": "Activitat econòmica, Indústria", "CODI_QUAL_AJUNT": "2d1",
                          "DESC_QUAL_AJUNT": "Zona industrial", "CODI_INE": "08121"}),
             feat(este, {"CODI_QUAL_MUC": "SX2", "DESC_QUAL_MUC": "Sistemes, Viari, Altre viari en sòl urbà",
                         "CODI_QUAL_AJUNT": "SX2", "DESC_QUAL_AJUNT": "Sistema viari", "CODI_INE": "08121"}),

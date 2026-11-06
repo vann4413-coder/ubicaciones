@@ -116,6 +116,11 @@ def riesgos_y_pasos(inf: dict) -> list[dict]:
         pasos.append({"tipo": "riesgo", "texto": f"Hay {len(sc['cercanos'])} emplazamiento(s) con suelo contaminado a menos de {sc['radio_m']} m."})
     if ev.get("alerta_contaminacion"):
         pasos.append({"tipo": "riesgo", "texto": "Uso anterior con posible afectación del suelo: valorar un estudio de caracterización del suelo."})
+    pg = (inf.get("urbanismo") or {}).get("parametros_pgou") or {}
+    sup = (inf.get("parcela") or {}).get("sup_grafica")
+    if pg.get("parcela_minima_m2") and sup and sup < pg["parcela_minima_m2"]:
+        pasos.append({"tipo": "riesgo", "texto": f"La parcela es menor que la parcela mínima de la zona ({_n(pg['parcela_minima_m2'])} m²): "
+                      "confirmar con el ayuntamiento que es edificable."})
     te = inf.get("terreno") or {}
     for a in te.get("afecciones") or []:
         if a["grupo"] in ("Protección", "Patrimonio", "Riesgo químico") or a["capa"] in ("zona-servitud-fluvial", "pendents-20-percent"):

@@ -8,7 +8,7 @@ from app.analisis import evolucion, parcela_metricas, puntuacion, resumen
 from app.fuentes import (catastro, gasolineras, geocoder, inundabilidad, osm, poblacion, red_electrica, suelo,
                          suelos_contaminados, trafico, urbanismo)
 from app.fuentes import entorno as entorno_5km
-from app.fuentes import terreno, titulares
+from app.fuentes import pgou, terreno, titulares
 from app.fuentes.base import error, resultado
 
 log = logging.getLogger(__name__)
@@ -64,6 +64,8 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     snu = any(c.get("codigo", "").upper().startswith("SNU") and c.get("pct", 0) >= 50 for c in (urb.get("clasificaciones") or []))
     precio = suelo.consultar(cod_ine, pob.get("poblacion") if pob.get("estado") == "ok" else None,
                              parcela.get("sup_grafica"), suelo_no_urbanizable=snu)
+    if urb.get("estado") == "ok":
+        urb["parametros_pgou"] = pgou.consultar(cod_ine, urb.get("calificaciones"))
     metr = parcela_metricas.metricas(g)
     inund_res = inundabilidad.combinar(aca, snczi)
 

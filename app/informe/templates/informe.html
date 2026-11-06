@@ -307,6 +307,22 @@
     <table><tr><th>Clave municipal</th><th>Clave homogeneizada</th><th class="n">% parcela</th></tr>
     {% for q in u.calificaciones %}<tr><td><b>{{ q.codigo_municipal }}</b> · {{ q.descripcion_municipal }}</td><td>{{ q.codigo_muc }} · {{ q.descripcion_muc }}</td><td class="n">{{ q.pct }}%</td></tr>{% endfor %}
     </table>
+    {% set pg = u.parametros_pgou %}
+    {% if pg %}
+    <h3>Parámetros de la zona según el plan general</h3>
+    <table><tr><th>Zona</th><th class="n">Parcela mínima</th><th class="n">Frente mínimo</th><th>Edificabilidad</th><th>Ocupación</th><th>Altura</th></tr>
+    {% for f in pg.zonas %}{% set z = f.zona %}
+      <tr><td><b>{{ f.clave_parcela }}</b>{% if z %} · {{ z.nombre }}{% if not z.exacta %} <small>(zona {{ z.clave }})</small>{% endif %}<br><small>{{ z.articulo }}</small>{% endif %}</td>
+      {% if z %}<td class="n">{{ (z.parcela_minima_m2|num ~ " m²") if z.parcela_minima_m2 else "—" }}</td><td class="n">{{ (z.frente_minimo_m|num ~ " m") if z.frente_minimo_m else "—" }}</td>
+      <td>{{ z.edificabilidad or "—" }}</td><td>{{ z.ocupacion_max or "—" }}</td><td>{{ z.altura_max or "—" }}</td>
+      {% else %}<td colspan="5" class="sin">Zona no localizada en las normas del plan.</td>{% endif %}</tr>
+      {% if z and (z.usos or z.otros) %}<tr><td></td><td colspan="5"><small>{% if z.usos %}<b>Usos:</b> {{ z.usos }}{% endif %}{% if z.otros %}{% if z.usos %} · {% endif %}{{ z.otros }}{% endif %}</small></td></tr>{% endif %}
+    {% endfor %}
+    </table>
+    {% if pg.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica < pg.parcela_minima_m2 %}<div class="aviso">La parcela ({{ inf.parcela.sup_grafica|num }} m²) es menor que la parcela mínima de la zona ({{ pg.parcela_minima_m2|num }} m²): consultar si es edificable por ser preexistente o si requiere agrupación.</div>
+    {% elif pg.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica >= 2 * pg.parcela_minima_m2 %}<div class="info">La superficie permitiría, en principio, segregar en {{ (inf.parcela.sup_grafica // pg.parcela_minima_m2)|int }} parcelas de la mínima de la zona (sujeto a frente mínimo y licencia).</div>{% endif %}
+    <p class="pie">{{ pg.plan }}{% if pg.modificaciones %}. Modificaciones posteriores de las normas: {{ pg.modificaciones|join("; ") }}. Comprobar si afectan a la zona{% endif %}.{% if pg.documento %} <a href="{{ pg.documento }}">Ver las normas</a>.{% endif %}</p>
+    {% endif %}
     {% if u.sectores %}
     <h3>Sector de desarrollo</h3>
     <table><tr><th>Sector</th><th>Tipo</th><th class="n">Índice edif. bruta</th><th class="n">% parcela</th></tr>

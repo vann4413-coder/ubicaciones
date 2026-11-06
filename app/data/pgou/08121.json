@@ -1,0 +1,290 @@
+{
+ "municipio": "Mataró",
+ "codigo_ine": "08121",
+ "plan": "Pla general d'ordenació de Mataró (1996), Text refós de les Normes urbanístiques (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=239188&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "densidad de viviendas y aparcamiento (2007)",
+  "parámetros comunes de ordenación (2010)",
+  "usos y actividades (2016)",
+  "parámetros comunes de edificación y uso, MPG-106 (2020)"
+ ],
+ "revisado": "2026-11-06",
+ "zonas": {
+  "1a": {
+   "nombre": "Centro histórico",
+   "articulo": "Art. 295",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano de regulación",
+   "usos": "Residencial (dominante), hotelero, comercio pequeño y oficinas; comercio grande e industria II-III no admitidos",
+   "otros": "Fondo mínimo 12 m. Zona arqueológica: intervenciones en subsuelo sujetas a estudio arqueológico"
+  },
+  "1b": {
+   "nombre": "Eixample antiguo",
+   "articulo": "Art. 296",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano de regulación",
+   "usos": "Residencial (dominante), hotelero, comercio pequeño, restauración, equipamientos; comercio grande e industria II-III no admitidos",
+   "otros": "Fondo mínimo 12 m"
+  },
+  "1c": {
+   "nombre": "Crecimientos en frentes de calle",
+   "articulo": "Art. 297",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas del plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano (subzonas 1c1 y 1c2 con alturas propias)",
+   "usos": "Residencial plurifamiliar (dominante), hotelero, comercio pequeño y mediano, oficinas; comercio grande e industria II-III no admitidos",
+   "otros": "Fondo mínimo 12 m"
+  },
+  "1d": {
+   "nombre": "Crecimientos en hilera",
+   "articulo": "Art. 298",
+   "parcela_minima_m2": 75,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas",
+   "ocupacion_max": "Según fondo edificable y patio de manzana",
+   "altura_max": "Según plano y subzona",
+   "usos": "Vivienda unifamiliar (dominante); hotelero, comercio mediano y grande, industria II-III no admitidos",
+   "otros": "Una vivienda por parcela (excepto 1d1). Fondo mínimo 12 m"
+  },
+  "1e": {
+   "nombre": "Conjuntos unitarios",
+   "articulo": "Art. 299",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente / según ordenanza gráfica",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Mantenimiento de la actual (salvo subzonas con ordenanza gráfica)",
+   "usos": "Vivienda unifamiliar (dominante); hotelero e industria II-III no admitidos",
+   "otros": "Parcela mínima: la existente"
+  },
+  "2a": {
+   "nombre": "Industria urbana entre medianeras",
+   "articulo": "Art. 301",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 10,
+   "edificabilidad": "2 m²st/m²s",
+   "ocupacion_max": "90 %",
+   "altura_max": "13 m",
+   "usos": "Industria I y II (dominante), almacenes, oficinas, restauración, servicios técnicos y aparcamiento; comercio condicionado; vivienda solo de vigilancia; hotelero e industria III no admitidos",
+   "otros": "Fondo mínimo 20 m. Obras mayores en parcelas de más de 2.000 m² requieren estudio de detalle"
+  },
+  "2b": {
+   "nombre": "Gran industria urbana",
+   "articulo": "Art. 302",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "2 m²st/m²s brutos en el PERI del sector",
+   "ocupacion_max": "—",
+   "altura_max": "Según PERI",
+   "usos": "Las actividades actuales; nuevos usos según zona 2a hasta que se apruebe el PERI",
+   "otros": "Parcela mínima: las existentes, sin segregación hasta el PERI de reindustrialización"
+  },
+  "2c": {
+   "nombre": "Industria-terciario entre medianeras",
+   "articulo": "Art. 303",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,2 m²st/m²s (2c1) · 1,0 (2c2)",
+   "ocupacion_max": "75 %",
+   "altura_max": "11 m · PB+2",
+   "usos": "Industria I y II (dominante), oficinas, restauración, almacenes, equipamientos, aparcamiento; comercio condicionado; hotelero, vivienda e industria III no admitidos",
+   "otros": "Fondo mínimo 24 m"
+  },
+  "2d": {
+   "nombre": "Industria-terciario aislada",
+   "articulo": "Art. 304",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 36,
+   "edificabilidad": "1,0 m²st/m²s (2d1) · 1,2 (2d2)",
+   "ocupacion_max": "60 %",
+   "altura_max": "11 m · PB+2",
+   "usos": "Industria I y II (dominante), oficinas, restauración, almacenes, equipamientos, aparcamiento; comercio condicionado; hotelero, vivienda e industria III no admitidos",
+   "otros": "Fondo mínimo 50 m. Retranqueos: 8 m a calle, 3 m laterales y fondo"
+  },
+  "2e": {
+   "nombre": "Industria entre medianeras",
+   "articulo": "Art. 305",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,0 m²st/m²s (2e1) · 1,2 (2e2) · 1,4 (2e3)",
+   "ocupacion_max": "75 %",
+   "altura_max": "11 m · PB+2",
+   "usos": "Industria II y III (dominante), industria I y almacenes; comercio, oficinas y equipamientos condicionados; vivienda y hotelero no admitidos",
+   "otros": "Fondo mínimo 30 m. Un solo establecimiento industrial por parcela"
+  },
+  "2f": {
+   "nombre": "Industria aislada",
+   "articulo": "Art. 306",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 36,
+   "edificabilidad": "0,9 m²st/m²s (2f1) · 1,0 (2f2 y 2f3)",
+   "ocupacion_max": "60 % (2f1) · 75 % (2f2) · 50 % (2f3)",
+   "altura_max": "15 m · PB+1",
+   "usos": "Industria II y III (dominante), industria I y almacenes; comercio, oficinas y equipamientos condicionados; vivienda y hotelero no admitidos",
+   "otros": "Fondo mínimo 50 m. Retranqueos 8 m a calle y 3 m laterales. Un solo establecimiento industrial por parcela"
+  },
+  "3a": {
+   "nombre": "Edificación con espacios libres",
+   "articulo": "Art. 308",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según altura y ocupación del plano",
+   "ocupacion_max": "Según plano de regulación",
+   "altura_max": "Según plano",
+   "usos": "Residencial plurifamiliar (dominante), hotelero, comercio pequeño y mediano, oficinas; comercio grande e industria II-III no admitidos",
+   "otros": "Fondo mínimo 20 m"
+  },
+  "3b": {
+   "nombre": "Edificación con volumetría específica",
+   "articulo": "Art. 309",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": null,
+   "edificabilidad": "Específica de cada subzona",
+   "ocupacion_max": "Específica de cada subzona",
+   "altura_max": "Específica de cada subzona",
+   "usos": "Residencial plurifamiliar (dominante), hotelero, comercio pequeño y mediano, oficinas; comercio grande e industria II-III no admitidos",
+   "otros": "Fondo mínimo 20 m; frente 30 m en 3b3 y 3b4"
+  },
+  "4a": {
+   "nombre": "Edificación aislada tradicional urbana",
+   "articulo": "Art. 311",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 9,
+   "edificabilidad": "La actual; ampliaciones hasta 1,2 (4a1) · 0,9 (4a2) · 1,0 (4a3) m²st/m²s",
+   "ocupacion_max": "70 % (4a1) · 50 % (4a2 y 4a3)",
+   "altura_max": "7 m · PB+1 (4a3: 9 m · PB+2)",
+   "usos": "Vivienda unifamiliar (dominante); plurifamiliar, hotelero, almacenes e industria no admitidos",
+   "otros": "Parcela mínima 150 m² en 4a1 y 300 m² en 4a2 y 4a3; frente 9 m (4a1) y 12 m (4a2, 4a3). Una vivienda por parcela"
+  },
+  "4b": {
+   "nombre": "Edificación aislada, parcela pequeña",
+   "articulo": "Art. 312",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar (dominante); plurifamiliar, hotelero, comercio mediano y grande, industria no admitidos",
+   "otros": "Frente 12 m (4b1) y 15 m (4b2). Retranqueos 3 m a calle, 2 m laterales y fondo. Una vivienda por parcela"
+  },
+  "4c": {
+   "nombre": "Edificación aislada, parcela mediana",
+   "articulo": "Art. 313",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,40 (4c1) · 0,50 (4c2) m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar (dominante); plurifamiliar, hotelero, comercio mediano y grande, industria no admitidos",
+   "otros": "Fondo mínimo 30 m. Retranqueos 4 m a calle, 3 m laterales y fondo. Una vivienda por parcela"
+  },
+  "4d": {
+   "nombre": "Edificación aislada, parcela grande",
+   "articulo": "Art. 314",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,44 (4d1) · 0,40 (4d2) · 0,30 (4d3) m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar (dominante); plurifamiliar, hotelero, comercio mediano y grande, industria no admitidos",
+   "otros": "Parcela mínima 1.000 m² (4d1), 1.200 m² (4d2) y 1.800 m² (4d3). Fondo mínimo 30 m. Una vivienda por parcela"
+  },
+  "4d2": {
+   "nombre": "Edificación aislada, parcela grande (tipo 2)",
+   "articulo": "Art. 314",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar (dominante); plurifamiliar, hotelero, comercio mediano y grande, industria no admitidos",
+   "otros": "Retranqueos 10 m a calle, 5 m laterales. Una vivienda por parcela"
+  },
+  "4d3": {
+   "nombre": "Edificación aislada, parcela grande (tipo 3)",
+   "articulo": "Art. 314",
+   "parcela_minima_m2": 1800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,30 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar (dominante); plurifamiliar, hotelero, comercio mediano y grande, industria no admitidos",
+   "otros": "Retranqueos 10 m a calle, 5 m laterales. Una vivienda por parcela"
+  },
+  "4a2": {
+   "nombre": "Edificación aislada tradicional urbana (Ciutat Jardí)",
+   "articulo": "Art. 311",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 12,
+   "edificabilidad": "La actual; ampliaciones hasta 0,9 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar (dominante)",
+   "otros": "Una vivienda por parcela"
+  },
+  "4a3": {
+   "nombre": "Edificación aislada tradicional urbana (Barri Torner)",
+   "articulo": "Art. 311",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 12,
+   "edificabilidad": "La actual; ampliaciones hasta 1,0 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "9 m · PB+2",
+   "usos": "Vivienda unifamiliar (dominante)",
+   "otros": "Una vivienda por parcela"
+  },
+  "4e": {
+   "nombre": "Conservación del hábitat rural",
+   "articulo": "Art. 315",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La actual; ampliaciones hasta el 50 % (4e1) o hasta 400 m² (4e2)",
+   "ocupacion_max": "La actual + 50 %",
+   "altura_max": "7 m · PB+1",
+   "usos": "Vivienda unifamiliar y rural; plurifamiliar, comercio mediano y grande, industria no admitidos",
+   "otros": "Parcela: la existente (sin segregaciones por debajo del 90 % de la superficie)"
+  },
+  "5": {
+   "nombre": "Remodelación",
+   "articulo": "Art. 317",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,5 m²st/m²s brutos en el PERI del sector",
+   "ocupacion_max": "Según PERI",
+   "altura_max": "Según PERI",
+   "usos": "Residencial plurifamiliar tras el PERI; hasta entonces, solo las actividades actuales",
+   "otros": "Parcelación solo mediante PERI. Cesiones mínimas del 42 %"
+  },
+  "6": {
+   "nombre": "Dotaciones y servicios privados",
+   "articulo": "Art. 319",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento derivado (6a: según fondo y plantas)",
+   "ocupacion_max": "Según planeamiento derivado",
+   "altura_max": "Según planeamiento derivado",
+   "usos": "Hotelero, comercio, oficinas, restauración, equipamientos y servicios técnicos; vivienda (salvo vigilancia) e industria no admitidas",
+   "otros": "Parcela mínima según planeamiento derivado; en 6a, las existentes son indivisibles"
+  },
+  "7": {
+   "nombre": "Valor agrícola (no urbanizable)",
+   "articulo": "Art. 321",
+   "parcela_minima_m2": 20000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Vivienda rural hasta 400 m²; almacenes y granjas hasta 600 m²",
+   "ocupacion_max": "2 % para almacenes y granjas",
+   "altura_max": "9 m · PB+1 (vivienda); 6 m · PB (almacenes)",
+   "usos": "Agrícola (dominante), vivienda rural, ganadero y forestal; comercio, industria y oficinas no admitidos",
+   "otros": "Finca mínima: 2 ha en regadío y 3 ha en secano (corrección de 2006)"
+  }
+ }
+}
