@@ -326,3 +326,12 @@ def test_parametros_pgou_mataro(fuentes_simuladas):
     assert pg["parcela_minima_m2"] == 2500
     html = render.html(inf)
     assert "Parámetros de la zona según el plan general" in html and "2.500 m²" in html
+
+
+def test_segregacion():
+    from app.fuentes.pgou import segregacion
+    z = {"parcela_minima_m2": 2500, "frente_minimo_m": 36}
+    assert segregacion(z, 10051, 120)["partes"] == 3
+    assert segregacion(z, 10051, 34)["posible"] is False
+    assert segregacion(z, 4000, None)["posible"] is False
+    assert segregacion({"segregacion": "Solo mediante el PERI."}, 9000, 50)["posible"] is None

@@ -44,6 +44,31 @@ def zona(cod_ine5: str, clave_municipal: str) -> dict | None:
     return None
 
 
+def segregacion(zona: dict | None, superficie: float | None, frente: float | None) -> dict | None:
+    """¿Se puede segregar la parcela según la parcela mínima y el frente mínimo de la zona?"""
+    if not zona:
+        return None
+    if zona.get("segregacion"):
+        return {"posible": None, "texto": zona["segregacion"]}
+    pmin, fmin = zona.get("parcela_minima_m2"), zona.get("frente_minimo_m")
+    if not pmin or not superficie:
+        return None
+    n = int(superficie // pmin)
+    if n < 2:
+        return {"posible": False, "partes": 1,
+                "texto": f"No: harían falta al menos {2 * pmin:,.0f} m² para dos parcelas de la mínima ({pmin:,.0f} m²).".replace(",", ".")}
+    texto = f"Sí, en principio hasta {n} parcelas de {pmin:,.0f} m²".replace(",", ".")
+    if fmin and frente:
+        n_frente = int(frente // fmin)
+        if n_frente < 2:
+            return {"posible": False, "partes": 1,
+                    "texto": f"No por frente: la superficie daría para {n}, pero el frente a vial ({frente:.0f} m) no llega a dos frentes mínimos de {fmin:.0f} m."}
+        if n_frente < n:
+            n = n_frente
+            texto = f"Sí, hasta {n} parcelas (limitado por el frente a vial de {frente:.0f} m y el frente mínimo de {fmin:.0f} m)"
+    return {"posible": True, "partes": n, "texto": texto + ", sujeto a licencia de parcelación."}
+
+
 def consultar(cod_ine5: str, calificaciones: list[dict]) -> dict | None:
     """Parámetros de cada calificación de la parcela, o None si el municipio aún no está cargado."""
     m = _municipio(cod_ine5 or "")

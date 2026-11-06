@@ -319,8 +319,8 @@
       {% if z and (z.usos or z.otros) %}<tr><td></td><td colspan="5"><small>{% if z.usos %}<b>Usos:</b> {{ z.usos }}{% endif %}{% if z.otros %}{% if z.usos %} · {% endif %}{{ z.otros }}{% endif %}</small></td></tr>{% endif %}
     {% endfor %}
     </table>
-    {% if pg.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica < pg.parcela_minima_m2 %}<div class="aviso">La parcela ({{ inf.parcela.sup_grafica|num }} m²) es menor que la parcela mínima de la zona ({{ pg.parcela_minima_m2|num }} m²): consultar si es edificable por ser preexistente o si requiere agrupación.</div>
-    {% elif pg.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica >= 2 * pg.parcela_minima_m2 %}<div class="info">La superficie permitiría, en principio, segregar en {{ (inf.parcela.sup_grafica // pg.parcela_minima_m2)|int }} parcelas de la mínima de la zona (sujeto a frente mínimo y licencia).</div>{% endif %}
+    {% if pg.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica < pg.parcela_minima_m2 %}<div class="aviso">La parcela ({{ inf.parcela.sup_grafica|num }} m²) es menor que la parcela mínima de la zona ({{ pg.parcela_minima_m2|num }} m²): consultar si es edificable por ser preexistente o si requiere agrupación.</div>{% endif %}
+    {% if pg.segregacion %}<div class="{{ 'info' if pg.segregacion.posible else 'aviso' }}"><b>¿Se puede segregar?</b> {{ pg.segregacion.texto }}</div>{% endif %}
     <p class="pie">{{ pg.plan }}{% if pg.modificaciones %}. Modificaciones posteriores de las normas: {{ pg.modificaciones|join("; ") }}. Comprobar si afectan a la zona{% endif %}.{% if pg.documento %} <a href="{{ pg.documento }}">Ver las normas</a>.{% endif %}</p>
     {% endif %}
     {% if u.sectores %}

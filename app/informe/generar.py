@@ -64,9 +64,14 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     snu = any(c.get("codigo", "").upper().startswith("SNU") and c.get("pct", 0) >= 50 for c in (urb.get("clasificaciones") or []))
     precio = suelo.consultar(cod_ine, pob.get("poblacion") if pob.get("estado") == "ok" else None,
                              parcela.get("sup_grafica"), suelo_no_urbanizable=snu)
-    if urb.get("estado") == "ok":
-        urb["parametros_pgou"] = pgou.consultar(cod_ine, urb.get("calificaciones"))
     metr = parcela_metricas.metricas(g)
+    if urb.get("estado") == "ok":
+        pg = pgou.consultar(cod_ine, urb.get("calificaciones"))
+        if pg:
+            principal = max((f for f in pg["zonas"] if f["zona"]), key=lambda f: f["pct"] or 0, default=None)
+            frente = ((traf.get("accesos") or {}).get("frente_vial_m")) if isinstance(traf, dict) else None
+            pg["segregacion"] = pgou.segregacion(principal["zona"] if principal else None, parcela.get("sup_grafica"), frente)
+        urb["parametros_pgou"] = pg
     inund_res = inundabilidad.combinar(aca, snczi)
 
     datos_puntuacion = {"urbanismo": urb, "inundabilidad": inund_res, "red": red, "trafico": traf, "metricas": metr,

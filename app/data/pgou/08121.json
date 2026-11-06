@@ -64,7 +64,8 @@
    "ocupacion_max": "Según plano",
    "altura_max": "Mantenimiento de la actual (salvo subzonas con ordenanza gráfica)",
    "usos": "Vivienda unifamiliar (dominante); hotelero e industria II-III no admitidos",
-   "otros": "Parcela mínima: la existente"
+   "otros": "Parcela mínima: la existente",
+   "segregacion": "No: la parcela mínima es la existente."
   },
   "2a": {
    "nombre": "Industria urbana entre medianeras",
@@ -86,7 +87,8 @@
    "ocupacion_max": "—",
    "altura_max": "Según PERI",
    "usos": "Las actividades actuales; nuevos usos según zona 2a hasta que se apruebe el PERI",
-   "otros": "Parcela mínima: las existentes, sin segregación hasta el PERI de reindustrialización"
+   "otros": "Parcela mínima: las existentes, sin segregación hasta el PERI de reindustrialización",
+   "segregacion": "No se permite segregar hasta que se apruebe el PERI del sector."
   },
   "2c": {
    "nombre": "Industria-terciario entre medianeras",
@@ -251,7 +253,8 @@
    "ocupacion_max": "La actual + 50 %",
    "altura_max": "7 m · PB+1",
    "usos": "Vivienda unifamiliar y rural; plurifamiliar, comercio mediano y grande, industria no admitidos",
-   "otros": "Parcela: la existente (sin segregaciones por debajo del 90 % de la superficie)"
+   "otros": "Parcela: la existente (sin segregaciones por debajo del 90 % de la superficie)",
+   "segregacion": "Solo ajustes de límites; ninguna parcela resultante puede bajar del 90 % de la actual."
   },
   "5": {
    "nombre": "Remodelación",
@@ -262,7 +265,8 @@
    "ocupacion_max": "Según PERI",
    "altura_max": "Según PERI",
    "usos": "Residencial plurifamiliar tras el PERI; hasta entonces, solo las actividades actuales",
-   "otros": "Parcelación solo mediante PERI. Cesiones mínimas del 42 %"
+   "otros": "Parcelación solo mediante PERI. Cesiones mínimas del 42 %",
+   "segregacion": "Solo mediante el PERI del sector."
   },
   "6": {
    "nombre": "Dotaciones y servicios privados",
@@ -273,7 +277,8 @@
    "ocupacion_max": "Según planeamiento derivado",
    "altura_max": "Según planeamiento derivado",
    "usos": "Hotelero, comercio, oficinas, restauración, equipamientos y servicios técnicos; vivienda (salvo vigilancia) e industria no admitidas",
-   "otros": "Parcela mínima según planeamiento derivado; en 6a, las existentes son indivisibles"
+   "otros": "Parcela mínima según planeamiento derivado; en 6a, las existentes son indivisibles",
+   "segregacion": "Según planeamiento derivado; en la subzona 6a las parcelas existentes son indivisibles."
   },
   "7": {
    "nombre": "Valor agrícola (no urbanizable)",

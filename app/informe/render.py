@@ -56,7 +56,9 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
         pmin = (u.get("parametros_pgou") or {}).get("parcela_minima_m2")
         fichas.append({"icono": "urbanismo", "titulo": "Urbanismo", "valor": q["codigo_municipal"] or q["codigo_muc"],
                        "detalle": f"{clas} · {q['descripcion_municipal'] or q['descripcion_muc']}"
-                                  + (f" · parcela mín. {num(pmin)} m²" if pmin else ""), "estado": estado})
+                                  + (f" · parcela mín. {num(pmin)} m²" if pmin else "")
+                                  + (" · segregable" if ((u.get("parametros_pgou") or {}).get("segregacion") or {}).get("posible") else ""),
+                       "estado": estado})
     else:
         fichas.append({"icono": "urbanismo", "titulo": "Urbanismo", "valor": "Sin dato", "detalle": "", "estado": "gris"})
 
