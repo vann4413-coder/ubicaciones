@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block contenido %}
+<div class="legal">
+<p class="legal-nav">{% for k, v in paginas.items() %}<a href="/{{ k }}"{% if k == pagina %} aria-current="page"{% endif %}>{{ v }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+<h1>{{ titulo }}</h1>
+<p class="bajada">Última actualización: {{ actualizado }}</p>
+
+{% if pagina == "aviso-legal" %}
+<h2>1. Titular del sitio web</h2>
+<p>En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI), se informa de que el sitio web <b>{{ t.web }}</b> y el servicio <b>{{ marca }}</b> son titularidad de:</p>
+<ul>
+  <li><b>Titular:</b> {{ t.nombre }}</li>
+  <li><b>NIF:</b> {{ t.nif }}</li>
+  <li><b>Domicilio:</b> {{ t.direccion }}</li>
+  <li><b>Correo electrónico:</b> <a href="mailto:{{ t.email }}">{{ t.email }}</a></li>
+</ul>
+<h2>2. Objeto</h2>
+<p>{{ marca }} es una plataforma web que elabora informes sobre parcelas y suelos de Cataluña a partir de información pública oficial (catastro, planeamiento urbanístico, inundabilidad, tráfico, red eléctrica, entorno y otros datos territoriales), para su uso por profesionales y particulares.</p>
+<h2>3. Condiciones de uso</h2>
+<p>El acceso a la web implica la aceptación de este aviso legal. El usuario se compromete a hacer un uso lícito de la web y de los informes, a no reproducirlos ni revenderlos de forma masiva sin autorización y a no realizar extracciones automatizadas de contenidos.</p>
+<h2>4. Carácter de la información</h2>
+<p>Los informes se elaboran con datos públicos oficiales en la fecha de consulta y tienen carácter <b>orientativo</b>. No sustituyen a la cédula urbanística, a los certificados e informes de los organismos competentes, a la nota simple registral ni a una tasación oficial. Antes de tomar decisiones de inversión o de iniciar trámites, el usuario debe contrastar la información con las administraciones competentes.</p>
+<h2>5. Propiedad intelectual e industrial</h2>
+<p>El diseño de la web, sus textos, el software, la marca {{ marca }} y el formato de los informes pertenecen a su titular. Los datos públicos que se incorporan conservan la titularidad de sus organismos de origen, que se citan según exigen sus licencias: © Dirección General del Catastro, © Institut Cartogràfic i Geològic de Catalunya, © colaboradores de OpenStreetMap (ODbL) y demás administraciones públicas.</p>
+<h2>6. Responsabilidad</h2>
+<p>El titular no se responsabiliza de los errores u omisiones de las fuentes públicas ni de las interrupciones de los servicios de terceros de los que dependen los datos. Tampoco de los daños derivados de decisiones tomadas exclusivamente a partir de los informes sin la comprobación indicada en el apartado 4.</p>
+<h2>7. Legislación aplicable</h2>
+<p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales que correspondan legalmente; cuando el usuario sea consumidor, los de su domicilio.</p>
+
+{% elif pagina == "privacidad" %}
+<h2>1. Responsable del tratamiento</h2>
+<ul>
+  <li><b>Responsable:</b> {{ t.nombre }} ({{ marca }}) · NIF {{ t.nif }}</li>
+  <li><b>Domicilio:</b> {{ t.direccion }}</li>
+  <li><b>Contacto:</b> <a href="mailto:{{ t.email }}">{{ t.email }}</a></li>
+</ul>
+<h2>2. Qué datos tratamos</h2>
+<ul>
+  <li><b>Cuenta de usuario:</b> correo electrónico y contraseña (guardada cifrada, nunca en claro).</li>
+  <li><b>Compras y suscripciones:</b> correo, nombre, dirección de facturación, NIF si se facilita, importe y fecha. Los datos de la tarjeta los recibe y guarda únicamente Stripe; nosotros no tenemos acceso a ellos.</li>
+  <li><b>Uso del servicio:</b> referencias catastrales consultadas e informes generados, para el historial de la cuenta y el control del límite mensual de cada plan.</li>
+  <li><b>Datos técnicos:</b> dirección IP y registros de acceso del servidor, por seguridad.</li>
+</ul>
+<p>Los informes se basan en datos públicos de las parcelas. No se incluyen datos de titulares que sean personas físicas.</p>
+<h2>3. Para qué los usamos y base jurídica</h2>
+<ul>
+  <li>Prestar el servicio, gestionar la cuenta, los pagos y las suscripciones: <b>ejecución del contrato</b> (art. 6.1.b RGPD).</li>
+  <li>Emitir facturas y cumplir las obligaciones fiscales y contables: <b>obligación legal</b> (art. 6.1.c RGPD).</li>
+  <li>Seguridad de la web y prevención del fraude: <b>interés legítimo</b> (art. 6.1.f RGPD).</li>
+  <li>Responder a las consultas que nos envíes: <b>consentimiento</b> y aplicación de medidas precontractuales.</li>
+</ul>
+<p>No elaboramos perfiles comerciales ni enviamos publicidad sin consentimiento previo.</p>
+<h2>4. Cuánto tiempo los conservamos</h2>
+<p>Mientras la cuenta esté activa. Después, los datos de facturación se conservan durante los plazos que exige la normativa fiscal y mercantil (en general, 6 años) y el resto se suprime.</p>
+<h2>5. Con quién los compartimos</h2>
+<p>Solo con los proveedores necesarios para prestar el servicio, que actúan como encargados del tratamiento con las garantías del RGPD:</p>
+<ul>
+  <li><b>Stripe Payments Europe, Ltd.</b> (Irlanda): pagos, suscripciones y facturas.</li>
+  <li><b>Proveedor de alojamiento de la web</b> (Railway Corporation): servidores donde funciona la plataforma. Puede implicar transferencias internacionales amparadas en cláusulas contractuales tipo de la Comisión Europea o en el Marco de Privacidad de Datos UE-EE. UU.</li>
+  <li><b>Servicios de mapas y tipografías</b> que carga el navegador (teselas de mapa, Google Fonts): reciben la dirección IP técnica necesaria para servir el contenido.</li>
+</ul>
+<p>Además, las administraciones a las que obliga la ley (por ejemplo, la Agencia Tributaria).</p>
+<h2>6. Tus derechos</h2>
+<p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a <a href="mailto:{{ t.email }}">{{ t.email }}</a>. Si consideras que no se han atendido correctamente, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es">www.aepd.es</a>).</p>
+
+{% elif pagina == "condiciones" %}
+<h2>1. Partes y objeto</h2>
+<p>Estas condiciones regulan la contratación de los informes y suscripciones de {{ marca }}, ofrecidos por {{ t.nombre }} (NIF {{ t.nif }}, {{ t.direccion }}, <a href="mailto:{{ t.email }}">{{ t.email }}</a>) a través de {{ t.web }}. Al pagar, el cliente declara haberlas leído y aceptado.</p>
+<h2>2. Servicios y precios</h2>
+<ul>
+  <li><b>Informe suelto:</b> 1,99 € por informe completo de una parcela (pantalla y PDF).</li>
+  <li><b>Plan Profesional:</b> 99 € al mes, hasta 50 informes por mes natural.</li>
+  <li><b>Plan Premium:</b> 139 € al mes, informes sin límite para uso propio del cliente.</li>
+</ul>
+<p>Todos los precios incluyen el IVA. La factura se emite con el desglose del impuesto y se envía al correo indicado en el pago. Los precios pueden cambiar; los cambios no afectan a los pagos ya hechos y, en las suscripciones, se avisarán con al menos 15 días de antelación.</p>
+<h2>3. Pago</h2>
+<p>El pago se hace con tarjeta u otros medios disponibles a través de Stripe, en un entorno seguro. {{ marca }} no recibe ni guarda los datos de la tarjeta.</p>
+<h2>4. Entrega</h2>
+<p>El informe es un contenido digital que se genera y se entrega de forma inmediata en la web una vez confirmado el pago, con descarga en PDF. Si una fuente pública no responde en ese momento, el informe lo indica en la sección correspondiente.</p>
+<h2>5. Suscripciones</h2>
+<p>Las suscripciones se renuevan automáticamente cada mes hasta que el cliente las cancela. Se pueden cancelar en cualquier momento desde «Mi cuenta → Facturación»; la cancelación surte efecto al final del periodo ya pagado, sin más cargos. Los informes no usados de un mes no se acumulan al siguiente. Las cuentas son personales: no se pueden compartir para dar servicio a terceros.</p>
+<h2>6. Derecho de desistimiento</h2>
+<p>Cuando el cliente es consumidor, dispone de 14 días naturales para desistir de la contratación. Sin embargo, de acuerdo con el artículo 103.m) del Texto refundido de la Ley general para la defensa de los consumidores y usuarios, <b>el derecho de desistimiento no se aplica a los informes</b>, ya que se trata de contenido digital que se entrega de inmediato con el consentimiento expreso del cliente, que reconoce que con ello pierde ese derecho. En las suscripciones, el consumidor puede desistir en los 14 días siguientes a la contratación; si ya ha descargado informes en ese plazo, se descontará la parte proporcional al servicio prestado.</p>
+<p>Si el cliente contrata como empresa o profesional, no le es aplicable el derecho de desistimiento de la normativa de consumo.</p>
+<h2>7. Alcance de los informes</h2>
+<p>Los informes recopilan y analizan información pública oficial en la fecha de consulta y son <b>orientativos</b>. No sustituyen a la cédula urbanística, a los certificados de compatibilidad, a los informes de los organismos competentes, a la nota simple ni a una tasación. Las puntuaciones son una ayuda a la decisión basada en criterios técnicos generales. El titular responde de la correcta elaboración del informe con los datos disponibles, pero no de los errores de las fuentes públicas ni de las decisiones que se tomen sin las comprobaciones indicadas.</p>
+<h2>8. Incidencias</h2>
+<p>Si un informe no se genera correctamente o hay un error de cobro, escríbenos a <a href="mailto:{{ t.email }}">{{ t.email }}</a> indicando la referencia catastral y la fecha. Lo revisaremos y, si procede, se generará de nuevo o se devolverá el importe.</p>
+<h2>9. Legislación y jurisdicción</h2>
+<p>Estas condiciones se rigen por la legislación española. Para los consumidores, serán competentes los juzgados de su domicilio.</p>
+
+{% elif pagina == "cookies" %}
+<h2>1. Qué cookies usamos</h2>
+<p>{{ marca }} solo usa <b>cookies técnicas</b>, imprescindibles para que la web funcione. No usamos cookies de analítica, publicidad ni seguimiento, por lo que no es necesario pedir tu consentimiento (art. 22.2 LSSI).</p>
+<table class="tabla-legal">
+  <tr><th>Cookie</th><th>Para qué sirve</th><th>Duración</th></tr>
+  <tr><td>ubi_sesion</td><td>Mantener la sesión iniciada en tu cuenta.</td><td>Hasta cerrar sesión o 30 días</td></tr>
+  <tr><td>ubi_compras</td><td>Recordar los informes sueltos que has pagado en este navegador para poder volver a verlos.</td><td>1 año</td></tr>
+</table>
+<h2>2. Servicios de terceros</h2>
+<p>Al pagar, Stripe puede usar sus propias cookies técnicas y de prevención del fraude en su página de pago. Los mapas y tipografías se cargan desde servidores externos que no instalan cookies de seguimiento a través de esta web.</p>
+<h2>3. Cómo eliminarlas</h2>
+<p>Puedes borrar o bloquear las cookies desde la configuración de tu navegador. Si bloqueas las cookies técnicas, no podrás iniciar sesión ni recuperar los informes comprados.</p>
+{% endif %}
+</div>
+{% endblock %}

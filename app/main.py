@@ -10,6 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from shapely.geometry import mapping
 
 from app import config, geo, http, pagos
+from app.legal import router as rutas_legales
 from app.rutas_cuenta import acceso, redirigir_a_compra, router as rutas_cuenta
 from app.analisis.compatibilidad import PERFILES
 from app.fuentes import catastro, geocoder, poblacion
@@ -46,6 +47,7 @@ async def ciclo(app: FastAPI):
 app = FastAPI(title=config.MARCA, lifespan=ciclo)
 app.mount("/static", StaticFiles(directory=WEB), name="static")
 app.include_router(rutas_cuenta)
+app.include_router(rutas_legales)
 
 _informes: dict[tuple, tuple[float, dict]] = {}
 TTL_INFORME = 3600

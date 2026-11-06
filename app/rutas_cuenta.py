@@ -128,11 +128,13 @@ def _error_pago(request: Request, e: Exception) -> HTMLResponse:
 
 
 @router.post("/comprar/{rc}")
-async def pagar_informe(request: Request, rc: str):
+async def pagar_informe(request: Request, rc: str, acepto: str = Form("")):
     from app.fuentes import catastro
     rc = (catastro.normalizar_rc(rc) or "")[:14]
     if not rc or not pagos.activos():
         raise HTTPException(400, "No disponible")
+    if not acepto:
+        return RedirectResponse(f"/comprar/{rc}", status_code=303)
     try:
         url = pagos.checkout_informe(rc, str(request.base_url), usuario_actual(request))
     except Exception as e:  # noqa: BLE001

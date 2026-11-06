@@ -129,3 +129,14 @@ h1, h2, h3 { line-height: 1.15; letter-spacing: -0.01em; margin: 0; }
 .plan form { display: contents; }
 .plan form .btn { width: 100%; }
 @media (max-width: 760px) { .dos-col { grid-template-columns: minmax(0, 1fr); } }
+
+.pie-legal a { color: inherit; }
+.acepto { display: block; font-size: 13px; color: var(--suave); margin: 10px 0; line-height: 1.4; }
+.acepto input { margin-right: 6px; vertical-align: -2px; }
+.legal { max-width: 78ch; }
+.legal h2 { font-size: 18px; margin: 28px 0 8px; }
+.legal p, .legal li { line-height: 1.6; }
+.legal-nav { font-size: 14px; }
+.legal-nav a[aria-current] { font-weight: 700; text-decoration: none; }
+.tabla-legal { border-collapse: collapse; width: 100%; font-size: 14px; }
+.tabla-legal th, .tabla-legal td { border-bottom: 1px solid #e3e8ef; padding: 8px; text-align: left; vertical-align: top; }

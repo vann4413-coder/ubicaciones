@@ -62,3 +62,15 @@ def test_compra_y_plan_dan_acceso():
 
 
 test_compra_y_plan_dan_acceso = pytest.mark.usefixtures("cliente")(test_compra_y_plan_dan_acceso)
+
+
+def test_paginas_legales(monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+    monkeypatch.setenv("UBI_NIF", "00000000T")
+    c = TestClient(app)
+    for ruta, texto in [("/aviso-legal", "00000000T"), ("/privacidad", "Agencia Española de Protección de Datos"),
+                        ("/condiciones", "desistimiento"), ("/cookies", "ubi_sesion")]:
+        r = c.get(ruta)
+        assert r.status_code == 200 and texto in r.text

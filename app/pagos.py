@@ -27,6 +27,10 @@ PRODUCTOS = {
 
 # Datos para una factura completa: dirección de facturación y NIF/CIF del cliente (opcional para particulares).
 FACTURA = {"locale": "es", "billing_address_collection": "required", "tax_id_collection": {"enabled": True}}
+AVISO_INFORME = ("Al pagar aceptas las condiciones de contratación (parcelas360.com/condiciones) y pides la entrega "
+                 "inmediata del informe, por lo que pierdes el derecho de desistimiento.")
+AVISO_SUSCRIPCION = ("Al suscribirte aceptas las condiciones de contratación (parcelas360.com/condiciones). La suscripción "
+                     "se renueva cada mes y puedes cancelarla cuando quieras desde tu cuenta.")
 
 _precios: dict[str, str] = {}
 _tasa_iva: str | None = None
@@ -103,6 +107,7 @@ def checkout_informe(rc: str, base: str, usuario: dict | None) -> str:
         cancel_url=_url(f"/comprar/{rc}?cancelado=1", base),
         metadata={"tipo": "informe", "rc": rc, "usuario_id": str(usuario["id"]) if usuario else ""},
         invoice_creation={"enabled": True},
+        custom_text={"submit": {"message": AVISO_INFORME}},
         **FACTURA,
     )
     if usuario and usuario.get("stripe_customer"):
@@ -122,6 +127,7 @@ def checkout_suscripcion(plan: str, base: str, usuario: dict) -> str:
         cancel_url=_url("/cuenta?cancelado=1", base),
         metadata={"tipo": "suscripcion", "plan": plan, "usuario_id": str(usuario["id"])},
         subscription_data={"metadata": {"plan": plan, "usuario_id": str(usuario["id"])}},
+        custom_text={"submit": {"message": AVISO_SUSCRIPCION}},
         **FACTURA,
     )
     if usuario.get("stripe_customer"):

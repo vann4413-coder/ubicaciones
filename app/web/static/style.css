@@ -133,3 +133,6 @@ footer input { width: auto; }
 .acciones.una a { background: var(--acento); color: #1d1300; }
 .nota-acceso { font-size: 12.5px; color: var(--suave); margin: -6px 0 0; text-align: center; }
 .cab .cuenta { color: #fff; font-size: 12.5px; text-decoration: underline; align-self: flex-start; margin-top: 2px; }
+
+.legal-app { display: block; width: 100%; font-size: 11px; color: #6b7a8c; margin-top: 6px; }
+.legal-app a { color: inherit; }

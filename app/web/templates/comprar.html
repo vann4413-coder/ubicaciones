@@ -9,7 +9,9 @@
     <h3>Este informe</h3>
     <p class="precio">1,99 €<small> IVA incl.</small></p>
     <ul><li>Informe completo en pantalla y PDF</li><li>Ficha oficial del Catastro adjunta</li><li>Sin registro</li></ul>
-    <form method="post" action="/comprar/{{ rc }}"><button class="btn" type="submit">Pagar y ver el informe</button></form>
+    <form method="post" action="/comprar/{{ rc }}">
+      <label class="acepto"><input type="checkbox" name="acepto" value="1" required> Acepto las <a href="/condiciones" target="_blank">condiciones</a> y pido la entrega inmediata del informe, por lo que pierdo el derecho de desistimiento.</label>
+      <button class="btn" type="submit">Pagar y ver el informe</button></form>
   </div>
   <div class="plan">
     <h3>Profesional</h3>
@@ -25,4 +27,5 @@
   </div>
 </div>
 {% if not usuario %}<p class="nota-precios">¿Ya tienes suscripción? <a href="/cuenta?siguiente=/informe/{{ rc }}">Entra en tu cuenta</a>.</p>{% endif %}
+<p class="nota-precios">Las suscripciones se renuevan cada mes y se cancelan cuando quieras desde tu cuenta. <a href="/condiciones">Condiciones</a> · <a href="/privacidad">Privacidad</a></p>
 {% endblock %}
