@@ -82,16 +82,40 @@ def tasa_iva() -> list[str]:
     return [_tasa_iva]
 
 
+METODOS = [m.strip() for m in os.getenv("UBI_METODOS_PAGO", "card,link,paypal,klarna,amazon_pay").split(",") if m.strip()]
+diagnostico: dict[str, str] = {}  # último motivo por el que Stripe rechazó la lista de métodos (se ve en /salud)
+
+
 def _crear_sesion(datos: dict) -> str:
-    """Crea la sesión de Checkout. El IVA lo ponemos nosotros (tax_rates), así que se desactiva
-    «Managed Payments» de Stripe, que algunas cuentas traen activado y exige códigos fiscales."""
+    """Crea la sesión de Checkout.
+
+    - Se piden expresamente los métodos de UBI_METODOS_PAGO (tarjeta con Apple/Google Pay, Link y PayPal). Si Stripe
+      no admite alguno en esta cuenta o en este tipo de pago, se guarda el motivo y se repite con los métodos que
+      tenga activados la cuenta, para que el cliente siempre pueda pagar.
+    - El IVA lo ponemos nosotros (tax_rates), así que se desactiva «Managed Payments», que exige códigos fiscales.
+    """
     s = _stripe()
-    try:
-        return s.checkout.Session.create(**datos, managed_payments={"enabled": False}).url
-    except s.error.InvalidRequestError as e:
-        if "managed_payments" not in str(e):
-            raise
-        return s.checkout.Session.create(**datos).url
+    extra = {"managed_payments": {"enabled": False}}
+    intentos = [{"payment_method_types": METODOS}, {}] if METODOS else [{}]
+    ultimo = None
+    for metodos in intentos:
+        for gestionado in (extra, {}):
+            try:
+                url = s.checkout.Session.create(**datos, **metodos, **gestionado).url
+                if metodos:
+                    diagnostico.pop(datos.get("mode", ""), None)
+                return url
+            except s.error.InvalidRequestError as e:
+                ultimo = e
+                texto = str(e)
+                if "managed_payments" in texto and gestionado:
+                    continue  # la cuenta no conoce esa opción: se repite sin ella
+                if metodos:
+                    diagnostico[datos.get("mode", "")] = (getattr(e, "user_message", None) or texto)[:400]
+                    log.warning("Stripe no admite %s en %s: %s", METODOS, datos.get("mode"), texto)
+                    break  # se prueba con los métodos por defecto de la cuenta
+                raise
+    raise ultimo
 
 
 def _url(ruta: str, base: str) -> str:
