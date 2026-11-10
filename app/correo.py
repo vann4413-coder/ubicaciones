@@ -1,6 +1,12 @@
-"""Envío de correos (enlace al informe comprado) por SMTP.
+"""Envío de correos (enlace al informe comprado).
 
-Variables de entorno (en Railway):
+Dos vías; se usa la primera configurada:
+  1. Resend (API por HTTPS, recomendado: Railway bloquea el SMTP salvo en el plan Pro)
+       UBI_RESEND_CLAVE   clave de API de Resend (re_…)
+       UBI_CORREO_DESDE   remitente, p. ej. informes@parcelas360.com (dominio verificado en Resend)
+       UBI_CORREO_RESPUESTA  dirección para las respuestas (por defecto tuparcela360@gmail.com)
+  2. SMTP
+Variables de entorno SMTP (en Railway):
   UBI_SMTP_USUARIO   cuenta que envía, p. ej. tuparcela360@gmail.com
   UBI_SMTP_CLAVE     contraseña de aplicación de esa cuenta (en Gmail: https://myaccount.google.com/apppasswords)
   UBI_SMTP_SERVIDOR  smtp.gmail.com por defecto
@@ -29,9 +35,15 @@ def _cfg() -> dict:
     }
 
 
+def _resend() -> dict:
+    return {"clave": os.getenv("UBI_RESEND_CLAVE", "").strip(),
+            "desde": os.getenv("UBI_CORREO_DESDE", "").strip() or "informes@parcelas360.com",
+            "respuesta": os.getenv("UBI_CORREO_RESPUESTA", "").strip() or "tuparcela360@gmail.com"}
+
+
 def activo() -> bool:
     c = _cfg()
-    return bool(c["usuario"] and c["clave"])
+    return bool(_resend()["clave"] or (c["usuario"] and c["clave"]))
 
 
 def mensaje_informe(destino: str, rc: str, url_informe: str, url_pdf: str, direccion: str = "") -> EmailMessage:
@@ -63,11 +75,29 @@ def _enviar(m: EmailMessage) -> None:
         s.send_message(m)
 
 
+async def _enviar_resend(m: EmailMessage) -> None:
+    from app import http
+    r = _resend()
+    texto = m.get_body(("plain",)).get_content()
+    html = m.get_body(("html",)).get_content()
+    resp = await http.cliente().post(
+        "https://api.resend.com/emails", headers={"Authorization": f"Bearer {r['clave']}"},
+        json={"from": formataddr((config.MARCA, r["desde"])), "to": [m["To"]], "subject": m["Subject"],
+              "text": texto, "html": html, "reply_to": r["respuesta"]}, timeout=30)
+    if resp.status_code >= 300:
+        raise RuntimeError(f"Resend {resp.status_code}: {resp.text[:300]}")
+
+
 async def enviar_informe(destino: str, rc: str, url_informe: str, url_pdf: str, direccion: str = "") -> bool:
     if not activo() or not destino:
         return False
     try:
-        await asyncio.to_thread(_enviar, mensaje_informe(destino, rc, url_informe, url_pdf, direccion))
+        m = mensaje_informe(destino, rc, url_informe, url_pdf, direccion)
+        if _resend()["clave"]:
+            await _enviar_resend(m)
+        else:
+            await asyncio.to_thread(_enviar, m)
+        log.info("Correo del informe %s enviado", rc)
         return True
     except Exception as e:  # noqa: BLE001  un fallo de correo no debe romper la compra
         log.warning("No se pudo enviar el correo del informe %s: %s", rc, e)

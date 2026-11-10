@@ -87,3 +87,19 @@ def test_correo_informe(monkeypatch):
     sid = f"cs_test_{uuid.uuid4().hex}"
     assert cuentas.reservar_correo(sid) is True
     assert cuentas.reservar_correo(sid) is False
+
+
+def test_correo_por_resend(monkeypatch):
+    import asyncio
+
+    import httpx
+    import respx
+
+    from app import correo
+    monkeypatch.setenv("UBI_RESEND_CLAVE", "re_prueba")
+    with respx.mock() as m:
+        ruta = m.post("https://api.resend.com/emails").respond(json={"id": "1"})
+        ok = asyncio.run(correo.enviar_informe("cliente@example.com", "3180004DF5938S", "https://x/i", "https://x/p"))
+        assert ok and ruta.called
+        cuerpo = ruta.calls[0].request.content.decode()
+        assert "informes@parcelas360.com" in cuerpo and "tuparcela360@gmail.com" in cuerpo
