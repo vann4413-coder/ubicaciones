@@ -103,3 +103,12 @@ def test_correo_por_resend(monkeypatch):
         assert ok and ruta.called
         cuerpo = ruta.calls[0].request.content.decode()
         assert "informes@parcelas360.com" in cuerpo and "tuparcela360@gmail.com" in cuerpo
+
+
+def test_robots_y_sitemap():
+    from fastapi.testclient import TestClient
+
+    from app.main import app
+    c = TestClient(app)
+    assert "Sitemap: https://parcelas360.com/sitemap.xml" in c.get("/robots.txt").text
+    assert "https://parcelas360.com/app" in c.get("/sitemap.xml").text

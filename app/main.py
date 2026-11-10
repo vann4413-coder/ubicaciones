@@ -202,6 +202,21 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
     return render.html(inf, barra={"pdf": f"/informe/{rc}.pdf" + (f"?{urlencode(q)}" if q else ""), "aviso": aviso})
 
 
+@app.get("/robots.txt", include_in_schema=False)
+async def robots():
+    return Response("User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /informe/\nDisallow: /comprar/\n"
+                    "Disallow: /cuenta\nDisallow: /pago/\n\nSitemap: https://parcelas360.com/sitemap.xml\n",
+                    media_type="text/plain")
+
+
+@app.get("/sitemap.xml", include_in_schema=False)
+async def sitemap():
+    paginas = ["", "app", "aviso-legal", "privacidad", "condiciones", "cookies"]
+    urls = "".join(f"<url><loc>https://parcelas360.com/{p}</loc></url>" for p in paginas)
+    return Response(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>',
+                    media_type="application/xml")
+
+
 @app.get("/salud")
 async def salud():
     from app.fuentes import red_electrica
