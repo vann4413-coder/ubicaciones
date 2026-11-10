@@ -5,6 +5,8 @@ Los datos del titular se configuran con variables de entorno (en Railway) para n
   UBI_NIF        NIF / CIF
   UBI_DIRECCION  domicilio a efectos de notificaciones
   UBI_EMAIL      correo de contacto (por defecto tuparcela360@gmail.com)
+  UBI_TELEFONO   teléfono de contacto (opcional)
+Si no hay nombre, NIF o dirección, esas líneas no se muestran y el titular figura con el nombre comercial.
 """
 import os
 from datetime import date
@@ -29,12 +31,12 @@ ACTUALIZADO = date(2026, 11, 6)
 
 
 def titular() -> dict:
-    pendiente = "[pendiente de completar]"
     return {
-        "nombre": os.getenv("UBI_TITULAR", "").strip() or pendiente,
-        "nif": os.getenv("UBI_NIF", "").strip() or pendiente,
-        "direccion": os.getenv("UBI_DIRECCION", "").strip() or pendiente,
+        "nombre": os.getenv("UBI_TITULAR", "").strip() or config.MARCA,
+        "nif": os.getenv("UBI_NIF", "").strip(),
+        "direccion": os.getenv("UBI_DIRECCION", "").strip(),
         "email": os.getenv("UBI_EMAIL", "").strip() or "tuparcela360@gmail.com",
+        "telefono": os.getenv("UBI_TELEFONO", "").strip(),
         "web": "parcelas360.com",
     }
 

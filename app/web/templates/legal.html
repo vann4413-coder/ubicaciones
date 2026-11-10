@@ -10,9 +10,10 @@
 <p>En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI), se informa de que el sitio web <b>{{ t.web }}</b> y el servicio <b>{{ marca }}</b> son titularidad de:</p>
 <ul>
   <li><b>Titular:</b> {{ t.nombre }}</li>
-  <li><b>NIF:</b> {{ t.nif }}</li>
-  <li><b>Domicilio:</b> {{ t.direccion }}</li>
+  {% if t.nif %}<li><b>NIF:</b> {{ t.nif }}</li>{% endif %}
+  {% if t.direccion %}<li><b>Domicilio:</b> {{ t.direccion }}</li>{% endif %}
   <li><b>Correo electrónico:</b> <a href="mailto:{{ t.email }}">{{ t.email }}</a></li>
+  {% if t.telefono %}<li><b>Teléfono:</b> {{ t.telefono }}</li>{% endif %}
 </ul>
 <h2>2. Objeto</h2>
 <p>{{ marca }} es una plataforma web que elabora informes sobre parcelas y suelos de Cataluña a partir de información pública oficial (catastro, planeamiento urbanístico, inundabilidad, tráfico, red eléctrica, entorno y otros datos territoriales), para su uso por profesionales y particulares.</p>
@@ -30,8 +31,8 @@
 {% elif pagina == "privacidad" %}
 <h2>1. Responsable del tratamiento</h2>
 <ul>
-  <li><b>Responsable:</b> {{ t.nombre }} ({{ marca }}) · NIF {{ t.nif }}</li>
-  <li><b>Domicilio:</b> {{ t.direccion }}</li>
+  <li><b>Responsable:</b> {{ t.nombre }}{% if t.nombre != marca %} ({{ marca }}){% endif %}{% if t.nif %} · NIF {{ t.nif }}{% endif %}</li>
+  {% if t.direccion %}<li><b>Domicilio:</b> {{ t.direccion }}</li>{% endif %}
   <li><b>Contacto:</b> <a href="mailto:{{ t.email }}">{{ t.email }}</a></li>
 </ul>
 <h2>2. Qué datos tratamos</h2>
@@ -65,7 +66,7 @@
 
 {% elif pagina == "condiciones" %}
 <h2>1. Partes y objeto</h2>
-<p>Estas condiciones regulan la contratación de los informes y suscripciones de {{ marca }}, ofrecidos por {{ t.nombre }} (NIF {{ t.nif }}, {{ t.direccion }}, <a href="mailto:{{ t.email }}">{{ t.email }}</a>) a través de {{ t.web }}. Al pagar, el cliente declara haberlas leído y aceptado.</p>
+<p>Estas condiciones regulan la contratación de los informes y suscripciones de {{ marca }}, ofrecidos por {{ t.nombre }} ({% if t.nif %}NIF {{ t.nif }}, {% endif %}{% if t.direccion %}{{ t.direccion }}, {% endif %}<a href="mailto:{{ t.email }}">{{ t.email }}</a>{% if t.telefono %}, {{ t.telefono }}{% endif %}) a través de {{ t.web }}. Al pagar, el cliente declara haberlas leído y aceptado.</p>
 <h2>2. Servicios y precios</h2>
 <ul>
   <li><b>Informe suelto:</b> 1,99 € por informe completo de una parcela (pantalla y PDF).</li>
