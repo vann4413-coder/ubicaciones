@@ -193,7 +193,12 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
     inf = await _informe(rc, potencia_mw, sup_minima, grupos)
     from urllib.parse import urlencode
     q = {k: v for k, v in request.query_params.items() if k in ("acceso", "potencia_mw", "sup_minima", "grupos")}
-    aviso = "Te hemos enviado el enlace del informe por correo." if request.query_params.get("enviado") else ""
+    if request.query_params.get("enviado"):
+        aviso = "Te hemos enviado el enlace del informe por correo."
+    elif request.query_params.get("acceso"):
+        aviso = "Guarda esta página en favoritos: con este enlace puedes volver a abrir el informe cuando quieras."
+    else:
+        aviso = ""
     return render.html(inf, barra={"pdf": f"/informe/{rc}.pdf" + (f"?{urlencode(q)}" if q else ""), "aviso": aviso})
 
 
