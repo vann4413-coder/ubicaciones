@@ -1,7 +1,7 @@
 """Envío de correos (enlace al informe comprado) por SMTP.
 
 Variables de entorno (en Railway):
-  UBI_SMTP_USUARIO   cuenta que envía, p. ej. parcelas360@gmail.com
+  UBI_SMTP_USUARIO   cuenta que envía, p. ej. tuparcela360@gmail.com
   UBI_SMTP_CLAVE     contraseña de aplicación de esa cuenta (en Gmail: https://myaccount.google.com/apppasswords)
   UBI_SMTP_SERVIDOR  smtp.gmail.com por defecto
   UBI_SMTP_PUERTO    465 por defecto (SSL)

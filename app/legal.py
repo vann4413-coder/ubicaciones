@@ -4,7 +4,7 @@ Los datos del titular se configuran con variables de entorno (en Railway) para n
   UBI_TITULAR    nombre y apellidos o razón social
   UBI_NIF        NIF / CIF
   UBI_DIRECCION  domicilio a efectos de notificaciones
-  UBI_EMAIL      correo de contacto (por defecto parcelas360@gmail.com)
+  UBI_EMAIL      correo de contacto (por defecto tuparcela360@gmail.com)
 """
 import os
 from datetime import date
@@ -34,7 +34,7 @@ def titular() -> dict:
         "nombre": os.getenv("UBI_TITULAR", "").strip() or pendiente,
         "nif": os.getenv("UBI_NIF", "").strip() or pendiente,
         "direccion": os.getenv("UBI_DIRECCION", "").strip() or pendiente,
-        "email": os.getenv("UBI_EMAIL", "").strip() or "parcelas360@gmail.com",
+        "email": os.getenv("UBI_EMAIL", "").strip() or "tuparcela360@gmail.com",
         "web": "parcelas360.com",
     }
 

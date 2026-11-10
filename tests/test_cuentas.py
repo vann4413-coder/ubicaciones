@@ -78,7 +78,7 @@ def test_paginas_legales(monkeypatch):
 
 def test_correo_informe(monkeypatch):
     from app import correo, cuentas
-    monkeypatch.setenv("UBI_SMTP_USUARIO", "parcelas360@gmail.com")
+    monkeypatch.setenv("UBI_SMTP_USUARIO", "tuparcela360@gmail.com")
     monkeypatch.setenv("UBI_SMTP_CLAVE", "abcd efgh ijkl mnop")
     assert correo.activo()
     m = correo.mensaje_informe("cliente@example.com", "3180004DF5938S", "https://x/informe/R?acceso=T", "https://x/informe/R.pdf?acceso=T")
