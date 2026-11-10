@@ -74,3 +74,14 @@ def test_paginas_legales(monkeypatch):
                         ("/condiciones", "desistimiento"), ("/cookies", "ubi_sesion")]:
         r = c.get(ruta)
         assert r.status_code == 200 and texto in r.text
+
+
+def test_correo_informe(monkeypatch):
+    from app import correo, cuentas
+    monkeypatch.setenv("UBI_SMTP_USUARIO", "parcelas360@gmail.com")
+    monkeypatch.setenv("UBI_SMTP_CLAVE", "abcd efgh ijkl mnop")
+    assert correo.activo()
+    m = correo.mensaje_informe("cliente@example.com", "3180004DF5938S", "https://x/informe/R?acceso=T", "https://x/informe/R.pdf?acceso=T")
+    assert "Descargar el PDF" in m.get_body(("html",)).get_content() and m["To"] == "cliente@example.com"
+    assert cuentas.reservar_correo("cs_test_1") is True
+    assert cuentas.reservar_correo("cs_test_1") is False

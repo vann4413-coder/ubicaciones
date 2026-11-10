@@ -6,7 +6,7 @@ from fastapi import APIRouter, Form, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-from app import config, cuentas, pagos
+from app import config, correo, cuentas, pagos
 
 log = logging.getLogger(__name__)
 router = APIRouter()
@@ -166,10 +166,12 @@ async def pago_ok(request: Request, session_id: str):
             return RedirectResponse(f"/comprar/{meta.get('rc', '')}?cancelado=1", status_code=303)
         rc = meta["rc"]
         uid = int(meta["usuario_id"]) if meta.get("usuario_id") else None
-        token = cuentas.guardar_compra(ses.id, rc, (ses.customer_details or {}).get("email", ""), ses.amount_total, uid)
+        email = (ses.customer_details or {}).get("email", "")
+        token = cuentas.guardar_compra(ses.id, rc, email, ses.amount_total, uid)
+        enviado = enviar_correo_compra(_base(request), ses.id, rc, email, token)
         compras = tokens_compra(request)
         compras[rc] = token
-        resp = RedirectResponse(f"/informe/{rc}?acceso={token}", status_code=303)
+        resp = RedirectResponse(f"/informe/{rc}?acceso={token}" + ("&enviado=1" if enviado else ""), status_code=303)
         resp.set_cookie(COOKIE_COMPRAS, cuentas.firmar(",".join(f"{k}:{v}" for k, v in list(compras.items())[-30:])),
                         max_age=60 * 60 * 24 * 365, httponly=True, samesite="lax", secure=request.url.scheme == "https")
         return resp
@@ -177,6 +179,20 @@ async def pago_ok(request: Request, session_id: str):
         _activar_suscripcion(int(meta["usuario_id"]), ses.customer, ses.subscription, meta.get("plan"))
         return RedirectResponse("/cuenta", status_code=303)
     return RedirectResponse("/", status_code=303)
+
+
+def _base(request: Request) -> str:
+    return (pagos.URL_PUBLICA or str(request.base_url)).rstrip("/")
+
+
+def enviar_correo_compra(base: str, session_id: str, rc: str, email: str, token: str) -> bool:
+    """Programa el correo con los enlaces del informe (una sola vez por compra). Devuelve si se va a enviar."""
+    import asyncio
+    if not (correo.activo() and email and cuentas.reservar_correo(session_id)):
+        return False
+    asyncio.create_task(correo.enviar_informe(email, rc, f"{base}/informe/{rc}?acceso={token}",
+                                              f"{base}/informe/{rc}.pdf?acceso={token}"))
+    return True
 
 
 def _activar_suscripcion(uid: int, customer: str, sub_id: str | None, plan: str | None) -> None:
@@ -203,8 +219,10 @@ async def webhook(request: Request):
         if meta.get("tipo") == "suscripcion" and meta.get("usuario_id"):
             _activar_suscripcion(int(meta["usuario_id"]), obj.get("customer"), obj.get("subscription"), meta.get("plan"))
         elif meta.get("tipo") == "informe" and obj.get("payment_status") == "paid":
-            cuentas.guardar_compra(obj["id"], meta.get("rc", ""), (obj.get("customer_details") or {}).get("email", ""),
-                                   obj.get("amount_total"), int(meta["usuario_id"]) if meta.get("usuario_id") else None)
+            email = (obj.get("customer_details") or {}).get("email", "")
+            token = cuentas.guardar_compra(obj["id"], meta.get("rc", ""), email, obj.get("amount_total"),
+                                           int(meta["usuario_id"]) if meta.get("usuario_id") else None)
+            enviar_correo_compra(_base(request), obj["id"], meta.get("rc", ""), email, token)
     elif tipo in ("customer.subscription.updated", "customer.subscription.deleted", "customer.subscription.created"):
         u = cuentas.por_customer(obj.get("customer"))
         uid = u["id"] if u else int((obj.get("metadata") or {}).get("usuario_id") or 0)

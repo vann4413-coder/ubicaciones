@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS compras (
   session_id TEXT PRIMARY KEY, rc TEXT NOT NULL, email TEXT, importe INTEGER, fecha TEXT NOT NULL,
   token TEXT NOT NULL, usuario_id INTEGER
 );
+CREATE TABLE IF NOT EXISTS correos_enviados (session_id TEXT PRIMARY KEY, fecha TEXT NOT NULL);
 """
 
 
@@ -203,6 +204,14 @@ def guardar_compra(session_id: str, rc: str, email: str, importe: int, usuario_i
                      (session_id, rc, email, importe, _ahora(), token, usuario_id))
         db().commit()
     return token
+
+
+def reservar_correo(session_id: str) -> bool:
+    """True solo la primera vez para cada compra: evita mandar dos veces el mismo correo (vuelta de Stripe + webhook)."""
+    with _lock:
+        cur = db().execute("INSERT OR IGNORE INTO correos_enviados (session_id, fecha) VALUES (?, ?)", (session_id, _ahora()))
+        db().commit()
+        return cur.rowcount == 1
 
 
 def compra_valida(rc: str, token: str | None) -> bool:

@@ -145,11 +145,12 @@ def panorama(inf: dict, comp: dict) -> list[dict]:
     return fichas
 
 
-def html(inf: dict) -> str:
+def html(inf: dict, barra: dict | None = None) -> str:
+    """HTML del informe. `barra` (solo en la versión web) añade arriba los botones de descargar PDF y volver."""
     comp = mapas.competencia(inf)
     return _env.get_template("informe.html").render(
         inf=inf, mapas=mapas.construir(inf), perfiles=PERFILES, niveles=NIVELES, bloques=BLOQUES, estados=ESTADOS,
-        comp=comp, panorama=panorama(inf, comp), marca=config.MARCA, lema=config.MARCA_LEMA,
+        comp=comp, panorama=panorama(inf, comp), marca=config.MARCA, lema=config.MARCA_LEMA, barra=barra,
     )
 
 

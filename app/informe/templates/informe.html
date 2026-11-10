@@ -167,6 +167,19 @@
 </style>
 </head>
 <body>
+{% if barra %}
+<style>
+  @media screen {
+    .barra-web { position: sticky; top: 0; z-index: 10; display: flex; gap: 10px; align-items: center; justify-content: flex-end;
+      padding: 10px 16px; background: #12355b; font-family: Inter, sans-serif; }
+    .barra-web a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,.4); }
+    .barra-web a.principal { background: #f5a623; border-color: #f5a623; color: #12355b; }
+    .barra-web span { color: #fff; margin-right: auto; font-size: 13px; opacity: .85; }
+  }
+  @media print { .barra-web { display: none; } }
+</style>
+<div class="barra-web"><span>{{ barra.aviso or "" }}</span><a href="/app">Volver al mapa</a><a class="principal" href="{{ barra.pdf }}">Descargar PDF</a></div>
+{% endif %}
 
 {# ======================= PORTADA ======================= #}
 {% set n_grupos = inf.puntuaciones|length %}
