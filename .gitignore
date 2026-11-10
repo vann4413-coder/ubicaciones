@@ -7,3 +7,5 @@ datos/*.csv
 !datos/aforos.csv
 !datos/.gitkeep
 datos/osm_*
+datos/*.db
+datos/*.db-*

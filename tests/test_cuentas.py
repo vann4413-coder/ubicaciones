@@ -83,5 +83,7 @@ def test_correo_informe(monkeypatch):
     assert correo.activo()
     m = correo.mensaje_informe("cliente@example.com", "3180004DF5938S", "https://x/informe/R?acceso=T", "https://x/informe/R.pdf?acceso=T")
     assert "Descargar el PDF" in m.get_body(("html",)).get_content() and m["To"] == "cliente@example.com"
-    assert cuentas.reservar_correo("cs_test_1") is True
-    assert cuentas.reservar_correo("cs_test_1") is False
+    import uuid
+    sid = f"cs_test_{uuid.uuid4().hex}"
+    assert cuentas.reservar_correo(sid) is True
+    assert cuentas.reservar_correo(sid) is False
