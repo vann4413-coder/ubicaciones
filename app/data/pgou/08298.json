@@ -1,0 +1,362 @@
+{
+ "municipio": "Vic",
+ "codigo_ine": "08298",
+ "plan": "Pla d'ordenació urbanística municipal de Vic – Normes urbanístiques (text refós 2019)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=378239&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "R1": {
+   "nombre": "Centre històric",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM).",
+   "otros": "Edificis amb grau de protecció; es manté la volumetria legalment consolidada. Cal projecte arqueològic/estudi històric en obres de nova planta."
+  },
+  "R2": {
+   "nombre": "Teixits antics",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM).",
+   "otros": "En general es manté el nombre de plantes legalment consolidat (màxim B3 a R2c). Profunditat i alçades segons plànols."
+  },
+  "R3a": {
+   "nombre": "Illa tancada 1",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Resulta de la profunditat edificable i les plantes dels plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R3b": {
+   "nombre": "Illa tancada 2",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Resulta de la profunditat edificable i les plantes dels plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R3c": {
+   "nombre": "Illa tancada 3",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 180,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Resulta de la profunditat edificable i les plantes dels plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R3d": {
+   "nombre": "Illa tancada 4",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Resulta de la profunditat edificable i les plantes dels plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R3e": {
+   "nombre": "Illa tancada 5",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Resulta de la profunditat edificable i les plantes dels plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R4a": {
+   "nombre": "Illa oberta 1",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 1350,
+   "frente_minimo_m": 38,
+   "edificabilidad": "2,20 m²st/m²s",
+   "ocupacion_max": "70 % (soterrani 100 %)",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM).",
+   "otros": "Ha de poder inscriure un quadrat de 34 m de costat."
+  },
+  "R4b": {
+   "nombre": "Illa oberta 2",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 1300,
+   "frente_minimo_m": 24,
+   "edificabilidad": "2,00 m²st/m²s",
+   "ocupacion_max": "Segons plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R4c": {
+   "nombre": "Illa oberta 3",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,08 m²st/m²s (torres) / 1,58 (bloc lineal)",
+   "ocupacion_max": "Segons plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R4d": {
+   "nombre": "Illa oberta 4",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 13,
+   "edificabilidad": "0,9 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "B3 (la Guixa B2)",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R4e": {
+   "nombre": "Illa oberta 5",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 13,
+   "edificabilidad": "1,5 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "B5 (la Guixa B2)",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM)."
+  },
+  "R4f": {
+   "nombre": "Illa oberta 6",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "frente_minimo_m": 13,
+   "edificabilidad": "Segons plànols",
+   "ocupacion_max": "Segons plànols",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM).",
+   "otros": "Parcel·la mínima: la de cada unitat de subzona.",
+   "segregacion": "No: la parcel·la mínima és la superfície de cada unitat de subzona."
+  },
+  "R4g": {
+   "nombre": "Illa oberta d'ordenació volumètrica consolidada",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM).",
+   "otros": "Sostre màxim fixat per a cada àmbit (taula del POUM)."
+  },
+  "R4h": {
+   "nombre": "Illa oberta d'ordenació volumètrica flexible",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "frente_minimo_m": 10,
+   "usos": "Habitatge, comerç, oficines, restauració, equipaments (segons quadre d'usos del POUM).",
+   "otros": "Parcel·lació preexistent o la que fixi el planejament derivat; ocupació i plantes segons plànols o planejament derivat."
+  },
+  "R5a": {
+   "nombre": "Cases agrupades 1, alineades a vial",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 180,
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R5b": {
+   "nombre": "Cases agrupades 2, alineades a vial",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "frente_minimo_m": 5.8,
+   "altura_max": "B1 (7,80 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "otros": "Parcel·la mínima segons plànols."
+  },
+  "R5c": {
+   "nombre": "Cases agrupades 3, alineades a vial",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5.5,
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R5d": {
+   "nombre": "Cases agrupades amb configuració flexible",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 180,
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R6a": {
+   "nombre": "Cases aïllades 1, parcel·la mitjana",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,9 m²st/m²s (o la dels plànols)",
+   "ocupacion_max": "40 % PB / 30 % PP",
+   "altura_max": "B2",
+   "usos": "Habitatge unifamiliar aïllat i usos compatibles."
+  },
+  "R6b": {
+   "nombre": "Cases aïllades 2, parcel·la mitjana",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,2 m²st/m²s",
+   "ocupacion_max": "100 % PB / 40 % P1",
+   "altura_max": "B2",
+   "usos": "Habitatge i usos compatibles."
+  },
+  "R6c": {
+   "nombre": "Cases aïllades 3, parcel·la petita",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 300,
+   "edificabilidad": "0,5 m²st/m²s (≤350 m²) / 0,42 (>350 m², mín. 175 m²st)",
+   "ocupacion_max": "30 %",
+   "altura_max": "B1",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "R6d": {
+   "nombre": "Cases aïllades 4, parcel·la mitjana",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "1,50 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "B2",
+   "usos": "Habitatge i usos compatibles."
+  },
+  "R6e": {
+   "nombre": "Cases aïllades 5, parcel·la petita",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 13,
+   "edificabilidad": "0,8 m²st/m²s",
+   "ocupacion_max": "75 %",
+   "altura_max": "B (planta baixa)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "R6f": {
+   "nombre": "Cases aïllades 6, parcel·la mitjana",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,55 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "B1 (8,70 m)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "R6g": {
+   "nombre": "Cases aïllades 7, parcel·la gran",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "ocupacion_max": "35 % o la preexistent",
+   "altura_max": "B2 (10 m)",
+   "usos": "Habitatge unifamiliar aïllat.",
+   "otros": "Es reconeix l'edificabilitat legalment consolidada.",
+   "segregacion": "No: la parcel·la mínima és l'existent en aprovar el POUM."
+  },
+  "A1a": {
+   "nombre": "Industrial entre mitgeres",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,30 m²st/m²s (o la dels plànols)",
+   "ocupacion_max": "Segons plànols",
+   "altura_max": "B1 (10 m)",
+   "usos": "Industrial, magatzem i tallers; estació de servei segons quadre d'usos del POUM."
+  },
+  "A1b": {
+   "nombre": "Industrial aïllada en parcel·les mitjanes",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,80 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "B3 (16 m)",
+   "usos": "Industrial, magatzem i tallers; estació de servei segons quadre d'usos del POUM."
+  },
+  "A1c": {
+   "nombre": "Industrial aïllada en parcel·les grans",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,80 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "B2 (16 m)",
+   "usos": "Industrial, magatzem i tallers; estació de servei segons quadre d'usos del POUM."
+  },
+  "A2a": {
+   "nombre": "Terciari en entorn industrial entre mitgeres",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,30 m²st/m²s",
+   "ocupacion_max": "Segons plànols (soterrani 100 %)",
+   "altura_max": "B1 (10 m)",
+   "usos": "Comerç, serveis, oficines, restauració, hoteler; estació de servei segons quadre d'usos."
+  },
+  "A2b": {
+   "nombre": "Terciari en entorn industrial aïllat",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,80 m²st/m²s",
+   "ocupacion_max": "70 % (soterrani 100 %)",
+   "altura_max": "B3 (hoteler B4)",
+   "usos": "Comerç, serveis, oficines, restauració, hoteler; estació de servei segons quadre d'usos."
+  },
+  "A2c": {
+   "nombre": "Terciari urbà alineat a vial",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Resulta de la profunditat i les plantes dels plànols",
+   "altura_max": "Segons plànols, màxim B5",
+   "usos": "Comerç, serveis, oficines, restauració, hoteler."
+  },
+  "A2d": {
+   "nombre": "Terciari urbà en edificació aïllada",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 700,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,40 m²st/m²s",
+   "ocupacion_max": "80 % (soterrani 100 %)",
+   "altura_max": "Segons plànols",
+   "usos": "Comerç, serveis, oficines, restauració, hoteler; estació de servei segons quadre d'usos."
+  },
+  "A2e": {
+   "nombre": "Terciari de baixa ocupació",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,1 m²st/m²s (màx. 100 m²)",
+   "ocupacion_max": "10 %",
+   "altura_max": "B (4 m)",
+   "usos": "Terciari de baixa ocupació."
+  },
+  "N1a": {
+   "nombre": "Sòl de valor agrícola-ramader (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  },
+  "N1b": {
+   "nombre": "Sòl de valor agrícola de transició (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  },
+  "N2a": {
+   "nombre": "Sòl de valor geològic, natural i paisatgístic (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  },
+  "N2b": {
+   "nombre": "Sòl d'influència del sistema hidràulic (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  },
+  "N2c": {
+   "nombre": "Sòl de valor forestal i ecològic-paisatgístic (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  },
+  "N2d": {
+   "nombre": "Sòl de valor agro-forestal i ecològic (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  },
+  "N2e": {
+   "nombre": "Sòl de valor agrícola i paisatgístic (mosaic) (sòl no urbanitzable)",
+   "articulo": "Normes urbanístiques POUM (text refós 2019)",
+   "usos": "Agrícola, ramader i forestal; altres usos només pels supòsits de la Llei d'urbanisme amb projecte d'actuació específica.",
+   "otros": "Parcel·la mínima segons les unitats mínimes de conreu i forestals (Decret 169/1983)."
+  }
+ }
+}
