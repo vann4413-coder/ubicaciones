@@ -1,0 +1,211 @@
+{
+ "municipio": "Calafell",
+ "codigo_ine": "43037",
+ "plan": "Pla d'ordenació urbanística municipal de Calafell – Normes urbanístiques (text refós)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=299972&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "CH": {
+   "nombre": "Centre històric",
+   "articulo": "Art. 62",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Edificabilitat: l'existent en aprovar el POUM. Gasolinera: prohibida la implantació de noves benzineres en aquesta zona (art. 169 i ss.)."
+  },
+  "SH": {
+   "nombre": "Creixements suburbans històrics",
+   "articulo": "Art. 63",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Gasolinera: prohibida la implantació de noves benzineres en aquesta zona (art. 169 i ss.)."
+  },
+  "EH": {
+   "nombre": "Eixample suburbà històric",
+   "articulo": "Art. 64",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Gasolinera: prohibida la implantació de noves benzineres en aquesta zona (art. 169 i ss.)."
+  },
+  "ED": {
+   "nombre": "Eixample dens",
+   "articulo": "Art. 65",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 7.5,
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Parcel·la i façana mínimes: l'existent; es pot subdividir si en resulten parcel·les de més de 150 m² i 7,5 m de façana. Densitat 1 habitatge/100 m² construïts. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+  },
+  "OD3": {
+   "nombre": "Ordenació aïllada densa de tres plantes",
+   "articulo": "Art. 66",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,87 m²st/m²s",
+   "ocupacion_max": "40 % (soterrani 50 %)",
+   "altura_max": "PB+2",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Separacions 4 m a carrer i fons, 2 m a la resta. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+  },
+  "OD5s": {
+   "nombre": "Ordenació aïllada densa de cinc plantes (Segur)",
+   "articulo": "Art. 66",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,25 m²st/m²s",
+   "ocupacion_max": "40 % (soterrani 60 %)",
+   "altura_max": "PB+4",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Separacions 4 m a tots els llindars. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+  },
+  "OD5": {
+   "nombre": "Ordenació aïllada densa de cinc plantes",
+   "articulo": "Art. 66",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,8 m²st/m²s",
+   "ocupacion_max": "40 % (soterrani 60 %)",
+   "altura_max": "PB+4",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Separacions 4 m a tots els llindars (5 m al passeig Marítim). Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+  },
+  "DD": {
+   "nombre": "Densificació mitjançant actuacions de dotació",
+   "articulo": "Art. 67",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+  },
+  "OV": {
+   "nombre": "Ordenació volumètrica específica",
+   "articulo": "Art. 68",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Volumetria i sostre segons plànols."
+  },
+  "FU": {
+   "nombre": "Promocions en filera",
+   "articulo": "Art. 69",
+   "usos": "Habitatge.",
+   "otros": "Edificabilitat: l'assignada per la llicència de la promoció original. Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+  },
+  "X250": {
+   "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 250",
+   "articulo": "Art. 70",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,75 m²st/m²s (màx. 650 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Habitatge (1 per cada 250 m², màx. 2); oficines dels residents.",
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+  },
+  "X400": {
+   "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 400",
+   "articulo": "Art. 70",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,6 m²st/m²s (màx. 650 m²)",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Habitatge (1 per cada 400 m², màx. 2); oficines dels residents.",
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+  },
+  "X600": {
+   "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 600",
+   "articulo": "Art. 70",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,55 m²st/m²s (màx. 650 m²)",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Un habitatge per parcel·la.",
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+  },
+  "X1000": {
+   "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 1000",
+   "articulo": "Art. 70",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,4 m²st/m²s (màx. 650 m²)",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Un habitatge per parcel·la.",
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+  },
+  "C250": {
+   "nombre": "Condominis d'habitatges 250",
+   "articulo": "Art. 71",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 24,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Habitatge (1 per cada 250 m²).",
+   "segregacion": "No: es prohibeix la parcel·lació i segregació dels habitatges d'una promoció."
+  },
+  "C400": {
+   "nombre": "Condominis d'habitatges 400",
+   "articulo": "Art. 71",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 24,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Habitatge (1 per cada 400 m²).",
+   "segregacion": "No: es prohibeix la parcel·lació i segregació dels habitatges d'una promoció."
+  },
+  "AIp": {
+   "nombre": "Indústria en edificació aïllada petita",
+   "articulo": "Art. 72",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,875 m²st/m²s",
+   "ocupacion_max": "35 % (soterrani 50 %)",
+   "altura_max": "PB+1 i mitja (9 m)",
+   "usos": "Industrial; compatibles hoteler, comerç a l'engròs, oficines, abastament, sociocultural.",
+   "otros": "Gasolinera: admesa a les vies de la zona segons tipologia (art. 169 i ss.), amb estudi de mobilitat."
+  },
+  "AIc": {
+   "nombre": "Indústria ordenada a carrer",
+   "articulo": "Art. 72",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 9,
+   "edificabilidad": "1 m²st/m²s (volum màx. 4 m³/m²)",
+   "ocupacion_max": "90 %",
+   "altura_max": "PB+2 (10 m)",
+   "usos": "Industrial; compatibles hoteler, comerç a l'engròs, oficines, abastament, sociocultural.",
+   "otros": "Gasolinera: admesa a les vies de la zona segons tipologia (art. 169 i ss.), amb estudi de mobilitat."
+  },
+  "AH": {
+   "nombre": "Activitat hotelera",
+   "articulo": "Art. 73",
+   "usos": "Hoteler.",
+   "otros": "Sostre: l'existent en aprovar el POUM."
+  },
+  "AC": {
+   "nombre": "Activitat comercial",
+   "articulo": "Art. 74",
+   "edificabilidad": "1,05 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2 (9 m)",
+   "usos": "Comercial; complementari aparcament.",
+   "segregacion": "No: la parcel·la mínima és l'existent en aprovar el POUM."
+  },
+  "AD": {
+   "nombre": "Activitats dotacionals privades",
+   "articulo": "Art. 75",
+   "usos": "Equipaments privats.",
+   "otros": "Edificabilitat segons plànols."
+  },
+  "RA": {
+   "nombre": "Rural agrícola (sòl no urbanitzable)",
+   "articulo": "Art. 77",
+   "usos": "Agrícola i ramader."
+  },
+  "RF": {
+   "nombre": "Rural forestal (sòl no urbanitzable)",
+   "articulo": "Art. 78",
+   "usos": "Forestal."
+  },
+  "RR": {
+   "nombre": "Rural de ribera (sòl no urbanitzable)",
+   "articulo": "Art. 79",
+   "usos": "Agrícola de ribera."
+  }
+ }
+}
