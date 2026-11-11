@@ -1,0 +1,269 @@
+{
+ "municipio": "El Vendrell",
+ "codigo_ine": "43163",
+ "plan": "Pla general d'ordenació urbana del Vendrell – text refós de les normes",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=142305&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=142306&downloadType=inline&idioma=ca"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "7": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 153-156",
+   "altura_max": "Segons amplada del vial: PB+2 (10,85 m) a PB+5 (19,25 m), més àtic",
+   "ocupacion_max": "Interior d'illa en PB només per a comercial o aparcament",
+   "usos": "Habitatge, hoteler, comercial, magatzem, oficines, equipaments, restauració, aparcament, estació de servei i garatges; indústria de 1a i 2a categoria.",
+   "otros": "Profunditat edificable entre 14 i 25 m segons l'illa (art. 155.2)."
+  },
+  "7a": {
+   "nombre": "Nucli antic – Sant Salvador i Coma-ruga",
+   "articulo": "Art. 157-160",
+   "altura_max": "PB+3 (12 m)",
+   "usos": "Els de la zona 7 excepte l'industrial."
+  },
+  "8a": {
+   "nombre": "Eixample residencial",
+   "articulo": "Art. 161-165",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons amplada del vial: PB+1 (8,05 m) a PB+5 (19,25 m), més àtic",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, magatzems, oficines, equipaments, estacions de servei i garatges, restauració; indústria de 1a i 2a categoria.",
+   "otros": "Profunditat edificable segons art. 155.2 i plànols."
+  },
+  "8b": {
+   "nombre": "Eixample amb tolerància industrial",
+   "articulo": "Art. 166-167",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons amplada del vial, com la 8a",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, magatzems, oficines, equipaments, estacions de servei i garatges, restauració; indústria de 1a i 2a categoria. Indústria de 2a categoria també en situació D."
+  },
+  "9": {
+   "nombre": "Ordenació aïllada plurifamiliar",
+   "articulo": "Art. 168-170",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+3 (12 m); hoteler fins a PB+5 segons parcel·la",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, oficines i equipaments; estació de servei amb limitacions (incompatible amb habitatge al mateix edifici).",
+   "otros": "Separacions: 4 m a vial i 3 m a la resta. Blocs de 35 m de llargada màxima."
+  },
+  "9a": {
+   "nombre": "Aïllada plurifamiliar – cases arrenglerades",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1 (6 m)",
+   "usos": "Habitatge en cases arrenglerades amb accés individual."
+  },
+  "9b": {
+   "nombre": "Aïllada plurifamiliar amb accés comú",
+   "articulo": "Art. 172",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, oficines i equipaments; estació de servei amb limitacions (incompatible amb habitatge al mateix edifici)."
+  },
+  "9c": {
+   "nombre": "Aïllada plurifamiliar amb accés comú",
+   "articulo": "Art. 173",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, oficines i equipaments; estació de servei amb limitacions (incompatible amb habitatge al mateix edifici)."
+  },
+  "9d": {
+   "nombre": "Aïllada plurifamiliar amb accés comú",
+   "articulo": "Art. 173 bis",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, oficines i equipaments; estació de servei amb limitacions (incompatible amb habitatge al mateix edifici).",
+   "otros": "Parcel·la, alçada i ocupació segons plànols de la modificació."
+  },
+  "9h": {
+   "nombre": "Hotelera",
+   "articulo": "Art. 174",
+   "edificabilidad": "2,25 m²st/m²s",
+   "altura_max": "PB+5 (19,25 m)",
+   "usos": "Hoteler.",
+   "otros": "Parcel·la mínima: la unitat de zona dels plànols.",
+   "segregacion": "No: la parcel·la mínima és la unitat de zona assenyalada als plànols."
+  },
+  "9p": {
+   "nombre": "Càmping",
+   "articulo": "Art. 175",
+   "edificabilidad": "0,15 m²st/m²s",
+   "usos": "Càmping."
+  },
+  "10a": {
+   "nombre": "Aïllada unifamiliar A",
+   "articulo": "Art. 176-181",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,65 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar (prohibit el plurifamiliar).",
+   "otros": "Separacions: 3 m a vial, fons i laterals."
+  },
+  "10ah": {
+   "nombre": "Aïllada unifamiliar A amb ús hoteler",
+   "articulo": "Art. 180",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,65 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar (prohibit el plurifamiliar). També hoteler."
+  },
+  "10b": {
+   "nombre": "Aïllada unifamiliar B",
+   "articulo": "Art. 176-181",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar (prohibit el plurifamiliar).",
+   "otros": "Separacions: 4 m a vial, 3 m a fons i laterals."
+  },
+  "10c": {
+   "nombre": "Aïllada unifamiliar C",
+   "articulo": "Art. 176-181",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,55 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar (prohibit el plurifamiliar).",
+   "otros": "Separacions: 4 m a vial, 3 m a fons i laterals."
+  },
+  "10d": {
+   "nombre": "Aïllada unifamiliar D",
+   "articulo": "Art. 176-181",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar (prohibit el plurifamiliar).",
+   "otros": "Separacions: 6 m a vial, 4 m a fons i laterals."
+  },
+  "10e": {
+   "nombre": "Aïllada unifamiliar (antic PP Magrinyà)",
+   "articulo": "Art. 180",
+   "altura_max": "PB+1 (6 m) més àtic",
+   "usos": "Residencial.",
+   "segregacion": "No: la parcel·lació és l'obligatòria del plànol normatiu."
+  },
+  "10t": {
+   "nombre": "Comercial",
+   "articulo": "Art. 182-186",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+3 (12,90 m); a 10t' PB+1 (7 m)",
+   "usos": "Comercial, oficines, restauració, hoteler i altres terciaris.",
+   "otros": "Separacions: 4 m a vial i 3 m a la resta."
+  },
+  "12a": {
+   "nombre": "Industrial aïllada",
+   "articulo": "Art. 187-189",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "40 % (+5 % auxiliars)",
+   "altura_max": "15 m",
+   "usos": "Industrial (1a a 3a categoria), comercial, magatzems, oficines vinculades, estacions de servei i garatges, aparcament.",
+   "otros": "Separació de 10 m a vial i 4 m a la resta."
+  },
+  "12b": {
+   "nombre": "Industrial segons alineació de vial",
+   "articulo": "Art. 190",
+   "frente_minimo_m": 12,
+   "edificabilidad": "2 m²st/m²s",
+   "altura_max": "10 m",
+   "usos": "Industrial, comercial, magatzems, estacions de servei i garatges, aparcament."
+  },
+  "14": {
+   "nombre": "Desenvolupament residencial plurifamiliar (sòl urbanitzable)",
+   "articulo": "Art. 215",
+   "edificabilidad": "0,60 m²st/m²s zonal",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+4 (17 m)",
+   "usos": "Els de la zona 9 (aïllada plurifamiliar).",
+   "otros": "Densitat 60 habitatges/ha. Cal pla parcial."
+  },
+  "14a": {
+   "nombre": "Desenvolupament residencial plurifamiliar intensitat 1 (sòl urbanitzable)",
+   "articulo": "Art. 215",
+   "edificabilidad": "0,50 m²st/m²s zonal",
+   "ocupacion_max": "60 %",
+   "usos": "Els de la zona 9.",
+   "otros": "Densitat 30 habitatges/ha. Cal pla parcial."
+  },
+  "14b": {
+   "nombre": "Desenvolupament residencial plurifamiliar intensitat 2 (sòl urbanitzable)",
+   "articulo": "Art. 215",
+   "edificabilidad": "0,40 m²st/m²s (+0,10 per a altres usos)",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+3 (13 m)",
+   "usos": "Els de la zona 9.",
+   "otros": "Densitat 30 habitatges/ha. Cal pla parcial."
+  },
+  "15": {
+   "nombre": "Desenvolupament residencial unifamiliar (sòl urbanitzable)",
+   "articulo": "Art. 216",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,35 m²st/m²s zonal (+0,15 per a equipaments i comerç); màx. 0,7 per parcel·la",
+   "ocupacion_max": "35 % (60 % en filera)",
+   "altura_max": "PB+2 (9,15 m)",
+   "usos": "Habitatge unifamiliar, comercial, bars, restaurants, hotels, equipaments, aparcament.",
+   "otros": "En filera: parcel·la de 150 m² i façana de 5,50 m. Cal pla parcial."
+  },
+  "15a": {
+   "nombre": "Desenvolupament residencial unifamiliar baixa densitat (sòl urbanitzable)",
+   "articulo": "Art. 216",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,25 m²st/m²s zonal",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+2 (9,15 m)",
+   "usos": "Els de la clau 15.",
+   "otros": "Densitat 10 habitatges/ha. Cal pla parcial."
+  },
+  "16": {
+   "nombre": "Desenvolupament industrial (sòl urbanitzable)",
+   "articulo": "Art. 217",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,6 m²st/m²s brut; màx. 1 per parcel·la",
+   "ocupacion_max": "60 % (40 % en parcel·les >2.500 m²)",
+   "altura_max": "15 m",
+   "usos": "Els de la zona industrial (art. 188), indústria de 1a a 3a categoria.",
+   "otros": "Separació de 9 m a vial i 3 m a la resta. Cal pla parcial."
+  },
+  "17": {
+   "nombre": "Desenvolupament comercial i terciari (sòl urbanitzable)",
+   "articulo": "Art. 218",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "0,75 m²st/m²s global",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+4 (18 m); hoteler PB+5 (21 m)",
+   "usos": "Comercial, abastament, bar i restaurant, lúdic, comercial concentrat i indústria de 1a a 3a categoria.",
+   "otros": "Cal pla parcial."
+  },
+  "19": {
+   "nombre": "Sectors de desenvolupament industrial opcional",
+   "articulo": "Art. 224",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,6 m²st/m²s brut",
+   "ocupacion_max": "60 % (40 % >2.500 m²)",
+   "altura_max": "15 m",
+   "usos": "Industrial.",
+   "otros": "Sòl urbanitzable no delimitat: cal pla parcial."
+  }
+ }
+}
