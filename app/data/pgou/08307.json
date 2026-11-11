@@ -1,0 +1,187 @@
+{
+ "municipio": "Vilanova i la Geltrú",
+ "codigo_ine": "08307",
+ "plan": "Revisió del Pla general d'ordenació de Vilanova i la Geltrú (2001), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=173805&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Zona 1 (art. 105-114)",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según fondo y plantas del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "",
+   "segregacion": "Se respetan los módulos parcelarios característicos del núcleo antiguo."
+  },
+  "2": {
+   "nombre": "Rambla principal",
+   "articulo": "Art. 116-120",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según plantas existentes en el tramo",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según tramo (hasta PB+3)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Solares existentes más estrechos exentos"
+  },
+  "3a": {
+   "nombre": "Conservación, área central",
+   "articulo": "Art. 126-130",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plantas existentes en el tramo (planes especiales: bruta 1,2 m²t/m²s)",
+   "ocupacion_max": "Según fondo (planes especiales 70 %)",
+   "altura_max": "Según tramo (máx. 3 plantas en planes especiales)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Densidad máx. 100 viviendas/ha",
+   "segregacion": "Sin frente mínimo: rige el módulo de vivienda unifamiliar."
+  },
+  "3b": {
+   "nombre": "Conservación, sector Marina",
+   "articulo": "Art. 131-134",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plantas existentes en el tramo",
+   "ocupacion_max": "Según fondo",
+   "altura_max": "Según tramo",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "",
+   "segregacion": "Sin frente mínimo: se conservan el número de plantas y el volumen."
+  },
+  "3c2": {
+   "nombre": "Conservación, ciudad jardín (tipo 3c2)",
+   "articulo": "Art. 137",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 137",
+   "ocupacion_max": "20 %",
+   "altura_max": "Según art. 137",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Parcelas existentes anteriores al plan admitidas"
+  },
+  "3c3": {
+   "nombre": "Conservación, ciudad jardín (tipo 3c3)",
+   "articulo": "Art. 138",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 138",
+   "ocupacion_max": "25 %",
+   "altura_max": "Según art. 138",
+   "usos": "Vivienda unifamiliar",
+   "otros": "",
+   "segregacion": "Ver art. 138."
+  },
+  "3d": {
+   "nombre": "Conservación (tipo 3d)",
+   "articulo": "Art. 139",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 139",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según art. 139",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Ver art. 139."
+  },
+  "4": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 140-143",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según plantas del plano y fondo",
+   "ocupacion_max": "Según fondo; patio de manzana ≥ 30 % de la manzana",
+   "altura_max": "PB+2 (9,80 m) a PB+5 (18,80 m) según plano",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Solares existentes más estrechos exentos"
+  },
+  "5a": {
+   "nombre": "Ordenación abierta, intensidad I",
+   "articulo": "Art. 146",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,6 m²t/m²s",
+   "ocupacion_max": "60 % PB / 40 % plantas",
+   "altura_max": "9,50 m PB+2 a 18,50 m PB+5 según ancho de calle",
+   "usos": "Residencial plurifamiliar",
+   "otros": "",
+   "segregacion": "Ver art. 146."
+  },
+  "5b": {
+   "nombre": "Ordenación abierta, intensidad II",
+   "articulo": "Art. 147",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 147",
+   "ocupacion_max": "60 % PB / 40 % plantas",
+   "altura_max": "15,50 m (PB+4)",
+   "usos": "Residencial plurifamiliar",
+   "otros": "Círculo inscribible de 20 m"
+  },
+  "5c": {
+   "nombre": "Ordenación abierta, intensidad III",
+   "articulo": "Art. 148",
+   "parcela_minima_m2": 700,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 148",
+   "ocupacion_max": "30 %",
+   "altura_max": "12,50 m (PB+3)",
+   "usos": "Residencial plurifamiliar",
+   "otros": "Círculo inscribible de 15 m; separaciones 3 m a linderos y 5 m a fachada"
+  },
+  "6b": {
+   "nombre": "Comercial",
+   "articulo": "Art. 153",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "Según plano",
+   "altura_max": "11 m (PB+2)",
+   "usos": "Comercial",
+   "otros": "",
+   "segregacion": "Ver art. 153."
+  },
+  "7": {
+   "nombre": "Calificación completada",
+   "articulo": "Art. 154-156",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "",
+   "segregacion": "Ámbitos completados: no se prevé segregación."
+  },
+  "8a1": {
+   "nombre": "Industrial en manzana cerrada",
+   "articulo": "Art. 158",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 158",
+   "ocupacion_max": "Según alineaciones",
+   "altura_max": "Según art. 158",
+   "usos": "Industrial",
+   "otros": "",
+   "segregacion": "Ver art. 158."
+  },
+  "13": {
+   "nombre": "Volumetría definida por plan parcial o especial",
+   "articulo": "Zona 13",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según el plan que la ordena",
+   "ocupacion_max": "Según plan",
+   "altura_max": "Según plan",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Parcelación según el plan de origen."
+  }
+ }
+}
