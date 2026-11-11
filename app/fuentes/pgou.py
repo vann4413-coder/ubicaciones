@@ -18,7 +18,12 @@ CAMPOS = ("parcela_minima_m2", "frente_minimo_m", "edificabilidad", "ocupacion_m
 def _municipio(cod_ine5: str) -> dict | None:
     f = DIR / f"{cod_ine5}.json"
     if not f.exists():
-        return None
+        # Municipios que comparten plan (p. ej. los del Pla general metropolità de Barcelona).
+        alias = DIR / "alias.json"
+        nombre = json.loads(alias.read_text(encoding="utf-8")).get(cod_ine5) if alias.exists() else None
+        f = DIR / f"{nombre}.json" if nombre else f
+        if not f.exists():
+            return None
     return json.loads(f.read_text(encoding="utf-8"))
 
 

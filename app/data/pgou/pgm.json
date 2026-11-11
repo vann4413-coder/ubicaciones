@@ -1,0 +1,272 @@
+{
+ "municipio": "Pla general metropolità (Àrea Metropolitana de Barcelona)",
+ "codigo_ine": "PGM",
+ "plan": "Pla general metropolità de 1976, Normes urbanístiques (texto consolidado)",
+ "documento": "https://normatia.com/es/normativa/pgou-barcelona/2009/titol-iv-reglamentacio-detallada-del-sol-urba/",
+ "modificaciones": [
+  "Modificaciones del PGM y planeamiento derivado de cada municipio"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "12": {
+   "nombre": "Núcleo antiguo, sustitución de la edificación",
+   "articulo": "Art. 315-320",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Resultado de alineaciones y alturas (1,40 m²t/m²s en PERI)",
+   "ocupacion_max": "60 % de la manzana a la altura reguladora",
+   "altura_max": "7,90 m B+1 (calle <8 m) a 17,95 m B+4 (≥15 m)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Frente 4,80 m en unifamiliar; 4,50 m en parcelas existentes"
+  },
+  "12b": {
+   "nombre": "Núcleo antiguo, conservación del centro histórico",
+   "articulo": "Art. 316-320",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "La existente (PERI global 0,84)",
+   "ocupacion_max": "La existente",
+   "altura_max": "Media de los edificios existentes",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Frente 4,50 m en parcelas existentes"
+  },
+  "13a": {
+   "nombre": "Densificación urbana intensiva",
+   "articulo": "Art. 322-327",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según alineaciones y altura (zonal 1,20; con PERI 2,20 m²t/m²s)",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "9 m B+1 (calle <8 m) a 25,75 m B+6 (≥30 m)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Frente 6 m en parcelas existentes",
+   "segregacion": "Sin parcela mínima en superficie: rige el frente mínimo de 8 m."
+  },
+  "13b": {
+   "nombre": "Densificación urbana semiintensiva",
+   "articulo": "Art. 322-328",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según alineaciones y altura (zonal 1,00; con PERI 1,80 m²t/m²s)",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "8,25 m B+1 (calle <8 m) a 18,80 m B+4 (≥15 m)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Frente 4,50 m en parcelas existentes",
+   "segregacion": "Sin parcela mínima en superficie: rige el frente mínimo de 6,50 m."
+  },
+  "14a": {
+   "nombre": "Remodelación pública",
+   "articulo": "Art. 357-358",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La fija el plan de reforma interior",
+   "ocupacion_max": "Según PERI",
+   "altura_max": "Según PERI",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "",
+   "segregacion": "Pendiente de plan de reforma interior."
+  },
+  "14b": {
+   "nombre": "Remodelación privada",
+   "articulo": "Art. 357-358",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 13.5,
+   "edificabilidad": "Bruta 1,08; neta 2,89 m²t/m²s",
+   "ocupacion_max": "Según unidad",
+   "altura_max": "Variable según unidad",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": ""
+  },
+  "15": {
+   "nombre": "Conservación de la estructura urbana y edificatoria",
+   "articulo": "Art. 330",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (0,90 m²t/m²s en solares sin edificar)",
+   "ocupacion_max": "La existente +10 % en planta baja",
+   "altura_max": "Media de los edificios existentes",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "",
+   "segregacion": "Conservación de la estructura parcelaria existente."
+  },
+  "16": {
+   "nombre": "Renovación urbana",
+   "articulo": "Art. 362-365",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Bruta 0,70; neta media 1,37 m²t/m²s",
+   "ocupacion_max": "40 % (aislada)",
+   "altura_max": "9,15 m B+2 (aislada)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": ""
+  },
+  "17": {
+   "nombre": "Transformación de uso",
+   "articulo": "Art. 367-368",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan de transformación",
+   "ocupacion_max": "—",
+   "altura_max": "—",
+   "usos": "Uso actual (industrial) en transformación a residencial",
+   "otros": "",
+   "segregacion": "Pendiente de planeamiento de transformación."
+  },
+  "18": {
+   "nombre": "Ordenación volumétrica específica",
+   "articulo": "Art. 334-336",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial u ordenación de manzana",
+   "ocupacion_max": "Según ordenación",
+   "altura_max": "Según ordenación",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "",
+   "segregacion": "Volumetría fijada: parcelación según la ordenación."
+  },
+  "20a/5": {
+   "nombre": "Ciudad jardín, plurifamiliar II",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda plurifamiliar",
+   "otros": ""
+  },
+  "20a/6": {
+   "nombre": "Ciudad jardín, plurifamiliar I",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,25 m²t/m²s",
+   "ocupacion_max": "15 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda plurifamiliar",
+   "otros": ""
+  },
+  "20a/7": {
+   "nombre": "Ciudad jardín, plurifamiliar III",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda plurifamiliar",
+   "otros": ""
+  },
+  "20a/8": {
+   "nombre": "Ciudad jardín, plurifamiliar V",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Hasta 1,50 según ancho de calle",
+   "ocupacion_max": "30 %",
+   "altura_max": "7,55 m B+1 a 16,70 m B+4 según calle",
+   "usos": "Vivienda plurifamiliar",
+   "otros": ""
+  },
+  "20a/9": {
+   "nombre": "Ciudad jardín, plurifamiliar IVa",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda plurifamiliar",
+   "otros": ""
+  },
+  "20a/9b": {
+   "nombre": "Ciudad jardín, plurifamiliar IVb",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "15,25 m B+4",
+   "usos": "Vivienda plurifamiliar",
+   "otros": ""
+  },
+  "20a/9u": {
+   "nombre": "Ciudad jardín, unifamiliar VI",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,00 (0,75 si < 400 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "20a/10": {
+   "nombre": "Ciudad jardín, unifamiliar VII",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "20a/11": {
+   "nombre": "Ciudad jardín, unifamiliar VIII",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "20a/12": {
+   "nombre": "Ciudad jardín, unifamiliar IX",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 24,
+   "edificabilidad": "0,25 m²t/m²s",
+   "ocupacion_max": "10 %",
+   "altura_max": "9,15 m B+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "20a": {
+   "nombre": "Ciudad jardín (subzona por precisar)",
+   "articulo": "Art. 340-343",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,25–1,50 m²t/m²s según subzona",
+   "ocupacion_max": "10–40 % según subzona",
+   "altura_max": "9,15 m B+2 (general)",
+   "usos": "Vivienda",
+   "otros": "Mínimo de las subzonas; consultar la subzona exacta (20a/5 a 20a/12)"
+  },
+  "8a": {
+   "nombre": "Verde privado protegido",
+   "articulo": "Art. 345-347",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente +10 % como máximo",
+   "ocupacion_max": "La existente",
+   "altura_max": "9 m (con plan especial)",
+   "usos": "Residencial existente",
+   "otros": "",
+   "segregacion": "Verde privado protegido: no segregable."
+  },
+  "22a": {
+   "nombre": "Industrial",
+   "articulo": "Art. 348-352",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "90 % (alineación) / 70 % (aislada)",
+   "altura_max": "9 m B+1 / 13 m B+2 / 17 m B+3 según ancho de calle",
+   "usos": "Industrias y almacenes compatibles con la ciudad",
+   "otros": "Sin plan parcial; con plan parcial rigen sus condiciones"
+  }
+ }
+}
