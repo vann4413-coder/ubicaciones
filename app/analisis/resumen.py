@@ -89,6 +89,16 @@ def riesgos_y_pasos(inf: dict) -> list[dict]:
     pasos.append({"tipo": "paso", "texto": "Solicitar la cèdula urbanística o el certificado de compatibilidad urbanística al ayuntamiento."})
     if u.get("estado") == "ok" and len([c for c in u.get("calificaciones", []) if c["pct"] >= 5]) > 1:
         pasos.append({"tipo": "riesgo", "texto": "La parcela tiene varias calificaciones: comprobar qué parte admite el uso."})
+    viario = sum(c["pct"] for c in u.get("calificaciones", []) if (c.get("codigo_muc") or "").upper().startswith("SX"))
+    if u.get("estado") == "ok" and viario >= 2:
+        sup = (inf.get("parcela") or {}).get("sup_grafica")
+        m2 = f" (unos {sup * viario / 100:,.0f} m²)".replace(",", ".") if sup else ""
+        carretera = ((t.get("accesos") or {}).get("carretera_mas_cercana") or {})
+        junto = f" junto a la {carretera['ref']}" if carretera.get("ref") and carretera.get("distancia_m", 999) <= 50 else ""
+        pasos.append({"tipo": "riesgo", "texto": f"El {viario:.1f}% de la parcela{m2} está calificado como sistema viario{junto}: "
+                      "es suelo reservado para la carretera o la calle (ampliación, desdoblamiento o enlace), no edificable y "
+                      "susceptible de expropiación o cesión. Preguntar al ayuntamiento y al titular de la vía si hay un "
+                      "proyecto aprobado o en estudio que lo ocupe."})
     if (inf.get("cambios") or {}).get("recientes"):
         pasos.append({"tipo": "riesgo", "texto": "Hay modificaciones de planeamiento recientes en el municipio: revisar si afectan a la parcela."})
     if i.get("nivel") in ("zfp", "T10", "T100"):
