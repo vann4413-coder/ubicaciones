@@ -155,18 +155,6 @@
    "usos": "Industrial (locales ≥ 300 m²)",
    "otros": "Frente edificado máx. 100 m"
   },
-  "6b-T": {
-   "nombre": "Industrial aislada en transformación",
-   "articulo": "Art. 96-101",
-   "parcela_minima_m2": null,
-   "frente_minimo_m": null,
-   "edificabilidad": "0,70–0,82 m²t/m²s según sector",
-   "ocupacion_max": "Según sector",
-   "altura_max": "Según sector",
-   "usos": "Industrial",
-   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
-   "segregacion": "Parcela mínima según la ficha de cada sector."
-  },
   "6c": {
    "nombre": "Industrial volumetría específica",
    "articulo": "Art. 102",
@@ -211,6 +199,66 @@
    "altura_max": "Plantas según plano",
    "usos": "Terciario",
    "otros": ""
+  },
+  "6b-T1": {
+   "nombre": "Industrial aislada en transformación",
+   "articulo": "Art. 96-101",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Industrial",
+   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
+   "segregacion": "Parcela mínima según la ficha de cada sector."
+  },
+  "6b-T2": {
+   "nombre": "Industrial aislada en transformación",
+   "articulo": "Art. 96-101",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Industrial",
+   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
+   "segregacion": "Parcela mínima según la ficha de cada sector."
+  },
+  "6b-T3": {
+   "nombre": "Industrial aislada en transformación",
+   "articulo": "Art. 96-101",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,72 m²t/m²s",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Industrial",
+   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
+   "segregacion": "Parcela mínima según la ficha de cada sector."
+  },
+  "6b-T4": {
+   "nombre": "Industrial aislada en transformación",
+   "articulo": "Art. 96-101",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,82 m²t/m²s",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Industrial",
+   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
+   "segregacion": "Parcela mínima según la ficha de cada sector."
+  },
+  "6b-T5": {
+   "nombre": "Industrial aislada en transformación",
+   "articulo": "Art. 96-101",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Industrial",
+   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
+   "segregacion": "Parcela mínima según la ficha de cada sector."
   }
  }
 }

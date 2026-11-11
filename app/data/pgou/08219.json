@@ -187,6 +187,17 @@
    "altura_max": "Según art. 106",
    "usos": "Industrial",
    "otros": ""
+  },
+  "12a": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 93-95",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "1,0–2,0 m²t/m²s según subzona",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "7–9,50 m según subzona",
+   "usos": "Residencial",
+   "otros": "Consultar la subzona exacta (12a1-12a4)"
   }
  }
 }
