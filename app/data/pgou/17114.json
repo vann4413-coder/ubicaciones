@@ -1,0 +1,262 @@
+{
+ "municipio": "Olot",
+ "codigo_ine": "17114",
+ "plan": "Pla d'ordenació urbanística municipal d'Olot – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=228121&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "6": {
+   "nombre": "Nucli històric – rehabilitació de l'estructura urbana i edificatòria",
+   "articulo": "Títol V, cap. 2",
+   "usos": "Habitatge, comerç, oficines, serveis i equipaments.",
+   "otros": "Volumetria i alçades segons plànols i catàleg."
+  },
+  "7": {
+   "nombre": "Nucli històric – conservació i colmatació",
+   "articulo": "Títol V, cap. 2",
+   "usos": "Habitatge, comerç, oficines, serveis i equipaments.",
+   "otros": "Volumetria i alçades segons plànols."
+  },
+  "8": {
+   "nombre": "Nucli històric – renovació",
+   "articulo": "Títol V, cap. 2",
+   "usos": "Habitatge, comerç, oficines, serveis i equipaments.",
+   "otros": "Renovació mitjançant planejament derivat en els àmbits delimitats."
+  },
+  "9": {
+   "nombre": "Reforma i remodelació urbana",
+   "articulo": "Art. 269-275",
+   "edificabilidad": "1,42 m²st/m²s (àmbit del PMU)",
+   "ocupacion_max": "40 % plantes pis / 65 % PB",
+   "usos": "Els de l'eixample d'intensitat 2.",
+   "otros": "Cal pla de millora urbana. 1 habitatge/100 m² de sostre."
+  },
+  "10.1": {
+   "nombre": "Eixample urbà d'intensitat 1",
+   "articulo": "Art. 280",
+   "frente_minimo_m": 8,
+   "altura_max": "Segons amplada del vial: PB (4,5 m) a PB+3 (12,5 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, equipaments; indústria-taller i indústria tipus I només en planta baixa.",
+   "otros": "Edificació alineada a vial; fondària segons plànols."
+  },
+  "10.2": {
+   "nombre": "Eixample urbà d'intensitat 2",
+   "articulo": "Art. 281-282",
+   "altura_max": "Segons amplada del vial",
+   "usos": "Habitatge, comerç, oficines, serveis, equipaments; indústria-taller i indústria tipus I només en planta baixa.",
+   "otros": "Fondària edificable de PB i plantes pis segons plànols."
+  },
+  "10.3": {
+   "nombre": "Eixample urbà d'intensitat 3",
+   "articulo": "Art. 283-284",
+   "usos": "Habitatge, comerç, oficines, serveis, equipaments; indústria-taller i indústria tipus I només en planta baixa.",
+   "otros": "Es manté l'edificació aprovada per la llicència d'obres (volum, sostre i ocupació exhaurits)."
+  },
+  "11.1": {
+   "nombre": "Suburbana d'intensitat 1",
+   "articulo": "Art. 285-289",
+   "frente_minimo_m": 6,
+   "altura_max": "PB (4,5 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "11.2": {
+   "nombre": "Suburbana d'intensitat 2",
+   "articulo": "Art. 285-289",
+   "frente_minimo_m": 6,
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Habitatge unifamiliar i plurifamiliar (limitat) i usos compatibles."
+  },
+  "11.3": {
+   "nombre": "Suburbana d'intensitat 3",
+   "articulo": "Art. 285-289",
+   "frente_minimo_m": 6,
+   "altura_max": "PB+2 (9,5 m)",
+   "usos": "Habitatge unifamiliar i plurifamiliar; comerç mitjà a la xarxa viària bàsica."
+  },
+  "12.1": {
+   "nombre": "Aïllada unifamiliar d'intensitat 1",
+   "articulo": "Art. 291-294",
+   "parcela_minima_m2": 1750,
+   "frente_minimo_m": 24,
+   "edificabilidad": "0,30 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar; comerç petit només a la xarxa viària bàsica.",
+   "otros": "Separacions: 5 m a front, 3 m a fons i laterals."
+  },
+  "12.2": {
+   "nombre": "Aïllada unifamiliar d'intensitat 2",
+   "articulo": "Art. 291-294",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar; comerç petit només a la xarxa viària bàsica."
+  },
+  "12.3": {
+   "nombre": "Aïllada unifamiliar d'intensitat 3",
+   "articulo": "Art. 291-294",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar; comerç petit només a la xarxa viària bàsica."
+  },
+  "12.4": {
+   "nombre": "Aïllada unifamiliar d'intensitat 4",
+   "articulo": "Art. 291-294",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar; comerç petit només a la xarxa viària bàsica."
+  },
+  "12.5": {
+   "nombre": "Aïllada unifamiliar d'intensitat 5",
+   "articulo": "Art. 291-294",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar; comerç petit només a la xarxa viària bàsica.",
+   "otros": "S'admet adossar dues edificacions."
+  },
+  "12.6": {
+   "nombre": "Aïllada unifamiliar d'intensitat 6",
+   "articulo": "Art. 295",
+   "usos": "Habitatge unifamiliar; comerç petit només a la xarxa viària bàsica.",
+   "otros": "Ordenació de l'edificació segons l'art. 295."
+  },
+  "13.1": {
+   "nombre": "Aïllada plurifamiliar d'intensitat 1",
+   "articulo": "Art. 299",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 16,
+   "edificabilidad": "1,20 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+3 (12,20 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Separacions: 6 m a vial, 3 m a laterals i fons."
+  },
+  "13.2": {
+   "nombre": "Aïllada plurifamiliar d'intensitat 2",
+   "articulo": "Art. 300",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Es manté l'edificació existent (ocupació, volum i sostre exhaurits)."
+  },
+  "14": {
+   "nombre": "Edificació consolidada",
+   "articulo": "Art. 304-305",
+   "otros": "Es manté l'ordenació i els usos existents."
+  },
+  "15": {
+   "nombre": "Verd privat",
+   "articulo": "Art. 306-309",
+   "usos": "Jardí privat.",
+   "otros": "Protecció de l'edificació i la vegetació existents."
+  },
+  "16.1": {
+   "nombre": "Indústria aïllada d'intensitat 1",
+   "articulo": "Art. 311-314",
+   "parcela_minima_m2": 5000,
+   "frente_minimo_m": 50,
+   "edificabilidad": "1,2 m²st/m²s (volum 3,66 m³/m²)",
+   "ocupacion_max": "30 %",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "16.2": {
+   "nombre": "Indústria aïllada d'intensitat 2",
+   "articulo": "Art. 315-319",
+   "parcela_minima_m2": 4000,
+   "frente_minimo_m": 40,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "16.3": {
+   "nombre": "Indústria aïllada d'intensitat 3",
+   "articulo": "Art. 320-324",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1 m²st/m²s (volum 4,5 m³/m²)",
+   "ocupacion_max": "60 %",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "16.4": {
+   "nombre": "Indústria aïllada d'intensitat 4",
+   "articulo": "Art. 325-328",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1 m²st/m²s (volum 6,0 m³/m²)",
+   "ocupacion_max": "85 %",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "17.1": {
+   "nombre": "Industrial segons alineacions d'intensitat 1",
+   "articulo": "Art. 329-334",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,0 m²st/m²s",
+   "ocupacion_max": "Segons alineacions dels plànols",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "17.2": {
+   "nombre": "Industrial segons alineacions d'intensitat 2",
+   "articulo": "Art. 329-334",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 16,
+   "edificabilidad": "1,0 m²st/m²s",
+   "ocupacion_max": "Segons alineacions dels plànols",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "17.3": {
+   "nombre": "Industrial segons alineacions d'intensitat 3",
+   "articulo": "Art. 329-334",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,0 m²st/m²s",
+   "ocupacion_max": "Segons alineacions dels plànols",
+   "usos": "Industrial; compatibles comerç a l'engròs, magatzem, logístic, estació de servei, aparcament, tallers de vehicles i serveis urbans."
+  },
+  "18.1": {
+   "nombre": "Activitats econòmiques terciàries en edificació aïllada, intensitat 1",
+   "articulo": "Art. 335-336",
+   "parcela_minima_m2": 4000,
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Terciari; complementaris oficines, aparcament i magatzem."
+  },
+  "18.2": {
+   "nombre": "Activitats econòmiques terciàries en edificació aïllada, intensitat 2",
+   "articulo": "Art. 335-336",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Terciari; complementaris oficines, aparcament i magatzem."
+  },
+  "18.3": {
+   "nombre": "Activitats econòmiques terciàries en edificació aïllada, intensitat 3",
+   "articulo": "Art. 335-336",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,90 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Terciari; complementaris oficines, aparcament i magatzem."
+  },
+  "19": {
+   "nombre": "Activitats econòmiques segons perímetres reguladors",
+   "articulo": "Títol V, cap. 12",
+   "usos": "Activitats econòmiques.",
+   "otros": "Edificació segons perímetres reguladors dels plànols."
+  }
+ }
+}
