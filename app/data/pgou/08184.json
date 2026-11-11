@@ -1,0 +1,136 @@
+{
+ "municipio": "Rubí",
+ "codigo_ine": "08184",
+ "plan": "Pla general d'ordenació urbana de Rubí, Text refós de les normes urbanístiques (2006)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=118167&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "eixample": {
+   "nombre": "Residencial en manzana cerrada, ensanche",
+   "articulo": "Art. 99-100",
+   "parcela_minima_m2": 75,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y altura del plano (serie 8)",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según planos de la serie 8",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": ""
+  },
+  "consolidacio": {
+   "nombre": "Residencial en manzana cerrada, consolidación",
+   "articulo": "Art. 101-102",
+   "parcela_minima_m2": 75,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "13 m (PB+3)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": "Se mantienen los retranqueos irregulares existentes"
+  },
+  "substitucio": {
+   "nombre": "Residencial en manzana cerrada, sustitución de edificación aislada",
+   "articulo": "Art. 103-104",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "13 m (PB+3)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": ""
+  },
+  "suburbana": {
+   "nombre": "Residencial en manzana cerrada, suburbana",
+   "articulo": "Art. 105-106",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "10 m (PB+2)",
+   "usos": "Residencial; comercio, oficinas y servicios",
+   "otros": ""
+  },
+  "industrial_illa": {
+   "nombre": "Industrial en manzana cerrada",
+   "articulo": "Art. 107-111",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según alineación a vial",
+   "ocupacion_max": "Según alineaciones",
+   "altura_max": "12 m",
+   "usos": "Industrial (puede transformarse a residencial mediante plan especial)",
+   "otros": "",
+   "segregacion": "Industrial entre medianeras: rigen las alineaciones del plano."
+  },
+  "unifamiliar": {
+   "nombre": "Residencial unifamiliar",
+   "articulo": "Art. 112-115",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "40 %",
+   "altura_max": "9,15 m (PB+2)",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "industrial_aillada": {
+   "nombre": "Industrial en edificación aislada",
+   "articulo": "Art. 116-119",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y volumen",
+   "ocupacion_max": "60 % (< 3.000 m²) / 70 % (≥ 3.000 m²)",
+   "altura_max": "15 m (9,75 m en hilera)",
+   "usos": "Industrial",
+   "otros": "Naves en hilera: parcela mínima 400 m² y ocupación 70 %"
+  },
+  "conservacio": {
+   "nombre": "Conservación de polígonos residenciales",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Polígono consolidado: no se prevé segregación."
+  }
+ },
+ "por_descripcion": [
+  [
+   "illa tancada.*Eixample",
+   "eixample"
+  ],
+  [
+   "illa tancada.*Consolidaci",
+   "consolidacio"
+  ],
+  [
+   "illa tancada.*Substituci",
+   "substitucio"
+  ],
+  [
+   "illa tancada.*Suburban",
+   "suburbana"
+  ],
+  [
+   "industrial en illa tancada",
+   "industrial_illa"
+  ],
+  [
+   "industrial en edificaci",
+   "industrial_aillada"
+  ],
+  [
+   "Conservaci.*pol[ií]gon",
+   "conservacio"
+  ],
+  [
+   "unifamiliar",
+   "unifamiliar"
+  ]
+ ]
+}

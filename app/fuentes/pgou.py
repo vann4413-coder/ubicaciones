@@ -29,7 +29,7 @@ def _municipio(cod_ine5: str) -> dict | None:
 
 def _candidatas(clave: str) -> list[str]:
     """'2d3' -> ['2d3', '2d', '2'];  '3b28 HPP' -> ['3b28 hpp', '3b28', '3b2', '3b', '3']: de la más concreta a la zona madre."""
-    c = re.sub(r"[()]", "", (clave or "").strip().lower())
+    c = re.sub(r"[()\[\]]", "", (clave or "").strip().lower())
     salida = [c]
     base = re.split(r"[\s/_\-*]", c)[0]
     for i in range(len(base), 0, -1):
@@ -38,14 +38,22 @@ def _candidatas(clave: str) -> list[str]:
     return salida
 
 
-def zona(cod_ine5: str, clave_municipal: str) -> dict | None:
+def zona(cod_ine5: str, clave_municipal: str, descripcion: str = "") -> dict | None:
     m = _municipio(cod_ine5)
     if not m:
         return None
     zonas = {k.lower(): v for k, v in (m.get("zonas") or {}).items()}
-    for c in _candidatas(clave_municipal):
-        if c in zonas:
-            return {"clave": c, "exacta": c == _candidatas(clave_municipal)[0], **zonas[c]}
+    variantes = [clave_municipal]
+    if re.match(r"^\s*\d+-\d", clave_municipal or ""):
+        variantes.append(re.sub(r"^(\s*\d+)-", r"\1.", clave_municipal))  # Sabadell escribe «1-6a» por «1.6a»
+    for v in variantes:
+        for c in _candidatas(v):
+            if c in zonas:
+                return {"clave": c, "exacta": c == _candidatas(v)[0], **zonas[c]}
+    # Municipios cuya clave del MUC no es la del plan (p. ej. Rubí numera por ámbitos): se busca por la descripción.
+    for patron, c in m.get("por_descripcion") or []:
+        if descripcion and re.search(patron, descripcion, re.I) and c.lower() in zonas:
+            return {"clave": c.lower(), "exacta": False, **zonas[c.lower()]}
     return None
 
 
@@ -83,7 +91,7 @@ def consultar(cod_ine5: str, calificaciones: list[dict]) -> dict | None:
     for q in calificaciones or []:
         if (q.get("codigo_muc") or "").upper().startswith("S"):
             continue  # sistemas (viario, equipamientos, espacios libres): sin parámetros de zona
-        z = zona(cod_ine5, q.get("codigo_municipal", ""))
+        z = zona(cod_ine5, q.get("codigo_municipal", ""), q.get("descripcion_municipal", ""))
         filas.append({"clave_parcela": q.get("codigo_municipal", ""), "descripcion": q.get("descripcion_municipal", ""),
                       "pct": q.get("pct"), "zona": z})
     return {"plan": m.get("plan", ""), "documento": m.get("documento", ""), "modificaciones": m.get("modificaciones", []),
