@@ -1,0 +1,144 @@
+{
+ "municipio": "Martorell",
+ "codigo_ine": "08114",
+ "plan": "Revisió-adaptació del Pla general d'ordenació de Martorell – Text refós de les normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=117291&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1": {
+   "nombre": "Ordenació antiga i tradicional",
+   "articulo": "Secció 1a, títol V",
+   "edificabilidad": "Màx. 2 m²st/m²s net en substitucions",
+   "altura_max": "De PB+1 a PB+3 segons plànols",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments."
+  },
+  "2": {
+   "nombre": "Eixample",
+   "articulo": "Secció 2a, títol V",
+   "altura_max": "Segons amplada del vial: PB+2 (10,50 m) a PB+4 (16,50 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Fondària edificable segons plànols."
+  },
+  "3a": {
+   "nombre": "Unifamiliar aïllada semiintensiva",
+   "articulo": "Secció 3a, títol V",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "3b": {
+   "nombre": "Unifamiliar aïllada intensiva",
+   "articulo": "Secció 3a, títol V",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 12,
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "4a": {
+   "nombre": "Sectors de nova ordenació volumètrica específica",
+   "articulo": "Secció 4a, títol V",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Edificabilitat, ocupació i alçades segons la unitat (taula del Pla): de 0,60 a 3,00 m²st/m²s."
+  },
+  "4b": {
+   "nombre": "Sectors d'anterior ordenació volumètrica específica",
+   "articulo": "Secció 4a, títol V",
+   "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
+   "otros": "Es regeix per l'ordenació i volumetria del planejament anterior."
+  },
+  "5": {
+   "nombre": "Desenvolupament per unitats d'actuació",
+   "articulo": "Secció 5a, títol V",
+   "otros": "Regulació específica de cada unitat d'actuació (capítol 3r)."
+  },
+  "6": {
+   "nombre": "Industrial-residencial",
+   "articulo": "Art. 103-104",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "50 % PB / 40 % planta pis",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Obligatori ús industrial de 1a i 2a categoria en PB amb habitatge en planta pis."
+  },
+  "7": {
+   "nombre": "Industrial en illa tancada",
+   "articulo": "Secció 7a, títol V",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "ocupacion_max": "90 %",
+   "altura_max": "Segons amplada del vial",
+   "usos": "Industrial i magatzem."
+  },
+  "8": {
+   "nombre": "Industrial en edificació aïllada",
+   "articulo": "Secció 8a, títol V",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,75 m²st/m²s (volum màx. 6 m³/m²)",
+   "ocupacion_max": "50 %",
+   "altura_max": "15 m (PB+1)",
+   "usos": "Industrial i magatzem.",
+   "otros": "Separacions: 10 m a vial; 5 a 10 m a la resta segons superfície. 15 % de la parcel·la enjardinada."
+  },
+  "8e": {
+   "nombre": "Indústria especial",
+   "articulo": "Secció 8a, títol V",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "15 m",
+   "usos": "Industrial.",
+   "otros": "Separació mínima de 20 m a totes les partions."
+  },
+  "9": {
+   "nombre": "Industrial amb transformació opcional d'ús",
+   "articulo": "Secció 9a, títol V",
+   "edificabilidad": "0,85 m²st/m²s brut (fins a 1,05 amb transformació)",
+   "usos": "Industrial; transformació a residencial mitjançant planejament.",
+   "otros": "Mentre no es transformi, regeixen els índexs de la zona 7."
+  },
+  "10": {
+   "nombre": "Serveis vinculats a àrees industrials",
+   "articulo": "Secció 10a, títol V",
+   "edificabilidad": "1,50 m²st/m²s sobre la superfície ocupable",
+   "ocupacion_max": "15 %",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Serveis relacionats amb les àrees industrials."
+  },
+  "VP": {
+   "nombre": "Verd privat",
+   "articulo": "Secció 11a, títol V",
+   "usos": "Jardí privat.",
+   "otros": "Edificabilitat molt limitada."
+  },
+  "ES": {
+   "nombre": "Estació de servei",
+   "articulo": "Art. 119",
+   "ocupacion_max": "Marquesina 50 %; edificació 15 %",
+   "altura_max": "PB+1",
+   "usos": "Estació de servei, magatzem, comercial, aparcament.",
+   "otros": "Recull les estacions de servei existents i en regula les ampliacions."
+  },
+  "LP": {
+   "nombre": "Sòl no urbanitzable lliure permanent",
+   "articulo": "Secció 1a, títol VII",
+   "usos": "Agrícola i forestal."
+  },
+  "A": {
+   "nombre": "Sòl no urbanitzable agrícola",
+   "articulo": "Secció 2a, títol VII",
+   "usos": "Agrícola."
+  },
+  "B": {
+   "nombre": "Sòl no urbanitzable de valor forestal i ecològic-paisatgístic",
+   "articulo": "Secció 3a, títol VII",
+   "usos": "Forestal."
+  }
+ }
+}
