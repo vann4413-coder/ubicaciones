@@ -164,6 +164,53 @@
   .lugar-tit { font-weight: 700; font-size: 8.5pt; color: var(--marca); border-bottom: 1.5px solid var(--tinta); padding-bottom: .8mm; margin-bottom: .8mm; }
   .lugar { display: flex; justify-content: space-between; gap: 3mm; font-size: 8pt; padding: .6mm 0; border-bottom: 1px solid var(--linea); }
   .lugar .d { color: var(--suave); white-space: nowrap; }
+
+  /* ---------- Compatibilidad de maquetación (WeasyPrint 63 en producción) ----------
+     Las rejillas CSS (display: grid) no ajustan la altura de las filas y los textos se montan.
+     Se maquetan con bloques en línea de ancho fijo, que WeasyPrint calcula siempre bien. */
+  .notas, .vistazo, .datos, .tira, .comp-kpi { display: block; font-size: 0; line-height: 0; }
+  .notas > *, .vistazo > *, .datos > *, .tira > *, .comp-kpi > * {
+    display: inline-block; vertical-align: top; font-size: 9pt; line-height: 1.45; white-space: normal; }
+  .vistazo > *, .comp-kpi > * { width: 24%; margin: 0 .5% 2.5mm; }
+  .datos > * { width: 49%; margin: 0 .5% 1.6mm; }
+  .datos > .ancho { width: 99%; }
+  .datos.cuatro > * { width: 24%; }
+  .tira > * { width: 32.33%; margin: 0 .5% 2mm; }
+  .notas { margin: -14mm 9mm 0; }
+  .notas > * { margin: 0 .5%; }
+  .dato b, .ficha-v .v, .ficha-v .d, td { overflow-wrap: break-word; word-wrap: break-word; }
+  .ficha-v { min-height: 24mm; }
+  .ficha-v .v { font-size: 12pt; line-height: 1.2; }
+  .dato b { font-size: 9.5pt; line-height: 1.3; display: block; }
+  .dato small { font-size: 7pt; }
+  .cab .num { display: block; flex: 0 0 7mm; min-width: 7mm; margin-right: 2.5mm; }
+  .cab .ico { margin-right: 2mm; flex: none; }
+  .portada > * { flex-shrink: 0; }
+  .portada .banda { position: relative; }
+  .portada .fecha { float: none; position: absolute; top: 11mm; right: 14mm; }
+  .portada .logo { padding-right: 32mm; }
+  /* Puntuación detallada: tarjetas más compactas para no dejar medias páginas vacías */
+  .perfil-det { padding: 2.5mm 3.5mm; margin-bottom: 2.5mm; }
+  .perfil-det table { font-size: 7.8pt; margin: 1mm 0 0; }
+  .perfil-det th, .perfil-det td { padding: 1mm 1.6mm; }
+  .usos { margin: 1.8mm 0 .5mm; }
+  /* Dos columnas (datos + mapa) y recuadro de la vía de la parcela, también sin rejilla */
+  .dos, .via-parcela { display: block; font-size: 0; line-height: 0; }
+  .dos > *, .via-parcela > * { display: inline-block; vertical-align: top; font-size: 9pt; line-height: 1.45; }
+  .dos > * { width: 48.5%; }
+  .dos > * + * { margin-left: 3%; }
+  .via-parcela > *:first-child { width: 57%; }
+  .via-parcela > * + * { width: 40%; margin-left: 3%; }
+  table { page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  /* Títulos y cabeceras de tabla siempre junto a lo que presentan */
+  .cab, h3, .resumen-tit { page-break-after: avoid; break-after: avoid; }
+  tr:first-child { page-break-after: avoid; break-after: avoid; }
+  .cab + *, h3 + * { page-break-before: avoid; break-before: avoid; }
+  section.junto { page-break-inside: avoid; break-inside: avoid; }
+  .fichas-rc { list-style: none; padding: 0; margin: 1mm 0 3mm; columns: 2; column-gap: 6mm; font-size: 8pt; }
+  .fichas-rc li { break-inside: avoid; padding: .6mm 0; border-bottom: 1px solid var(--linea); }
+  .fichas-rc small { display: block; color: var(--suave); font-size: 6.8pt; }
 </style>
 </head>
 <body>
@@ -193,9 +240,10 @@
   </div>
   {% set m = mapas.portada %}
   <div class="hero"><img src="{{ m.orto }}">{{ m.svg|safe }}</div>
-  <div class="notas {{ 'muchas' if n_grupos > 4 else '' }}" style="grid-template-columns: repeat({{ n_grupos if n_grupos <= 6 else 6 }}, 1fr)">
+  {% set por_fila = n_grupos if n_grupos <= 6 else 6 %}
+  <div class="notas {{ 'muchas' if n_grupos > 4 else '' }}">
   {% for k, p in inf.puntuaciones.items() %}
-    <div class="nota">
+    <div class="nota" style="width: {{ '%.2f'|format(100 / por_fila - 1.3) }}%">
       <div class="perfil">{{ p.nombre_perfil }}</div>
       {{ rosco(None if p.bloqueos else p.total, p.semaforo, 58 if n_grupos > 4 else 74) }}<br>
       <span class="veredicto {{ p.semaforo }}">{{ p.veredicto }}</span>
@@ -281,7 +329,8 @@
   {% if p.fichas_catastro %}
   <h3>Ficha oficial del Catastro</h3>
   {% if p.fichas_catastro|length <= 3 %}<p>La consulta descriptiva y gráfica oficial de {{ "cada inmueble" if p.fichas_catastro|length > 1 else "la finca" }} se adjunta al final de este informe.</p>{% endif %}
-  <p>{% for f in p.fichas_catastro[:12] %}<a href="{{ f.url }}">{{ f.rc }}</a>{% if f.uso %} <small>({{ f.uso }})</small>{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}{% if p.fichas_catastro|length > 12 %} y {{ p.fichas_catastro|length - 12 }} más{% endif %}</p>
+  <ul class="fichas-rc">{% for f in p.fichas_catastro[:12] %}<li><a href="{{ f.url }}">{{ f.rc }}</a>{% if f.uso %} <small>{{ f.uso }}</small>{% endif %}</li>{% endfor %}</ul>
+  {% if p.fichas_catastro|length > 12 %}<p class="pie">Y {{ p.fichas_catastro|length - 12 }} inmuebles más.</p>{% endif %}
   {% endif %}
   <h3>Colindantes</h3>
   {% if p.colindantes %}
@@ -292,7 +341,7 @@
 </section>
 
 {# ======================= 2. URBANISMO ======================= #}
-<section class="salto">
+<section>
   {{ cabecera(2, "Urbanismo", "urbanismo") }}
   {% set u = inf.urbanismo %}
   {% if u.estado == "ok" %}
@@ -561,7 +610,7 @@
 </section>
 
 {# ======================= 6. ESTACIONES DE SERVICIO ======================= #}
-<section class="salto">
+<section>
   {{ cabecera(7, "Estaciones de servicio en 2 km", "competencia") }}
   {% if comp.en_parcela %}<div class="info">En la propia parcela ya hay una estación: <b>{{ comp.en_parcela[0].marca }}</b> ({{ comp.en_parcela[0].direccion }}{% if comp.en_parcela[0].gasoleo_a %}, gasóleo A {{ comp.en_parcela[0].gasoleo_a|num(3) }} €/l{% endif %}). No se cuenta en el entorno.</div>{% endif %}
   {% set gs = inf.gasolineras %}
@@ -599,7 +648,7 @@
 </section>
 
 {# ======================= 6. RED ELÉCTRICA ======================= #}
-<section>
+<section class="junto">
   {{ cabecera(8, "Red eléctrica", "red") }}
   {% set red = inf.red %}
   {% if red.estado == "ok" %}
@@ -652,7 +701,7 @@
   {{ cabecera(10, "Valor de referencia del suelo", "valor") }}
   {% set su = inf.suelo %}
   {% if su.estado == "ok" %}
-    <div class="datos" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 3mm">
+    <div class="datos cuatro" style="margin-bottom: 3mm">
       <div class="dato"><span>Precio medio del suelo urbano</span><b class="grande">{{ su.ultimo_precio_m2|num }} €/m²</b></div>
       <div class="dato"><span>Horquilla del último año</span><b>{{ su.horquilla_m2[0]|num }} – {{ su.horquilla_m2[1]|num }} €/m²</b></div>
       <div class="dato"><span>Variación anual</span><b>{% if su.variacion_anual_pct is not none %}{{ "+" if su.variacion_anual_pct > 0 else "" }}{{ su.variacion_anual_pct|num(1) }} %{% else %}—{% endif %}</b></div>
