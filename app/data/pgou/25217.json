@@ -1,0 +1,278 @@
+{
+ "municipio": "Tàrrega",
+ "codigo_ine": "25217",
+ "plan": "Pla d'ordenació urbanística municipal de Tàrrega, Text refós de les normes urbanístiques (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=14989&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1a": {
+   "nombre": "Conservación del centro histórico",
+   "articulo": "Art. 129",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y hotelero compatibles",
+   "otros": "Fondo mínimo de parcela 5 m"
+  },
+  "1b": {
+   "nombre": "Conservación de los núcleos viejos de los pueblos",
+   "articulo": "Art. 130",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "PB+1",
+   "usos": "Residencial; comercio, oficinas y hotelero compatibles",
+   "otros": ""
+  },
+  "1c": {
+   "nombre": "Conservación de los primeros ensanches",
+   "articulo": "Art. 131",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y plantas",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y hotelero compatibles",
+   "otros": "Fondo mínimo 5 m; agrupaciones hasta 10 m de frente"
+  },
+  "1d": {
+   "nombre": "Conservación de masías junto a núcleos viejos",
+   "articulo": "Art. 132",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "PB+1",
+   "usos": "Residencial; comercio, oficinas y hotelero compatibles",
+   "otros": "",
+   "segregacion": "Conservación: parcela la existente."
+  },
+  "2": {
+   "nombre": "Edificación en manzanas cerradas",
+   "articulo": "Art. 133",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según fondo edificable y plantas",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "5,10 m (PB) a 16,75 m (PB+4) según plano",
+   "usos": "Residencial unifamiliar, plurifamiliar y oficinas; hotel, comercio e industria de baja categoría compatibles",
+   "otros": "1 vivienda por cada 75 m² de techo"
+  },
+  "2a1": {
+   "nombre": "Alineación continua plurifamiliar, tipo 1",
+   "articulo": "Art. 134",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Según plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Residencial; comercio, oficinas y hotelero compatibles",
+   "otros": ""
+  },
+  "3a": {
+   "nombre": "Edificación aislada plurifamiliar existente",
+   "articulo": "Art. 136",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 10,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La de los elementos sustituidos",
+   "usos": "Residencial plurifamiliar",
+   "otros": "O la parcela existente"
+  },
+  "3b": {
+   "nombre": "Edificación aislada unifamiliar",
+   "articulo": "Art. 137",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "9 m (PB+1)",
+   "usos": "Vivienda unifamiliar; deportivo, oficinas, sanitario y hotelero compatibles",
+   "otros": "Separaciones 5 m a calle y 3 m al resto; se admiten pareadas"
+  },
+  "3b1": {
+   "nombre": "Edificación aislada unifamiliar, tipo 1",
+   "articulo": "Art. 138",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "6 m (PB+1)",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3b2": {
+   "nombre": "Edificación aislada unifamiliar, tipo 2",
+   "articulo": "Art. 139",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "6 m (PB+2 según norma)",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Separaciones 5 m a calle y 3 m al resto"
+  },
+  "3c": {
+   "nombre": "Edificación agrupada unifamiliar",
+   "articulo": "Art. 140",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "Según art. 140",
+   "ocupacion_max": "Según art. 140",
+   "altura_max": "10 m (PB+2)",
+   "usos": "Vivienda unifamiliar agrupada",
+   "otros": "Fondo mínimo 18 m"
+  },
+  "3c2": {
+   "nombre": "Edificación agrupada unifamiliar",
+   "articulo": "Art. 141-149",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5.5,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": "Según planeamiento derivado",
+   "altura_max": "10 m (PB+2)",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3c4": {
+   "nombre": "Edificación agrupada unifamiliar",
+   "articulo": "Art. 141-149",
+   "parcela_minima_m2": 345,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": "Según planeamiento derivado",
+   "altura_max": "7 m (PB+1)",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3c6": {
+   "nombre": "Edificación agrupada unifamiliar",
+   "articulo": "Art. 141-149",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": "Según planeamiento derivado",
+   "altura_max": "Según plan especial",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3c8": {
+   "nombre": "Edificación agrupada unifamiliar",
+   "articulo": "Art. 141-149",
+   "parcela_minima_m2": 125,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": "Según planeamiento derivado",
+   "altura_max": "Según plan especial",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3c9": {
+   "nombre": "Edificación agrupada unifamiliar",
+   "articulo": "Art. 141-149",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": "Según planeamiento derivado",
+   "altura_max": "10 m (PB+2)",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3c3": {
+   "nombre": "Edificación agrupada unifamiliar, tipo 3",
+   "articulo": "Art. 143",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "Según plan parcial",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Fondo mínimo 18 m"
+  },
+  "4a": {
+   "nombre": "Industria aislada",
+   "articulo": "Art. 150",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,20 m²t/m²s (volumen 6 m³/m²)",
+   "ocupacion_max": "70 %",
+   "altura_max": "15 m a cumbrera (PB+1 en el 20 %)",
+   "usos": "Industrial y almacenes; bar, restaurante, comercio y oficinas compatibles (máx. 30 % del techo)",
+   "otros": "Separaciones 10 m a calle y 5 m al resto"
+  },
+  "4a1": {
+   "nombre": "Industria aislada pequeña",
+   "articulo": "Art. 151",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 35,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "15 m a cumbrera",
+   "usos": "Industrial y almacenes; bar, restaurante, comercio y oficinas compatibles (máx. 30 % del techo)",
+   "otros": "Fondo mínimo 45 m"
+  },
+  "4a2": {
+   "nombre": "Industria aislada mediana",
+   "articulo": "Art. 152",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 35,
+   "edificabilidad": "0,55 m²t/m²s",
+   "ocupacion_max": "Según MPP",
+   "altura_max": "15 m a cumbrera",
+   "usos": "Industrial y almacenes; bar, restaurante, comercio y oficinas compatibles (máx. 30 % del techo)",
+   "otros": "Fondo mínimo 45 m"
+  },
+  "4a3": {
+   "nombre": "Industria aislada grande",
+   "articulo": "Art. 153",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,875 m²t/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "12 m (PB+2)",
+   "usos": "Industrial y almacenes; bar, restaurante, comercio y oficinas compatibles (máx. 30 % del techo)",
+   "otros": ""
+  },
+  "4a4": {
+   "nombre": "Industria aislada (Olis Borges)",
+   "articulo": "Art. 154",
+   "parcela_minima_m2": 93650,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,4118 m²t/m²s",
+   "ocupacion_max": "Según plano",
+   "altura_max": "10 m",
+   "usos": "Industrial",
+   "otros": "",
+   "segregacion": "Parcela única e indivisible."
+  },
+  "4b": {
+   "nombre": "Industria entre medianeras",
+   "articulo": "Art. 155",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,20 m²t/m²s (volumen 6 m³/m²)",
+   "ocupacion_max": "100 %",
+   "altura_max": "10 m (hasta 20 m en el 20 % del solar)",
+   "usos": "Industrial y almacenes; bar, restaurante, comercio y oficinas compatibles (máx. 30 % del techo)",
+   "otros": "Fondo mínimo 35 m"
+  },
+  "4b1": {
+   "nombre": "Industria entre medianeras, área nido",
+   "articulo": "Art. 156",
+   "parcela_minima_m2": 450,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "9 m",
+   "usos": "Industrial y almacenes; bar, restaurante, comercio y oficinas compatibles (máx. 30 % del techo)",
+   "otros": "Fondo mínimo 35 m"
+  }
+ }
+}
