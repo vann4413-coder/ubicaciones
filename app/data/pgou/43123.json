@@ -1,0 +1,173 @@
+{
+ "municipio": "Reus",
+ "codigo_ine": "43123",
+ "plan": "Pla general d'ordenació urbana de Reus, Text refós de les normes urbanístiques (2004-2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=539983&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Numerosas modificaciones puntuales posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "I": {
+   "nombre": "Núcleo histórico",
+   "articulo": "Art. 172",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según el Plan especial de reforma interior del núcleo antiguo",
+   "ocupacion_max": "Según PERI",
+   "altura_max": "Según PERI",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "",
+   "segregacion": "Parcelación regulada por el Plan especial del núcleo antiguo."
+  },
+  "II": {
+   "nombre": "Ensanches antiguos",
+   "articulo": "Art. 173-183",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según alineación, altura y patio de manzana del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano: PB+2 (10 m), PB+3 (13 m)…",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "",
+   "segregacion": "Sin parcela mínima en superficie: rigen alineaciones y fondos del plano."
+  },
+  "III": {
+   "nombre": "Manzanas de ensanche",
+   "articulo": "Art. 184-194",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según alineación, altura y fondo del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano (escala 1/1.000)",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "",
+   "segregacion": "Sin parcela mínima en superficie: rigen alineaciones y fondos del plano."
+  },
+  "IV": {
+   "nombre": "Casas en hilera",
+   "articulo": "Art. 195-208",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5.5,
+   "edificabilidad": "Según plano y altura (golfas computan)",
+   "ocupacion_max": "Según plano",
+   "altura_max": "PB+1 (7 m) a PB+3 (12,50 m) según plano",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "V": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 209-214",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "35 %",
+   "altura_max": "6,50 m (PB+1)",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Parcelas existentes menores: mínimo 200 m², 9 m de ancho y 12 m de fondo"
+  },
+  "VI": {
+   "nombre": "Ordenaciones de volumen definido",
+   "articulo": "Art. 215-219",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ficha del ámbito (art. 219)",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Según ámbito",
+   "otros": "",
+   "segregacion": "Volumen definido: parcelación según la ordenación del ámbito."
+  },
+  "VII": {
+   "nombre": "Industrial",
+   "articulo": "Art. 220-222",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,2 / 1,5 / 2 m²t/m²s según señal de altura del plano",
+   "ocupacion_max": "100 % (70 % en solares > 2.000 m²)",
+   "altura_max": "8–11 m según plano",
+   "usos": "Industrial",
+   "otros": "Parcela máxima 7.200 m²; volumen 6–11 m³/m²"
+  },
+  "VIIa": {
+   "nombre": "Industrial con normativa específica",
+   "articulo": "Art. 223",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Perímetro del plano (bruta 1,5 m²t/m²s)",
+   "ocupacion_max": "Según plano",
+   "altura_max": "12 m (3 plantas)",
+   "usos": "Industrial",
+   "otros": "Resto de parámetros de la clave VII"
+  },
+  "VIII": {
+   "nombre": "Comercial",
+   "articulo": "Art. 224-226",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": null,
+   "edificabilidad": "Los mismos que la clave VII industrial",
+   "ocupacion_max": "Según clave VII",
+   "altura_max": "Según clave VII",
+   "usos": "Comercial",
+   "otros": ""
+  },
+  "VIIIa": {
+   "nombre": "Comercial con normativa específica",
+   "articulo": "Art. 227",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Perímetro del plano (1,2 m²t/m²s en algunos ámbitos)",
+   "ocupacion_max": "80 % en algunos ámbitos",
+   "altura_max": "2 plantas / 6 m",
+   "usos": "Comercial",
+   "otros": "",
+   "segregacion": "Ordenación específica del plano."
+  },
+  "IX": {
+   "nombre": "Polígono industrial",
+   "articulo": "Art. 228-230",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,20 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "9 m (12 m si > 1.000 m² en planta)",
+   "usos": "Industrial (una actividad por parcela)",
+   "otros": "En hilera dentro de una manzana: 250 m²"
+  },
+  "IXa": {
+   "nombre": "Polígono industrial con normativa específica",
+   "articulo": "Art. 231-232",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ámbito",
+   "ocupacion_max": "Según ámbito",
+   "altura_max": "Según ámbito",
+   "usos": "Industrial",
+   "otros": "Varía por ámbito (p. ej. 500 m² y 12 m; 1.800 m², 30 m de frente, 65 %)",
+   "segregacion": "Parcela mínima según cada ámbito específico."
+  },
+  "X": {
+   "nombre": "Gran industria",
+   "articulo": "Art. 233-235",
+   "parcela_minima_m2": 20000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 234",
+   "ocupacion_max": "80 %",
+   "altura_max": "Sin límite general",
+   "usos": "Gran industria",
+   "otros": ""
+  },
+  "XI": {
+   "nombre": "Verde privado",
+   "articulo": "Art. 236",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin nueva edificación",
+   "ocupacion_max": "—",
+   "altura_max": "—",
+   "usos": "Jardín privado",
+   "otros": "",
+   "segregacion": "Verde privado: no segregable."
+  }
+ }
+}
