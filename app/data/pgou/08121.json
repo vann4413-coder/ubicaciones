@@ -9,7 +9,7 @@
   "usos y actividades (2016)",
   "parámetros comunes de edificación y uso, MPG-106 (2020)"
  ],
- "revisado": "2026-11-06",
+ "revisado": "2026-11-11",
  "zonas": {
   "1a": {
    "nombre": "Centro histórico",
@@ -290,6 +290,30 @@
    "altura_max": "9 m · PB+1 (vivienda); 6 m · PB (almacenes)",
    "usos": "Agrícola (dominante), vivienda rural, ganadero y forestal; comercio, industria y oficinas no admitidos",
    "otros": "Finca mínima: 2 ha en regadío y 3 ha en secano (corrección de 2006)"
+  },
+  "8": {
+   "nombre": "Forestal",
+   "articulo": "Art. 324",
+   "parcela_minima_m2": 250000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Solo edificaciones existentes y ampliaciones de vivienda rural",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Forestal y agrícola; vivienda rural existente",
+   "otros": "Unidad mínima de explotación forestal 25 ha. Separaciones de 25 m a caminos, cauces y linderos",
+   "segregacion": "Suelo forestal: finca mínima de 25 ha (unidad mínima forestal)."
+  },
+  "8a": {
+   "nombre": "Forestal de especial protección paisajística",
+   "articulo": "Art. 325",
+   "parcela_minima_m2": 250000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin nueva edificación",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Forestal y agrícola existente",
+   "otros": "Protección paisajística",
+   "segregacion": "Suelo forestal protegido: finca mínima de 25 ha."
   }
  }
 }
