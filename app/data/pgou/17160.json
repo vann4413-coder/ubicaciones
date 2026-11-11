@@ -1,0 +1,359 @@
+{
+ "municipio": "Sant Feliu de Guíxols",
+ "codigo_ine": "17160",
+ "plan": "Pla d'ordenació urbanística municipal de Sant Feliu de Guíxols – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=522906&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1a": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 143",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "1b": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 144",
+   "altura_max": "PB+3 (12 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les.",
+   "otros": "Densitat 1 habitatge/100 m²."
+  },
+  "2a": {
+   "nombre": "La Fundació",
+   "articulo": "Art. 147",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "2b": {
+   "nombre": "La Fundació",
+   "articulo": "Art. 148",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "2c": {
+   "nombre": "La Fundació",
+   "articulo": "Art. 149",
+   "altura_max": "15,50 m",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "3a": {
+   "nombre": "Conservació de fronts",
+   "articulo": "Art. 152",
+   "altura_max": "PB+3 (la del núm. 23 de la plaça)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: no s'admet la subdivisió de la parcel·la."
+  },
+  "3b": {
+   "nombre": "Conservació de fronts",
+   "articulo": "Art. 153",
+   "altura_max": "PB+4 (17 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents."
+  },
+  "3c": {
+   "nombre": "Conservació de fronts",
+   "articulo": "Art. 154",
+   "altura_max": "PB+1 (cornises existents)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: no s'admet la subdivisió de la parcel·la."
+  },
+  "4": {
+   "nombre": "Conjunts especials",
+   "articulo": "Art. 155",
+   "edificabilidad": "0,26 m²st/m²s",
+   "usos": "Els existents; altres, mitjançant pla especial.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "5a": {
+   "nombre": "Eixample decimonònic",
+   "articulo": "Art. 157",
+   "altura_max": "PB+3 (12 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "5b": {
+   "nombre": "Eixample decimonònic",
+   "articulo": "Art. 158",
+   "altura_max": "PB+2 (9,90 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les.",
+   "otros": "PB fins a 25 m de fondària per a usos no residencials."
+  },
+  "5c": {
+   "nombre": "Eixample decimonònic",
+   "articulo": "Art. 159",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "5d": {
+   "nombre": "Eixample decimonònic",
+   "articulo": "Art. 160",
+   "altura_max": "PB+4 (15,50 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "5e": {
+   "nombre": "Eixample decimonònic",
+   "articulo": "Art. 161",
+   "altura_max": "PB+2 (9,90 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "6a": {
+   "nombre": "Cases en illa",
+   "articulo": "Art. 163",
+   "parcela_minima_m2": 250,
+   "altura_max": "PB+3 (12 m)",
+   "usos": "Habitatge.",
+   "otros": "250 m² per a noves parcel·lacions; densitat 1 habitatge/100 m²."
+  },
+  "6b": {
+   "nombre": "Cases en illa",
+   "articulo": "Art. 164",
+   "altura_max": "PB+2 (9,90 m)",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "6c": {
+   "nombre": "Cases en illa",
+   "articulo": "Art. 165",
+   "usos": "Habitatge i residencial comunitari; usos específics als establiments hotelers existents."
+  },
+  "6d": {
+   "nombre": "Cases en illa",
+   "articulo": "Art. 166",
+   "ocupacion_max": "Segons plànols",
+   "usos": "Habitatge.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "6e": {
+   "nombre": "Cases en illa",
+   "articulo": "Art. 167",
+   "usos": "Habitatge, residencial comunitari, hoteler, serveis, comercial, oficines, sanitari, docent, tallers i magatzems.",
+   "segregacion": "No: la parcel·la mínima és l'existent (abans de 1985 o de l'aprovació inicial del POUM); només s'admet regularitzar parcel·les."
+  },
+  "7": {
+   "nombre": "Conservació de cases en bloc",
+   "articulo": "Art. 168",
+   "usos": "Els de la zona 6e.",
+   "otros": "Condicions del planejament derivat aprovat."
+  },
+  "8": {
+   "nombre": "Cases amb jardí",
+   "articulo": "Art. 169",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Sostre màxim 400 m² per parcel·la",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge (2 per parcel·la)."
+  },
+  "9a": {
+   "nombre": "Xalets",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,80 m²st/m²s (màx. 800 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar; restauració només a parcel·les 9*."
+  },
+  "9b": {
+   "nombre": "Xalets",
+   "articulo": "Art. 172",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,60 m²st/m²s (màx. 800 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar; restauració només a parcel·les 9*."
+  },
+  "9c": {
+   "nombre": "Xalets",
+   "articulo": "Art. 173",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²st/m²s (màx. 800 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar."
+  },
+  "9d": {
+   "nombre": "Xalets",
+   "articulo": "Art. 174",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar."
+  },
+  "9e": {
+   "nombre": "Xalets (finques indivisibles)",
+   "articulo": "Art. 175",
+   "edificabilidad": "0,40 m²st/m²s (màx. 800 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar.",
+   "segregacion": "No: les finques d'aquesta subzona són indivisibles."
+  },
+  "9f": {
+   "nombre": "Xalets",
+   "articulo": "Art. 176",
+   "parcela_minima_m2": 1600,
+   "ocupacion_max": "20 % (màx. 600 m² per edificació)",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge.",
+   "otros": "Densitat 1 habitatge/1.200 m² de parcel·la."
+  },
+  "9h": {
+   "nombre": "Xalets (Vinya de St. Pol)",
+   "articulo": "Art. 177",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,80 m²st/m²s (màx. 800 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge."
+  },
+  "9i": {
+   "nombre": "Xalets",
+   "articulo": "Art. 178",
+   "parcela_minima_m2": 500,
+   "edificabilidad": "0,50 m²st/m²s (màx. 400 m²)",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge."
+  },
+  "9j": {
+   "nombre": "Xalets",
+   "articulo": "Art. 179",
+   "edificabilidad": "0,44 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge."
+  },
+  "9k": {
+   "nombre": "Xalets",
+   "articulo": "Art. 180",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "0,87 m²st/m²s (màx. 450 m²)",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge."
+  },
+  "9l": {
+   "nombre": "Xalets",
+   "articulo": "Art. 181",
+   "parcela_minima_m2": 1200,
+   "edificabilidad": "0,31 m²st/m²s",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge."
+  },
+  "10a": {
+   "nombre": "Cases agrupades (major densitat)",
+   "articulo": "Art. 183",
+   "parcela_minima_m2": 4000,
+   "usos": "Habitatge."
+  },
+  "10b": {
+   "nombre": "Cases agrupades (menor densitat)",
+   "articulo": "Art. 184",
+   "usos": "Habitatge."
+  },
+  "11": {
+   "nombre": "Torres",
+   "articulo": "Art. 185",
+   "parcela_minima_m2": 700,
+   "frente_minimo_m": 24,
+   "edificabilidad": "0,50 m²st/m²s (màx. 1.000 m²)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (10 m)",
+   "usos": "Habitatge.",
+   "otros": "Densitat 1 habitatge/115 m²."
+  },
+  "12a": {
+   "nombre": "Apartaments",
+   "articulo": "Art. 187",
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,80 m²st/m²s",
+   "altura_max": "PB+3",
+   "usos": "Habitatge plurifamiliar."
+  },
+  "12b": {
+   "nombre": "Apartaments",
+   "articulo": "Art. 188",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,80 m²st/m²s",
+   "altura_max": "PB+2 (9 m)",
+   "usos": "Habitatge plurifamiliar."
+  },
+  "12c": {
+   "nombre": "Apartaments",
+   "articulo": "Art. 189",
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,80 m²st/m²s",
+   "usos": "Habitatge plurifamiliar."
+  },
+  "12d": {
+   "nombre": "Apartaments",
+   "articulo": "Art. 190",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,82 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+2 (11 m)",
+   "usos": "Habitatge plurifamiliar."
+  },
+  "12e": {
+   "nombre": "Apartaments (Sant Pol Platja)",
+   "articulo": "Art. 191",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,82 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2 (11 m)",
+   "usos": "Habitatge i hoteler."
+  },
+  "12f": {
+   "nombre": "Apartaments",
+   "articulo": "Art. 192",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,90 m²st/m²s",
+   "ocupacion_max": "45 %",
+   "altura_max": "PB+3 (12 m)",
+   "usos": "Habitatge; comercial en PB."
+  },
+  "13": {
+   "nombre": "Passeig Marítim",
+   "articulo": "Art. 193",
+   "altura_max": "PB+5 (17,50 m)",
+   "usos": "Habitatge, hoteler i comercial.",
+   "otros": "Densitat 1 habitatge/100 m²."
+  },
+  "14": {
+   "nombre": "Espais lliures privats",
+   "articulo": "Art. 194",
+   "ocupacion_max": "2 % (edificacions auxiliars)",
+   "usos": "Jardí privat."
+  },
+  "15": {
+   "nombre": "Activitats econòmiques",
+   "articulo": "Art. 195",
+   "edificabilidad": "1 m²st/m²s net",
+   "altura_max": "PB+1 (10,50 m)",
+   "usos": "Industrial, magatzem, tallers i terciari."
+  },
+  "16": {
+   "nombre": "Càmping",
+   "articulo": "Art. 196",
+   "edificabilidad": "0,10 m²st/m²s",
+   "usos": "Càmping i esportiu.",
+   "otros": "Ordenació mitjançant planejament derivat."
+  }
+ }
+}
