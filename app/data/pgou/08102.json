@@ -1,0 +1,220 @@
+{
+ "municipio": "Igualada",
+ "codigo_ine": "08102",
+ "plan": "Pla general d'ordenació d'Igualada – Normes urbanístiques (text refós 2023)",
+ "documento": "https://normatia.com/es/normativa/pgo-igualada/2023-nnuu/iv-ordenacio-del-sol-urba/",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "6": {
+   "nombre": "Conservació del centre històric i àrea d'influència",
+   "articulo": "Art. 72",
+   "altura_max": "PB+2 (10,20 m); PB+3 (13,00 m) a la Rambla, pg. Cabres i places",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, públic, sociocultural, religiós.",
+   "otros": "Alineacions i fondària edificable segons plànols."
+  },
+  "7": {
+   "nombre": "Edificació contínua grau I",
+   "articulo": "Art. 73",
+   "altura_max": "Carrer <10 m: PB+2; 10-14 m: PB+3; ≥14 m: PB+4 (15,80 m)",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós.",
+   "otros": "Fondària edificable segons plànols."
+  },
+  "7a": {
+   "nombre": "Edificació contínua (c/ Lleida, av. Barcelona, Dr. Pasteur)",
+   "articulo": "Art. 73.2.5",
+   "altura_max": "PB+6 (21,40 m)",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós."
+  },
+  "8": {
+   "nombre": "Edificació contínua grau II",
+   "articulo": "Art. 73",
+   "altura_max": "Carrer <9 m: PB+2 (10,20 m); ≥9 m: PB+3 (13,00 m)",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós."
+  },
+  "8a": {
+   "nombre": "Edificació contínua grau II (habitatge en PB)",
+   "articulo": "Art. 73",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós. Habitatge en planta baixa a les àrees delimitades."
+  },
+  "9": {
+   "nombre": "Edificació contínua grau III",
+   "articulo": "Art. 73",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós."
+  },
+  "10": {
+   "nombre": "Edificació contínua grau IV",
+   "articulo": "Art. 73",
+   "altura_max": "Carrer <10 m: PB+2; ≥10 m: PB+3 (13,00 m)",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós."
+  },
+  "10a": {
+   "nombre": "Especial passeig i c/ Sant Magí",
+   "articulo": "Art. 73a",
+   "ocupacion_max": "PB i soterrani 100 %; plantes pis fins a 12 m de fondària",
+   "altura_max": "PB+4 (15,80 m) / PB+3 als trams de connexió",
+   "usos": "Plurifamiliar, hoteler, comercial, oficines, administratiu, sanitari, assistencial, docent, esportiu, recreatiu, sociocultural i religiós."
+  },
+  "11a": {
+   "nombre": "Àrees de millora de la trama urbana",
+   "articulo": "Art. 74",
+   "edificabilidad": "1,00 m²st/m²s brut (+0,4 per a garatges)",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+6 (21,40 m)",
+   "usos": "Habitatge, hoteler, comercial, oficines, equipaments."
+  },
+  "11b": {
+   "nombre": "Àrees de millora de la trama urbana",
+   "articulo": "Art. 74",
+   "edificabilidad": "1,10 m²st/m²s brut",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+6 (21,40 m)",
+   "usos": "Habitatge, hoteler, comercial, oficines, equipaments."
+  },
+  "12a": {
+   "nombre": "Ordenació volumètrica anterior (PP Flors)",
+   "articulo": "Art. 75",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, oficines, equipaments.",
+   "otros": "Volumetria del pla parcial; alçades de PB+2 a PB+4."
+  },
+  "12b": {
+   "nombre": "Ordenació volumètrica anterior (polígon Montserrat)",
+   "articulo": "Art. 75",
+   "usos": "Habitatge i usos de la clau 12a.",
+   "otros": "Només obres de reparació i reforma."
+  },
+  "13": {
+   "nombre": "Blocs oberts alts",
+   "articulo": "Art. 76",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "1,80 m²st/m²s net",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+5 (18,60 m)",
+   "usos": "Habitatge plurifamiliar i unifamiliar, hoteler, comercial, oficines, equipaments.",
+   "otros": "Ha de poder inscriure un cercle de 20 m."
+  },
+  "13b": {
+   "nombre": "Blocs oberts alts",
+   "articulo": "Art. 76b",
+   "edificabilidad": "0,95 m²st/m²s net",
+   "ocupacion_max": "Segons plànols",
+   "altura_max": "PB+4 / PB+5",
+   "usos": "Habitatge, comercial i usos de la clau 13."
+  },
+  "14a": {
+   "nombre": "Ciutat jardí (unifamiliar)",
+   "articulo": "Art. 77",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "0,8 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,20 m); 2a planta ≤20 % de la parcel·la",
+   "usos": "Només habitatge unifamiliar; compatibles sanitari ambulatori, docent infantil, oficines (≤30 %).",
+   "otros": "Ha de poder inscriure un cercle de 15 m."
+  },
+  "14b": {
+   "nombre": "Ciutat jardí",
+   "articulo": "Art. 77",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "0,8 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,20 m)",
+   "usos": "Unifamiliar, plurifamiliar, sociocultural; comercial en PB, magatzem i indústria de categories baixes.",
+   "otros": "Ha de poder inscriure un cercle de 15 m."
+  },
+  "14c": {
+   "nombre": "Comercial",
+   "articulo": "Art. 77b",
+   "usos": "Comercial, oficines, recreatiu; comercial concentrat al polígon."
+  },
+  "14i": {
+   "nombre": "Comercial, hoteler i recreatiu",
+   "articulo": "Art. 77",
+   "edificabilidad": "1 m²st/m²s net",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+4 (15 m)",
+   "usos": "Comercial (sense alimentació), magatzems, oficines, recreatiu, hoteler."
+  },
+  "14j": {
+   "nombre": "Volumetria específica d'activitat econòmica",
+   "articulo": "Art. 77i",
+   "altura_max": "PB+1 (10 m)",
+   "usos": "Comercial, magatzems, oficines, equipaments, recreatiu i estacions de servei.",
+   "otros": "Sostre màxim de l'àmbit 13.340 m²."
+  },
+  "15": {
+   "nombre": "Blocs oberts baixos grau II (St. Jaume Sesoliveres)",
+   "articulo": "Art. 78",
+   "usos": "Habitatge.",
+   "otros": "Paràmetres de les ordenances del pla parcial (annex 2)."
+  },
+  "15a": {
+   "nombre": "Blocs oberts baixos grau II",
+   "articulo": "Art. 78a",
+   "frente_minimo_m": 10,
+   "usos": "Habitatge."
+  },
+  "16": {
+   "nombre": "Verd privat",
+   "articulo": "Art. 79",
+   "usos": "Habitatge unifamiliar; es mantenen els usos existents.",
+   "otros": "Es manté l'edificació existent amb ampliacions limitades (fins al 10 %)."
+  },
+  "17": {
+   "nombre": "Industrial, edificació contínua grau I",
+   "articulo": "Art. 80",
+   "parcela_minima_m2": 800,
+   "ocupacion_max": "80 %",
+   "altura_max": "11,20 m (carrer <11 m) / 13,00 m",
+   "usos": "Industrial i magatzems; compatibles oficines, estacions de servei i garatges públics, comerç vinculat i habitatge."
+  },
+  "17a": {
+   "nombre": "Industrial, edificació aïllada",
+   "articulo": "Art. 81",
+   "usos": "Industrial existent.",
+   "otros": "Substitució sense superar volum, sostre ni alçada existents; separació de 4 m a tots els límits."
+  },
+  "18b": {
+   "nombre": "Industrial aïllada grau II (polígon ICS)",
+   "articulo": "Art. 82",
+   "usos": "Industrial.",
+   "otros": "Paràmetres de l'ordenança del pla parcial (annex)."
+  },
+  "19a": {
+   "nombre": "Nova ordenació urbana",
+   "articulo": "Art. 83",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "1,30 m²st/m²s",
+   "altura_max": "PB+5 (18,60 m)",
+   "usos": "Residencial segons estudi de detall.",
+   "otros": "Densitat 75 habitatges/ha."
+  },
+  "19b": {
+   "nombre": "Nova ordenació urbana",
+   "articulo": "Art. 83",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,85 m²st/m²s",
+   "altura_max": "13,00 m",
+   "usos": "Residencial segons estudi de detall.",
+   "otros": "Densitat 65 habitatges/ha."
+  },
+  "19c": {
+   "nombre": "Nova ordenació urbana",
+   "articulo": "Art. 83",
+   "parcela_minima_m2": 150,
+   "edificabilidad": "0,70 m²st/m²s",
+   "altura_max": "PB+3 (13,00 m)",
+   "usos": "Residencial segons estudi de detall.",
+   "otros": "Densitat 50 habitatges/ha."
+  },
+  "20b": {
+   "nombre": "Remodelació",
+   "articulo": "Art. 85",
+   "edificabilidad": "Fins a +50 % de l'existent, màx. 0,50 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,20 m)",
+   "usos": "Residencial; indústria de 1a i 2a categoria.",
+   "otros": "Densitat 30 habitatges/ha."
+  }
+ }
+}
