@@ -1,0 +1,186 @@
+{
+ "municipio": "Sitges",
+ "codigo_ine": "08270",
+ "plan": "Pla d'ordenació urbanística municipal de Sitges – Normativa urbanística",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=185693&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "9": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 155",
+   "altura_max": "Segons plànols; en general PB+3 (passeig de mar PB+4)",
+   "usos": "Habitatge, hoteler, comerç (PB i edificis exclusius), oficines, equipaments; indústria de 1a categoria en PB.",
+   "otros": "Edificabilitat i alineacions segons plànols normatius 1/2.000."
+  },
+  "10": {
+   "nombre": "Edificació segons alineació a vial",
+   "articulo": "Art. 156",
+   "frente_minimo_m": 10,
+   "altura_max": "Segons subzona i plànols (10b: PB+3 sense àtic)",
+   "usos": "Habitatge, hoteler, comerç (PB i edificis exclusius), oficines, equipaments; indústria de 1a categoria en PB.",
+   "otros": "Illes amb asterisc: PMU amb edificabilitat neta màx. 1,50 m²st/m²s."
+  },
+  "11a": {
+   "nombre": "Aïllada plurifamiliar d'alta densitat – volumetria baixa",
+   "articulo": "Art. 157",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "1,00 m²st/m²s (+0,20 per a habitatges grans)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge, hoteler, comerç (PB i edificis exclusius), oficines, equipaments; indústria de 1a categoria en PB.",
+   "otros": "Densitat màx. 120 habitatges/ha. Separacions: 5 m a façana i fons, 3 m laterals."
+  },
+  "11b": {
+   "nombre": "Aïllada plurifamiliar d'alta densitat – volumetria alta",
+   "articulo": "Art. 157",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "1,00 m²st/m²s (+0,20 per a habitatges grans)",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+4",
+   "usos": "Habitatge, hoteler, comerç (PB i edificis exclusius), oficines, equipaments; indústria de 1a categoria en PB.",
+   "otros": "Densitat màx. 120 habitatges/ha. Separacions: 8 m a façana, 5 m a fons i laterals."
+  },
+  "12": {
+   "nombre": "Aïllada plurifamiliar de densitat mitjana",
+   "articulo": "Art. 158",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,80 m²st/m²s (+0,15 per a habitatges grans)",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge, hoteler, comerç, sanitari, esportiu, religiós, cultural; indústria de 1a categoria.",
+   "otros": "Densitat màx. 40 habitatges/ha. Separacions: 8 m a façana, 3 m a fons i laterals."
+  },
+  "13": {
+   "nombre": "Zona hotelera",
+   "articulo": "Art. 159",
+   "usos": "Hoteler.",
+   "otros": "Paràmetres segons el projecte i l'art. 159."
+  },
+  "14a": {
+   "nombre": "Ciutat jardí intensiva – unifamiliar",
+   "articulo": "Art. 160",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "1 habitatge per 400 m² de parcel·la."
+  },
+  "14b": {
+   "nombre": "Ciutat jardí intensiva – plurifamiliar aïllat",
+   "articulo": "Art. 160",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "14c": {
+   "nombre": "Ciutat jardí intensiva – en renglera",
+   "articulo": "Art. 160",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,4 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge unifamiliar o plurifamiliar en renglera."
+  },
+  "15a": {
+   "nombre": "Ciutat jardí semintensiva – unifamiliar",
+   "articulo": "Art. 161",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar; hoteler amb parcel·la mínima de 3.000 m²."
+  },
+  "15b": {
+   "nombre": "Ciutat jardí semintensiva – plurifamiliar",
+   "articulo": "Art. 161",
+   "parcela_minima_m2": 1500,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 % en PB / 20 % en P1-P2",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge plurifamiliar; hoteler amb parcel·la mínima de 3.000 m²."
+  },
+  "15c": {
+   "nombre": "Ciutat jardí semintensiva – en renglera",
+   "articulo": "Art. 161",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar o plurifamiliar en renglera; hoteler amb parcel·la mínima de 3.000 m²."
+  },
+  "15d": {
+   "nombre": "Ciutat jardí semintensiva – Garraf II",
+   "articulo": "Art. 161",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "15r": {
+   "nombre": "Ciutat jardí semintensiva – Rat Penat",
+   "articulo": "Art. 161",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "16": {
+   "nombre": "Ciutat jardí extensiva",
+   "articulo": "Art. 162",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,5 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Exclusivament habitatge unifamiliar."
+  },
+  "17": {
+   "nombre": "Manteniment de l'estructura edificatòria",
+   "articulo": "Art. 163",
+   "otros": "Es manté l'edificació existent; condicions específiques per a cada conjunt."
+  },
+  "18": {
+   "nombre": "Indústria i serveis enjardinats",
+   "articulo": "Art. 164",
+   "parcela_minima_m2": 1500,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Industrial fins a 2a categoria i estació de servei.",
+   "otros": "Cal arbrar el 30 % de la parcel·la."
+  },
+  "19": {
+   "nombre": "Indústria pesant en transformació",
+   "articulo": "Art. 165",
+   "usos": "Industrial existent.",
+   "otros": "No es pot incrementar l'edificabilitat existent."
+  },
+  "20": {
+   "nombre": "Comercial, restauració i altres serveis privats",
+   "articulo": "Art. 166",
+   "altura_max": "PB+2",
+   "usos": "Comercial, restauració i serveis privats."
+  },
+  "20.1": {
+   "nombre": "Comercial i restauració compatible amb hoteler",
+   "articulo": "Art. 167",
+   "edificabilidad": "1,2 m²st/m²s",
+   "usos": "Comercial, restauració, serveis privats i hoteler."
+  },
+  "21": {
+   "nombre": "Espai lliure entre edificacions i verd privat",
+   "articulo": "Art. 171",
+   "usos": "Jardí privat.",
+   "otros": "No edificable."
+  }
+ }
+}
