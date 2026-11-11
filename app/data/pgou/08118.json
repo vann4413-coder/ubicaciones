@@ -1,0 +1,201 @@
+{
+ "municipio": "El Masnou",
+ "codigo_ine": "08118",
+ "plan": "Revisió del Pla general d'ordenació del Masnou (2012), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=232363&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "10": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 373-378",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La resultante de la edificación existente y la tipología",
+   "ocupacion_max": "Preservación de los espacios libres existentes",
+   "altura_max": "Según plano",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "10a (Cases d'en Puig): edificación aislada",
+   "segregacion": "Conservación de la estructura urbana: parcela la existente."
+  },
+  "11": {
+   "nombre": "Volumetría definida",
+   "articulo": "Art. 379-382",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría del plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Volumetría definida: no se prevé segregación."
+  },
+  "12": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 383-386",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Planta baja totalmente edificable en 12b y 12c",
+   "altura_max": "Según plano; interior de manzana 3,50 m",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Frente mínimo 5 m (7 m en plurifamiliar con patio interior). Parcelación existente"
+  },
+  "13a": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 3-2-2 m"
+  },
+  "13b": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 3-2-2 m"
+  },
+  "13c": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 6-3-3 m"
+  },
+  "13d": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 10-5-5 m"
+  },
+  "13e": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 160,
+   "frente_minimo_m": 7.5,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 3-2-2 m"
+  },
+  "13f": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 11.25,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 6-3-3 m"
+  },
+  "13g": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 387-392",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 11.25,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar (plurifamiliar aislada en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 6-3-3 m"
+  },
+  "13c-4": {
+   "nombre": "Ciudad jardín semiintensiva unifamiliar",
+   "articulo": "Art. 391 bis",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,93 m²t/m²s",
+   "ocupacion_max": "Según art. 391 bis",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "13c-5": {
+   "nombre": "Ciudad jardín semiintensiva unifamiliar",
+   "articulo": "Art. 391 bis",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "Según art. 391 bis",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "14a": {
+   "nombre": "Industrial urbana",
+   "articulo": "Art. 393-398",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según gálibo",
+   "ocupacion_max": "100 %",
+   "altura_max": "12 m (PB+2)",
+   "usos": "Industrial",
+   "otros": "",
+   "segregacion": "Industrial entre medianeras: parcela según gálibo del plano."
+  },
+  "14b": {
+   "nombre": "Industrial aislada intensiva",
+   "articulo": "Art. 396-398",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,50 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "12,30 m",
+   "usos": "Industrial",
+   "otros": "Separaciones 10 m a calle y 5 m a linderos"
+  },
+  "14b-1": {
+   "nombre": "Industrial aislada intensiva",
+   "articulo": "Art. 396-397",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "12,30 m",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "14b-3": {
+   "nombre": "Industrial aislada intensiva",
+   "articulo": "Art. 396-397",
+   "parcela_minima_m2": 25000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 396",
+   "ocupacion_max": "60 %",
+   "altura_max": "12,30 m",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "15": {
+   "nombre": "Industrial-terciario",
+   "articulo": "Art. 399-403",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "Según plan parcial",
+   "usos": "Industria y servicios terciarios",
+   "otros": "",
+   "segregacion": "Parcela mínima según el plan parcial."
+  }
+ }
+}
