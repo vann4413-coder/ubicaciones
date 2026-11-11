@@ -1,0 +1,192 @@
+{
+ "municipio": "Vilassar de Mar",
+ "codigo_ine": "08219",
+ "plan": "Pla general d'ordenació de Vilassar de Mar (1999), Normativa; text refós 2006",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=79218&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Text refós de les normes urbanístiques (2006)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "10": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 84-87",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según fondo edificable y plantas",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano (p. ej. 6,50 m en PB+1)",
+   "usos": "Todos los usos admitidos por la normativa general",
+   "otros": "Fachadas de más de 9 m se descomponen en módulos de 4 a 9 m",
+   "segregacion": "Conservación de la estructura urbana: frente mínimo el de la parcelación existente."
+  },
+  "11": {
+   "nombre": "Volumetría definida",
+   "articulo": "Art. 88-92",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La del plan parcial o la del Plan General según subzona",
+   "ocupacion_max": "Según plano",
+   "altura_max": "11c: de PB+1 a PB+6 según subzona",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Volumetría definida: parcelación según plano."
+  },
+  "12a1": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 93-95",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "1,0 m²t/m²s",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "7 m (PB+1)",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "12a2": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 93-95",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "7 m (PB+1)",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "12a3": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 93-95",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "2,0 m²t/m²s",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "9,50 m (PB+2)",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "12a4": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 93-95",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "9,50 m (PB+2)",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "12b": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 96-97",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Según fondo y plantas",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según planos Q4",
+   "usos": "Residencial",
+   "otros": "Frente: el existente; en sustitución 7 m",
+   "segregacion": "Frente mínimo: el de la parcelación existente (7 m en obra nueva)."
+  },
+  "13a": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 98-102",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial (plurifamiliar solo en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 3-2-2 m"
+  },
+  "13b": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 98-102",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial (plurifamiliar solo en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 3-2-2 m"
+  },
+  "13c": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 98-102",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,6 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial (plurifamiliar solo en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 6-3-3 m"
+  },
+  "13d": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 98-102",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,4 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial (plurifamiliar solo en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 10-5-5 m"
+  },
+  "13e": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 98-102",
+   "parcela_minima_m2": 160,
+   "frente_minimo_m": 7.5,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial (plurifamiliar solo en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 3-2-2 m"
+  },
+  "13f": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 98-102",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 11.25,
+   "edificabilidad": "0,6 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1 y buhardilla)",
+   "usos": "Residencial (plurifamiliar solo en 13a)",
+   "otros": "Separaciones calle-laterales-fondo 6-3-3 m"
+  },
+  "14a": {
+   "nombre": "Industrial en manzana",
+   "articulo": "Art. 103-105",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 7,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "100 %",
+   "altura_max": "8 m (PB+1)",
+   "usos": "Industrial",
+   "otros": "",
+   "segregacion": "Frente: el existente (7 m en obra nueva)."
+  },
+  "14b": {
+   "nombre": "Industrial aislada",
+   "articulo": "Art. 106",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "Según retranqueos",
+   "altura_max": "Según art. 106",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "14c": {
+   "nombre": "Industrial de baja densidad",
+   "articulo": "Art. 106",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,25 m²t/m²s",
+   "ocupacion_max": "Según art. 106",
+   "altura_max": "Según art. 106",
+   "usos": "Industrial",
+   "otros": ""
+  }
+ }
+}

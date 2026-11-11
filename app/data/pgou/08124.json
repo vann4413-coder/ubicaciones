@@ -1,0 +1,216 @@
+{
+ "municipio": "Mollet del Vallès",
+ "codigo_ine": "08124",
+ "plan": "Normes de planejament urbanístic de Mollet del Vallès (2017), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=300288&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Prórrogas de vigencia de las Normas (2020, 2022)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Art. 75",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "",
+   "segregacion": "Parcela mínima edificable: la existente (se admiten regularizaciones)."
+  },
+  "2": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 76-78",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable; patio de manzana no edificable (2a)",
+   "altura_max": "Según plano",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Frente 4,5 m (unifamiliar) y 7 m (plurifamiliar y otros usos)"
+  },
+  "3a": {
+   "nombre": "Volumetría específica unifamiliar",
+   "articulo": "Art. 80",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Hasta PB+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3b": {
+   "nombre": "Volumetría específica plurifamiliar",
+   "articulo": "Art. 81",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Hasta PB+5/PB+10 según plano",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "3c": {
+   "nombre": "Volumetría según planeamiento anterior",
+   "articulo": "Art. 82-85",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento anterior / ficha",
+   "ocupacion_max": "Según ficha",
+   "altura_max": "Según ficha",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Volumetría fijada: no se prevé segregación."
+  },
+  "4a": {
+   "nombre": "Edificación aislada unifamiliar",
+   "articulo": "Art. 87",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "Según art. 87",
+   "altura_max": "Según art. 87",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "4b": {
+   "nombre": "Edificación aislada plurifamiliar",
+   "articulo": "Art. 88",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "Según art. 88",
+   "altura_max": "Según art. 88",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Servicios privados",
+   "articulo": "Art. 89",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según art. 89",
+   "ocupacion_max": "Según art. 89",
+   "altura_max": "Según art. 89",
+   "usos": "Equipamientos y servicios privados",
+   "otros": "",
+   "segregacion": "Parcela existente."
+  },
+  "6a": {
+   "nombre": "Industrial alineada a vial",
+   "articulo": "Art. 91",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según alineaciones y altura",
+   "ocupacion_max": "100 % con fachada a dos calles; retranqueo 3 m al fondo",
+   "altura_max": "Según plano",
+   "usos": "Industrial",
+   "otros": "",
+   "segregacion": "No se admiten subdivisiones de las parcelas existentes."
+  },
+  "6a-T": {
+   "nombre": "Industrial alineada en transformación",
+   "articulo": "Art. 92",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,52 m²t/m²s",
+   "ocupacion_max": "Según art. 92",
+   "altura_max": "7,55 m (PB+1)",
+   "usos": "Industrial (locales ≥ 150 m²)",
+   "otros": ""
+  },
+  "6b": {
+   "nombre": "Industrial aislada",
+   "articulo": "Art. 93",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,9 m²t/m²s",
+   "ocupacion_max": "Según art. 93",
+   "altura_max": "Según art. 93",
+   "usos": "Industrial (locales ≥ 300 m²)",
+   "otros": ""
+  },
+  "6b-1": {
+   "nombre": "Gran industria",
+   "articulo": "Art. 94",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,95 m²t/m²s",
+   "ocupacion_max": "Según art. 94",
+   "altura_max": "Según art. 94",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "6b-2": {
+   "nombre": "Industrial en hilera",
+   "articulo": "Art. 95",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 40,
+   "edificabilidad": "1,1 m²t/m²s",
+   "ocupacion_max": "Según art. 95",
+   "altura_max": "PB+2",
+   "usos": "Industrial (locales ≥ 300 m²)",
+   "otros": "Frente edificado máx. 100 m"
+  },
+  "6b-T": {
+   "nombre": "Industrial aislada en transformación",
+   "articulo": "Art. 96-101",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,70–0,82 m²t/m²s según sector",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Industrial",
+   "otros": "Sectores Industrias Químicas, Merck, Can Prat, Damm",
+   "segregacion": "Parcela mínima según la ficha de cada sector."
+  },
+  "6c": {
+   "nombre": "Industrial volumetría específica",
+   "articulo": "Art. 102",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Plantas según plano",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "7a": {
+   "nombre": "Terciaria según ordenación anterior",
+   "articulo": "Art. 104",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación aprobada",
+   "ocupacion_max": "Según ordenación",
+   "altura_max": "Hasta 26 m (PB+5)",
+   "usos": "Terciario",
+   "otros": "",
+   "segregacion": "Ordenación aprobada: parcelación según su plan."
+  },
+  "7b": {
+   "nombre": "Terciaria en edificación aislada",
+   "articulo": "Art. 105",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 40,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "Según art. 105",
+   "altura_max": "16 m (PB+3)",
+   "usos": "Terciario",
+   "otros": ""
+  },
+  "7c": {
+   "nombre": "Terciaria volumetría específica",
+   "articulo": "Art. 106",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Plantas según plano",
+   "usos": "Terciario",
+   "otros": ""
+  }
+ }
+}
