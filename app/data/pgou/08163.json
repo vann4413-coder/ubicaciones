@@ -1,0 +1,239 @@
+{
+ "municipio": "Pineda de Mar",
+ "codigo_ine": "08163",
+ "plan": "Pla general d'ordenació de Pineda de Mar (1992), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=204827&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones puntuales posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "12": {
+   "nombre": "Estructura tradicional",
+   "articulo": "Art. 161-171",
+   "parcela_minima_m2": 90,
+   "frente_minimo_m": null,
+   "edificabilidad": "Envolvente máxima según fondo y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Media de la calle; por defecto 10 m (PB+2)",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Frente mínimo según subzona (12a núcleo antiguo, 12b mixta, 12c bifamiliar, 12d unifamiliar)"
+  },
+  "12e": {
+   "nombre": "Estructura tradicional de conservación",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Residencial",
+   "otros": "Pendiente de plan especial",
+   "segregacion": "Conjunto de conservación: no se prevé segregación."
+  },
+  "13a": {
+   "nombre": "Ensanche, manzana cerrada",
+   "articulo": "Art. 172-174",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según ancho de calle: 10,5 m PB+2 (<10 m) a 19,5 m PB+5 (≥25 m)",
+   "usos": "Residencial; comercio, oficinas, hotelero",
+   "otros": ""
+  },
+  "13b": {
+   "nombre": "Ensanche, ordenación abierta",
+   "articulo": "Art. 173",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 8,
+   "edificabilidad": "2,25 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según ancho de calle (PB+1 a PB+4)",
+   "usos": "Residencial plurifamiliar; comercio, oficinas",
+   "otros": "400 m² para vivienda unifamiliar. Densidad: techo / 80. Separaciones: mitad de la altura"
+  },
+  "15": {
+   "nombre": "Turística preexistente",
+   "articulo": "Art. 175-176",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente +10 %, máx. 1,8 m²t/m²s",
+   "ocupacion_max": "Según claves 13a/13b",
+   "altura_max": "Según claves 13a/13b",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "16": {
+   "nombre": "Verde privado protegido",
+   "articulo": "Art. 177-180",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin nueva edificación",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Residencial existente",
+   "otros": "",
+   "segregacion": "Verde privado protegido: no segregable."
+  },
+  "17": {
+   "nombre": "Transformación de uso",
+   "articulo": "Art. 181-185",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según la transformación prevista",
+   "ocupacion_max": "—",
+   "altura_max": "—",
+   "usos": "En transformación",
+   "otros": "",
+   "segregacion": "Pendiente de transformación: parcelación según su planeamiento."
+  },
+  "18": {
+   "nombre": "Volumetría consolidada",
+   "articulo": "Art. 186",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Los existentes",
+   "otros": "",
+   "segregacion": "Volumetría consolidada: no se prevé segregación."
+  },
+  "19": {
+   "nombre": "Volumetría prefijada",
+   "articulo": "Art. 187-188",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría del plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Volumetría fijada en plano: parcelación según la ordenación."
+  },
+  "20a/1": {
+   "nombre": "Edificación aislada intensiva densificada",
+   "articulo": "Art. 189-196",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,7 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según art. 193",
+   "usos": "Residencial unifamiliar; cívico, cultural y religioso",
+   "otros": "No se admiten parcelas menores de 200 m²"
+  },
+  "20a/2": {
+   "nombre": "Edificación aislada intensiva",
+   "articulo": "Art. 189-196",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "Según art. 192",
+   "altura_max": "Según art. 193",
+   "usos": "Residencial unifamiliar; cívico, cultural y religioso",
+   "otros": "No se admiten parcelas menores de 200 m²"
+  },
+  "20a/3": {
+   "nombre": "Edificación aislada semiintensiva",
+   "articulo": "Art. 189-196",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "Según art. 192",
+   "altura_max": "Según art. 193",
+   "usos": "Residencial unifamiliar; cívico, cultural y religioso",
+   "otros": "No se admiten parcelas menores de 200 m²"
+  },
+  "20a/4": {
+   "nombre": "Edificación aislada extensiva",
+   "articulo": "Art. 189-196",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,4 m²t/m²s",
+   "ocupacion_max": "Según art. 192",
+   "altura_max": "Según art. 193",
+   "usos": "Residencial unifamiliar; cívico, cultural y religioso",
+   "otros": "No se admiten parcelas menores de 200 m²"
+  },
+  "20": {
+   "nombre": "Edificación aislada",
+   "articulo": "Art. 189-196",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,4–0,7 m²t/m²s según tamaño de parcela",
+   "ocupacion_max": "40 % en la subzona intensiva densificada",
+   "altura_max": "Según art. 193",
+   "usos": "Residencial unifamiliar",
+   "otros": "Subzona según superficie: 200-400, 400-600, 600-800, >800 m²"
+  },
+  "21a": {
+   "nombre": "Industrial",
+   "articulo": "Art. 198",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "10 m",
+   "usos": "Industrial",
+   "otros": "El espacio no ocupado debe quedar junto a la vía pública"
+  },
+  "21b": {
+   "nombre": "Industrial con alineación fija",
+   "articulo": "Art. 199",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,1 m²t/m²s",
+   "ocupacion_max": "Según alineación del plano",
+   "altura_max": "10 m",
+   "usos": "Industrial",
+   "otros": "Alineación prefijada y obligatoria"
+  },
+  "22": {
+   "nombre": "Desarrollo urbano (planes parciales)",
+   "articulo": "Art. 218-227",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Bruta 0,75 (22a), 0,35–0,60 (22b), 0,25 (22c) m²t/m²s",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "Según plan parcial",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Parcela mínima según el plan parcial del sector."
+  },
+  "23a": {
+   "nombre": "Ensanche industrial",
+   "articulo": "Art. 229-232",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": "100 %",
+   "altura_max": "10 m",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "23b": {
+   "nombre": "Polígono industrial",
+   "articulo": "Art. 233-236",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": "50 %",
+   "altura_max": "Según plan parcial",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "23c": {
+   "nombre": "Industria escaparate (N-II)",
+   "articulo": "Art. 237",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "Según plan parcial",
+   "usos": "Industrial y comercial de escaparate",
+   "otros": "",
+   "segregacion": "Parcela mínima según el plan parcial del sector."
+  }
+ }
+}

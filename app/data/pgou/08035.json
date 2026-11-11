@@ -1,0 +1,178 @@
+{
+ "municipio": "Calella",
+ "codigo_ine": "08035",
+ "plan": "Pla d'ordenació urbanística municipal de Calella (2005), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=200135&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 112-117",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.3,
+   "edificabilidad": "Según fondo edificable del plano y altura",
+   "ocupacion_max": "Según fondo edificable (planta baja +6 m)",
+   "altura_max": "Según plano; por defecto 10 m (PB+2 y bajocubierta)",
+   "usos": "Residencial; comercio y servicios en planta baja",
+   "otros": "Frente mínimo 4,30 m (uni/bifamiliar) y 6 m (plurifamiliar)"
+  },
+  "2": {
+   "nombre": "Ensanche tradicional",
+   "articulo": "Art. 118-123",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "13 m (PB+3 y bajocubierta)",
+   "usos": "Residencial; comercio y servicios en planta baja",
+   "otros": "Frente mínimo 5 m (uni/bifamiliar) y 6 m (plurifamiliar)"
+  },
+  "3a": {
+   "nombre": "Bloques aislados residenciales",
+   "articulo": "Art. 125, 128",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "16 m (PB+4)",
+   "usos": "Residencial plurifamiliar",
+   "otros": "Separación 4 m a calle; densidad 1 vivienda / 100 m² construidos"
+  },
+  "3b": {
+   "nombre": "Bloques aislados hoteleros",
+   "articulo": "Art. 126, 128",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "23 m (PB+6)",
+   "usos": "Hotelero",
+   "otros": "Separación 4 m a calle"
+  },
+  "3": {
+   "nombre": "Bloques aislados",
+   "articulo": "Art. 124-129",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "16–23 m según subzona",
+   "usos": "Residencial plurifamiliar y hotelero",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Volumetría consolidada",
+   "articulo": "Art. 130-131",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La de la edificación existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Los del plan que la autorizó o, si no, los de bloques aislados",
+   "otros": "",
+   "segregacion": "Volumetría consolidada: no se prevé segregación."
+  },
+  "5a": {
+   "nombre": "Unifamiliar en hilera",
+   "articulo": "Art. 135",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable (12 m) y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "9,20 m (PB+2)",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Retranqueo 5 m a vial y 3 m posterior"
+  },
+  "5b": {
+   "nombre": "Unifamiliar en hilera, antigua ordenación",
+   "articulo": "Art. 136",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (Plan parcial nº 1)",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Vivienda unifamiliar",
+   "otros": "",
+   "segregacion": "Ordenación consolidada del plan parcial: no se prevé segregación."
+  },
+  "5c": {
+   "nombre": "Unifamiliar en hilera, nueva ordenación",
+   "articulo": "Art. 137",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según perímetro regulador del plano",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "6a": {
+   "nombre": "Unifamiliar aislada",
+   "articulo": "Art. 140",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "Según art. 138-145",
+   "usos": "Vivienda unifamiliar; comercio hasta 150 m², oficinas",
+   "otros": ""
+  },
+  "6b": {
+   "nombre": "Unifamiliar aislada",
+   "articulo": "Art. 141",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "Según art. 138-145",
+   "usos": "Vivienda unifamiliar; comercio hasta 150 m², oficinas",
+   "otros": ""
+  },
+  "6c": {
+   "nombre": "Unifamiliar aislada (Sant Quirze)",
+   "articulo": "Art. 142",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "Según art. 142",
+   "altura_max": "Junto a la cresta: máx. 2 m sobre su rasante",
+   "usos": "Vivienda unifamiliar; comercio hasta 150 m², oficinas",
+   "otros": ""
+  },
+  "6d": {
+   "nombre": "Unifamiliar aislada",
+   "articulo": "Art. 143",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "Según art. 138-145",
+   "usos": "Vivienda unifamiliar; comercio hasta 150 m², oficinas",
+   "otros": "Se admiten parcelas de 900 m² escrituradas antes del POUM"
+  },
+  "6x": {
+   "nombre": "Unifamiliar aislada (planes parciales)",
+   "articulo": "Art. 144",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según el plan parcial",
+   "ocupacion_max": "Según el plan parcial",
+   "altura_max": "Según el plan parcial",
+   "usos": "Vivienda unifamiliar; comercio hasta 150 m², oficinas",
+   "otros": "",
+   "segregacion": "Parcela mínima según el plan parcial que se mantiene."
+  },
+  "7": {
+   "nombre": "Actividades económicas e industriales",
+   "articulo": "Art. 146-150",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 10,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "65 %",
+   "altura_max": "Según plano",
+   "usos": "Almacén, comercio, oficinas, talleres de vehículos, industrial, recreativo",
+   "otros": ""
+  }
+ }
+}
