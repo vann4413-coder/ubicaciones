@@ -57,7 +57,7 @@ def segregacion(zona: dict | None, superficie: float | None, frente: float | Non
     if n < 2:
         return {"posible": False, "partes": 1,
                 "texto": f"No: harían falta al menos {2 * pmin:,.0f} m² para dos parcelas de la mínima ({pmin:,.0f} m²).".replace(",", ".")}
-    texto = f"Sí, en principio hasta {n} parcelas de {pmin:,.0f} m²".replace(",", ".")
+    texto = f"Sí, en principio hasta {n} parcelas de " + f"{pmin:,.0f} m²".replace(",", ".")
     if fmin and frente:
         n_frente = int(frente // fmin)
         if n_frente < 2:
