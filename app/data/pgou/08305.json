@@ -1,0 +1,183 @@
+{
+ "municipio": "Vilafranca del Penedès",
+ "codigo_ine": "08305",
+ "plan": "Pla d'ordenació urbanística municipal (revisió del PGOU) – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=174299&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=212699&downloadType=inline&idioma=ca"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "7": {
+   "nombre": "Edificis monumentals catalogats",
+   "articulo": "Art. 211 i ss.",
+   "otros": "Edificis catalogats: només obres de conservació i restauració segons el Catàleg."
+  },
+  "8": {
+   "nombre": "Edificis a conservar",
+   "articulo": "Art. 214 i ss.",
+   "otros": "Es manté l'edificació existent; ampliacions limitades segons el Catàleg."
+  },
+  "8/1": {
+   "nombre": "Edificis a conservar",
+   "articulo": "Art. 214 i ss.",
+   "otros": "Es manté l'edificació existent; ampliacions limitades segons el Catàleg."
+  },
+  "9": {
+   "nombre": "Edificis repetibles",
+   "articulo": "Art. 217-219",
+   "frente_minimo_m": 5,
+   "usos": "Habitatge unifamiliar i plurifamiliar; comercial fins a 400 m²; oficines fins al 30 % del sostre; administratiu, sociocultural, recreatiu.",
+   "otros": "Soterrani d'aparcament en parcel·les de més de 300 m² i 10 m de façana."
+  },
+  "9/1": {
+   "nombre": "Edificis repetibles (pautes de conjunt)",
+   "articulo": "Art. 217-219",
+   "frente_minimo_m": 5,
+   "usos": "Habitatge unifamiliar i plurifamiliar; comercial fins a 400 m²; oficines fins al 30 % del sostre."
+  },
+  "10a": {
+   "nombre": "Trama a mantenir-hi l'estructura edificatòria – residencial (10.1)",
+   "articulo": "Art. 220-222",
+   "usos": "Habitatge unifamiliar o plurifamiliar; oficines fins al 30 % del sostre; comercial i serveis.",
+   "otros": "Soterrani d'aparcament en parcel·les amb façana de més de 10 m."
+  },
+  "10.1": {
+   "nombre": "Trama a mantenir-hi l'estructura edificatòria – residencial",
+   "articulo": "Art. 220-222",
+   "usos": "Habitatge unifamiliar o plurifamiliar; oficines fins al 30 % del sostre; comercial i serveis.",
+   "otros": "Soterrani d'aparcament en parcel·les amb façana de més de 10 m."
+  },
+  "11": {
+   "nombre": "Trama en colmatació",
+   "articulo": "Art. 224-226",
+   "ocupacion_max": "70 % de l'illa (11.1) / 60 % (11.2)",
+   "usos": "Habitatge unifamiliar i plurifamiliar; comercial, oficines, tallers i indústria de 1a categoria."
+  },
+  "11/1": {
+   "nombre": "Trama en saturació d'intervenció difusa",
+   "articulo": "Art. 227",
+   "frente_minimo_m": 7,
+   "ocupacion_max": "70 % de l'espai de l'illa",
+   "usos": "Habitatge unifamiliar i plurifamiliar; comercial, oficines, hoteler, tallers i indústria de 1a categoria, equipaments.",
+   "otros": "Façana mínima 12 m al barri de la Girada. Soterrani d'aparcament en parcel·les de més de 300 m² i 10 m de façana."
+  },
+  "11/2": {
+   "nombre": "Trama en saturació d'intervenció concentrada",
+   "articulo": "Art. 228-229",
+   "frente_minimo_m": 10,
+   "ocupacion_max": "60 % de l'espai de l'illa",
+   "usos": "Habitatge unifamiliar i plurifamiliar; comercial, oficines, hoteler, tallers i indústria de 1a categoria, equipaments.",
+   "otros": "Són edificables les parcel·les menors inscrites abans del 23/02/1981."
+  },
+  "11/3": {
+   "nombre": "Trama en saturació d'intervenció difusa Poble Nou",
+   "articulo": "Art. 230",
+   "frente_minimo_m": 5,
+   "usos": "Habitatge unifamiliar o plurifamiliar i els usos de la subzona 11.1.",
+   "segregacion": "No: a la subzona 11.3 (Poble Nou) no es poden agrupar ni reagrupar parcel·les per protegir la parcel·lació existent; la façana mínima és de 5 m."
+  },
+  "12": {
+   "nombre": "Extensió urbana",
+   "articulo": "Art. 231-234",
+   "usos": "Habitatge plurifamiliar; comercial, oficines i equipaments."
+  },
+  "12/1": {
+   "nombre": "Extensió urbana en illa tancada",
+   "articulo": "Art. 232",
+   "altura_max": "16 m (PB+4)",
+   "usos": "Habitatge plurifamiliar; comercial, oficines i equipaments.",
+   "otros": "Pati interior d'illa d'ús comunitari; soterrani d'aparcament admès."
+  },
+  "12/2": {
+   "nombre": "Extensió urbana en ordenació oberta",
+   "articulo": "Art. 233",
+   "parcela_minima_m2": 350,
+   "edificabilidad": "1,5 m²st/m²s",
+   "altura_max": "19 m (PB+5)",
+   "usos": "Habitatge plurifamiliar; comercial, oficines i equipaments.",
+   "otros": "Espai lliure de parcel·la d'ús comunitari."
+  },
+  "13": {
+   "nombre": "Ordenació volumètrica anterior",
+   "articulo": "Art. 235-238",
+   "usos": "Habitatge (plurifamiliar a 13.1); comercial i oficines a 13.1.",
+   "otros": "Es manté la volumetria existent; edificabilitat entre 1 i 2 m²st/m²s segons l'àmbit. En alguns àmbits ocupació màxima 80 % i PB+1."
+  },
+  "14": {
+   "nombre": "Indústria urbana",
+   "articulo": "Art. 239-248",
+   "usos": "Industrial i activitats lligades.",
+   "otros": "Subzones 14.1 (quadrícula en transformació) i 14.2 (indústria aïllada)."
+  },
+  "14/1": {
+   "nombre": "Quadrícula industrial en transformació",
+   "articulo": "Art. 240-245",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 9,
+   "ocupacion_max": "100 % en planta baixa",
+   "altura_max": "PB+3",
+   "usos": "Usos de la zona 11.1 amb un màxim del 70 % del sostre per a habitatge plurifamiliar; vitivinícola. Nombre d'habitatges = sostre residencial / 90 m².",
+   "otros": "Zona en transformació progressiva cap a residencial."
+  },
+  "14/2": {
+   "nombre": "Indústria aïllada",
+   "articulo": "Art. 246-248",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1 m²st/m²s (volum màxim 4 m³/m²)",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+2",
+   "usos": "Industrial (7.1-7.6, categories 1a a 3a); també comercial, oficines, magatzem, hoteler, restauració i altres.",
+   "otros": "Separació mínima de 5 m als límits de parcel·la."
+  },
+  "15": {
+   "nombre": "Industrial St. Pere Molanta",
+   "articulo": "Art. 249-251",
+   "usos": "Industrial.",
+   "otros": "Regit pel pla parcial industrial de Sant Pere Molanta (Olèrdola): condicions d'edificació i ús d'aquell pla."
+  },
+  "16": {
+   "nombre": "Ordenació anterior",
+   "articulo": "Art. 252-254",
+   "otros": "Es regeix pel planejament de desenvolupament anterior incorporat al Pla (16/1 residencial, 16/2 industrial). Consultar l'annex del sector."
+  },
+  "16/1": {
+   "nombre": "Ordenació anterior – residencial",
+   "articulo": "Art. 252-254",
+   "usos": "Residencial; s'admet expressament l'ús educatiu.",
+   "otros": "Paràmetres del planejament derivat anterior incorporat al Pla: consultar l'annex del sector."
+  },
+  "16/2": {
+   "nombre": "Ordenació anterior – industrial",
+   "articulo": "Art. 252-254",
+   "usos": "Industrial.",
+   "otros": "Paràmetres del planejament derivat anterior incorporat al Pla: consultar l'annex del sector."
+  },
+  "17": {
+   "nombre": "Terciària",
+   "articulo": "Art. 255-257",
+   "edificabilidad": "La del planejament executat; si no n'hi ha, 1,0 m²st/m²s brut",
+   "ocupacion_max": "75 %",
+   "altura_max": "5 plantes o 20 m",
+   "usos": "Comercial i terciari (17.1 sense alimentari; 17.2 sense limitació comercial), oficines, bar i restauració, hoteler, recreatiu.",
+   "otros": "La primera planta soterrani pot tenir usos principals i computa edificabilitat."
+  },
+  "17/1": {
+   "nombre": "Terciària amb limitació comercial (sense alimentari)",
+   "articulo": "Art. 255-257",
+   "edificabilidad": "La del planejament executat; si no n'hi ha, 1,0 m²st/m²s brut",
+   "ocupacion_max": "75 %",
+   "altura_max": "5 plantes o 20 m",
+   "usos": "Comercial i terciari (17.1 sense alimentari; 17.2 sense limitació comercial), oficines, bar i restauració, hoteler, recreatiu.",
+   "otros": "La primera planta soterrani pot tenir usos principals i computa edificabilitat."
+  },
+  "11/P": {
+   "nombre": "Pati d'illa no edificable",
+   "articulo": "Art. 224.5",
+   "usos": "Espai lliure interior d'illa.",
+   "otros": "No edificable ni en superfície ni en soterrani.",
+   "segregacion": "No té sentit segregar: és pati d'illa no edificable."
+  }
+ }
+}
