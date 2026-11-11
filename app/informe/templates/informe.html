@@ -328,7 +328,7 @@
 
   {% if p.fichas_catastro %}
   <h3>Ficha oficial del Catastro</h3>
-  {% if p.fichas_catastro|length <= 3 %}<p>La consulta descriptiva y gráfica oficial de {{ "cada inmueble" if p.fichas_catastro|length > 1 else "la finca" }} se adjunta al final de este informe.</p>{% endif %}
+  {% if p.fichas_catastro|length <= 3 %}<p>La consulta descriptiva y gráfica oficial de {{ "cada inmueble" if p.fichas_catastro|length > 1 else "la finca" }} se adjunta al final de este informe.</p>{% else %}<p>Se adjunta al final la consulta descriptiva y gráfica oficial del primer inmueble, con el plano de la finca; la de cada inmueble se abre en su enlace.</p>{% endif %}
   <ul class="fichas-rc">{% for f in p.fichas_catastro[:12] %}<li><a href="{{ f.url }}">{{ f.rc }}</a>{% if f.uso %} <small>{{ f.uso }}</small>{% endif %}</li>{% endfor %}</ul>
   {% if p.fichas_catastro|length > 12 %}<p class="pie">Y {{ p.fichas_catastro|length - 12 }} inmuebles más.</p>{% endif %}
   {% endif %}

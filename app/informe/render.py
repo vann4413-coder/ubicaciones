@@ -176,17 +176,27 @@ def pdf(inf: dict, anexos: list[bytes] | None = None) -> bytes:
 
 
 async def fichas_catastro(inf: dict, maximo: int = 3) -> list[bytes]:
-    """Descarga las consultas descriptivas y gráficas oficiales (solo si la parcela tiene pocos inmuebles)."""
+    """Descarga las consultas descriptivas y gráficas oficiales del Catastro.
+
+    Con pocos inmuebles se adjuntan todas; con muchos (p. ej. un solar dividido en parcelas), solo la
+    primera, que ya incluye el plano gráfico de la finca completa.
+    """
+    import logging
+
     from app import http
     fichas = inf["parcela"].get("fichas_catastro") or []
-    if not fichas or len(fichas) > maximo:
+    if not fichas:
         return []
+    elegidas = fichas if len(fichas) <= maximo else fichas[:1]
     salida = []
-    for f in fichas:
+    for f in elegidas:
         try:
             contenido, tipo = await http.get_bytes(f["url"])
             if contenido[:5] == b"%PDF-":
                 salida.append(contenido)
-        except Exception:  # noqa: BLE001
-            continue
+            else:
+                logging.getLogger(__name__).warning("Ficha del Catastro %s: la Sede no devolvió un PDF (%s, %d bytes)",
+                                                    f.get("rc"), tipo, len(contenido))
+        except Exception as e:  # noqa: BLE001
+            logging.getLogger(__name__).warning("Ficha del Catastro %s no descargada: %s", f.get("rc"), e)
     return salida

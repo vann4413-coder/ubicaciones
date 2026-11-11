@@ -223,4 +223,23 @@ async def salud():
     nudos = red_electrica.nudos()
     from app import pagos
     return {"ok": True, "capacidad_red": {"posiciones": len(nudos), "fichero": nudos[0]["fecha_fichero"] if nudos else None},
-            "pagos": {"metodos": pagos.METODOS, "rechazados": pagos.diagnostico}}
+            "pagos": {"metodos": pagos.METODOS, "rechazados": pagos.diagnostico},
+            "ficha_catastro": await _prueba_ficha_catastro()}
+
+
+_prueba_ficha: dict = {}
+
+
+async def _prueba_ficha_catastro() -> dict:
+    """Comprueba (como mucho una vez por hora) que la Sede del Catastro entrega la ficha en PDF a este servidor."""
+    if _prueba_ficha and time.time() - _prueba_ficha["t"] < 3600:
+        return _prueba_ficha["r"]
+    from app import http
+    url = catastro.url_cdyg("1332401DG6013S0005LO", "8", "6")
+    try:
+        contenido, tipo = await http.get_bytes(url)
+        r = {"pdf": contenido[:5] == b"%PDF-", "tipo": tipo, "bytes": len(contenido)}
+    except Exception as e:  # noqa: BLE001
+        r = {"pdf": False, "error": str(e)[:200]}
+    _prueba_ficha.update(t=time.time(), r=r)
+    return r
