@@ -205,10 +205,12 @@ body { -webkit-font-smoothing: antialiased; }
   .bloque { padding: 60px 0; }
   .bajada { margin-bottom: 28px; font-size: 17px; }
   .buscador-grande { padding: 8px; }
-  .buscador-grande input { font-size: 15px; padding-left: 38px; background-position: 12px 50%; }
+  .buscador-grande { padding: 6px; }
+  .buscador-grande input { font-size: 16px; letter-spacing: -.01em; padding: 14px 4px 14px 34px; background-position: 10px 50%; }
   .buscador-grande .btn { width: 100%; }
   .tarjeta, .sector { padding: 20px; }
   .tarjeta:hover, .sector:hover, .btn:hover { transform: none; }
   .cta-in .btn { width: 100%; text-align: center; }
 }
+@media (max-width: 369px) { .buscador-grande input { font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .btn, .tarjeta, .sector, .plan { transition: none; } }

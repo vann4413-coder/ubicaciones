@@ -41,6 +41,17 @@
         <input name="q" placeholder="Dirección, referencia catastral o coordenadas" aria-label="Dirección, referencia catastral o coordenadas" required>
         <button class="btn" type="submit">Analizar parcela</button>
       </form>
+      <script>
+        (function () {
+          var i = document.querySelector('.buscador-grande input[name="q"]');
+          if (!i || !window.matchMedia) return;
+          var largo = i.placeholder, corto = "Dirección, ref. catastral o coordenadas";
+          var m = window.matchMedia("(max-width: 640px)");
+          function poner() { i.placeholder = m.matches ? corto : largo; }
+          poner();
+          if (m.addEventListener) m.addEventListener("change", poner); else if (m.addListener) m.addListener(poner);
+        })();
+      </script>
       <p class="ejemplos">Prueba con: <a href="/app?q=Carrer%20Prat%20de%20la%20Riba%20110%2C%20Matar%C3%B3">Prat de la Riba 110, Mataró</a> · <a href="/app">o elige en el mapa</a></p>
     </div>
     <div class="hero-muestra" aria-hidden="true">
