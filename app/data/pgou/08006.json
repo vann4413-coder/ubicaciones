@@ -1,0 +1,167 @@
+{
+ "municipio": "Arenys de Mar",
+ "codigo_ine": "08006",
+ "plan": "Pla d'ordenació urbanística municipal d'Arenys de Mar (2014), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=381170&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 209-214",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según fondo edificable (15 m general) y altura del plano",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano de ordenación",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Para dividir: frente ≥ 5 m, fondo ≥ 20 m y techo mínimo de 120 m² por parcela resultante"
+  },
+  "2": {
+   "nombre": "Extensión por alineación a calle",
+   "articulo": "Art. 215-218",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Según fondo edificable (11–18 m) y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según plano de ordenación",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Fondo mínimo de parcela 25 m"
+  },
+  "3a": {
+   "nombre": "Casas aisladas",
+   "articulo": "Art. 221-225",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2",
+   "usos": "Vivienda unifamiliar (se admiten pareadas)",
+   "otros": "Retranqueos vial-fondo-laterales 5-3-3 m. Parcelas existentes menores: edificabilidad reducida en proporción"
+  },
+  "3b": {
+   "nombre": "Casas aisladas",
+   "articulo": "Art. 221-225",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,4 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar (se admiten pareadas)",
+   "otros": "Retranqueos vial-fondo-laterales 5-3-3 m. Parcelas existentes menores: edificabilidad reducida en proporción"
+  },
+  "3c": {
+   "nombre": "Casas aisladas",
+   "articulo": "Art. 221-225",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,4 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar (se admiten pareadas)",
+   "otros": "Retranqueos vial-fondo-laterales 8-4-4 m. Parcelas existentes menores: edificabilidad reducida en proporción"
+  },
+  "3d": {
+   "nombre": "Casas aisladas de conservación",
+   "articulo": "Art. 222-224",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Edificación existente +10 %",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Conservación de la casa y su jardín",
+   "segregacion": "Parcela mínima indivisible: no segregable."
+  },
+  "4a": {
+   "nombre": "Bloques aislados, ordenación existente",
+   "articulo": "Art. 226-229",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plano y cuadro de la subzona 4a",
+   "ocupacion_max": "Según cuadro",
+   "altura_max": "La del planeamiento de referencia",
+   "usos": "Residencial plurifamiliar",
+   "otros": "",
+   "segregacion": "Parcelas existentes: no se prevé segregación (4a.21: mínimo 1.000 m² y 20 m)."
+  },
+  "4b.2": {
+   "nombre": "Bloques aislados, nueva ordenación",
+   "articulo": "Art. 227-228",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 30,
+   "edificabilidad": "Según cuadro del art. 228",
+   "ocupacion_max": "Según cuadro",
+   "altura_max": "Según cuadro",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "4b.3": {
+   "nombre": "Bloques aislados, nueva ordenación",
+   "articulo": "Art. 227-229",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "Según cuadro del art. 228",
+   "ocupacion_max": "Según cuadro",
+   "altura_max": "Según cuadro",
+   "usos": "Residencial plurifamiliar; comercial u oficinas también como uso principal",
+   "otros": ""
+  },
+  "4b": {
+   "nombre": "Bloques aislados, nueva ordenación",
+   "articulo": "Art. 227-229",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 30,
+   "edificabilidad": "Según cuadro del art. 228",
+   "ocupacion_max": "Según cuadro",
+   "altura_max": "Según cuadro",
+   "usos": "Residencial plurifamiliar",
+   "otros": "4b.3: 1.000 m²"
+  },
+  "5": {
+   "nombre": "Naves aisladas",
+   "articulo": "Art. 230-234",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "9 m",
+   "usos": "Industrial y almacenes",
+   "otros": "Fondo mínimo 30 m. En 5b se admite dividir naves con condiciones"
+  },
+  "5d": {
+   "nombre": "Naves, industria existente",
+   "articulo": "Art. 232-233",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Volumen existente",
+   "ocupacion_max": "La existente",
+   "altura_max": "La existente",
+   "usos": "Solo el uso industrial existente",
+   "otros": "",
+   "segregacion": "Se mantiene la edificación existente: no se prevé segregación."
+  },
+  "6": {
+   "nombre": "Conjuntos unitarios",
+   "articulo": "Art. 237-241",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "Según proyecto unitario",
+   "ocupacion_max": "Según proyecto",
+   "altura_max": "Según proyecto",
+   "usos": "Residencial",
+   "otros": "Una vivienda por cada 120 m² de parcela como máximo"
+  },
+  "7": {
+   "nombre": "Solares de ordenación singular",
+   "articulo": "Art. 242-245",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "Según plano",
+   "usos": "Residencial",
+   "otros": "Para dividir hace falta ordenación previa de toda la unidad de zona"
+  }
+ }
+}

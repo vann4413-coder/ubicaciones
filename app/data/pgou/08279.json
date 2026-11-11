@@ -1,0 +1,280 @@
+{
+ "municipio": "Terrassa",
+ "codigo_ine": "08279",
+ "plan": "Pla d'ordenació urbanística municipal de Terrassa (2003), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=311207&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-11",
+ "zonas": {
+  "A1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 72-80",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según alineaciones, fondo y altura",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según ancho de calle: 7,60 m PB+1 (<8 m) a 20 m PB+5 (≥25 m)",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Frente mínimo 4,5 m (uni/bifamiliar) y 6 m (plurifamiliar)"
+  },
+  "A2": {
+   "nombre": "Ensanche urbano",
+   "articulo": "Art. 81-93",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según fondo y altura; remodelación de manzana 1,80 m²t/m²s",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según ancho de calle: 7,60 m PB+1 (<8 m) a 20 m PB+5 (≥25 m)",
+   "usos": "Residencial; comercio, oficinas, servicios",
+   "otros": "Frente mínimo 4,5 m (uni/bifamiliar) y 6 m (plurifamiliar)"
+  },
+  "A3": {
+   "nombre": "Ensanche suburbano, manzana cerrada",
+   "articulo": "Art. 94-102",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según fondo y altura; remodelación 1,40 m²t/m²s",
+   "ocupacion_max": "Según fondo edificable",
+   "altura_max": "Según ancho de calle: 7,60 m PB+1 (<8 m) a 20 m PB+5 (≥25 m)",
+   "usos": "Residencial; comercio y servicios",
+   "otros": "Plurifamiliar: frente 6 m y fondo edificable 8 m"
+  },
+  "A4": {
+   "nombre": "Manzana abierta",
+   "articulo": "Art. 103-111",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según plano y anexo 3",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según planos de ordenación",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "A4.4": {
+   "nombre": "Manzana abierta, piezas menores",
+   "articulo": "Art. 110",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Según anexo 3",
+   "ocupacion_max": "Según plano",
+   "altura_max": "21 m (PB+5)",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "A5.0": {
+   "nombre": "Edificación aislada (ciudad jardín)",
+   "articulo": "Art. 112-130",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "Según art. 114 y condiciones particulares",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1)",
+   "usos": "Residencial unifamiliar o plurifamiliar",
+   "otros": "Parcelas existentes menores: edificabilidad reducida en proporción. Vivienda plurifamiliar condicionada a 800 m² de parcela"
+  },
+  "A5.1": {
+   "nombre": "Edificación aislada (ciudad jardín)",
+   "articulo": "Art. 112-130",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "Según art. 114 y condiciones particulares",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1)",
+   "usos": "Residencial unifamiliar o plurifamiliar",
+   "otros": "Parcelas existentes menores: edificabilidad reducida en proporción. Vivienda plurifamiliar condicionada a 800 m² de parcela"
+  },
+  "A5.2": {
+   "nombre": "Edificación aislada (ciudad jardín)",
+   "articulo": "Art. 112-130",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 18,
+   "edificabilidad": "Según art. 114 y condiciones particulares",
+   "ocupacion_max": "20 %",
+   "altura_max": "9,5 m (PB+2)",
+   "usos": "Residencial unifamiliar o plurifamiliar",
+   "otros": "Parcelas existentes menores: edificabilidad reducida en proporción. Vivienda plurifamiliar condicionada a 800 m² de parcela"
+  },
+  "A5.4": {
+   "nombre": "Bloque aislado",
+   "articulo": "Art. 112-130",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "edificabilidad": "Según art. 114 y condiciones particulares",
+   "ocupacion_max": "50 %",
+   "altura_max": "12 m (PB+3)",
+   "usos": "Residencial unifamiliar o plurifamiliar",
+   "otros": "Parcelas existentes menores: edificabilidad reducida en proporción. Vivienda plurifamiliar condicionada a 800 m² de parcela"
+  },
+  "A5.3": {
+   "nombre": "Edificación en hilera",
+   "articulo": "Art. 125-127",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "Según plano",
+   "altura_max": "9,5 m (PB+2)",
+   "usos": "Vivienda unifamiliar en hilera",
+   "otros": "",
+   "segregacion": "Hilera: parcela = cada frente completo según plano."
+  },
+  "A6": {
+   "nombre": "Ordenaciones en sectores urbanos complejos",
+   "articulo": "Art. 131-136",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según sector (anexo 4)",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Según sector",
+   "otros": "",
+   "segregacion": "Parcelación según la ordenación del sector."
+  },
+  "A7": {
+   "nombre": "Áreas centrales de mejora urbana",
+   "articulo": "Art. 137-149",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan de mejora urbana",
+   "ocupacion_max": "Según PMU",
+   "altura_max": "Según PMU",
+   "usos": "Mixto: residencial, terciario y equipamientos",
+   "otros": "",
+   "segregacion": "Parcela mínima fijada por el plan de mejora urbana."
+  },
+  "A8": {
+   "nombre": "Industrial en manzana cerrada",
+   "articulo": "Art. 150-155",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "100 %",
+   "altura_max": "Según ancho de calle",
+   "usos": "Industrial y almacenes compatibles con la vivienda",
+   "otros": ""
+  },
+  "A8.0": {
+   "nombre": "Industrial en manzana cerrada",
+   "articulo": "Art. 152-153",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "100 %",
+   "altura_max": "16 m (PB+2) en conjuntos particulares",
+   "usos": "Industrial y almacenes",
+   "otros": "Hasta 2 naves entre medianeras de 300 m² por parcela mínima; frente 10 m agrupando"
+  },
+  "A9": {
+   "nombre": "Industrial en edificación aislada",
+   "articulo": "Art. 156-162",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,25 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "Volumen máx. 8 m³/m²",
+   "usos": "Industrial y logístico",
+   "otros": "Separaciones: 10 m a calle, 3 m laterales, 5 m fondo"
+  },
+  "A9.1": {
+   "nombre": "Industrial aislada Can Petit",
+   "articulo": "Art. 159",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "1,25 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "Volumen máx. 8 m³/m²",
+   "usos": "Industrial",
+   "otros": "Subzona (a): 2.000 m² y 36 m de frente; (b): 600 m² y 18 m"
+  },
+  "A9.2": {
+   "nombre": "Industrial aislada Santa Margarida",
+   "articulo": "Art. 160",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 36,
+   "edificabilidad": "1,25 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "7,50 m en subzona (d)",
+   "usos": "Industrial",
+   "otros": "Subzona (b): frente 18 m"
+  },
+  "A10": {
+   "nombre": "Comercial",
+   "articulo": "Art. 163-170",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según edificios existentes y sectores",
+   "ocupacion_max": "Según sector",
+   "altura_max": "Según sector",
+   "usos": "Comercial y servicios",
+   "otros": "Nueva edificación: condiciones de la zona A8.0 en lo no regulado"
+  },
+  "A10.2": {
+   "nombre": "Comercial sector Montserrat",
+   "articulo": "Art. 167",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 36,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "Según art. 167",
+   "altura_max": "PB+4",
+   "usos": "Comercial",
+   "otros": "Fondo mínimo 50 m; volumen máx. 10 m³/m²"
+  },
+  "A10.3": {
+   "nombre": "Comercial sector Pla de les Fonts",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 50,
+   "edificabilidad": "Según art. 168",
+   "ocupacion_max": "Según art. 168",
+   "altura_max": "Según número de plantas",
+   "usos": "Comercial",
+   "otros": "Parcelas junto a suelo residencial: 1.250 m² y 35 m"
+  },
+  "A11": {
+   "nombre": "Terciario",
+   "articulo": "Art. 171-179",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,25 m²t/m²s (1,40 en Av. Santa Eulàlia y Marie Curie)",
+   "ocupacion_max": "70 %",
+   "altura_max": "Según subzona",
+   "usos": "Oficinas, logística, industria limpia, hotel, restauración, comercio parcial",
+   "otros": "Separación 10 m a vía pública (15 m en Av. Santa Eulàlia)"
+  },
+  "A11.2": {
+   "nombre": "Terciario Vista Alegre",
+   "articulo": "Art. 175",
+   "parcela_minima_m2": 5000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,835 m²t/m²s",
+   "ocupacion_max": "Según art. 175",
+   "altura_max": "Según art. 175",
+   "usos": "Terciario",
+   "otros": "Subdividir exige plan de mejora urbana"
+  },
+  "A12": {
+   "nombre": "Aparcamientos",
+   "articulo": "Art. 180-182",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación (solo marquesinas)",
+   "ocupacion_max": "—",
+   "altura_max": "—",
+   "usos": "Aparcamiento al aire libre o subterráneo",
+   "otros": "",
+   "segregacion": "Parcela única indivisible."
+  },
+  "A5": {
+   "nombre": "Edificación aislada (ciudad jardín)",
+   "articulo": "Art. 112-130",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "Según art. 114 y condiciones particulares",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m (PB+1)",
+   "usos": "Residencial unifamiliar o plurifamiliar",
+   "otros": "Valores de la zona genérica A5.0; las subzonas fijan sus propios mínimos"
+  }
+ }
+}
