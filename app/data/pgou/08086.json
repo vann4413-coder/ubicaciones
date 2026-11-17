@@ -1,0 +1,217 @@
+{
+ "municipio": "Les Franqueses del Vallès",
+ "codigo_ine": "08086",
+ "plan": "Revisió del Pla general d'ordenació de Les Franqueses del Vallès – Normes urbanístiques (text refós) i Pla parcial del Sector N",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=197397&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=277286&downloadType=inline&idioma=ca",
+  "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=475026&downloadType=inline&idioma=ca"
+ ],
+ "revisado": "2026-11-17",
+ "zonas": {
+  "zona i": {
+   "nombre": "Residencial en illa tancada",
+   "articulo": "Art. 168-176",
+   "parcela_minima_m2": 100,
+   "altura_max": "Segons plànols: de PB+1 (7,5 m) a PB+5 (19,5 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Parcel·la mínima 100 m² amb almenys 70 m² edificables per planta; fondària segons plànols."
+  },
+  "i": {
+   "nombre": "Residencial en illa tancada",
+   "articulo": "Art. 168-176",
+   "parcela_minima_m2": 100,
+   "altura_max": "Segons plànols: de PB+1 (7,5 m) a PB+5 (19,5 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Parcel·la mínima 100 m² amb almenys 70 m² edificables per planta; fondària segons plànols."
+  },
+  "i-a": {
+   "nombre": "Residencial en illa tancada – subzona I-A",
+   "articulo": "Art. 168-176",
+   "parcela_minima_m2": 100,
+   "altura_max": "Segons plànols: de PB+1 (7,5 m) a PB+5 (19,5 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Parcel·la mínima 100 m² amb almenys 70 m² edificables per planta; fondària segons plànols."
+  },
+  "i-b": {
+   "nombre": "Residencial en illa tancada – subzona I-B",
+   "articulo": "Art. 168-176",
+   "parcela_minima_m2": 100,
+   "altura_max": "Segons plànols: de PB+1 (7,5 m) a PB+5 (19,5 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Parcel·la mínima 100 m² amb almenys 70 m² edificables per planta; fondària segons plànols."
+  },
+  "zona ii": {
+   "nombre": "Residencial amb perímetres reguladors predeterminats",
+   "articulo": "Art. 177-186",
+   "parcela_minima_m2": 100,
+   "ocupacion_max": "Segons el polígon grafiat (en general 30 %)",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Perímetres i alçades fixats pel planejament derivat anterior; paràmetres específics per a cada subzona."
+  },
+  "ii": {
+   "nombre": "Residencial amb perímetres reguladors predeterminats",
+   "articulo": "Art. 177-186",
+   "parcela_minima_m2": 100,
+   "ocupacion_max": "Segons el polígon grafiat (en general 30 %)",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Perímetres i alçades fixats pel planejament derivat anterior; paràmetres específics per a cada subzona."
+  },
+  "ii-a": {
+   "nombre": "Perímetres reguladors – II-A",
+   "articulo": "Art. 177-186",
+   "parcela_minima_m2": 100,
+   "ocupacion_max": "Segons el polígon grafiat (en general 30 %)",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Perímetres i alçades fixats pel planejament derivat anterior; paràmetres específics per a cada subzona."
+  },
+  "ii-b": {
+   "nombre": "Perímetres reguladors – II-B",
+   "articulo": "Art. 177-186",
+   "parcela_minima_m2": 100,
+   "ocupacion_max": "Segons el polígon grafiat (en general 30 %)",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Perímetres i alçades fixats pel planejament derivat anterior; paràmetres específics per a cada subzona."
+  },
+  "ii-c": {
+   "nombre": "Perímetres reguladors – II-C",
+   "articulo": "Art. 177-186",
+   "parcela_minima_m2": 100,
+   "ocupacion_max": "Segons el polígon grafiat (en general 30 %)",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Perímetres i alçades fixats pel planejament derivat anterior; paràmetres específics per a cada subzona."
+  },
+  "ii-d": {
+   "nombre": "Perímetres reguladors – II-D",
+   "articulo": "Art. 177-186",
+   "parcela_minima_m2": 100,
+   "ocupacion_max": "Segons el polígon grafiat (en general 30 %)",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Perímetres i alçades fixats pel planejament derivat anterior; paràmetres específics per a cada subzona."
+  },
+  "zona iii": {
+   "nombre": "Residencial unifamiliar",
+   "articulo": "Art. 187-193",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "iii": {
+   "nombre": "Residencial unifamiliar",
+   "articulo": "Art. 187-193",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (7,5 m)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "zona iv": {
+   "nombre": "Comercial en illa tancada",
+   "articulo": "Art. 194-199",
+   "edificabilidad": "Segons fondària i plantes; subsidiàriament 1,75 m²st/m²s (9 m³/m²)",
+   "ocupacion_max": "Illa totalment ocupable en PB",
+   "usos": "Comercial, oficines, restauració i serveis."
+  },
+  "iv": {
+   "nombre": "Comercial en illa tancada",
+   "articulo": "Art. 194-199",
+   "edificabilidad": "Segons fondària i plantes; subsidiàriament 1,75 m²st/m²s (9 m³/m²)",
+   "ocupacion_max": "Illa totalment ocupable en PB",
+   "usos": "Comercial, oficines, restauració i serveis."
+  },
+  "zona v": {
+   "nombre": "Industrial d'edificació aïllada",
+   "articulo": "Art. 200-206",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "50 % (70 % en parcel·les d'1 ha amb una sola indústria)",
+   "altura_max": "15 m (naus en conjunt: 8,25 m); PB + entresolat del 50 %",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Parcel·la mínima 1.000 m² per a indústria aïllada; 400 m² per a indústries agrupades en illa (amplada mínima 12 m, 240 m² construïts per nau)."
+  },
+  "v": {
+   "nombre": "Industrial d'edificació aïllada",
+   "articulo": "Art. 200-206",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "50 % (70 % en parcel·les d'1 ha amb una sola indústria)",
+   "altura_max": "15 m (naus en conjunt: 8,25 m); PB + entresolat del 50 %",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Parcel·la mínima 1.000 m² per a indústria aïllada; 400 m² per a indústries agrupades en illa (amplada mínima 12 m, 240 m² construïts per nau)."
+  },
+  "v-a": {
+   "nombre": "Industrial aïllada – carrer Barcelonès (V-A)",
+   "articulo": "Art. 200-206",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "50 % (70 % en parcel·les d'1 ha amb una sola indústria)",
+   "altura_max": "15 m (naus en conjunt: 8,25 m); PB + entresolat del 50 %",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Edificació entre mitgeres; separació a vial 4,40 m i a fons mínim 6 m."
+  },
+  "v-b": {
+   "nombre": "Industrial aïllada – Polígon Congost (V-B)",
+   "articulo": "Art. 200-206",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "50 % (70 % en parcel·les d'1 ha amb una sola indústria)",
+   "altura_max": "15 m (naus en conjunt: 8,25 m); PB + entresolat del 50 %",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Edificació entre mitgeres alineada a vial; 3 m a fons."
+  },
+  "v-c": {
+   "nombre": "Industrial aïllada – Ampliació Polígon Congost (V-C)",
+   "articulo": "Art. 200-206",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "50 % (70 % en parcel·les d'1 ha amb una sola indústria)",
+   "altura_max": "8,50 m",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Subdivisió de naus amb façana mínima d'11 m."
+  },
+  "v-d": {
+   "nombre": "Industrial aïllada – Pla de Llerona (V-D)",
+   "articulo": "Art. 200-206",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "50 % (70 % en parcel·les d'1 ha amb una sola indústria)",
+   "altura_max": "8,25 m",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Subdivisió de naus amb façana mínima de 12 m; separació 10 m a carrer i 6 m a veïns."
+  },
+  "vi": {
+   "nombre": "Industrial en illa tancada",
+   "articulo": "Art. 208",
+   "edificabilidad": "1,75 m²st/m²s (9 m³/m²)",
+   "ocupacion_max": "PB total; plantes pis 60 %",
+   "altura_max": "10,30 m",
+   "usos": "Magatzem, comercial, oficines, estacions de servei i garatges, industrial (1a a 4a categoria), restauració.",
+   "otros": "Transformació a residencial mitjançant pla especial (0,75 m²st/m²s brut)."
+  },
+  "c": {
+   "nombre": "Residencial C",
+   "articulo": "Art. 230-232",
+   "ocupacion_max": "30 %",
+   "usos": "Habitatge."
+  },
+  "hdp": {
+   "nombre": "Habitatge dotacional públic",
+   "articulo": "Títol IV",
+   "usos": "Habitatge dotacional públic."
+  },
+  "d1": {
+   "nombre": "Desenvolupament residencial (sòl urbanitzable)",
+   "articulo": "Títol VI",
+   "usos": "Residencial.",
+   "otros": "Cal pla parcial del sector."
+  },
+  "d2": {
+   "nombre": "Desenvolupament industrial (sòl urbanitzable / sectors com el Sector N)",
+   "articulo": "Art. 233-235 i plans parcials",
+   "parcela_minima_m2": 500,
+   "edificabilidad": "0,6 m²st/m²s brut del sector; al Sector N: 1,00 (naus aïllades) i 1,45 (en filera) m²st/m²s net",
+   "ocupacion_max": "50 % (Sector N: 70 %)",
+   "altura_max": "Tipus I 15 m (fins a 22 m logística); tipus II 8,25-11 m",
+   "usos": "Industrial (1a a 4a categoria), magatzem, comercial, oficines, restauració, hoteler, equipaments i estació de servei.",
+   "otros": "Sector N (carretera de Cardedeu): tipus I parcel·la mínima 1.000 m² i façana 20 m; tipus II 500 m² i façana 12 m. El TSJC (2019) va anul·lar el nou vial paral·lel a la C-251 previst al pla parcial."
+  }
+ }
+}
