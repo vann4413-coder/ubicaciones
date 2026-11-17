@@ -53,6 +53,8 @@ def acceso(request: Request, rc: str, registrar: bool = True) -> tuple[bool, str
         if registrar:
             cuentas.registrar_uso(u, rc)
         return True, "plan"
+    if u and cuentas.usar_bono(u, rc, registrar):
+        return True, "pack"
     if u and cuentas.plan_activo(u):
         return False, "limite"
     return False, "pago"
@@ -70,7 +72,7 @@ async def cuenta(request: Request, siguiente: str = "", cancelado: int = 0):
     plan = cuentas.plan_activo(u)
     return _pintar("cuenta.html", request, titulo="Mi cuenta", siguiente=_siguiente_seguro(siguiente) if siguiente else "",
                    plan=plan, limite=cuentas.LIMITES.get(plan) if plan else None, admin=cuentas.es_admin(u),
-                   usados=cuentas.usados_mes(u["id"]) if u else 0, historial=cuentas.historial(u["id"]) if u else [],
+                   usados=cuentas.usados_mes(u["id"]) if u else 0, saldo=cuentas.saldo_bono(u["id"]) if u else 0, historial=cuentas.historial(u["id"]) if u else [],
                    pagos=pagos.activos(), mensaje="Has cancelado el pago." if cancelado else "", ok=False)
 
 
@@ -117,7 +119,7 @@ async def comprar(request: Request, rc: str, cancelado: int = 0, limite: int = 0
     if not pagos.activos():
         return RedirectResponse(f"/informe/{rc}", status_code=303)
     return _pintar("comprar.html", request, titulo="Comprar informe", rc=rc, direccion="", cancelado=cancelado,
-                   limite_agotado=limite, limite=cuentas.LIMITES["profesional"])
+                   limite_agotado=limite, limite=cuentas.LIMITES.get(cuentas.plan_activo(usuario_actual(request)) or "profesional"))
 
 
 def _error_pago(request: Request, e: Exception) -> HTMLResponse:
@@ -144,13 +146,28 @@ async def pagar_informe(request: Request, rc: str, acepto: str = Form("")):
 
 @router.get("/suscribirse")
 async def suscribirse(request: Request, plan: str = "profesional", rc: str = ""):
-    if plan not in ("profesional", "premium") or not pagos.activos():
+    if plan not in ("profesional", "empresa") or not pagos.activos():
         return RedirectResponse("/#precios", status_code=303)
     u = usuario_actual(request)
     if not u:
         return RedirectResponse(f"/cuenta?siguiente=/suscribirse?plan={plan}", status_code=303)
     try:
         url = pagos.checkout_suscripcion(plan, str(request.base_url), u)
+    except Exception as e:  # noqa: BLE001
+        return _error_pago(request, e)
+    return RedirectResponse(url, status_code=303)
+
+
+@router.get("/comprar-pack")
+async def comprar_pack(request: Request, rc: str = ""):
+    if not pagos.activos():
+        return RedirectResponse("/#precios", status_code=303)
+    u = usuario_actual(request)
+    if not u:
+        from urllib.parse import quote
+        return RedirectResponse("/cuenta?siguiente=" + quote("/comprar-pack" + (f"?rc={rc}" if rc else ""), safe=""), status_code=303)
+    try:
+        url = pagos.checkout_pack(str(request.base_url), u, rc)
     except Exception as e:  # noqa: BLE001
         return _error_pago(request, e)
     return RedirectResponse(url, status_code=303)
@@ -178,6 +195,12 @@ async def pago_ok(request: Request, session_id: str):
     if meta.get("tipo") == "suscripcion":
         _activar_suscripcion(int(meta["usuario_id"]), ses.customer, ses.subscription, meta.get("plan"))
         return RedirectResponse("/cuenta", status_code=303)
+    if meta.get("tipo") == "pack":
+        if ses.payment_status != "paid":
+            return RedirectResponse("/cuenta?cancelado=1", status_code=303)
+        _activar_pack(ses.id, meta, ses.customer, ses.amount_total)
+        rc = meta.get("rc")
+        return RedirectResponse(f"/informe/{rc}" if rc else "/cuenta", status_code=303)
     return RedirectResponse("/", status_code=303)
 
 
@@ -193,6 +216,13 @@ def enviar_correo_compra(base: str, session_id: str, rc: str, email: str, token:
     asyncio.create_task(correo.enviar_informe(email, rc, f"{base}/informe/{rc}?acceso={token}",
                                               f"{base}/informe/{rc}.pdf?acceso={token}"))
     return True
+
+
+def _activar_pack(session_id: str, meta: dict, customer: str | None, importe: int | None) -> None:
+    uid = int(meta["usuario_id"])
+    cuentas.guardar_bono(session_id, uid, int(meta.get("informes") or cuentas.INFORMES_PACK), importe)
+    if customer and not (cuentas.obtener(uid) or {}).get("stripe_customer"):
+        cuentas.actualizar_plan(uid, stripe_customer=customer)
 
 
 def _activar_suscripcion(uid: int, customer: str, sub_id: str | None, plan: str | None) -> None:
@@ -218,6 +248,8 @@ async def webhook(request: Request):
         meta = obj.get("metadata") or {}
         if meta.get("tipo") == "suscripcion" and meta.get("usuario_id"):
             _activar_suscripcion(int(meta["usuario_id"]), obj.get("customer"), obj.get("subscription"), meta.get("plan"))
+        elif meta.get("tipo") == "pack" and meta.get("usuario_id") and obj.get("payment_status") == "paid":
+            _activar_pack(obj["id"], meta, obj.get("customer"), obj.get("amount_total"))
         elif meta.get("tipo") == "informe" and obj.get("payment_status") == "paid":
             email = (obj.get("customer_details") or {}).get("email", "")
             token = cuentas.guardar_compra(obj["id"], meta.get("rc", ""), email, obj.get("amount_total"),

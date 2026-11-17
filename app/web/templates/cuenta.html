@@ -26,18 +26,24 @@
   <div class="caja">
     <h2>Tu plan</h2>
     {% if plan %}
-      <p><b>{{ {"profesional": "Profesional", "premium": "Premium"}[plan] }}</b>{% if admin %} (acceso de administración){% endif %}.
+      <p><b>{{ {"profesional": "Profesional", "empresa": "Empresa", "premium": "Premium"}[plan] }}</b>{% if admin %} (acceso de administración){% endif %}.
       {% if limite %}Este mes has usado <b>{{ usados }}</b> de {{ limite }} informes.{% else %}Informes ilimitados.{% endif %}</p>
       {% if usuario.stripe_customer and pagos %}<a class="btn btn-sec" href="/cuenta/facturacion">Facturas, tarjeta y cancelar</a>{% endif %}
     {% else %}
       <p>No tienes suscripción. Puedes comprar informes sueltos o suscribirte:</p>
       <div class="acciones-web">
-        <a class="btn" href="/suscribirse?plan=profesional">Profesional · 99 €/mes · 50 informes</a>
-        <a class="btn btn-sec" href="/suscribirse?plan=premium">Premium · 139 €/mes · ilimitados</a>
+        <a class="btn btn-sec" href="/comprar-pack">Pack · 14,90 € · 10 informes</a>
+        <a class="btn" href="/suscribirse?plan=profesional">Profesional · 39 €/mes · 30 informes</a>
+        <a class="btn btn-sec" href="/suscribirse?plan=empresa">Empresa · 99 €/mes · uso intensivo</a>
       </div>
       <p class="nota-precios">IVA incluido.</p>
     {% endif %}
   </div>
+  {% if saldo %}<div class="caja">
+    <h2>Tu pack</h2>
+    <p>Te quedan <b>{{ saldo }}</b> informes del pack. No caducan.{% if plan %} Se usan cuando agotas los informes del mes de tu plan.{% endif %}</p>
+    <a class="btn btn-sec" href="/comprar-pack">Comprar otro pack</a>
+  </div>{% endif %}
   <div class="caja">
     <h2>Tus informes</h2>
     {% if historial %}

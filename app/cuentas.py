@@ -19,7 +19,10 @@ RUTA_DB = Path(os.getenv("UBI_DB", str(config.DATOS_DIR / "ubicaciones.db")))
 SECRETO = (os.getenv("UBI_SECRETO") or secrets.token_hex(32)).encode()
 ADMIN = {e.strip().lower() for e in os.getenv("UBI_ADMIN_EMAILS", "").split(",") if e.strip()}
 DURACION_SESION = 60 * 60 * 24 * 30  # 30 días
-LIMITES = {"profesional": 50, "premium": None}  # informes al mes (None = ilimitado)
+# Informes al mes por plan (None = ilimitado). «premium» es el plan antiguo (139 €, ilimitado): se mantiene
+# para quien ya lo tuviera contratado, pero ya no se ofrece.
+LIMITES = {"profesional": 30, "empresa": int(os.getenv("UBI_LIMITE_EMPRESA", "150")), "premium": None}
+INFORMES_PACK = 10
 
 _lock = threading.Lock()
 _con: sqlite3.Connection | None = None
@@ -38,6 +41,12 @@ CREATE TABLE IF NOT EXISTS compras (
   token TEXT NOT NULL, usuario_id INTEGER
 );
 CREATE TABLE IF NOT EXISTS correos_enviados (session_id TEXT PRIMARY KEY, fecha TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS bonos (
+  session_id TEXT PRIMARY KEY, usuario_id INTEGER NOT NULL, informes INTEGER NOT NULL, importe INTEGER, fecha TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS uso_bono (
+  usuario_id INTEGER NOT NULL, rc TEXT NOT NULL, fecha TEXT NOT NULL, PRIMARY KEY (usuario_id, rc)
+);
 """
 
 
@@ -180,11 +189,43 @@ def registrar_uso(usuario: dict, rc: str) -> None:
         db().commit()
 
 
+# ---------- Packs de informes (bonos de pago único, sin caducidad) ----------
+
+def guardar_bono(session_id: str, uid: int, informes: int, importe: int | None) -> None:
+    with _lock:
+        db().execute("INSERT OR IGNORE INTO bonos (session_id, usuario_id, informes, importe, fecha) VALUES (?, ?, ?, ?, ?)",
+                     (session_id, uid, informes, importe, _ahora()))
+        db().commit()
+
+
+def saldo_bono(uid: int) -> int:
+    total = db().execute("SELECT COALESCE(SUM(informes), 0) FROM bonos WHERE usuario_id = ?", (uid,)).fetchone()[0]
+    usados = db().execute("SELECT COUNT(*) FROM uso_bono WHERE usuario_id = ?", (uid,)).fetchone()[0]
+    return max(0, total - usados)
+
+
+def usar_bono(usuario: dict | None, rc: str, registrar: bool = True) -> bool:
+    """¿Puede ver el informe con su pack? Un informe ya abierto con el pack no vuelve a descontar."""
+    if not usuario:
+        return False
+    uid = usuario["id"]
+    if db().execute("SELECT 1 FROM uso_bono WHERE usuario_id = ? AND rc = ?", (uid, rc)).fetchone():
+        return True
+    if saldo_bono(uid) <= 0:
+        return False
+    if registrar:
+        with _lock:
+            db().execute("INSERT OR IGNORE INTO uso_bono (usuario_id, rc, fecha) VALUES (?, ?, ?)", (uid, rc, _ahora()))
+            db().commit()
+    return True
+
+
 def historial(uid: int, limite: int = 50) -> list[dict]:
     filas = db().execute("SELECT rc, MAX(fecha) AS fecha FROM uso WHERE usuario_id = ? GROUP BY rc ORDER BY fecha DESC LIMIT ?", (uid, limite))
     compras = db().execute("SELECT rc, fecha FROM compras WHERE usuario_id = ? ORDER BY fecha DESC LIMIT ?", (uid, limite))
+    bono = db().execute("SELECT rc, fecha FROM uso_bono WHERE usuario_id = ? ORDER BY fecha DESC LIMIT ?", (uid, limite))
     vistos, salida = set(), []
-    for f in [*filas, *compras]:
+    for f in [*filas, *compras, *bono]:
         if f["rc"] not in vistos:
             vistos.add(f["rc"])
             salida.append({"rc": f["rc"], "fecha": f["fecha"][:10]})

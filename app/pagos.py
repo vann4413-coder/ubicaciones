@@ -1,4 +1,4 @@
-"""Cobros con Stripe: informe suelto (pago único) y suscripciones Profesional y Premium.
+"""Cobros con Stripe: informe suelto y pack de 10 (pagos únicos) y suscripciones Profesional y Empresa.
 
 Variables de entorno (en Railway):
   STRIPE_SECRET_KEY       clave secreta de Stripe (sk_test_… en pruebas, sk_live_… en real)
@@ -21,7 +21,10 @@ IVA = float(os.getenv("UBI_IVA", "21"))
 
 PRODUCTOS = {
     "informe": {"lookup_key": "ubi_informe_suelto_iva_incl", "nombre": "Informe completo de parcela", "importe": 199, "recurrente": False},
-    "profesional": {"lookup_key": "ubi_plan_profesional_iva_incl", "nombre": "Plan Profesional (50 informes al mes)", "importe": 9900, "recurrente": True},
+    "pack": {"lookup_key": "ubi_pack_10_informes_iva_incl", "nombre": "Pack de 10 informes de parcela", "importe": 1490, "recurrente": False},
+    "profesional": {"lookup_key": "ubi_plan_profesional_39_iva_incl", "nombre": "Plan Profesional (30 informes al mes)", "importe": 3900, "recurrente": True},
+    "empresa": {"lookup_key": "ubi_plan_empresa_99_iva_incl", "nombre": "Plan Empresa (uso intensivo)", "importe": 9900, "recurrente": True},
+    # Plan antiguo: ya no se vende, se conserva para quien lo tenga contratado.
     "premium": {"lookup_key": "ubi_plan_premium_iva_incl", "nombre": "Plan Premium (informes ilimitados)", "importe": 13900, "recurrente": True},
 }
 
@@ -138,6 +141,27 @@ def checkout_informe(rc: str, base: str, usuario: dict | None) -> str:
         datos["customer"] = usuario["stripe_customer"]
         datos["customer_update"] = {"name": "auto", "address": "auto"}
     elif usuario:
+        datos["customer_email"] = usuario["email"]
+    return _crear_sesion(datos)
+
+
+def checkout_pack(base: str, usuario: dict, rc: str = "") -> str:
+    """Pack de informes: pago único que suma informes al saldo de la cuenta (no caducan)."""
+    from app import cuentas
+    datos = dict(
+        mode="payment",
+        line_items=[{"price": precio("pack"), "quantity": 1, "tax_rates": tasa_iva()}],
+        success_url=_url("/pago/ok?session_id={CHECKOUT_SESSION_ID}", base),
+        cancel_url=_url("/cuenta?cancelado=1", base),
+        metadata={"tipo": "pack", "informes": str(cuentas.INFORMES_PACK), "usuario_id": str(usuario["id"]), "rc": rc},
+        invoice_creation={"enabled": True},
+        custom_text={"submit": {"message": AVISO_INFORME}},
+        **FACTURA,
+    )
+    if usuario.get("stripe_customer"):
+        datos["customer"] = usuario["stripe_customer"]
+        datos["customer_update"] = {"name": "auto", "address": "auto"}
+    else:
         datos["customer_email"] = usuario["email"]
     return _crear_sesion(datos)
 
