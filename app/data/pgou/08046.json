@@ -1,0 +1,270 @@
+{
+ "municipio": "Cardedeu",
+ "codigo_ine": "08046",
+ "plan": "Pla d'ordenació urbanística municipal de Cardedeu – Normes urbanístiques (text refós)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=174378&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-17",
+ "zonas": {
+  "1c": {
+   "nombre": "Casc antic",
+   "articulo": "Art. 210-217",
+   "frente_minimo_m": 5,
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Façana mínima la del tram de carrer (5 m per a noves parcel·lacions); no es poden agrupar més de dues parcel·les."
+  },
+  "3b": {
+   "nombre": "Eixample",
+   "articulo": "Art. 218-223",
+   "frente_minimo_m": 7,
+   "altura_max": "Segons plànols: PB (4,5 m) a PB+3 (13,5 m)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Fondària i plantes segons plànols d'ordenació."
+  },
+  "4": {
+   "nombre": "Ordenació en illa oberta",
+   "articulo": "Art. 224-235",
+   "usos": "Habitatge i usos compatibles."
+  },
+  "4a": {
+   "nombre": "Illa oberta – edificació aïllada plurifamiliar",
+   "articulo": "Art. 224-229",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "1 habitatge/100 m² de sostre. Algunes subzones (4a-5, 4a-7) tenen índex propis (1,33-1,37 m²st/m²s)."
+  },
+  "4b": {
+   "nombre": "Illa oberta – cases en filera",
+   "articulo": "Art. 230-235",
+   "edificabilidad": "1 m²st/m²s (agrupació)",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge unifamiliar en filera.",
+   "segregacion": "No: no s'admeten segregacions de la parcel·lació existent."
+  },
+  "5a": {
+   "nombre": "Edificació aïllada unifamiliar – parcel·la petita",
+   "articulo": "Art. 236-242",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,8 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5a1": {
+   "nombre": "Edificació aïllada unifamiliar – 5a-1",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "ocupacion_max": "30 %",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5a2": {
+   "nombre": "Edificació aïllada unifamiliar – 5a-2",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 250,
+   "edificabilidad": "0,48 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5a21": {
+   "nombre": "Edificació aïllada unifamiliar – 5a-2.1",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 7000,
+   "edificabilidad": "0,29 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB (7 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5a3": {
+   "nombre": "Edificació aïllada unifamiliar – parcel·la petita (5a-3)",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,8 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5b": {
+   "nombre": "Edificació aïllada unifamiliar – parcel·la mitjana",
+   "articulo": "Art. 236-242",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5b1": {
+   "nombre": "Edificació aïllada unifamiliar – 5b-1",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,32 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,15 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5b2": {
+   "nombre": "Edificació aïllada unifamiliar – 5b-2",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,32 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1 (7,50 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5b3": {
+   "nombre": "Edificació aïllada unifamiliar – 5b-3",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5c": {
+   "nombre": "Edificació aïllada unifamiliar – parcel·la gran",
+   "articulo": "Art. 236-242",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,4 m²st/m²s (màx. 400 m² de sostre)",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5c1": {
+   "nombre": "Edificació aïllada unifamiliar – 5c-1",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "0,32 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5c2": {
+   "nombre": "Edificació aïllada unifamiliar – 5c-2",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,43 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5c3": {
+   "nombre": "Edificació aïllada unifamiliar – 5c-3",
+   "articulo": "Art. 239-242",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "usos": "Habitatge unifamiliar i usos compatibles. Es permet agrupar habitatges."
+  },
+  "5d": {
+   "nombre": "Edificació aïllada unifamiliar – parcel·la de 2.000 m²",
+   "articulo": "Art. 236-242",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,2 m²st/m²s",
+   "ocupacion_max": "15 %",
+   "altura_max": "8 m",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5e": {
+   "nombre": "Edificació aïllada unifamiliar – mida existent",
+   "articulo": "Art. 236-242",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "5e1": {
+   "nombre": "Edificació aïllada unifamiliar – 5e-1",
+   "articulo": "Art. 239-242",
+   "edificabilidad": "0,47 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,15 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "5e2": {
+   "nombre": "Edificació aïllada unifamiliar – 5e-2",
+   "articulo": "Art. 239-242",
+   "edificabilidad": "0,47 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (9,15 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "5e3": {
+   "nombre": "Edificació aïllada unifamiliar – 5e-3",
+   "articulo": "Art. 239-242",
+   "edificabilidad": "0,35 m²st/m²s",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "5e4": {
+   "nombre": "Edificació aïllada unifamiliar – 5e-4 (antic PP-11)",
+   "articulo": "Art. 239-242",
+   "edificabilidad": "0,94 m²st/m²s",
+   "ocupacion_max": "27 %",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "7": {
+   "nombre": "Industrial aïllada",
+   "articulo": "Art. 243-250",
+   "frente_minimo_m": 15,
+   "usos": "Industrial (artesana, urbana, agrupada, aïllada), magatzem, oficines, restauració, recreatiu, estacions de servei, aparcament i dotacions.",
+   "otros": "No s'estableix parcel·la mínima general; les subzones procedents de plans parcials tenen condicions pròpies (p. ex. parcel·la mínima 2.500 m²)."
+  },
+  "7a": {
+   "nombre": "Industrial – diversos establiments en un sol volum",
+   "articulo": "Art. 243-250",
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,15 m²st/m²s (volum màx. 4 m³/m²)",
+   "ocupacion_max": "60 %",
+   "altura_max": "8 m",
+   "usos": "Industrial (artesana, urbana, agrupada, aïllada), magatzem, oficines, restauració, recreatiu, estacions de servei, aparcament i dotacions.",
+   "otros": "Subzones 7a-1 a 7a-6 procedents de plans parcials amb volumetria pròpia (edificabilitat de 0,80 a 1,15 m²st/m²s, alçades de 8 a 12 m; logística fins a 16 m en parcel·les de 10.000 m²)."
+  },
+  "7b": {
+   "nombre": "Industrial – edificació aïllada amb un sol establiment",
+   "articulo": "Art. 243-250",
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (11 m)",
+   "usos": "Industrial (artesana, urbana, agrupada, aïllada), magatzem, oficines, restauració, recreatiu, estacions de servei, aparcament i dotacions."
+  },
+  "8": {
+   "nombre": "Dotacions i serveis",
+   "articulo": "Art. 251-256",
+   "usos": "Dotacions i serveis de caràcter privat."
+  },
+  "d1": {
+   "nombre": "Desenvolupament residencial (sòl urbanitzable)",
+   "articulo": "Títol VI",
+   "usos": "Residencial.",
+   "otros": "Cal pla parcial."
+  },
+  "d2": {
+   "nombre": "Desenvolupament industrial (sòl urbanitzable)",
+   "articulo": "Títol VI",
+   "usos": "Industrial (artesana, urbana, agrupada, aïllada), magatzem, oficines, restauració, recreatiu, estacions de servei, aparcament i dotacions.",
+   "otros": "Cal pla parcial."
+  },
+  "m1": {
+   "nombre": "Transformació",
+   "articulo": "Títol V",
+   "otros": "Àmbit de transformació mitjançant planejament derivat."
+  }
+ }
+}
