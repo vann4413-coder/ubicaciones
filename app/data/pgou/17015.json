@@ -1,0 +1,287 @@
+{
+ "municipio": "Banyoles",
+ "codigo_ine": "17015",
+ "plan": "Pla d'ordenació urbanística municipal de Banyoles – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=435914&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-18",
+ "zonas": {
+  "R1": {
+   "nombre": "Residencial nucli antic",
+   "articulo": "Art. 113-117",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Edificació segons fitxes del Pla especial del conjunt històric i plànols."
+  },
+  "R1a": {
+   "nombre": "Nucli antic – conjunt històric Can Busquets",
+   "articulo": "Art. 114",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R1b": {
+   "nombre": "Nucli antic – conjunt històric",
+   "articulo": "Art. 115",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R1c": {
+   "nombre": "Nucli antic – conjunt històric Guèmol",
+   "articulo": "Art. 116",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R2": {
+   "nombre": "Residencial urbà tradicional",
+   "articulo": "Art. 119-125",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Volumetria segons plànols de cada barri."
+  },
+  "R21": {
+   "nombre": "Urbà tradicional – Plaça del Remei",
+   "articulo": "Art. 120",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R22": {
+   "nombre": "Urbà tradicional – Barri del Mas Palau",
+   "articulo": "Art. 121",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R23": {
+   "nombre": "Urbà tradicional – Barri de l'Ametller",
+   "articulo": "Art. 122",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R25": {
+   "nombre": "Urbà tradicional – Barri Sant Pere",
+   "articulo": "Art. 123",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R26": {
+   "nombre": "Urbà tradicional – Front de Mata",
+   "articulo": "Art. 124",
+   "frente_minimo_m": 7,
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Façana màxima 15 m per mantenir la fesomia del front."
+  },
+  "R27": {
+   "nombre": "Urbà tradicional – Can Laqué",
+   "articulo": "Art. 125",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R3": {
+   "nombre": "Residencial d'ordenació tancada",
+   "articulo": "Art. 128-131",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R31": {
+   "nombre": "Ordenació tancada – illa compacta",
+   "articulo": "Art. 129",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R32": {
+   "nombre": "Ordenació tancada – illa tancada",
+   "articulo": "Art. 130",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments.",
+   "otros": "Edificabilitat segons fitxa del catàleg."
+  },
+  "R33": {
+   "nombre": "Ordenació oberta – illa oberta",
+   "articulo": "Art. 131",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge, comerç, oficines, serveis, restauració i equipaments."
+  },
+  "R4": {
+   "nombre": "Residencial d'ordenació oberta",
+   "articulo": "Art. 134-137",
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "R41": {
+   "nombre": "Ordenació oberta – configuració unívoca",
+   "articulo": "Art. 135",
+   "usos": "Habitatge plurifamiliar.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "R42": {
+   "nombre": "Ordenació oberta – configuració determinada pel vial",
+   "articulo": "Art. 136",
+   "parcela_minima_m2": 600,
+   "altura_max": "PB+2 (10 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Edificabilitat resultant de la posició de l'edificació i les plantes."
+  },
+  "R43": {
+   "nombre": "Ordenació oberta – configuració flexible",
+   "articulo": "Art. 137",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+2 (9,50 m)",
+   "usos": "Habitatge plurifamiliar (1 per cada 90 m² de sostre) i usos compatibles."
+  },
+  "R5": {
+   "nombre": "Residencial de cases agrupades",
+   "articulo": "Art. 140-144",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R51": {
+   "nombre": "Cases agrupades – fronts tradicionals",
+   "articulo": "Art. 141",
+   "parcela_minima_m2": 200,
+   "ocupacion_max": "60 % en PB",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R52": {
+   "nombre": "Cases agrupades – en filera alineades a vial",
+   "articulo": "Art. 142",
+   "parcela_minima_m2": 110,
+   "frente_minimo_m": 5,
+   "edificabilidad": "0,88 m²st/m²s",
+   "ocupacion_max": "Segons plànol",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R53": {
+   "nombre": "Cases agrupades – en filera separades del vial",
+   "articulo": "Art. 143",
+   "parcela_minima_m2": 110,
+   "frente_minimo_m": 5,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "50 % sobre rasant",
+   "altura_max": "9 m",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R54": {
+   "nombre": "Cases agrupades – configuració flexible",
+   "articulo": "Art. 144",
+   "parcela_minima_m2": 240,
+   "frente_minimo_m": 8,
+   "edificabilidad": "1 m²st/m²s",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R6": {
+   "nombre": "Residencial de cases aïllades",
+   "articulo": "Art. 147-151",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R61": {
+   "nombre": "Cases aïllades – parcel·la de 250 m²",
+   "articulo": "Art. 148",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (9 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R62": {
+   "nombre": "Cases aïllades – parcel·la de 400 m²",
+   "articulo": "Art. 149",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+1 (9 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R63": {
+   "nombre": "Cases aïllades – parcel·la de 600 m²",
+   "articulo": "Art. 150",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,70 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (9 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "R64": {
+   "nombre": "Cases aïllades – parcel·la de 1.000 m²",
+   "articulo": "Art. 151",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "A1": {
+   "nombre": "Activitat econòmica industrial",
+   "articulo": "Art. 154-156",
+   "usos": "Industrial, magatzem, tallers i serveis a l'activitat econòmica."
+  },
+  "A11": {
+   "nombre": "Industrial – entre mitgeres",
+   "articulo": "Art. 155",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 14,
+   "usos": "Industrial, magatzem, tallers i serveis a l'activitat econòmica."
+  },
+  "A12": {
+   "nombre": "Industrial – edificació aïllada",
+   "articulo": "Art. 156",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 14,
+   "edificabilidad": "Segons coeficient de la subzona (fins a 1,307 m²st/m²s)",
+   "ocupacion_max": "75 %",
+   "altura_max": "9 m",
+   "usos": "Industrial, magatzem, tallers i serveis a l'activitat econòmica.",
+   "otros": "Una activitat per cada 1.000 m² de parcel·la."
+  },
+  "A2": {
+   "nombre": "Activitat econòmica serveis",
+   "articulo": "Art. 159-164",
+   "usos": "Terciari i serveis."
+  },
+  "A21": {
+   "nombre": "Activitat econòmica – residencial temporal",
+   "articulo": "Art. 160",
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "9,50 m",
+   "usos": "Residència col·lectiva (gent gran) i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "A22": {
+   "nombre": "Activitat econòmica – terciari/comercial",
+   "articulo": "Art. 161",
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "9,50 m (fins a 15,30 m en una subzona)",
+   "usos": "Comercial i complementaris.",
+   "segregacion": "No: parcel·la existent indivisible."
+  },
+  "A23": {
+   "nombre": "Activitat econòmica – dotacions socioculturals",
+   "articulo": "Art. 162",
+   "edificabilidad": "1 m²st/m²s",
+   "altura_max": "10 m",
+   "usos": "Sociocultural."
+  },
+  "A24": {
+   "nombre": "Activitat econòmica – lúdic/recreatiu",
+   "articulo": "Art. 163",
+   "edificabilidad": "1 m²st/m²s",
+   "altura_max": "10 m",
+   "usos": "Lúdic i recreatiu."
+  },
+  "A25": {
+   "nombre": "Activitat econòmica – sanitari assistencial",
+   "articulo": "Art. 164",
+   "edificabilidad": "1 m²st/m²s",
+   "altura_max": "10 m",
+   "usos": "Sanitari i assistencial."
+  },
+  "N1": {
+   "nombre": "Sòl no urbanitzable rústic",
+   "articulo": "Art. 204",
+   "usos": "Agrícola, ramader i forestal."
+  },
+  "N2": {
+   "nombre": "Sòl no urbanitzable de protecció",
+   "articulo": "Art. 205",
+   "usos": "Agrícola i forestal amb protecció."
+  },
+  "N3": {
+   "nombre": "Sòl no urbanitzable de protecció especial",
+   "articulo": "Art. 206",
+   "usos": "Protecció especial (espais naturals)."
+  }
+ }
+}
