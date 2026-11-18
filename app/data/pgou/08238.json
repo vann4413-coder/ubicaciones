@@ -1,0 +1,543 @@
+{
+ "municipio": "Sant Quirze del Vallès",
+ "codigo_ine": "08238",
+ "plan": "Pla d'ordenació urbanística municipal de Sant Quirze del Vallès – Normes urbanístiques (text refós 2023)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=601325&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-18",
+ "zonas": {
+  "1": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 122",
+   "otros": "Parcel·la mínima: A tota parcel·la mínima s’hauria de poder edificar un sostre mínim de 120 m².",
+   "frente_minimo_m": 5.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: habitatge plurifamiliar; oficines i serveis; restauració; indústria de categoria 1; dotacions públiques."
+  },
+  "1a": {
+   "nombre": "Vila de Sant Quirze del Vallès",
+   "articulo": "Art. 123",
+   "otros": "Parcel·la mínima: A tota parcel·la mínima s’hauria de poder edificar un sostre mínim de 120 m².",
+   "frente_minimo_m": 5.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: habitatge plurifamiliar; oficines i serveis; restauració; indústria de categoria 1; dotacions públiques."
+  },
+  "1b": {
+   "nombre": "Nucli antic – barri de les Fonts",
+   "articulo": "Art. 124",
+   "otros": "Parcel·la mínima: A tota parcel·la mínima s’hauria de poder edificar un sostre mínim de 120 m².",
+   "frente_minimo_m": 5.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: habitatge plurifamiliar; oficines i serveis; restauració; indústria de categoria 1; dotacions públiques."
+  },
+  "1c": {
+   "nombre": "Nucli antic – Los Rosales",
+   "articulo": "Art. 125",
+   "otros": "Parcel·la mínima: A tota parcel·la mínima s’hauria de poder edificar un sostre mínim de 120 m².",
+   "frente_minimo_m": 5.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: habitatge plurifamiliar; oficines i serveis; restauració; indústria de categoria 1; dotacions públiques."
+  },
+  "3": {
+   "nombre": "Edificació en ordenació contínua",
+   "articulo": "Art. 127"
+  },
+  "3a": {
+   "nombre": "Edificació en ordenació contínua – ordenació tradicional",
+   "articulo": "Art. 128",
+   "otros": "Parcel·la mínima: A tota parcel·la mínima s’hauria de poder edificar un sostre mínim de 120 m².",
+   "frente_minimo_m": 5.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: habitatge plurifamiliar; aparcament en planta soterrani i accés a través de la planta baixa."
+  },
+  "3b": {
+   "nombre": "Edificació en ordenació contínua – Illes d’eixample",
+   "articulo": "Art. 129",
+   "parcela_minima_m2": 220.0,
+   "frente_minimo_m": 10.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge plurifamiliar. A les plantes baixes de les illes identificades amb el codi 3b* no s’admet l’ús d’habitatge. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4a": {
+   "nombre": "Edificació en ordenació oberta amb volumetria definida",
+   "articulo": "Art. 131",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4a1": {
+   "nombre": "Edificació en ordenació oberta amb volumetria definida – 4a1",
+   "articulo": "Art. 132",
+   "parcela_minima_m2": 600.0,
+   "frente_minimo_m": 25.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4a2": {
+   "nombre": "Edificació en ordenació oberta amb volumetria definida – Castellet",
+   "articulo": "Art. 133",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4b": {
+   "nombre": "Edificació en ordenació oberta amb volumetria flexible",
+   "articulo": "Art. 134",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4b1": {
+   "nombre": "Edificació en ordenació oberta amb volumetria flexible – Can Casablanques",
+   "articulo": "Art. 135",
+   "parcela_minima_m2": 1000.0,
+   "frente_minimo_m": 25.0,
+   "edificabilidad": "1,50 m²/m²",
+   "ocupacion_max": "50% en planta baixa, 35% en plantes pis",
+   "altura_max": "4p (pb+3p) / 13,20 m",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4b2": {
+   "nombre": "Edificació en ordenació oberta amb volumetria flexible – Sabadell-Vallcorba",
+   "articulo": "Art. 136",
+   "parcela_minima_m2": 600.0,
+   "frente_minimo_m": 25.0,
+   "edificabilidad": "1,50 m²st/m²s",
+   "ocupacion_max": "50% en planta baixa, 35% en plantes pis",
+   "altura_max": "4p (pb+3p) / 13,20 m",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4b3": {
+   "nombre": "Edificació en ordenació oberta amb volumetria flexible – Mas Duran centre",
+   "articulo": "Art. 137",
+   "parcela_minima_m2": 200.0,
+   "frente_minimo_m": 10.0,
+   "ocupacion_max": "40%",
+   "altura_max": "4p (pb+3p), obligatòriament / 12,50 metres obligatòriament",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "4b4": {
+   "nombre": "Edificació en ordenació oberta amb volumetria flexible – Mas Duran est",
+   "articulo": "Art. 138",
+   "parcela_minima_m2": 200.0,
+   "frente_minimo_m": 10.0,
+   "ocupacion_max": "50%",
+   "altura_max": "4p (pb+3p) / 12,50 m",
+   "usos": "Dominant: habitatge plurifamiliar. Compatibles: oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "5a": {
+   "nombre": "Edificació en filera amb volumetria definida",
+   "articulo": "Art. 140",
+   "parcela_minima_m2": 110.0,
+   "frente_minimo_m": 5.0,
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: habitatge plurifamiliar; oficines i serveis; establiment hoteler; restauració; indústria de categoria 1; dotacions públiques."
+  },
+  "5b": {
+   "nombre": "Edificació en filera en conjunts unitaris",
+   "articulo": "Art. 141",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b1": {
+   "nombre": "Edificació en filera en conjunts unitaris – Sant Quirze del Vallès Parc",
+   "articulo": "Art. 142",
+   "parcela_minima_m2": 400.0,
+   "edificabilidad": "0,60 m²/m²",
+   "ocupacion_max": "30%",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b2": {
+   "nombre": "Sant Quirze del Vallès Parc sud",
+   "articulo": "Art. 143",
+   "parcela_minima_m2": 200.0,
+   "edificabilidad": "0,90 m²/m²",
+   "ocupacion_max": "60%",
+   "altura_max": "9,15 metres (3p)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b3": {
+   "nombre": "Vallsuau Can Feliu – Guilleries",
+   "articulo": "Art. 144",
+   "parcela_minima_m2": 125.0,
+   "edificabilidad": "0,90 m²/m²",
+   "ocupacion_max": "60%",
+   "altura_max": "10,30 metres (3p)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b4": {
+   "nombre": "Edificació en filera en conjunts unitaris – Vallsuau Can Feliu",
+   "articulo": "Art. 145",
+   "parcela_minima_m2": 125.0,
+   "edificabilidad": "0,90 m²/m²",
+   "ocupacion_max": "55%",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b5": {
+   "nombre": "Vallsuau Can Feliu – Av. Vallès",
+   "articulo": "Art. 146",
+   "parcela_minima_m2": 150.0,
+   "edificabilidad": "1,60 m²/m²",
+   "ocupacion_max": "100%",
+   "altura_max": "10,20 metres (3p)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b6": {
+   "nombre": "Edificació en filera en conjunts unitaris – Can Casablanques",
+   "articulo": "Art. 147",
+   "parcela_minima_m2": 400.0,
+   "ocupacion_max": "50%",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani."
+  },
+  "5b7": {
+   "nombre": "Edificació en filera en conjunts unitaris – Les Fonts",
+   "articulo": "Art. 148",
+   "otros": "Parcel·la mínima: L’existent.",
+   "altura_max": "Segons plànols d'ordenació",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: aparcament corresponent a l’ús dominant, exclusivament en planta baixa o soterrani.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  },
+  "5c": {
+   "nombre": "Edificació en filera amb volumetria flexible",
+   "articulo": "Art. 149",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: restauració; dotacions públiques."
+  },
+  "5c1": {
+   "nombre": "Edificació en filera amb volumetria flexible – Mas Duran oest",
+   "articulo": "Art. 150",
+   "parcela_minima_m2": 100.0,
+   "frente_minimo_m": 6.0,
+   "ocupacion_max": "60%",
+   "altura_max": "3p (pb+2p) / 9,50 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: restauració; dotacions públiques."
+  },
+  "5c2": {
+   "nombre": "Castellet ciutat jardí intensiva",
+   "articulo": "Art. 151",
+   "ocupacion_max": "El sòl edificable de cada parcel·la s’especifica en els plànols",
+   "altura_max": "2p (pb+1p)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: restauració; dotacions públiques."
+  },
+  "5c3": {
+   "nombre": "Sant Quirze del Vallès Parc - Pruner",
+   "articulo": "Art. 152",
+   "parcela_minima_m2": 400.0,
+   "edificabilidad": "0,60 m²/m²",
+   "ocupacion_max": "50%",
+   "altura_max": "3p (pb+2p) / 10,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: restauració; dotacions públiques."
+  },
+  "6": {
+   "nombre": "Edificació unifamiliar aïllada",
+   "articulo": "Art. 154",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6a": {
+   "nombre": "Edificació unifamiliar aïllada en parcel·la petita",
+   "articulo": "Art. 155",
+   "parcela_minima_m2": 200.0,
+   "frente_minimo_m": 10.0,
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6a1": {
+   "nombre": "Edificació unifamiliar aïllada en parcel·la petita – 6a1",
+   "articulo": "Art. 156",
+   "parcela_minima_m2": 200.0,
+   "frente_minimo_m": 10.0,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "50%",
+   "altura_max": "2p (pb+1p) / 7,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6a2": {
+   "nombre": "Edificació unifamiliar aïllada en parcel·la petita – 6a2",
+   "articulo": "Art. 157",
+   "parcela_minima_m2": 200.0,
+   "frente_minimo_m": 10.0,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40%",
+   "altura_max": "3p (pb+2p) / 9,15 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6b1": {
+   "nombre": "Edificació unifamiliar aïllada – 6b1",
+   "articulo": "Art. 158",
+   "parcela_minima_m2": 400.0,
+   "frente_minimo_m": 15.0,
+   "edificabilidad": "0,65 m²st/m²s",
+   "ocupacion_max": "30%",
+   "altura_max": "3p (pb+2p) / 9,15 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6b2": {
+   "nombre": "Edificació unifamiliar aïllada – 6b2",
+   "articulo": "Art. 159",
+   "parcela_minima_m2": 400.0,
+   "frente_minimo_m": 15.0,
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "50%",
+   "altura_max": "2p (pb+1p) / 7,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6b3": {
+   "nombre": "Edificació unifamiliar aïllada – 6b3",
+   "articulo": "Art. 160",
+   "parcela_minima_m2": 600.0,
+   "frente_minimo_m": 15.0,
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "30%",
+   "altura_max": "2p (pb+1p) / 7,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6b4": {
+   "nombre": "Edificació unifamiliar aïllada – 6b4",
+   "articulo": "Art. 161",
+   "ocupacion_max": "El sòl ocupat per l’edificació principal ha de quedar inclòs en l'àmbit interior",
+   "altura_max": "2p (pb+1p)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c1": {
+   "nombre": "Edificació unifamiliar aïllada – 6c1",
+   "articulo": "Art. 162",
+   "parcela_minima_m2": 1000.0,
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "20%",
+   "altura_max": "3p (pb+2p) / 10,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c2": {
+   "nombre": "Edificació unifamiliar aïllada – 6c2",
+   "articulo": "Art. 163",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "30%",
+   "altura_max": "2p (pb+1p) / 7,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c3": {
+   "nombre": "Edificació unifamiliar aïllada – 6c3",
+   "articulo": "Art. 164",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 18.0,
+   "ocupacion_max": "20%",
+   "altura_max": "2p + sc",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c4": {
+   "nombre": "Edificació unifamiliar aïllada – 6c4",
+   "articulo": "Art. 165",
+   "parcela_minima_m2": 2000.0,
+   "frente_minimo_m": 24.0,
+   "ocupacion_max": "10%",
+   "altura_max": "2p + sc",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c5": {
+   "nombre": "Edificació unifamiliar aïllada – 6c5",
+   "articulo": "Art. 166",
+   "parcela_minima_m2": 2000.0,
+   "frente_minimo_m": 30.0,
+   "ocupacion_max": "Es regula mitjançant les separacions mínimes establertes en el paràmetre P17",
+   "altura_max": "2p + sc",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c6": {
+   "nombre": "Edificació unifamiliar aïllada – 6c6",
+   "articulo": "Art. 167",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 18.0,
+   "ocupacion_max": "Es regula mitjançant les separacions mínimes establertes en el paràmetre P17",
+   "altura_max": "2p + sc (pb+1p+sotacobert)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c7": {
+   "nombre": "Edificació unifamiliar aïllada – 6c7",
+   "articulo": "Art. 168",
+   "otros": "Parcel·la mínima: es considera indivisible l’existent (7.032 m²).",
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "20%",
+   "altura_max": "2p + sc (pb+1p+sotacobert)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  },
+  "6c8": {
+   "nombre": "Edificació unifamiliar aïllada – 6c8",
+   "articulo": "Art. 169",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 18.0,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "20%",
+   "altura_max": "2p + sc",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c9": {
+   "nombre": "Edificació unifamiliar aïllada – 6c9",
+   "articulo": "Art. 170",
+   "parcela_minima_m2": 700.0,
+   "frente_minimo_m": 12.0,
+   "edificabilidad": "0,5595 m²st/m²s",
+   "ocupacion_max": "20%",
+   "altura_max": "2p + sc (pb+1p+sotacobert)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c10": {
+   "nombre": "6c10",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 700.0,
+   "frente_minimo_m": 12.0,
+   "edificabilidad": "0,2364 m²st/m²s",
+   "ocupacion_max": "20%",
+   "altura_max": "2p + sc (pb+1p+sotacobert)",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6c11": {
+   "nombre": "6c11",
+   "articulo": "Art. 172",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 18.0,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "25%",
+   "altura_max": "2p (pb+1p) / 7,20 m",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6d1": {
+   "nombre": "Edificació unifamiliar aïllada – (antic Castellet 5)",
+   "articulo": "Art. 173",
+   "ocupacion_max": "El sòl ocupat pels nous volums edificables ha de quedar inclòs en l'àmbit interior",
+   "altura_max": "2p (pb+1p) / 6,50 metres",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa."
+  },
+  "6d2": {
+   "nombre": "Edificació unifamiliar aïllada – (Catàleg)",
+   "articulo": "Art. 174",
+   "otros": "Parcel·la mínima: es considera indivisible l’existent.",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  },
+  "6d3": {
+   "nombre": "Edificació unifamiliar aïllada – (Pedres Blanques)",
+   "articulo": "Art. 175",
+   "otros": "Parcel·la mínima: es considera indivisible l’existent.",
+   "usos": "Dominant: habitatge unifamiliar. Compatibles: oficines i serveis; aparcament corresponent a les activitats principals, exclusivament en planta baixa o soterrani amb accés a través de la planta baixa.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  },
+  "7": {
+   "nombre": "Activitats industrials",
+   "articulo": "Art. 177",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7a": {
+   "nombre": "Activitats industrials – Indústria agrupada",
+   "articulo": "Art. 178",
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "1,00 m²st/m²s",
+   "altura_max": "2p (pb+1p)",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7a1": {
+   "nombre": "Indústria agrupada – Can Casablanques",
+   "articulo": "Art. 179",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "60%",
+   "altura_max": "2p (pb+1p) / 16 metres",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7a2": {
+   "nombre": "Indústria agrupada – Can Torres i Can Llobet",
+   "articulo": "Art. 180",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "60%",
+   "altura_max": "2p (pb+1p) / 15 metres",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7a3": {
+   "nombre": "Indústria agrupada – Can Canals C i D",
+   "articulo": "Art. 181",
+   "parcela_minima_m2": 2000.0,
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "50%",
+   "altura_max": "2p (pb+1p) / 16 metres",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7b": {
+   "nombre": "Activitats industrials – Indústria aïllada",
+   "articulo": "Art. 182",
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "50%",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7b1": {
+   "nombre": "Indústria aïllada – Can Feu",
+   "articulo": "Art. 183",
+   "parcela_minima_m2": 2000.0,
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "50%",
+   "altura_max": "4p (pb+3p) / 16 metres",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "7b2": {
+   "nombre": "Indústria aïllada – Can Corbera",
+   "articulo": "Art. 184",
+   "parcela_minima_m2": 800.0,
+   "frente_minimo_m": 20.0,
+   "edificabilidad": "1,00 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "5p (pb+4p) / 15 metres",
+   "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: industria de categoria 1, serveis tècnics i ambientals, aparcament i dotacions públiques."
+  },
+  "8a": {
+   "nombre": "Serveis privats amb volumetria definida",
+   "articulo": "Art. 187",
+   "usos": "Dominant: oficines i serveis. Compatibles: establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "8a1": {
+   "nombre": "Serveis privats amb volumetria definida – Sant Quirze del Vallès Parc",
+   "articulo": "Art. 188",
+   "parcela_minima_m2": 400.0,
+   "altura_max": "7,20 metres (2p)",
+   "usos": "Dominant: oficines i serveis. Compatibles: establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "8a2": {
+   "nombre": "Serveis privats amb volumetria definida – Castellet",
+   "articulo": "Art. 189",
+   "usos": "Dominant: oficines i serveis. Compatibles: establiment hoteler; restauració; indústria de categoria 1; dotacions públiques; serveis tècnics i ambientals."
+  },
+  "8b": {
+   "nombre": "Serveis privats amb volumetria flexible",
+   "articulo": "Art. 190",
+   "usos": "Dominant: oficines i serveis."
+  },
+  "8b1": {
+   "nombre": "Serveis privats amb volumetria flexible – Castellet",
+   "articulo": "Art. 191",
+   "otros": "Parcel·la mínima: es considera indivisible l’existent.",
+   "ocupacion_max": "1.625 m²",
+   "altura_max": "2p (pb+1p) / 6,00 metres",
+   "usos": "Dominant: oficines i serveis. Compatibles: residència col·lectiva; establiment hoteler; restauració; recreatiu i d’espectacles.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  },
+  "8b2": {
+   "nombre": "Serveis privats amb volumetria flexible – Castellet",
+   "articulo": "Art. 192",
+   "otros": "Parcel·la mínima: es considera indivisible l’existent.",
+   "ocupacion_max": "2.000 m²",
+   "altura_max": "2p (pb+1p) / 8,00 metres",
+   "usos": "Dominant: oficines i serveis. Compatibles: oficines i serveis; comercial; restauració; logístic i magatzem; estacions de servei.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  },
+  "8c": {
+   "nombre": "Serveis privats Can Canals Nord",
+   "articulo": "Art. 193",
+   "otros": "Parcel·la mínima: es considera indivisible l’existent.",
+   "ocupacion_max": "Es considera l’ocupació actual de les construccions existents",
+   "usos": "Dominant: Comercial.",
+   "segregacion": "No: la parcel·la mínima és l'existent (indivisible)."
+  }
+ }
+}
