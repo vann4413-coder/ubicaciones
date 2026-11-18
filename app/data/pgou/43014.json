@@ -1,0 +1,251 @@
+{
+ "municipio": "Amposta",
+ "codigo_ine": "43014",
+ "plan": "Pla d'ordenació urbanística municipal d'Amposta – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=227871&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-18",
+ "zonas": {
+  "10a": {
+   "nombre": "Antic nucli d'Amposta",
+   "articulo": "Títol V, subzona 10a",
+   "parcela_minima_m2": 60,
+   "altura_max": "PB+2+àtic (13,25 m)",
+   "usos": "Habitatge, residencial, hoteler, comercial, oficines, indústria integrada, magatzem i equipaments.",
+   "otros": "Fondària edificable segons plànols."
+  },
+  "10b": {
+   "nombre": "Nucli original de Poble Nou",
+   "articulo": "Títol V, subzona 10b",
+   "parcela_minima_m2": 300,
+   "altura_max": "PB+1 (6,70 m)",
+   "usos": "Habitatge, residencial, hoteler, comercial, oficines, indústria integrada, magatzem i equipaments."
+  },
+  "10c": {
+   "nombre": "Ampliació de Poble Nou",
+   "articulo": "Títol V, subzona 10c",
+   "parcela_minima_m2": 300,
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (6,70 m)",
+   "usos": "Habitatge, residencial, hoteler, comercial, oficines, indústria integrada, magatzem i equipaments."
+  },
+  "10d": {
+   "nombre": "Balada",
+   "articulo": "Títol V, subzona 10d",
+   "parcela_minima_m2": 60,
+   "altura_max": "PB+1 (6,70 m)",
+   "usos": "Habitatge, residencial, hoteler, comercial, oficines, indústria integrada, magatzem i equipaments."
+  },
+  "11": {
+   "nombre": "Illes tancades (eixample)",
+   "articulo": "Títol V, zona 11",
+   "parcela_minima_m2": 60,
+   "frente_minimo_m": 7,
+   "altura_max": "Segons plànols: de PB (5,60 m) a PB+5+àtic (24,50 m)",
+   "usos": "Habitatge, residencial, hoteler, comercial, oficines, indústria integrada, magatzem i equipaments.",
+   "otros": "Fondària edificable màxima 15 m (PB totalment edificable); àtics reculats 3 m."
+  },
+  "12a2": {
+   "nombre": "Eucaliptus – unifamiliar",
+   "articulo": "Títol V, subzona 12a2",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "8 m",
+   "usos": "Habitatge unifamiliar."
+  },
+  "12a3": {
+   "nombre": "Lligallo Baix Nord – unifamiliar",
+   "articulo": "Títol V, subzona 12a3",
+   "parcela_minima_m2": 100,
+   "edificabilidad": "0,445 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "7,50 m",
+   "usos": "Habitatge unifamiliar."
+  },
+  "12b1": {
+   "nombre": "Eucaliptus – plurifamiliar",
+   "articulo": "Títol V, subzona 12b1",
+   "usos": "Habitatge plurifamiliar.",
+   "otros": "Paràmetres segons plànols d'ordenació."
+  },
+  "12b2": {
+   "nombre": "Lligallo Baix Nord – plurifamiliar",
+   "articulo": "Títol V, subzona 12b2",
+   "usos": "Habitatge plurifamiliar.",
+   "otros": "Paràmetres segons plànols d'ordenació."
+  },
+  "13a1": {
+   "nombre": "Valletes – unifamiliar",
+   "articulo": "Títol V, subzona 13a1",
+   "parcela_minima_m2": 105,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Segons gàlib",
+   "altura_max": "10 m",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Fondària edificable 12 m."
+  },
+  "13b1": {
+   "nombre": "Valletes – plurifamiliar",
+   "articulo": "Títol V, subzona 13b1",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Segons gàlib",
+   "altura_max": "PB+3 (13 m) / PB+2 (10 m)",
+   "usos": "Habitatge plurifamiliar i comerç en PB."
+  },
+  "13b2": {
+   "nombre": "Lligallo de Baix Nord – plurifamiliar",
+   "articulo": "Títol V, subzona 13b2",
+   "parcela_minima_m2": 60,
+   "edificabilidad": "Segons gàlib",
+   "ocupacion_max": "100 %",
+   "altura_max": "13,25 m",
+   "usos": "Habitatge plurifamiliar."
+  },
+  "14a": {
+   "nombre": "Av. Santa Bàrbara – Carmelites",
+   "articulo": "Títol V, subzona 14a",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "Segons gàlib",
+   "altura_max": "13,50 m",
+   "usos": "Habitatge plurifamiliar i equipaments."
+  },
+  "15a1": {
+   "nombre": "Edificació urbana industrial",
+   "articulo": "Títol V, subzona 15a1",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1 (10 m, fins a 15 m en el 10 % del solar)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15b2": {
+   "nombre": "Indústria en filera Tosses 1",
+   "articulo": "Títol V, subzona 15b2",
+   "parcela_minima_m2": 425,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Segons gàlib",
+   "altura_max": "PB+1 (10 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c1": {
+   "nombre": "Indústria aïllada Valletes – Av. Santa Bàrbara",
+   "articulo": "Títol V, subzona 15c1",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,70 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (7 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c2": {
+   "nombre": "Indústria aïllada Tosses 2",
+   "articulo": "Títol V, subzona 15c2",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,991 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (10 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c3": {
+   "nombre": "Indústria aïllada Tosses 3",
+   "articulo": "Títol V, subzona 15c3",
+   "parcela_minima_m2": 8000,
+   "frente_minimo_m": 60,
+   "edificabilidad": "0,991 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (15 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c4": {
+   "nombre": "Indústria aïllada Oriola",
+   "articulo": "Títol V, subzona 15c4",
+   "parcela_minima_m2": 5000,
+   "frente_minimo_m": 60,
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (12 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona). Inclou expressament l'estació de servei; un sol ús per parcel·la.",
+   "otros": "Fins al 20 % del sòl del sector pot tenir parcel·les de 2.000 m²."
+  },
+  "15c5": {
+   "nombre": "Indústria aïllada Val de Zafan",
+   "articulo": "Títol V, subzona 15c5",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,090 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1 (9 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c6": {
+   "nombre": "Indústria aïllada Val de Zafan",
+   "articulo": "Títol V, subzona 15c6",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,090 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1 (9 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c7": {
+   "nombre": "Indústria aïllada Tosses 4",
+   "articulo": "Títol V, subzona 15c7",
+   "parcela_minima_m2": 8000,
+   "frente_minimo_m": 60,
+   "edificabilidad": "0,991 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (15 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "15c8": {
+   "nombre": "Indústria aïllada Tosses 5",
+   "articulo": "Títol V, subzona 15c8",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,991 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (15 m)",
+   "usos": "Industrial, magatzem, comercial, oficines, restauració, aparcament i estació de servei (segons subzona)."
+  },
+  "21": {
+   "nombre": "Sòl urbanitzable delimitat",
+   "articulo": "Art. 182",
+   "otros": "Cal pla parcial del sector."
+  },
+  "22": {
+   "nombre": "Sòl urbanitzable no delimitat",
+   "articulo": "Art. 183",
+   "otros": "Cal pla parcial de delimitació."
+  },
+  "30": {
+   "nombre": "Sòl no urbanitzable de protecció especial",
+   "articulo": "Secció 8a",
+   "usos": "Protecció d'espais naturals."
+  },
+  "31": {
+   "nombre": "Sòl no urbanitzable de protecció funcional",
+   "articulo": "Secció 9a",
+   "usos": "Agrícola i forestal amb protecció."
+  },
+  "32": {
+   "nombre": "Sòl no urbanitzable de protecció preventiva",
+   "articulo": "Secció 10a",
+   "usos": "Agrícola."
+  },
+  "32a1": {
+   "nombre": "Sòl agrícola de secà",
+   "articulo": "Art. 270-271",
+   "usos": "Agrícola de secà i usos complementaris."
+  },
+  "32a2": {
+   "nombre": "Sòl agrícola de regadiu",
+   "articulo": "Art. 272-273",
+   "usos": "Agrícola de regadiu i usos complementaris."
+  }
+ }
+}
