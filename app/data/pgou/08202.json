@@ -1,0 +1,207 @@
+{
+ "municipio": "Sant Celoni",
+ "codigo_ine": "08202",
+ "plan": "Revisió del Pla general d'ordenació de Sant Celoni – Text refós de les normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=117343&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-18",
+ "zonas": {
+  "1": {
+   "nombre": "Nucli antic",
+   "articulo": "Cap. 2, art. 125-131",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Alineació a vial; ocupació de referència del 80 %; alçades segons plànols."
+  },
+  "2": {
+   "nombre": "Eixample",
+   "articulo": "Cap. 3, art. 132-134",
+   "frente_minimo_m": 7.5,
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificació segons alineació de vial; fondària i plantes segons plànols."
+  },
+  "3": {
+   "nombre": "Edificació aïllada plurifamiliar",
+   "articulo": "Cap. 4",
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,35 m²st/m²s",
+   "ocupacion_max": "45 %",
+   "usos": "Habitatge plurifamiliar (1 per cada 100 m²) i usos compatibles."
+  },
+  "4": {
+   "nombre": "Cases agrupades",
+   "articulo": "Cap. 5, art. 138-139",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,75 m²st/m²s",
+   "usos": "Habitatge unifamiliar agrupat.",
+   "otros": "Cada habitatge amb un mínim de 150 m² de sòl i 5 m de façana; agrupació màxima de 50 m de façana."
+  },
+  "5a": {
+   "nombre": "Unifamiliar aïllada 5a",
+   "articulo": "Art. 144-146",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (6 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5b": {
+   "nombre": "Unifamiliar aïllada 5b",
+   "articulo": "Art. 144-146",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,6 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (6 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5c": {
+   "nombre": "Unifamiliar aïllada 5c",
+   "articulo": "Art. 144-146",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,5 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+2 (9 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles."
+  },
+  "5d": {
+   "nombre": "Unifamiliar aïllada 5d (urbanitzacions del Montnegre)",
+   "articulo": "Art. 144-146",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,15 m²st/m²s",
+   "ocupacion_max": "10 %",
+   "altura_max": "PB+1 (6 m)",
+   "usos": "Habitatge unifamiliar i usos compatibles.",
+   "otros": "Al costat de la carretera de Campins la parcel·la mínima és de 1.500 m²."
+  },
+  "6a": {
+   "nombre": "Ordenació volumètrica anterior",
+   "articulo": "Cap. 7",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Es manté l'ordenació volumètrica del planejament anterior."
+  },
+  "6b": {
+   "nombre": "Volumetria d'intensitat determinada",
+   "articulo": "Cap. 7",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Intensitats i paràmetres segons normativa i plànols de detall."
+  },
+  "6c": {
+   "nombre": "Volumetria d'intensitat prefixada",
+   "articulo": "Cap. 7",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Àmbits amb intensitat fixada pel pla."
+  },
+  "9a": {
+   "nombre": "Gran indústria",
+   "articulo": "Art. 161-163",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1,10 m²st/m²s",
+   "ocupacion_max": "60 % (+5 % auxiliars)",
+   "altura_max": "15 m",
+   "usos": "Industrial (totes les categories).",
+   "otros": "Una sola activitat per parcel·la; no s'admeten subparcel·lacions. Separacions: 7 m a vial i 5 m a la resta."
+  },
+  "9b": {
+   "nombre": "Petita indústria aïllada",
+   "articulo": "Art. 164-166",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "10 m",
+   "usos": "Industrial fins a 4a categoria, comercial, administratiu i restauració.",
+   "otros": "Subparcel·les mínimes de 300 m² i 12 m de façana. Separacions: 5 m a vial i 3 m a la resta."
+  },
+  "9c": {
+   "nombre": "Petita indústria contigua",
+   "articulo": "Art. 167-169",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,80 m²st/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "PB+2 (10 m) en carrers de 10 m o més; PB+1 (8 m) en carrers més estrets",
+   "usos": "Industrial i usos compatibles."
+  },
+  "9d": {
+   "nombre": "Petita indústria contigua",
+   "articulo": "Art. 167-169",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,10 m²st/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "PB+2 (10 m) en carrers de 10 m o més; PB+1 (8 m) en carrers més estrets",
+   "usos": "Industrial i usos compatibles."
+  },
+  "10": {
+   "nombre": "Industrial de transformació",
+   "articulo": "Cap. 10",
+   "otros": "Subzones 10b (industrial de centralitat, assimilada a la 9b), 10c (transformació a residencial) i 10d (transformació mixta), mitjançant planejament derivat."
+  },
+  "10b": {
+   "nombre": "Industrial de centralitat urbana",
+   "articulo": "Cap. 10",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "10 m",
+   "usos": "Els de la subzona 9b."
+  },
+  "ppa": {
+   "nombre": "Sectors amb pla parcial aprovat",
+   "articulo": "Títol VI, secció 2a",
+   "otros": "Es regeix pel pla parcial aprovat del sector."
+  },
+  "r": {
+   "nombre": "Sectors de desenvolupament residencial",
+   "articulo": "Art. 183",
+   "usos": "Residencial.",
+   "otros": "Cal pla parcial."
+  },
+  "i": {
+   "nombre": "Sectors de desenvolupament industrial",
+   "articulo": "Art. 187",
+   "usos": "Industrial.",
+   "otros": "Cal pla parcial."
+  },
+  "d1": {
+   "nombre": "Desenvolupament residencial (sòl urbanitzable)",
+   "articulo": "Títol VI",
+   "usos": "Residencial.",
+   "otros": "Cal pla parcial."
+  },
+  "17": {
+   "nombre": "Sòl rústec (no urbanitzable)",
+   "articulo": "Títol VII, cap. 2",
+   "usos": "Agrícola, ramader i forestal."
+  },
+  "18": {
+   "nombre": "Sòl de valor agrícola (no urbanitzable)",
+   "articulo": "Títol VII, cap. 3",
+   "usos": "Agrícola."
+  },
+  "19": {
+   "nombre": "Sòl de valor forestal (no urbanitzable)",
+   "articulo": "Títol VII, cap. 4",
+   "usos": "Forestal."
+  },
+  "20": {
+   "nombre": "Àrea del Pla especial del Montnegre",
+   "articulo": "Títol VII, cap. 5",
+   "usos": "Els del Pla especial del Montnegre i el Corredor."
+  },
+  "21": {
+   "nombre": "Sòl d'interès paisatgístic",
+   "articulo": "Títol VII, cap. 6",
+   "usos": "Agrícola i forestal amb protecció paisatgística."
+  },
+  "22": {
+   "nombre": "Àrea de ribera",
+   "articulo": "Títol VII, cap. 7",
+   "usos": "Protecció fluvial."
+  }
+ }
+}
