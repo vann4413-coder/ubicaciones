@@ -1,0 +1,181 @@
+{
+ "municipio": "Castellar del Vallès",
+ "codigo_ine": "08051",
+ "plan": "Pla d'ordenació urbanística municipal de Castellar del Vallès – Normes urbanístiques (text refós 2016)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=502151&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "1": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 120-124",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "1a": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 122",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 4.5,
+   "altura_max": "Segons plànols d'ordenació detallada",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificabilitat resultant de la fondària i les plantes."
+  },
+  "1a1": {
+   "nombre": "Nucli antic de Sant Feliu del Racó",
+   "articulo": "Art. 123",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "segregacion": "No: la parcel·la mínima és l'existent; edificació consolidada."
+  },
+  "1b": {
+   "nombre": "Nucli antic amb ordenació singular",
+   "articulo": "Art. 124",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "3": {
+   "nombre": "Residencial en ordenació tancada",
+   "articulo": "Art. 125-126",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "altura_max": "Segons plànols d'ordenació detallada",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "4a": {
+   "nombre": "Residencial en ordenació oberta",
+   "articulo": "Art. 128",
+   "altura_max": "Segons plànols d'ordenació detallada",
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "4b": {
+   "nombre": "Residencial en ordenació oberta amb espais lliures",
+   "articulo": "Art. 129",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 12,
+   "altura_max": "Segons plànols d'ordenació detallada",
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "5a": {
+   "nombre": "Cases agrupades alineades a vial",
+   "articulo": "Art. 131-134",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "altura_max": "Segons plànols d'ordenació detallada",
+   "usos": "Habitatge unifamiliar en filera."
+  },
+  "5b": {
+   "nombre": "Cases agrupades reculades del vial",
+   "articulo": "Art. 135-136",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "altura_max": "Segons plànols d'ordenació detallada",
+   "usos": "Habitatge unifamiliar en filera."
+  },
+  "5c": {
+   "nombre": "Cases agrupades d'ordenació singular",
+   "articulo": "Art. 137",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Es manté la parcel·lació existent."
+  },
+  "6a": {
+   "nombre": "Cases aïllades – parcel·la compacta (200)",
+   "articulo": "Art. 140",
+   "parcela_minima_m2": 200,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "3p (9,50 m)",
+   "usos": "Habitatge unifamiliar (aparellat amb parcel·la doble)."
+  },
+  "6b": {
+   "nombre": "Cases aïllades – parcel·la petita (400)",
+   "articulo": "Art. 141",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,65 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "3p (9,50 m); 2p (6,50 m) si pendent >50 %",
+   "usos": "Habitatge unifamiliar (aparellat amb parcel·la doble)."
+  },
+  "6c": {
+   "nombre": "Cases aïllades – parcel·la mitjana (600)",
+   "articulo": "Art. 142",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,65 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "7 m",
+   "usos": "Habitatge unifamiliar (aparellat amb parcel·la doble)."
+  },
+  "6d": {
+   "nombre": "Cases aïllades – parcel·la gran (800)",
+   "articulo": "Art. 143",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "3p (9,50 m)",
+   "usos": "Habitatge unifamiliar (aparellat amb parcel·la doble)."
+  },
+  "6d1": {
+   "nombre": "Cases aïllades – Airesol a-b",
+   "articulo": "Art. 144",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "3p (9,50 m)",
+   "usos": "Habitatge unifamiliar (aparellat amb parcel·la doble)."
+  },
+  "7a": {
+   "nombre": "Activitat econòmica industrial entre mitgeres",
+   "articulo": "Art. 147",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²st/m²s bàsic (+0,50 addicional justificant necessitat productiva)",
+   "altura_max": "PB+1",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "7b": {
+   "nombre": "Activitat econòmica industrial aïllada",
+   "articulo": "Art. 148",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 16,
+   "edificabilidad": "1 m²st/m²s bàsic (+0,50 addicional justificant necessitat productiva)",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+2",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "7c": {
+   "nombre": "Activitat econòmica industrial singular",
+   "articulo": "Art. 149",
+   "parcela_minima_m2": 5000,
+   "edificabilidad": "1 m²st/m²s bàsic (+0,50 addicional justificant necessitat productiva)",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+2",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "otros": "No s'admet la subdivisió de l'edificació."
+  },
+  "8a": {
+   "nombre": "Serveis terciaris i comercial entre mitgeres",
+   "articulo": "Art. 153",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²st/m²s bàsic (+0,50 addicional justificant necessitat productiva)",
+   "altura_max": "PB+1",
+   "usos": "Terciari, comercial, oficines i serveis."
+  },
+  "8b": {
+   "nombre": "Serveis terciaris i comercial aïllada",
+   "articulo": "Art. 154",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "1 m²st/m²s bàsic (+0,50 addicional justificant necessitat productiva)",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+2",
+   "usos": "Terciari, comercial, oficines i serveis."
+  },
+  "10": {
+   "nombre": "Activitats econòmiques de reprogramació",
+   "articulo": "Art. 156-158",
+   "edificabilidad": "1,00 m²st/m²s",
+   "usos": "Activitats econòmiques; transformació mitjançant pla de millora urbana.",
+   "segregacion": "No: no s'admeten noves subdivisions de parcel·les."
+  }
+ }
+}
