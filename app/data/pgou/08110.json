@@ -1,0 +1,196 @@
+{
+ "municipio": "Malgrat de Mar",
+ "codigo_ine": "08110",
+ "plan": "Pla d'ordenació urbanística municipal de Malgrat de Mar – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=166932&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "12": {
+   "nombre": "Casc antic",
+   "articulo": "Secció 5a, art. 76-80",
+   "altura_max": "Segons plànols (PB+1 = 7,60 m ...)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Plantes i fondària segons plànols de paràmetres edificatoris."
+  },
+  "12a": {
+   "nombre": "Ordenació en filera i mixta",
+   "articulo": "Secció 6a",
+   "altura_max": "PB+2",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "12-1": {
+   "nombre": "Casc antic (12-1)",
+   "articulo": "Secció 5a",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "12-2": {
+   "nombre": "Casc antic (12-2)",
+   "articulo": "Secció 5a",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "13": {
+   "nombre": "Zones de densificació",
+   "articulo": "Secció 7a",
+   "altura_max": "Segons plànols (PB+2 = 9,50 m ...)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "No s'admeten habitatges en planta baixa; 1 habitatge per cada 80-90 m² en plantes pis."
+  },
+  "13a": {
+   "nombre": "Densificació intensiva",
+   "articulo": "Secció 7a",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "No s'admeten habitatges en planta baixa."
+  },
+  "13b": {
+   "nombre": "Densificació semiintensiva",
+   "articulo": "Secció 7a",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "No s'admeten habitatges en planta baixa."
+  },
+  "15": {
+   "nombre": "Conservació de l'estructura urbana i edificatòria",
+   "articulo": "Secció 8a",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "17": {
+   "nombre": "Serveis privats",
+   "articulo": "Secció 9a",
+   "edificabilidad": "0,60 m²st/m²s",
+   "altura_max": "PB+1",
+   "usos": "Serveis privats."
+  },
+  "18a": {
+   "nombre": "Ordenació consolidada, intensitat I",
+   "articulo": "Secció 10a",
+   "frente_minimo_m": 10,
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Mínim 70 % de verd privat amb pins."
+  },
+  "18b": {
+   "nombre": "Ordenació consolidada, intensitat II",
+   "articulo": "Secció 10a",
+   "frente_minimo_m": 25,
+   "edificabilidad": "2,00 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+5 (19,80 m)",
+   "usos": "Habitatge plurifamiliar (1 per cada 100 m²)."
+  },
+  "18c": {
+   "nombre": "Ordenació consolidada, ús hoteler",
+   "articulo": "Secció 10a",
+   "usos": "Hoteler."
+  },
+  "19": {
+   "nombre": "Edificació prefixada",
+   "articulo": "Secció 11a",
+   "altura_max": "Segons plànols (PB+2 = 10,65 m ...)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria segons plànols; 1 habitatge per cada 75 m² en plantes pis."
+  },
+  "20a": {
+   "nombre": "Edificació aïllada unifamiliar",
+   "articulo": "Secció 12a",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 8,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge unifamiliar."
+  },
+  "20c": {
+   "nombre": "Edificació aïllada per a ús hoteler",
+   "articulo": "Secció 12a",
+   "parcela_minima_m2": 1500,
+   "edificabilidad": "2,00 m²st/m²s",
+   "ocupacion_max": "45 %",
+   "altura_max": "6 plantes",
+   "usos": "Hoteler."
+  },
+  "21": {
+   "nombre": "Zona industrial de llevant",
+   "articulo": "Secció 13a, art. 156-160",
+   "edificabilidad": "2,00 m²st/m²s",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "otros": "Gran indústria existent; estudis de detall vigents."
+  },
+  "21a": {
+   "nombre": "Polígon de Can Patalina",
+   "articulo": "Secció 13a",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "2,00 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "12 m",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "21a/1": {
+   "nombre": "Can Patalina – petita empresa",
+   "articulo": "Secció 13a",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "2,00 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "12 m",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "otros": "Màxim 30 establiments per hectàrea (mínim 150 m² cadascun)."
+  },
+  "21a/2": {
+   "nombre": "Can Patalina – empresa mitjana",
+   "articulo": "Secció 13a",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "21b": {
+   "nombre": "Desenvolupament industrial (PP8 Zona Nord)",
+   "articulo": "Art. 179",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "otros": "Paràmetres prefixats del sector PP8."
+  },
+  "22a": {
+   "nombre": "Desenvolupament residencial (urbanitzable)",
+   "articulo": "Secció 3a, títol V",
+   "otros": "Cal pla parcial."
+  },
+  "23": {
+   "nombre": "Zona agrícola (no urbanitzable)",
+   "articulo": "Art. 191",
+   "usos": "Agrícola."
+  },
+  "24": {
+   "nombre": "Desenvolupament de serveis (Camí del Mig, PP9)",
+   "articulo": "Secció 4a, títol V",
+   "usos": "Serveis."
+  },
+  "27": {
+   "nombre": "Protecció i restauració forestal",
+   "articulo": "Secció 3a, títol VI",
+   "usos": "Forestal."
+  },
+  "28": {
+   "nombre": "Càmpings",
+   "articulo": "Secció 4a, títol VI",
+   "usos": "Càmping."
+  },
+  "30": {
+   "nombre": "Ús hoteler complementari",
+   "articulo": "Art. 165",
+   "usos": "Hoteler."
+  },
+  "31": {
+   "nombre": "Subjecta a pla de millora urbana",
+   "articulo": "Art. 167",
+   "otros": "Cal pla de millora urbana."
+  },
+  "32": {
+   "nombre": "Subjecta a pla especial",
+   "articulo": "Art. 169",
+   "otros": "Cal pla especial."
+  }
+ }
+}
