@@ -450,6 +450,21 @@
    "ocupacion_max": "70 %",
    "altura_max": "5p (pb+4p) (15 metres)",
    "usos": "Dominant: industrial de categories 1, 2 i 3. Compatibles: magatzem; comercial (venda a l’engròs i venda al detall de productes elaborats en el propi establiment; venda de maquinària i materials de la construcció); restauració al servei de les indústries;."
+  },
+  "11": {
+   "nombre": "Vessants de Les Fonts (sòl no urbanitzable)",
+   "articulo": "Títol VII",
+   "usos": "Agrícola i forestal; protecció paisatgística."
+  },
+  "12": {
+   "nombre": "Vessants del torrent de la Betzuca (sòl no urbanitzable)",
+   "articulo": "Títol VII",
+   "usos": "Agrícola i forestal; protecció paisatgística."
+  },
+  "13": {
+   "nombre": "Vall de Can Vinyals (sòl no urbanitzable)",
+   "articulo": "Títol VII",
+   "usos": "Agrícola i forestal; protecció paisatgística."
   }
  }
 }

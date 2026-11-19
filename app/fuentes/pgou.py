@@ -33,6 +33,9 @@ def _candidatas(clave: str) -> list[str]:
     salida = [c]
     base = re.split(r"[\s/_\-*]", c)[0]
     for i in range(len(base), 0, -1):
+        # No se parte un número por la mitad: «13» no es la zona «1», ni «4a12» la «4a1».
+        if i < len(base) and base[i - 1].isdigit() and base[i].isdigit():
+            continue
         if base[:i] not in salida:
             salida.append(base[:i])
     return salida
