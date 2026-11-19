@@ -1,0 +1,244 @@
+{
+ "municipio": "Manlleu",
+ "codigo_ine": "08112",
+ "plan": "Pla d'ordenació urbanística municipal de Manlleu – Normativa (text refós 2023)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=556517&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "R1a": {
+   "nombre": "Nucli antic – illes amb edificació compacta",
+   "articulo": "Art. 133-135",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R1b": {
+   "nombre": "Nucli antic – illes amb definició geomètrica",
+   "articulo": "Art. 133-135",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R1": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 133-135",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R3": {
+   "nombre": "Ordenació tancada",
+   "articulo": "Art. 136",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R3a": {
+   "nombre": "Ordenació tancada – illes compactes",
+   "articulo": "Art. 136",
+   "frente_minimo_m": 8,
+   "ocupacion_max": "100 %",
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R3b": {
+   "nombre": "Ordenació tancada – illes amb definició geomètrica",
+   "articulo": "Art. 136",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R3c": {
+   "nombre": "Ordenació tancada – conjunts unitaris",
+   "articulo": "Art. 136",
+   "altura_max": "Segons plànols (PB+2 = 9,50 m)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R3d": {
+   "nombre": "Ordenació tancada – illes del PP Mas Roca",
+   "articulo": "Art. 136",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R3e": {
+   "nombre": "Ordenació tancada – barri de Gràcia",
+   "articulo": "Art. 136",
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "R4": {
+   "nombre": "Ordenació oberta",
+   "articulo": "Art. 137",
+   "frente_minimo_m": 6,
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "R4a": {
+   "nombre": "Ordenació oberta – nova ordenació",
+   "articulo": "Art. 137",
+   "frente_minimo_m": 6,
+   "ocupacion_max": "100 %",
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "R4b": {
+   "nombre": "Ordenació oberta – Les Hortes",
+   "articulo": "Art. 137",
+   "frente_minimo_m": 6,
+   "ocupacion_max": "100 %",
+   "usos": "Habitatge plurifamiliar i usos compatibles."
+  },
+  "R4c": {
+   "nombre": "Ordenació oberta – Can Pujadas i Brocato",
+   "articulo": "Art. 137",
+   "frente_minimo_m": 6,
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Paràmetres segons els PMU d'origen (annex 7)."
+  },
+  "R4d": {
+   "nombre": "Ordenació oberta – La Teuleria",
+   "articulo": "Art. 137",
+   "frente_minimo_m": 6,
+   "usos": "Habitatge unifamiliar en filera i plurifamiliar.",
+   "otros": "Filera: façana mínima 6 m, PB+2 (9,80 m)."
+  },
+  "R5": {
+   "nombre": "Habitatges en filera",
+   "articulo": "Art. 138",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge unifamiliar."
+  },
+  "R5a": {
+   "nombre": "Habitatges en filera de l'eixample",
+   "articulo": "Art. 138",
+   "frente_minimo_m": 6,
+   "altura_max": "Segons plànols de zonificació",
+   "usos": "Habitatge unifamiliar."
+  },
+  "R5b": {
+   "nombre": "Habitatges en filera – Mas Roca",
+   "articulo": "Art. 138",
+   "frente_minimo_m": 5.5,
+   "usos": "Habitatge unifamiliar."
+  },
+  "R5c": {
+   "nombre": "Habitatges en filera – El Serrallo",
+   "articulo": "Art. 138",
+   "frente_minimo_m": 6,
+   "usos": "Habitatge unifamiliar."
+  },
+  "R5d": {
+   "nombre": "Habitatges en filera – Les Hortes",
+   "articulo": "Art. 138",
+   "frente_minimo_m": 5.5,
+   "usos": "Habitatge unifamiliar."
+  },
+  "R6": {
+   "nombre": "Habitatges aïllats",
+   "articulo": "Art. 139",
+   "parcela_minima_m2": 350,
+   "frente_minimo_m": 12,
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (9 m)",
+   "usos": "Habitatge unifamiliar o aparellat.",
+   "otros": "Aparellats: parcel·la de 400 m² i façana de 18 m."
+  },
+  "R6a": {
+   "nombre": "Habitatge aïllat",
+   "articulo": "Art. 139",
+   "parcela_minima_m2": 350,
+   "frente_minimo_m": 12,
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (9 m)",
+   "usos": "Habitatge unifamiliar o aparellat.",
+   "otros": "Aparellats: parcel·la de 400 m² i façana de 18 m."
+  },
+  "A1m": {
+   "nombre": "Industrial entre mitgeres",
+   "articulo": "Art. 140",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,40 m²st/m²s",
+   "ocupacion_max": "100 % (menys separacions grafiades)",
+   "altura_max": "PB+2 (10,50 m a carener)",
+   "usos": "Industrial i magatzem; oficines i serveis vinculats.",
+   "otros": "Un establiment per parcel·la mínima."
+  },
+  "A1a": {
+   "nombre": "Industrial aïllat",
+   "articulo": "Art. 141",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+2 (12,50 m a carener)",
+   "usos": "Industrial i magatzem; oficines i serveis vinculats.",
+   "otros": "Fins a 4 establiments per parcel·la mínima (mínim 300 m² cadascun)."
+  },
+  "A1ap": {
+   "nombre": "Indústria aïllada petita",
+   "articulo": "Art. 141",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+2 (12,50 m a carener)",
+   "usos": "Industrial i magatzem; oficines i serveis vinculats.",
+   "otros": "Fins a 4 establiments per parcel·la mínima (mínim 300 m² cadascun)."
+  },
+  "A1ag": {
+   "nombre": "Indústria aïllada gran",
+   "articulo": "Art. 141",
+   "edificabilidad": "0,7 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "12,50 m a carener",
+   "usos": "Industrial i magatzem; oficines i serveis vinculats.",
+   "segregacion": "No: les parcel·les existents són indivisibles."
+  },
+  "A1v": {
+   "nombre": "Industrial de volumetria específica",
+   "articulo": "Art. 142",
+   "usos": "Industrial i magatzem; oficines i serveis vinculats.",
+   "otros": "Volumetria segons plànols."
+  },
+  "A2a": {
+   "nombre": "Serveis – comercial i serveis",
+   "articulo": "Art. 143",
+   "edificabilidad": "1,20 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2 (10,50 m)",
+   "usos": "Comercial, oficines i serveis.",
+   "segregacion": "No: la parcel·la mínima és la unitat de qualificació; no s'admeten parcel·lacions."
+  },
+  "A2b": {
+   "nombre": "Serveis a la xarxa viària",
+   "articulo": "Art. 143",
+   "edificabilidad": "0,60 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Serveis a la xarxa viària (estació de servei) amb administratiu, bar i serveis complementaris.",
+   "segregacion": "No: la parcel·la mínima és la unitat de qualificació; un sol establiment."
+  },
+  "N1": {
+   "nombre": "Sòl no urbanitzable agrícola",
+   "articulo": "Art. 174",
+   "usos": "Agrícola."
+  },
+  "N3a": {
+   "nombre": "Riberals (no urbanitzable)",
+   "articulo": "Art. 165",
+   "usos": "Protecció fluvial."
+  },
+  "N3c": {
+   "nombre": "Zona forestal (no urbanitzable)",
+   "articulo": "Art. 167",
+   "usos": "Forestal."
+  },
+  "N3d": {
+   "nombre": "Agrícola de protecció especial",
+   "articulo": "Art. 168",
+   "usos": "Agrícola protegit."
+  }
+ }
+}
