@@ -1,0 +1,140 @@
+{
+ "municipio": "Roses",
+ "codigo_ine": "17152",
+ "plan": "Pla general d'ordenació de Roses – Text refós de les normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=58290&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "1": {
+   "nombre": "Edificis i jardins privats",
+   "articulo": "Zona 1",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Es manté l'edificació existent amb els seus jardins."
+  },
+  "2": {
+   "nombre": "Casc antic",
+   "articulo": "Zona 2",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria segons plànols; protecció del casc antic."
+  },
+  "3": {
+   "nombre": "Eixample urbà",
+   "articulo": "Zona 3",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificació segons alineació de vial; plantes segons plànols."
+  },
+  "4": {
+   "nombre": "Eixample suburbà",
+   "articulo": "Zona 4",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "5": {
+   "nombre": "Polígon d'habitatges",
+   "articulo": "Zona 5",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "6a": {
+   "nombre": "Habitatge unifamiliar aïllat – subzona a",
+   "articulo": "Art. 108",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,35-0,50 m²st/m²s segons modalitat",
+   "ocupacion_max": "25-35 % segons modalitat",
+   "usos": "Habitatge unifamiliar aïllat.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats)."
+  },
+  "6b": {
+   "nombre": "Habitatge unifamiliar aïllat – subzona b",
+   "articulo": "Art. 109",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,35-0,50 m²st/m²s segons modalitat",
+   "usos": "Habitatge unifamiliar aïllat.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats). A Santa Margarida la parcel·la mínima és de 500 m²."
+  },
+  "6c": {
+   "nombre": "Habitatge unifamiliar aïllat – subzona c",
+   "articulo": "Art. 110",
+   "parcela_minima_m2": 800,
+   "usos": "Habitatge unifamiliar aïllat.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats)."
+  },
+  "6d": {
+   "nombre": "Habitatge unifamiliar aïllat – subzona d",
+   "articulo": "Art. 111",
+   "parcela_minima_m2": 1000,
+   "usos": "Habitatge unifamiliar aïllat.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats)."
+  },
+  "6e": {
+   "nombre": "Habitatge unifamiliar aïllat – subzona e",
+   "articulo": "Art. 112",
+   "parcela_minima_m2": 1500,
+   "edificabilidad": "0,35 m²st/m²s",
+   "usos": "Habitatge unifamiliar aïllat.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats)."
+  },
+  "7": {
+   "nombre": "Habitatge unifamiliar en filera",
+   "articulo": "Zona 7",
+   "usos": "Habitatge unifamiliar en filera."
+  },
+  "8a": {
+   "nombre": "Habitatge plurifamiliar aïllat – intensitat I",
+   "articulo": "Art. 124",
+   "edificabilidad": "0,60-1,40 m²st/m²s segons modalitat",
+   "ocupacion_max": "20-40 % segons modalitat",
+   "altura_max": "Màx. PB+4 (15,45 m); mín. PB+2",
+   "usos": "Habitatge plurifamiliar, hoteler i usos compatibles.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats). Densitat 75 habitatges/ha. A Santa Margarida fins a PB+5 (18,40 m)."
+  },
+  "8b": {
+   "nombre": "Habitatge plurifamiliar aïllat – intensitat II",
+   "articulo": "Art. 125",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats). Densitat 45 habitatges/ha."
+  },
+  "8c": {
+   "nombre": "Habitatge plurifamiliar aïllat – intensitat III",
+   "articulo": "Art. 126",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Els paràmetres depenen de la posició i el pendent de la parcel·la (costat muntanya o mar, 6 modalitats). Densitat 25 habitatges/ha."
+  },
+  "8h": {
+   "nombre": "Habitatge plurifamiliar aïllat – ús hoteler",
+   "articulo": "Zona 8",
+   "usos": "Hoteler."
+  },
+  "9": {
+   "nombre": "Conjunts d'ordenació específica",
+   "articulo": "Zona 9",
+   "otros": "Paràmetres de cada conjunt segons plànols."
+  },
+  "10": {
+   "nombre": "Desenvolupament urbà (urbanitzable)",
+   "articulo": "Zona 10",
+   "otros": "Cal pla parcial; intensitats I a III segons unitats de planejament."
+  },
+  "11": {
+   "nombre": "Desenvolupament terciari (urbanitzable)",
+   "articulo": "Zona 11",
+   "usos": "Terciari.",
+   "otros": "Cal pla parcial."
+  },
+  "14": {
+   "nombre": "Rural (no urbanitzable)",
+   "articulo": "Secció 3a, zona 14",
+   "usos": "Agropecuari."
+  },
+  "15": {
+   "nombre": "Protecció paisatgística i ecològica (no urbanitzable)",
+   "articulo": "Secció 4a, zona 15",
+   "usos": "Protecció."
+  },
+  "16": {
+   "nombre": "Zona 16 (no urbanitzable)",
+   "articulo": "Zona 16",
+   "usos": "Protecció."
+  }
+ }
+}
