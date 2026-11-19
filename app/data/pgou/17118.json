@@ -1,0 +1,202 @@
+{
+ "municipio": "Palamós",
+ "codigo_ine": "17118",
+ "plan": "Pla d'ordenació urbanística municipal de Palamós – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=287326&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "1": {
+   "nombre": "Nucli antic",
+   "articulo": "Secció I, títol IV",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria segons plànols."
+  },
+  "2.a": {
+   "nombre": "Eixample de transició al nucli antic",
+   "articulo": "Art. 200",
+   "frente_minimo_m": 7,
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "2.b": {
+   "nombre": "Eixample entre mitgeres, intensitat I",
+   "articulo": "Art. 201",
+   "frente_minimo_m": 7,
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "2.c": {
+   "nombre": "Eixample entre mitgeres, intensitat II",
+   "articulo": "Art. 202",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "2.d": {
+   "nombre": "Eixample entre mitgeres, intensitat III",
+   "articulo": "Art. 203",
+   "frente_minimo_m": 8,
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "2.e": {
+   "nombre": "Eixample davant del Passeig Marítim",
+   "articulo": "Art. 204",
+   "frente_minimo_m": 12,
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "3": {
+   "nombre": "Conservació de la tipologia edificatòria",
+   "articulo": "Art. 205-207",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "segregacion": "No: les parcel·les dels conjunts protegits són indivisibles."
+  },
+  "4.a": {
+   "nombre": "Illa oberta – bloc d'habitatges",
+   "articulo": "Art. 212-215",
+   "frente_minimo_m": 15,
+   "altura_max": "Segons plànols (per defecte 3p)",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Paràmetres (ocupació, edificabilitat i parcel·la mínima) fixats als plànols d'ordenació detallada del sòl urbà."
+  },
+  "4.b": {
+   "nombre": "Illa oberta – habitatges en filera",
+   "articulo": "Art. 216-219",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 18,
+   "altura_max": "Segons plànols (per defecte 3p)",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Parcel·lacions de mínim 4 habitatges. Paràmetres (ocupació, edificabilitat i parcel·la mínima) fixats als plànols d'ordenació detallada del sòl urbà."
+  },
+  "5.a": {
+   "nombre": "Habitatges aïllats, intensitat I",
+   "articulo": "Art. 224",
+   "frente_minimo_m": 12,
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Paràmetres (ocupació, edificabilitat i parcel·la mínima) fixats als plànols d'ordenació detallada del sòl urbà."
+  },
+  "5.b": {
+   "nombre": "Habitatges aïllats, intensitat II",
+   "articulo": "Art. 225",
+   "parcela_minima_m2": 750,
+   "edificabilidad": "0,35 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Agrupació d'habitatges en un sol edifici amb parcel·la de 1.000 m²."
+  },
+  "5.c": {
+   "nombre": "Habitatges aïllats, intensitat III",
+   "articulo": "Art. 226",
+   "parcela_minima_m2": 1800,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,2 m²st/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar."
+  },
+  "5.d": {
+   "nombre": "Habitatges aïllats, intensitat IV",
+   "articulo": "Art. 227",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,50 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Habitatge unifamiliar."
+  },
+  "5.e": {
+   "nombre": "Habitatges aïllats en parc privat",
+   "articulo": "Art. 228",
+   "usos": "Habitatge unifamiliar."
+  },
+  "5.f": {
+   "nombre": "Habitatges aïllats amb ordenació predeterminada",
+   "articulo": "Art. 229",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "Perímetre regulador i plantes segons plànols."
+  },
+  "6.a": {
+   "nombre": "Industrial compacte, intensitat I",
+   "articulo": "Art. 234",
+   "parcela_minima_m2": 525,
+   "frente_minimo_m": 15,
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "6.b": {
+   "nombre": "Industrial compacte, intensitat II",
+   "articulo": "Art. 235",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "7.a": {
+   "nombre": "Zona amb usos industrials",
+   "articulo": "Art. 239",
+   "frente_minimo_m": 20,
+   "altura_max": "Una planta de 10 m (amb altells)",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "otros": "Paràmetres (ocupació, edificabilitat i parcel·la mínima) fixats als plànols d'ordenació detallada del sòl urbà."
+  },
+  "7.b": {
+   "nombre": "Zona amb usos de transició",
+   "articulo": "Art. 240",
+   "frente_minimo_m": 20,
+   "altura_max": "Una planta de 10 m (amb altells)",
+   "usos": "Industrial i terciari.",
+   "otros": "Paràmetres (ocupació, edificabilitat i parcel·la mínima) fixats als plànols d'ordenació detallada del sòl urbà."
+  },
+  "8": {
+   "nombre": "Regulada per anterior ordenació volumètrica",
+   "articulo": "Art. 241-255",
+   "otros": "Paràmetres de cada àmbit (antigues fàbriques, Molí de Vent, Pineda d'en Gori...) segons plànols i planejament anterior."
+  },
+  "9.a": {
+   "nombre": "Activitat econòmica compacta",
+   "articulo": "Art. 259",
+   "frente_minimo_m": 15,
+   "usos": "Activitats econòmiques i terciari.",
+   "otros": "Sostre i plantes segons plànols."
+  },
+  "9.b": {
+   "nombre": "Activitat econòmica aïllada",
+   "articulo": "Art. 260",
+   "altura_max": "Una planta de 8 m (amb altells)",
+   "usos": "Activitats econòmiques i terciari.",
+   "otros": "Paràmetres (ocupació, edificabilitat i parcel·la mínima) fixats als plànols d'ordenació detallada del sòl urbà."
+  },
+  "9.c": {
+   "nombre": "Activitat econòmica amb ordenació predeterminada",
+   "articulo": "Art. 261",
+   "altura_max": "5 m",
+   "usos": "Activitats econòmiques.",
+   "segregacion": "No: la parcel·la mínima és l'existent."
+  },
+  "9.d": {
+   "nombre": "Activitat econòmica d'ús exclusiu hoteler",
+   "articulo": "Art. 262",
+   "usos": "Hoteler."
+  },
+  "21.a": {
+   "nombre": "Sòl agrícola d'especial interès",
+   "articulo": "Art. 292",
+   "usos": "Agrícola."
+  },
+  "21.b": {
+   "nombre": "Sòl agrícola comú",
+   "articulo": "Art. 294",
+   "usos": "Agrícola."
+  },
+  "22.a": {
+   "nombre": "Sòl forestal d'especial interès",
+   "articulo": "Art. 296",
+   "usos": "Forestal."
+  },
+  "22.b": {
+   "nombre": "Sòl forestal comú",
+   "articulo": "Art. 298",
+   "usos": "Forestal."
+  },
+  "23": {
+   "nombre": "Espai d'interès paisatgístic",
+   "articulo": "Secció IV, títol VI",
+   "usos": "Agrícola i forestal amb protecció paisatgística."
+  }
+ }
+}
