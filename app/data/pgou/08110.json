@@ -191,6 +191,81 @@
    "nombre": "Subjecta a pla especial",
    "articulo": "Art. 169",
    "otros": "Cal pla especial."
+  },
+  "219": {
+   "nombre": "Edificació prefixada (prefixada per gàlib, clau 219)",
+   "articulo": "Secció 11a",
+   "altura_max": "Segons plànols (PB+2 = 10,65 m ...)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria segons plànols; 1 habitatge per cada 75 m² en plantes pis."
+  },
+  "319": {
+   "nombre": "Edificació prefixada (variant, clau 319)",
+   "articulo": "Secció 11a",
+   "altura_max": "Segons plànols (PB+2 = 10,65 m ...)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria segons plànols; 1 habitatge per cada 75 m² en plantes pis."
+  },
+  "112a": {
+   "nombre": "Ordenació en filera i mixta (dins d'unitat d'actuació, clau 112a)",
+   "articulo": "Secció 6a",
+   "altura_max": "PB+2",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "312a": {
+   "nombre": "Ordenació en filera i mixta (variant, clau 312a)",
+   "articulo": "Secció 6a",
+   "altura_max": "PB+2",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "412a": {
+   "nombre": "Ordenació en filera i mixta (variant, clau 412a)",
+   "articulo": "Secció 6a",
+   "altura_max": "PB+2",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "113b": {
+   "nombre": "Densificació semiintensiva (variant, clau 113b)",
+   "articulo": "Secció 7a",
+   "altura_max": "Segons plànols",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "No s'admeten habitatges en planta baixa."
+  },
+  "120a": {
+   "nombre": "Edificació aïllada unifamiliar (dins la UA 108, clau 120a)",
+   "articulo": "Secció 12a",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 8,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge unifamiliar."
+  },
+  "220a": {
+   "nombre": "Edificació aïllada unifamiliar (dins del PP5, clau 220a)",
+   "articulo": "Secció 12a",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 8,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2",
+   "usos": "Habitatge unifamiliar."
+  },
+  "121": {
+   "nombre": "Zona industrial de llevant (dins del PP2, clau 121)",
+   "articulo": "Secció 13a, art. 156-160",
+   "edificabilidad": "2,00 m²st/m²s",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "otros": "Gran indústria existent; estudis de detall vigents."
+  },
+  "220c": {
+   "nombre": "Edificació aïllada per a ús hoteler (variant, clau 220c)",
+   "articulo": "Secció 12a",
+   "parcela_minima_m2": 1500,
+   "edificabilidad": "2,00 m²st/m²s",
+   "ocupacion_max": "45 %",
+   "altura_max": "6 plantes",
+   "usos": "Hoteler."
   }
  }
 }
