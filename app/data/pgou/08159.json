@@ -1,0 +1,89 @@
+{
+ "municipio": "Parets del Vallès",
+ "codigo_ine": "08159",
+ "plan": "Revisió del Pla general d'ordenació de Parets del Vallès – Normativa urbanística",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=222113&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "em": {
+   "nombre": "Edificació entre mitgeres",
+   "articulo": "Art. 98-101",
+   "altura_max": "Segons plànols: de PB (4 m) a PB+5 (19,50 m)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Fondària i plantes segons plànols de cada illa."
+  },
+  "ea1": {
+   "nombre": "Edificació aïllada amb parcel·la mínima de 400 m²",
+   "articulo": "Art. 102",
+   "parcela_minima_m2": 400,
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (10,80 m)",
+   "usos": "Habitatge i usos compatibles."
+  },
+  "ea2": {
+   "nombre": "Edificació aïllada amb morfologia definida",
+   "articulo": "Art. 103",
+   "usos": "Habitatge i usos compatibles.",
+   "otros": "Volumetria segons plànols."
+  },
+  "ea3": {
+   "nombre": "Edificació aïllada amb habitatge unifamiliar",
+   "articulo": "Art. 104",
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,80 m²st/m²s",
+   "ocupacion_max": "35 %",
+   "usos": "Habitatge unifamiliar (un per parcel·la)."
+  },
+  "oe": {
+   "nombre": "Ordenació existent",
+   "articulo": "Art. 105",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Es mantenen els paràmetres del planejament anterior."
+  },
+  "zi1": {
+   "nombre": "Zona industrial en edificació aïllada",
+   "articulo": "Art. 106-108",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "60 % (65 % al sector Zeta en parcel·les grans)",
+   "usos": "Industrial, magatzem i usos compatibles (activitat mínima de 400 m² en planta a la ZI1)."
+  },
+  "zi2": {
+   "nombre": "Zona industrial amb naus en filera",
+   "articulo": "Art. 109-110",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1 m²st/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "15 m",
+   "usos": "Industrial per a petites i mitjanes empreses (1 activitat per cada 200 m² d'ocupació)."
+  },
+  "vp": {
+   "nombre": "Verd privat",
+   "articulo": "Secció 3a",
+   "usos": "Jardí privat."
+  },
+  "zva": {
+   "nombre": "Zona de valor agrícola (no urbanitzable)",
+   "articulo": "Títol VI",
+   "usos": "Agrícola; no s'admeten granges."
+  },
+  "zar": {
+   "nombre": "Zona d'agrupació rural (no urbanitzable)",
+   "articulo": "Títol VI",
+   "usos": "Agrícola i habitatge rural existent."
+  },
+  "d1": {
+   "nombre": "Desenvolupament residencial (urbanitzable)",
+   "articulo": "Títol V",
+   "otros": "Cal pla parcial."
+  },
+  "d2": {
+   "nombre": "Desenvolupament industrial (urbanitzable)",
+   "articulo": "Títol V",
+   "otros": "Cal pla parcial."
+  }
+ }
+}
