@@ -1,0 +1,242 @@
+{
+ "municipio": "Santa Perpètua de Mogoda",
+ "codigo_ine": "08260",
+ "plan": "Pla general d'ordenació de Santa Perpètua de Mogoda – Text refós de les normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=117158&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "1.1": {
+   "nombre": "Residencial del nucli antic",
+   "articulo": "Art. 255-262",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Sostre màxim per parcel·la segons el plànol de condicions d'edificació (N-3). No es permeten nous fronts principals."
+  },
+  "1.2": {
+   "nombre": "Residencial d'eixample",
+   "articulo": "Art. 263-272",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Sostre segons plànol N-3; fondària edificable resultant del 30 % de l'illa."
+  },
+  "1.2a": {
+   "nombre": "Residencial d'eixample 1.2a",
+   "articulo": "Art. 268",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Sostre segons plànol N-3; fondària edificable resultant del 30 % de l'illa."
+  },
+  "1.2b": {
+   "nombre": "Residencial d'eixample 1.2b",
+   "articulo": "Art. 269",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Fondària edificable del 30 % de l'illa, màxim 13 m."
+  },
+  "1.3": {
+   "nombre": "Residencial en volumetries especials",
+   "articulo": "Art. 273-278",
+   "ocupacion_max": "100 % (alineació a vial) / 40 % (aïllada)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Sostre fixat al plànol N-3 o a la fitxa de la unitat d'actuació."
+  },
+  "2.1a": {
+   "nombre": "Conjunts amb espais oberts d'ús públic 2.1a",
+   "articulo": "Art. 281-288",
+   "edificabilidad": "1,00 m²st/m²s (unitat d'ordenació)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Ordenació mitjançant pla especial; 10 % mínim d'espai públic."
+  },
+  "2.1c": {
+   "nombre": "Conjunts amb espais oberts d'ús públic 2.1c",
+   "articulo": "Art. 281-288",
+   "edificabilidad": "1,40 m²st/m²s",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Ordenació mitjançant pla especial; 40 % mínim d'espai públic."
+  },
+  "2.1d": {
+   "nombre": "Conjunts amb espais oberts d'ús públic 2.1d",
+   "articulo": "Art. 281-288",
+   "edificabilidad": "2,10 m²st/m²s",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Ordenació mitjançant pla especial."
+  },
+  "2.1f": {
+   "nombre": "Conjunts amb espais oberts d'ús públic 2.1f",
+   "articulo": "Art. 281-288",
+   "edificabilidad": "2,30 m²st/m²s",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Ordenació mitjançant pla especial."
+  },
+  "2.1": {
+   "nombre": "Conjunts amb espais oberts d'ús públic",
+   "articulo": "Art. 281-288",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificabilitat de 1,00 a 2,30 m²st/m²s segons subzona; ordenació mitjançant pla especial."
+  },
+  "2.2": {
+   "nombre": "Conjunts amb espais oberts",
+   "articulo": "Art. 289-296",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificabilitat i ocupació segons subzona; parcel·la segons estudi de detall."
+  },
+  "2.3": {
+   "nombre": "Residencial en ciutat jardí",
+   "articulo": "Art. 297-305",
+   "parcela_minima_m2": 200,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40 % (2.3a) / 60 % (2.3b)",
+   "usos": "Habitatge unifamiliar."
+  },
+  "2.3a": {
+   "nombre": "Ciutat jardí 2.3a",
+   "articulo": "Art. 297-305",
+   "parcela_minima_m2": 200,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "40 %",
+   "usos": "Habitatge unifamiliar.",
+   "otros": "La parcel·la ha d'inscriure un cercle de 10 m."
+  },
+  "2.3b": {
+   "nombre": "Ciutat jardí 2.3b",
+   "articulo": "Art. 297-305",
+   "parcela_minima_m2": 200,
+   "edificabilidad": "0,75 m²st/m²s",
+   "ocupacion_max": "60 %",
+   "usos": "Habitatge unifamiliar i aparellat.",
+   "otros": "Cercle inscrit de 7 m en aparellats."
+  },
+  "3.1": {
+   "nombre": "Terciària en volumetries especials",
+   "articulo": "Art. 308-314",
+   "edificabilidad": "1 m²st/m²s",
+   "usos": "Terciari, comercial i oficines.",
+   "otros": "Paràmetres d'edificació segons estudi de detall."
+  },
+  "4.1": {
+   "nombre": "Terciària en volums específics amb espais oberts",
+   "articulo": "Art. 317-323",
+   "edificabilidad": "1,20 m²st/m²s",
+   "ocupacion_max": "60 % en PB",
+   "usos": "Terciari.",
+   "otros": "Ordenació mitjançant pla especial; 20 % mínim d'espai públic."
+  },
+  "5.1": {
+   "nombre": "Industrial d'eixample i de nucli antic",
+   "articulo": "Art. 326-332",
+   "frente_minimo_m": 10,
+   "edificabilidad": "2 m²st/m²s (volum 9 m³/m²)",
+   "ocupacion_max": "100 %",
+   "altura_max": "Segons amplada del vial: 8,30 a 13,30 m o més",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "5.2": {
+   "nombre": "Industrial en volumetries especials",
+   "articulo": "Art. 333-338",
+   "frente_minimo_m": 15,
+   "ocupacion_max": "50 %",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats.",
+   "otros": "Edificabilitat segons planejament de desenvolupament i fitxes de l'annex (volum màx. 9 m³/m²)."
+  },
+  "6.1a": {
+   "nombre": "Industrial aïllada – Urvasa, carrer Vallès",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1b": {
+   "nombre": "Industrial aïllada – Urvasa, Can Bernades-Subirà",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1c": {
+   "nombre": "Industrial aïllada – Can Vinyals",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1d": {
+   "nombre": "Industrial aïllada – Torre del Rector",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1e": {
+   "nombre": "Industrial aïllada – Santiga",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1f": {
+   "nombre": "Industrial aïllada – La Florida",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 6000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1g": {
+   "nombre": "Industrial aïllada 6.1g",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 6000,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,7 m²st/m²s",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats.",
+   "otros": "Màxim dues parcel·les per unitat de zona."
+  },
+  "6.1r": {
+   "nombre": "Industrial aïllada – Ronda est de Polinyà",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1 m²st/m²s (volum 8 m³/m²)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats."
+  },
+  "6.1": {
+   "nombre": "Industrial de configuració aïllada",
+   "articulo": "Art. 341-348",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "1 m²st/m²s (0,7 a la 6.1g)",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats.",
+   "otros": "Parcel·la mínima de 800 a 6.000 m² segons subzona."
+  },
+  "6.2": {
+   "nombre": "Industrial aïllada en parcel·la única",
+   "articulo": "Art. 349-356",
+   "usos": "Industrial, magatzem, oficines, comercial i serveis vinculats.",
+   "segregacion": "No: parcel·la única i indivisible."
+  },
+  "6.3a": {
+   "nombre": "Emmagatzematge de vehicles 6.3a",
+   "articulo": "Art. 357-363",
+   "edificabilidad": "0,20 m²st/m²s",
+   "usos": "Emmagatzematge de vehicles.",
+   "segregacion": "No: parcel·la única i indivisible."
+  },
+  "6.3b": {
+   "nombre": "Emmagatzematge de vehicles 6.3b",
+   "articulo": "Art. 357-363",
+   "edificabilidad": "0,75 m²st/m²s",
+   "usos": "Emmagatzematge de vehicles.",
+   "segregacion": "No: parcel·la única i indivisible."
+  },
+  "6.4": {
+   "nombre": "Serveis a la indústria",
+   "articulo": "Secció 6a, cap. 7",
+   "usos": "Serveis a la indústria (inclou serveis a la carretera)."
+  },
+  "7": {
+   "nombre": "Zona general rural",
+   "articulo": "Art. 472-475",
+   "usos": "Agrícola, ramader i forestal."
+  }
+ }
+}
