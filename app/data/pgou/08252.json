@@ -1,0 +1,55 @@
+{
+ "municipio": "Barberà del Vallès",
+ "codigo_ine": "08252",
+ "plan": "Pla General Municipal d'Ordenació de Barberà del Vallès – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=284011&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "7.1": {
+   "edificabilidad": "1 m²t/m²s; volumen máx. 8 m³/m²",
+   "altura_max": "16 m",
+   "usos": "Principales: industria agrupada y separada. Compatibles: industria artesanal y urbana, almacén, talleres de vehículos, logística (oeste del Ripoll: vial ≥28 m), servicios técnicos y urbanos, recreativo, asociativo.",
+   "nombre": "Industrial con medianera común",
+   "articulo": "Art. 199-201",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "ocupacion_max": "50 % (75 % en antiguos planes parciales A y B)",
+   "otros": "Ancho mínimo 15 m. Parcelas menores no ampliables: 0,75 m²t/m². Por debajo de 500 m² inedificable. Estación de servicio no admitida.",
+   "segregacion": "Parcela mínima 800 m² y 20 m de fachada."
+  },
+  "7.2": {
+   "edificabilidad": "1 m²t/m²s; volumen máx. 8 m³/m²",
+   "altura_max": "16 m",
+   "usos": "Principales: industria agrupada y separada. Compatibles: industria artesanal y urbana, almacén, talleres de vehículos, estación de servicio (no en 7.1, con condiciones del art. 100), logística (oeste del Ripoll: vial ≥28 m), servicios técnicos y urbanos, recreativo, asociativo.",
+   "nombre": "Industrial en ordenación aislada",
+   "articulo": "Art. 199, 202-203",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 30,
+   "ocupacion_max": "50 %",
+   "otros": "Separaciones: 10 m a calle, 5 m resto de lindes. Estación de servicio: vial >15 m, espera dentro de la parcela, surtidores y tanques a ≥20 m de viviendas/equipamientos y ≥10 m de otros edificios; no con frente a la carretera de Barcelona (art. 100)."
+  },
+  "7.2f": {
+   "edificabilidad": "1 m²t/m²s; volumen máx. 8 m³/m²",
+   "altura_max": "16 m",
+   "usos": "Principales: industria agrupada y separada. Compatibles: industria artesanal y urbana, almacén, talleres de vehículos, estación de servicio (no en 7.1, con condiciones del art. 100), logística (oeste del Ripoll: vial ≥28 m), servicios técnicos y urbanos, recreativo, asociativo.",
+   "nombre": "Industrial aislada con frente a la autopista",
+   "articulo": "Art. 205",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 30,
+   "ocupacion_max": "50 %",
+   "otros": "Parámetros de 7.2 con exigencias de calidad de imagen visibles desde la autopista."
+  },
+  "7.2r": {
+   "edificabilidad": "1 m²t/m²s; volumen máx. 8 m³/m²",
+   "altura_max": "16 m",
+   "usos": "Principales: industria agrupada y separada. Compatibles: industria artesanal y urbana, almacén, talleres de vehículos, estación de servicio (no en 7.1, con condiciones del art. 100), logística (oeste del Ripoll: vial ≥28 m), servicios técnicos y urbanos, recreativo, asociativo.",
+   "nombre": "Industrial aislada – sector del riu Ripoll",
+   "articulo": "Art. 206",
+   "parcela_minima_m2": 10000,
+   "frente_minimo_m": 30,
+   "ocupacion_max": "60 %",
+   "otros": "No se permite segregar en parcelas inferiores a 10.000 m². No se admite industria compartida."
+  }
+ }
+}
