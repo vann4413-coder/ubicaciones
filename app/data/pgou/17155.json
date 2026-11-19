@@ -1,0 +1,164 @@
+{
+ "municipio": "Salt",
+ "codigo_ine": "17155",
+ "plan": "Text refós del Pla general d'ordenació de Salt – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=63738&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=63739&downloadType=inline&idioma=ca"
+ ],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "1.1": {
+   "nombre": "Residencial de Ciutat Vella",
+   "articulo": "Títol IV, zona 1.1",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Façana: la de la parcel·lació existent. Alçada i plantes segons plànols normatius per carrer i illa."
+  },
+  "1.2": {
+   "nombre": "Residencial de creixements tradicionals",
+   "articulo": "Art. 395-400",
+   "altura_max": "En general PB+2 (segons plànols)",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Façana: la de la parcel·lació existent."
+  },
+  "1.3": {
+   "nombre": "Residencial de creixement en filera",
+   "articulo": "Art. 401-406",
+   "frente_minimo_m": 5,
+   "altura_max": "PB+2",
+   "usos": "Habitatge unifamiliar en filera.",
+   "otros": "Edificabilitat i densitat segons quadres de les subzones 1.3a i 1.3b."
+  },
+  "1.4": {
+   "nombre": "Residencial d'eixample suburbà",
+   "articulo": "Art. 407-412",
+   "frente_minimo_m": 5,
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificabilitat segons regles per illa i quadre de la subzona 1.4a."
+  },
+  "1.5": {
+   "nombre": "Residencial d'eixample urbà",
+   "articulo": "Art. 413-418",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Edificabilitat i plantes segons plànols normatius per illa."
+  },
+  "2.1": {
+   "nombre": "Residencial d'ordenació específica",
+   "articulo": "Art. 423-428",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "2.1b: parcel·la mínima 250 m², façana 8 m, ocupació 70 %."
+  },
+  "2.1b": {
+   "nombre": "Residencial d'ordenació específica 2.1b",
+   "articulo": "Art. 423-428",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 8,
+   "ocupacion_max": "70 %",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments."
+  },
+  "2.2": {
+   "nombre": "Residencial d'edificació amb espais lliures",
+   "articulo": "Art. 429-434",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 35,
+   "altura_max": "PB+5 (18,30 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Edificabilitat i ocupació segons plànols normatius sèrie 3."
+  },
+  "2.3": {
+   "nombre": "Residencial en volumetria específica",
+   "articulo": "Art. 435-440",
+   "altura_max": "PB+5 (19,30 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles.",
+   "otros": "Edificabilitat i habitatges per parcel·la segons quadre de finques."
+  },
+  "2.4a": {
+   "nombre": "Ciutat jardí 2.4a",
+   "articulo": "Art. 441-446",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,8 m²st/m²s (màx. 200 m²)",
+   "ocupacion_max": "40 %",
+   "usos": "Habitatge unifamiliar."
+  },
+  "2.4b": {
+   "nombre": "Ciutat jardí 2.4b",
+   "articulo": "Art. 441-446",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,6 m²st/m²s (màx. 240 m²)",
+   "ocupacion_max": "30 %",
+   "usos": "Habitatge unifamiliar."
+  },
+  "2.4c": {
+   "nombre": "Ciutat jardí 2.4c",
+   "articulo": "Art. 441-446",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,4 m²st/m²s (màx. 320 m²)",
+   "ocupacion_max": "20 %",
+   "usos": "Habitatge unifamiliar."
+  },
+  "3": {
+   "nombre": "Terciària que configura carrers",
+   "articulo": "Zona 3",
+   "usos": "Terciari."
+  },
+  "4": {
+   "nombre": "Terciària amb espais oberts",
+   "articulo": "Zona 4",
+   "usos": "Terciari."
+  },
+  "5.1": {
+   "nombre": "Industrial d'eixample amb terciari",
+   "articulo": "Art. 453-457",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "85 %",
+   "altura_max": "PB+1 (12 m)",
+   "usos": "Industrial, magatzem i usos compatibles. Terciari."
+  },
+  "5.2": {
+   "nombre": "Industrial d'eixample",
+   "articulo": "Art. 458-462",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "ocupacion_max": "85 %",
+   "altura_max": "12-13 m",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "6.1": {
+   "nombre": "Gran indústria urbana",
+   "articulo": "Art. 463-468",
+   "ocupacion_max": "Segons plànols",
+   "usos": "Industrial, magatzem i usos compatibles.",
+   "segregacion": "No: la parcel·la mínima coincideix amb cada àmbit de zona."
+  },
+  "6.2a": {
+   "nombre": "Industrial de configuració aïllada 6.2a",
+   "articulo": "Art. 469-474",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 36,
+   "edificabilidad": "1,20 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "6.2b": {
+   "nombre": "Industrial de configuració aïllada 6.2b",
+   "articulo": "Art. 469-474",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1,40 m²st/m²s (volum 8,4 m³/m²)",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial, magatzem i usos compatibles."
+  },
+  "6.2": {
+   "nombre": "Industrial de configuració aïllada",
+   "articulo": "Art. 469-474",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "1,20-1,40 m²st/m²s",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial, magatzem i usos compatibles."
+  }
+ }
+}

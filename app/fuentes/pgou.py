@@ -49,6 +49,8 @@ def zona(cod_ine5: str, clave_municipal: str, descripcion: str = "") -> dict | N
     variantes = [clave_municipal]
     if re.match(r"^\s*\d+-\d", clave_municipal or ""):
         variantes.append(re.sub(r"^(\s*\d+)-", r"\1.", clave_municipal))  # Sabadell escribe «1-6a» por «1.6a»
+    if re.search(r"\d\.[a-z]\b", clave_municipal or "", re.I):
+        variantes.append(re.sub(r"(\d)\.([a-z])\b", r"\1\2", clave_municipal, flags=re.I))  # «6.2.a» por «6.2a»
     for v in variantes:
         for c in _candidatas(v):
             if c in zonas:
