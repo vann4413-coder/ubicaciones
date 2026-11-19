@@ -1,0 +1,137 @@
+{
+ "municipio": "Cunit",
+ "codigo_ine": "43051",
+ "plan": "Pla d'ordenació urbanística municipal de Cunit – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=293449&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-19",
+ "zonas": {
+  "2": {
+   "nombre": "Casc urbà",
+   "articulo": "Art. 163-172",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria segons plànols; conservació ambiental."
+  },
+  "3a": {
+   "nombre": "Residencial plurifamiliar aïllat, intensitat 1",
+   "articulo": "Art. 173-177",
+   "parcela_minima_m2": 350,
+   "edificabilidad": "1,20 m²st/m²s",
+   "altura_max": "PB+2+àtic (12 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles (no residencial en PB en alguns casos)."
+  },
+  "3b": {
+   "nombre": "Residencial plurifamiliar aïllat, intensitat 2",
+   "articulo": "Art. 173-177",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "1,10 m²st/m²s",
+   "altura_max": "PB+3 (12 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles (no residencial en PB en alguns casos)."
+  },
+  "3c": {
+   "nombre": "Residencial plurifamiliar aïllat, intensitat 3",
+   "articulo": "Art. 173-177",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "1,30 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+4 (15 m)",
+   "usos": "Habitatge plurifamiliar i usos compatibles (no residencial en PB en alguns casos)."
+  },
+  "4a": {
+   "nombre": "Residencial unifamiliar aïllat, intensitat 1",
+   "articulo": "Art. 178-182",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,60 m²st/m²s",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "4b": {
+   "nombre": "Residencial unifamiliar aïllat, intensitat 2",
+   "articulo": "Art. 178-182",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,50 m²st/m²s",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "4b1": {
+   "nombre": "Residencial unifamiliar aïllat 4b1",
+   "articulo": "Art. 178-182",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,40 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "4c": {
+   "nombre": "Residencial unifamiliar aïllat, intensitat 3",
+   "articulo": "Art. 178-182",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,45 m²st/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1 (6,50 m)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "4c1": {
+   "nombre": "Residencial unifamiliar aïllat 4c1",
+   "articulo": "Art. 178-182",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,45 m²st/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Habitatge unifamiliar aïllat."
+  },
+  "5": {
+   "nombre": "Hotelera",
+   "articulo": "Art. 183-186",
+   "usos": "Hoteler."
+  },
+  "6": {
+   "nombre": "Comercial-terciària",
+   "articulo": "Art. 187-190",
+   "usos": "Comercial, terciari i oficines."
+  },
+  "7a": {
+   "nombre": "Conjunts d'ordenació unitària – fileres de cases",
+   "articulo": "Art. 191-193",
+   "usos": "Habitatge unifamiliar en filera.",
+   "otros": "Volumetria del conjunt unitari."
+  },
+  "7b": {
+   "nombre": "Conjunts d'ordenació unitària – volumetria específica",
+   "articulo": "Art. 191-193",
+   "usos": "Habitatge, comerç, oficines, restauració, serveis i equipaments.",
+   "otros": "Volumetria específica segons plànols."
+  },
+  "11": {
+   "nombre": "Agrícola (no urbanitzable)",
+   "articulo": "Art. 238-240",
+   "usos": "Agrícola."
+  },
+  "12": {
+   "nombre": "Forestal (no urbanitzable)",
+   "articulo": "Art. 241-245",
+   "usos": "Forestal."
+  },
+  "13": {
+   "nombre": "Interès paisatgístic (no urbanitzable)",
+   "articulo": "Art. 246",
+   "usos": "Protecció paisatgística."
+  },
+  "14": {
+   "nombre": "Protecció d'infraestructures",
+   "articulo": "Art. 247",
+   "usos": "Protecció de vials i infraestructures."
+  },
+  "15": {
+   "nombre": "Protecció d'edificacions i entorns d'interès",
+   "articulo": "Art. 248",
+   "usos": "Protecció del patrimoni."
+  }
+ }
+}
