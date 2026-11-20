@@ -1,0 +1,49 @@
+{
+ "municipio": "Montornès del Vallès",
+ "codigo_ine": "08136",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de Montornès del Vallès (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=119408&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "14a": {
+   "nombre": "Ordenació en edificació aïllada – intensitat 1",
+   "articulo": "Art. 180-182",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "0,80 m²t/m²s",
+   "usos": "Vivienda y usos compatibles."
+  },
+  "14b": {
+   "nombre": "Ordenació en edificació aïllada – intensitat 2",
+   "articulo": "Art. 180-182",
+   "parcela_minima_m2": 400,
+   "usos": "Vivienda y usos compatibles."
+  },
+  "16": {
+   "nombre": "Volumetria específica",
+   "articulo": "Art. 183-186",
+   "ocupacion_max": "50 %",
+   "usos": "Residencial y usos de la zona de eixample.",
+   "otros": "Volumen según planos de la serie 6."
+  },
+  "18": {
+   "nombre": "Zona industrial",
+   "articulo": "Art. 191-193",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "Volumen máx. 4,5 m³/m²",
+   "ocupacion_max": "50 %",
+   "altura_max": "15 m",
+   "usos": "Industrial en todas las categorías, almacén, comercial y comercial concentrado, oficinas, aparcamiento, hotelero, recreativo, deportivo. La estación de servicio no figura expresamente: confirmar con el ayuntamiento.",
+   "otros": "Separaciones de 10 m a todos los lindes."
+  },
+  "21": {
+   "nombre": "Desenvolupament urbà industrial (urbanitzable)",
+   "articulo": "Art. 242-246",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "0,6 m²t/m²s bruta; volumen 4,5 m³/m²",
+   "ocupacion_max": "50 %",
+   "usos": "Industrial en todas las categorías, almacén, comercial y comercial concentrado, oficinas, aparcamiento, hotelero, recreativo, deportivo. La estación de servicio no figura expresamente: confirmar con el ayuntamiento.",
+   "otros": "Pendiente de plan parcial; separaciones de 10 m."
+  }
+ }
+}
