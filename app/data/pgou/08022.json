@@ -1,0 +1,104 @@
+{
+ "municipio": "Berga",
+ "codigo_ine": "08022",
+ "plan": "Pla d'ordenació urbanística municipal de Berga – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=221720&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "10a": {
+   "nombre": "Trama en edificació aïllada – unifamiliar 600 m²",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2 (8,50 m)",
+   "usos": "Residencial unifamiliar, artesanía familiar, oficinas y servicios profesionales en planta baja."
+  },
+  "10b": {
+   "nombre": "Trama en edificació aïllada – unifamiliar 400 m²",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (8,50 m)",
+   "usos": "Residencial unifamiliar, artesanía familiar, oficinas y servicios profesionales en planta baja.",
+   "otros": "Pareadas: parcela mínima reducible un 20 %."
+  },
+  "10c": {
+   "nombre": "Trama en edificació aïllada – unifamiliar 300 m²",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2 (8,50 m)",
+   "usos": "Residencial unifamiliar, artesanía familiar, oficinas y servicios profesionales en planta baja.",
+   "otros": "Pareadas: parcela mínima reducible un 20 %."
+  },
+  "10d": {
+   "nombre": "Trama en edificació aïllada – plurifamiliar 600 m²",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+2 (9,90 m)",
+   "usos": "Residencial, comercio en planta baja, oficinas, hotelero, restauración, equipamientos."
+  },
+  "10e": {
+   "nombre": "Trama en edificació aïllada – plurifamiliar 400 m²",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "edificabilidad": "1,40 m²t/m²s",
+   "altura_max": "PB+3 (12,70 m)",
+   "usos": "Residencial, comercio en planta baja, oficinas, hotelero, restauración, equipamientos."
+  },
+  "11a": {
+   "nombre": "Volumetria consolidada",
+   "articulo": "Art. 122",
+   "usos": "Residencial, comercio en planta baja, oficinas, hotelero, restauración, equipamientos.",
+   "otros": "Se mantienen las parcelas existentes sin partición ni segregación.",
+   "segregacion": "No: parcelas existentes indivisibles."
+  },
+  "11b": {
+   "nombre": "Volumetria de nova creació",
+   "articulo": "Art. 123",
+   "usos": "Residencial, comercio en planta baja, oficinas, hotelero, restauración, equipamientos.",
+   "otros": "Envolvente y plantas según planos."
+  },
+  "12a": {
+   "nombre": "Terciari – volumetria consolidada",
+   "articulo": "Art. 124-125",
+   "usos": "Terciario.",
+   "otros": "Parcelas existentes sin partición ni segregación; sin aumento de volumen.",
+   "segregacion": "No: parcelas existentes indivisibles."
+  },
+  "12b": {
+   "nombre": "Terciari – paràmetres específics",
+   "articulo": "Art. 126",
+   "usos": "Terciario.",
+   "otros": "Según estudio de detalle AUP-25 (ctra. Sant Fruitós) o modificación puntual (antigua fábrica Asensi)."
+  },
+  "13a": {
+   "nombre": "Industrial polígon INCASOL",
+   "articulo": "Art. 127-128 y Annex 4",
+   "usos": "Industrial en todas las categorías, almacén, comercio, hotelero, estación de servicio, restauración, oficinas y servicios, recreativo, deportivo, aparcamiento y equipamientos.",
+   "otros": "Edificación aislada; parcelación y edificación según las ordenanzas del plan parcial del polígono."
+  },
+  "13b": {
+   "nombre": "Indústria o magatzem entre mitgeres",
+   "articulo": "Art. 129",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (11 m)",
+   "usos": "Industrial en todas las categorías, almacén, comercio, hotelero, estación de servicio, restauración, oficinas y servicios, recreativo, deportivo, aparcamiento y equipamientos.",
+   "otros": "Separaciones: 5 m a vial y lindes, 8 m entre edificios; fachada máxima 70 m."
+  }
+ }
+}
