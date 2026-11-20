@@ -1,15 +1,16 @@
 """Servidor web: API + página con mapa + informes HTML/PDF."""
 import logging
+import re
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, HTTPException, Query, Request, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from shapely.geometry import mapping
 
-from app import config, geo, http, pagos
+from app import config, geo, http, lote, pagos
 from app.legal import router as rutas_legales
 from app.rutas_cuenta import acceso, redirigir_a_compra, router as rutas_cuenta
 from app.analisis.compatibilidad import PERFILES
@@ -53,6 +54,10 @@ async def _refrescar_puntos_recarga():
 async def ciclo(app: FastAPI):
     import asyncio
     tareas = [asyncio.create_task(_refrescar_capacidad_red()), asyncio.create_task(_refrescar_puntos_recarga())]
+    try:
+        lote.reanudar_pendientes()
+    except Exception:  # noqa: BLE001
+        logging.getLogger(__name__).exception("No se pudieron reanudar los lotes")
     yield
     for tarea in tareas:
         tarea.cancel()
@@ -217,47 +222,6 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
     return render.html(inf, barra={"pdf": f"/informe/{rc}.pdf" + (f"?{urlencode(q)}" if q else ""), "aviso": aviso})
 
 
-async def _ficha_lote(e: dict) -> dict:
-    """Verificación de suelo resumida de una ubicación (sin informe completo): catastro, urbanismo, PGOU e inundabilidad."""
-    from app.fuentes import inundabilidad, pgou, urbanismo
-    sal = {"id": e.get("id")}
-    try:
-        rc = (e.get("rc") or "").strip().upper()[:14]
-        if not rc:
-            cands = await catastro.rc_cercana(float(e["lon"]), float(e["lat"]))
-            if not cands:
-                return {**sal, "error": "Sin parcela catastral junto al punto"}
-            rc = cands[0]["rc"]
-            sal["dist_punto_m"] = cands[0].get("distancia_m")
-        p = await catastro.consultar(rc)
-        if p.get("estado") != "ok":
-            return {**sal, "rc": rc, "error": p.get("mensaje", "Catastro sin datos")}
-        g = p["geom"]
-        lon, lat = geo.a_wgs84(g.centroid.x, g.centroid.y)
-        muni = await geocoder.municipio_en_punto(lon, lat) or {}
-        cod_ine = muni.get("codigo_ine") or (p.get("cod_ine_prov", "") + p.get("cod_ine_mun", ""))
-        urb, aca = await urbanismo.consultar(g), await inundabilidad.consultar_aca(g)
-        pg = None
-        if urb.get("estado") == "ok":
-            pg = pgou.consultar(cod_ine, urb.get("calificaciones"))
-            if pg:
-                principal = max((f for f in pg["zonas"] if f["zona"]), key=lambda f: f["pct"] or 0, default=None)
-                pg["segregacion"] = pgou.segregacion(principal["zona"] if principal else None, p.get("sup_grafica"), None)
-        sal.update({
-            "rc": rc, "direccion_catastro": p.get("direccion"), "clase": p.get("clase"), "uso": p.get("uso"),
-            "sup_parcela": p.get("sup_grafica"), "sup_construida": p.get("sup_construida"), "anio": p.get("anio_construccion"),
-            "num_inmuebles": p.get("num_inmuebles"), "cod_ine": cod_ine,
-            "urbanismo": generar.para_json({k: urb.get(k) for k in ("estado", "mensaje", "calificaciones", "clasificaciones",
-                                                                     "sectores", "compatibilidad", "plan_general")}),
-            "pgou": generar.para_json(pg),
-            "aca": {k: aca.get(k) for k in ("estado", "zfp_pct", "t10_pct", "t100_pct", "t500_pct", "distancia_dph_m")},
-        })
-        return sal
-    except Exception as ex:  # noqa: BLE001
-        logging.getLogger(__name__).exception("Lote %s", e)
-        return {**sal, "error": f"{type(ex).__name__}: {ex}"}
-
-
 @app.post("/api/admin/lote")
 async def lote(request: Request):
     """Solo administradores: verificación de suelo de hasta 25 ubicaciones [{id, lon, lat} o {id, rc}]."""
@@ -271,11 +235,51 @@ async def lote(request: Request):
 
     async def una(e):
         async with sem:
-            return await asyncio.wait_for(_ficha_lote(e), 120)
+            return await asyncio.wait_for(lote.ficha(e), 120)
 
     res = await asyncio.gather(*(una(e) for e in entradas), return_exceptions=True)
     return JSONResponse([r if isinstance(r, dict) else {"id": e.get("id"), "error": str(r) or type(r).__name__}
                          for e, r in zip(entradas, res)])
+
+
+def _admin(request: Request) -> dict:
+    from app.cuentas import es_admin
+    from app.rutas_cuenta import usuario_actual
+    u = usuario_actual(request)
+    if not es_admin(u):
+        raise HTTPException(403, "Solo administradores")
+    return u
+
+
+@app.get("/admin/lotes", response_class=HTMLResponse)
+async def lotes_pagina(request: Request, error: str = ""):
+    _admin(request)
+    from app.rutas_cuenta import _pintar
+    return _pintar("lotes.html", request, lotes=lote.lista(), error=error)
+
+
+@app.post("/admin/lotes")
+async def lotes_subir(request: Request, fichero: UploadFile):
+    _admin(request)
+    from fastapi.responses import RedirectResponse
+    from urllib.parse import quote
+    try:
+        lote.crear(fichero.filename or "ubicaciones.xlsx", await fichero.read())
+    except Exception as e:  # noqa: BLE001
+        return RedirectResponse("/admin/lotes?error=" + quote(str(e)[:200]), status_code=303)
+    return RedirectResponse("/admin/lotes", status_code=303)
+
+
+@app.get("/admin/lotes/{id_}.xlsx")
+async def lotes_descargar(request: Request, id_: str, parcial: bool = False):
+    _admin(request)
+    if not re.fullmatch(r"[0-9a-f-]+", id_):
+        raise HTTPException(404)
+    f = lote.regenerar(id_) if parcial else lote.fichero_salida(id_)
+    if not f:
+        raise HTTPException(404, "Aún no está terminado")
+    nombre = (lote.lista_por_id(id_).get("nombre") or "ubicaciones.xlsx").rsplit(".", 1)[0] + "_verificacion_suelo.xlsx"
+    return FileResponse(f, filename=nombre)
 
 
 @app.get("/robots.txt", include_in_schema=False)

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Verificación de suelo por lotes</h1>
+<p class="bajada">Sube un Excel con una pestaña que tenga columnas <b>LATITUD</b> y <b>LONGITUD</b> (o <b>REFERENCIA CATASTRAL</b>). Se añaden a cada fila la referencia catastral, superficies, uso, año, clasificación y calificación urbanística, compatibilidad con gasolinera, parcela mínima, segregación e inundabilidad. Se procesa despacio (unos segundos por fila) para no saturar al Catastro; puedes cerrar esta página.</p>
+{% if error %}<div class="aviso-web">{{ error }}</div>{% endif %}
+<form class="caja" method="post" action="/admin/lotes" enctype="multipart/form-data">
+  <label>Fichero Excel (.xlsx) <input type="file" name="fichero" accept=".xlsx" required></label>
+  <button class="btn" type="submit">Procesar</button>
+</form>
+<div class="caja">
+  <h2>Lotes</h2>
+  {% if lotes %}
+  <table class="tabla-web"><tr><th>Fichero</th><th>Creado</th><th>Situación</th><th>Hechas / errores / total</th><th></th></tr>
+  {% for l in lotes %}
+    <tr><td>{{ l.nombre }}<br><small>pestaña {{ l.hoja }}</small></td><td>{{ l.creado }}</td><td>{{ l.situacion }}</td>
+    <td>{{ l.hechos }} / {{ l.errores }} / {{ l.total }}</td>
+    <td>{% if l.situacion == "terminado" %}<a class="btn" href="/admin/lotes/{{ l.id }}.xlsx">Descargar</a>{% else %}<a class="btn btn-sec" href="/admin/lotes/{{ l.id }}.xlsx?parcial=1">Descargar parcial</a>{% endif %}</td></tr>
+  {% endfor %}
+  </table>
+  <p><small>Actualiza la página para ver el avance.</small></p>
+  {% else %}<p>Todavía no hay lotes.</p>{% endif %}
+</div>
+{% endblock %}
