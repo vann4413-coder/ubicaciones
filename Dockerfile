@@ -9,7 +9,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt osmium==4.0.2
 COPY app ./app
 COPY scripts ./scripts
-RUN python -m scripts.preparar_entorno_osm --salida /datos_osm
+# Si Geofabrik falla, la imagen se construye igual (el informe usa Overpass como respaldo).
+RUN python -m scripts.preparar_entorno_osm --salida /datos_osm || (echo 'AVISO: sin base OSM local' && mkdir -p /datos_osm)
 
 # ---------- Etapa 2: servidor web ----------
 FROM python:3.12-slim

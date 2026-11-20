@@ -27,7 +27,9 @@ from shapely.geometry import Polygon  # noqa: E402
 from app import config, geo  # noqa: E402
 from app.fuentes.entorno import categoria  # noqa: E402
 
-URL_PBF = "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf"
+# Geofabrik movió en nov-2026 el extracto a una subcarpeta; se prueban ambas direcciones.
+URLS_PBF = ["https://download.geofabrik.de/europe/spain/cataluna/cataluna-latest.osm.pbf",
+            "https://download.geofabrik.de/europe/spain/cataluna-latest.osm.pbf"]
 FILTROS = [
     "nwr/amenity=fuel,charging_station,restaurant,fast_food,cafe,bar,food_court,post_depot,car_wash,vehicle_inspection,hospital,university,college",
     "nwr/tourism=hotel,motel,hostel,guest_house,apartment",
@@ -42,12 +44,20 @@ CAMPOS = ["cat", "nombre", "tipo", "lon", "lat", "direccion", "municipio"]
 
 def descargar(destino: Path) -> None:
     import httpx
-    print(f"Descargando {URL_PBF} …", flush=True)
-    with httpx.stream("GET", URL_PBF, timeout=600, follow_redirects=True) as r:
-        r.raise_for_status()
-        with open(destino, "wb") as f:
-            for trozo in r.iter_bytes(1 << 20):
-                f.write(trozo)
+    ultimo = None
+    for url in URLS_PBF:
+        print(f"Descargando {url} …", flush=True)
+        try:
+            with httpx.stream("GET", url, timeout=600, follow_redirects=True) as r:
+                r.raise_for_status()
+                with open(destino, "wb") as f:
+                    for trozo in r.iter_bytes(1 << 20):
+                        f.write(trozo)
+            return
+        except httpx.HTTPError as e:
+            ultimo = e
+            print(f"  falló: {e}", flush=True)
+    raise ultimo
 
 
 def _texto(tags, *claves):
