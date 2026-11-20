@@ -217,6 +217,67 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
     return render.html(inf, barra={"pdf": f"/informe/{rc}.pdf" + (f"?{urlencode(q)}" if q else ""), "aviso": aviso})
 
 
+async def _ficha_lote(e: dict) -> dict:
+    """Verificación de suelo resumida de una ubicación (sin informe completo): catastro, urbanismo, PGOU e inundabilidad."""
+    from app.fuentes import inundabilidad, pgou, urbanismo
+    sal = {"id": e.get("id")}
+    try:
+        rc = (e.get("rc") or "").strip().upper()[:14]
+        if not rc:
+            cands = await catastro.rc_cercana(float(e["lon"]), float(e["lat"]))
+            if not cands:
+                return {**sal, "error": "Sin parcela catastral junto al punto"}
+            rc = cands[0]["rc"]
+            sal["dist_punto_m"] = cands[0].get("distancia_m")
+        p = await catastro.consultar(rc)
+        if p.get("estado") != "ok":
+            return {**sal, "rc": rc, "error": p.get("mensaje", "Catastro sin datos")}
+        g = p["geom"]
+        lon, lat = geo.a_wgs84(g.centroid.x, g.centroid.y)
+        muni = await geocoder.municipio_en_punto(lon, lat) or {}
+        cod_ine = muni.get("codigo_ine") or (p.get("cod_ine_prov", "") + p.get("cod_ine_mun", ""))
+        urb, aca = await urbanismo.consultar(g), await inundabilidad.consultar_aca(g)
+        pg = None
+        if urb.get("estado") == "ok":
+            pg = pgou.consultar(cod_ine, urb.get("calificaciones"))
+            if pg:
+                principal = max((f for f in pg["zonas"] if f["zona"]), key=lambda f: f["pct"] or 0, default=None)
+                pg["segregacion"] = pgou.segregacion(principal["zona"] if principal else None, p.get("sup_grafica"), None)
+        sal.update({
+            "rc": rc, "direccion_catastro": p.get("direccion"), "clase": p.get("clase"), "uso": p.get("uso"),
+            "sup_parcela": p.get("sup_grafica"), "sup_construida": p.get("sup_construida"), "anio": p.get("anio_construccion"),
+            "num_inmuebles": p.get("num_inmuebles"), "cod_ine": cod_ine,
+            "urbanismo": generar.para_json({k: urb.get(k) for k in ("estado", "mensaje", "calificaciones", "clasificaciones",
+                                                                     "sectores", "compatibilidad", "plan_general")}),
+            "pgou": generar.para_json(pg),
+            "aca": {k: aca.get(k) for k in ("estado", "zfp_pct", "t10_pct", "t100_pct", "t500_pct", "distancia_dph_m")},
+        })
+        return sal
+    except Exception as ex:  # noqa: BLE001
+        logging.getLogger(__name__).exception("Lote %s", e)
+        return {**sal, "error": f"{type(ex).__name__}: {ex}"}
+
+
+@app.post("/api/admin/lote")
+async def lote(request: Request):
+    """Solo administradores: verificación de suelo de hasta 25 ubicaciones [{id, lon, lat} o {id, rc}]."""
+    import asyncio
+    from app.cuentas import es_admin
+    from app.rutas_cuenta import usuario_actual
+    if not es_admin(usuario_actual(request)):
+        raise HTTPException(403, "Solo administradores")
+    entradas = (await request.json())[:25]
+    sem = asyncio.Semaphore(4)
+
+    async def una(e):
+        async with sem:
+            return await asyncio.wait_for(_ficha_lote(e), 120)
+
+    res = await asyncio.gather(*(una(e) for e in entradas), return_exceptions=True)
+    return JSONResponse([r if isinstance(r, dict) else {"id": e.get("id"), "error": str(r) or type(r).__name__}
+                         for e, r in zip(entradas, res)])
+
+
 @app.get("/robots.txt", include_in_schema=False)
 async def robots():
     return Response("User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /informe/\nDisallow: /comprar/\n"

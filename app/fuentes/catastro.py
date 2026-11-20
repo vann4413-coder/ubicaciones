@@ -276,3 +276,23 @@ async def consultar(rc: str) -> dict:
         colindantes=colindantes,
         **dnp,
     )
+
+
+async def rc_cercana(lon: float, lat: float) -> list[dict]:
+    """Parcela que contiene el punto o, si cae en un vial, las más cercanas (hasta unos 50 m) con su distancia."""
+    r = await rc_en_punto(lon, lat)
+    if r:
+        return [{**x, "distancia_m": 0} for x in r]
+    d = await http.get_json(
+        f"{config.CATASTRO_COORD}/Consulta_RCCOOR_Distancia",
+        {"CoorX": f"{lon:.6f}", "CoorY": f"{lat:.6f}", "SRS": "EPSG:4326"},
+    )
+    res = d.get("Consulta_RCCOOR_DistanciaResult", d)
+    salida = []
+    for c in _lista(((res.get("coordenadas_distancias") or {}).get("coordd")) or []):
+        for l in _lista((c.get("lpcd") or {}).get("pcd") if isinstance(c.get("lpcd"), dict) else c.get("lpcd")):
+            pc = l.get("pc") or {}
+            rc = f"{pc.get('pc1', '')}{pc.get('pc2', '')}"
+            if len(rc) == 14:
+                salida.append({"rc": rc, "direccion": l.get("ldt", ""), "distancia_m": _num(l.get("dis"))})
+    return sorted(salida, key=lambda x: x["distancia_m"] if x["distancia_m"] is not None else 1e9)
