@@ -1,0 +1,94 @@
+{
+ "municipio": "Caldes de Montbui",
+ "codigo_ine": "08033",
+ "plan": "Pla d'ordenació urbanística municipal de Caldes de Montbui – Text refós 2008, Normativa II",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=193754&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "a5.4": {
+   "nombre": "Ciutat jardí d'edificació aïllada A5.4",
+   "articulo": "Art. 225",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "0,40 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "a5.5": {
+   "nombre": "Ciutat jardí d'edificació aïllada A5.5",
+   "articulo": "Art. 226",
+   "parcela_minima_m2": 1500,
+   "edificabilidad": "0,30 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "a5.6": {
+   "nombre": "Ciutat jardí d'edificació aïllada A5.6",
+   "articulo": "Art. 227",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "0,30 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "a5.7": {
+   "nombre": "Ciutat jardí d'edificació aïllada A5.7",
+   "articulo": "Art. 228",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,40 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "a8.1": {
+   "nombre": "Comercial i de magatzems",
+   "articulo": "Art. 231-232",
+   "edificabilidad": "0,90 m²t/m²s",
+   "usos": "Comercial (venta al detalle de competencia municipal) y almacenes.",
+   "otros": "Parcela mínima: la existente; máxima: agrupación de dos parcelas."
+  },
+  "a8.2": {
+   "nombre": "Comercial concentrat",
+   "articulo": "Art. 233",
+   "edificabilidad": "0,35 m²t/m²s",
+   "ocupacion_max": "35 %",
+   "usos": "Comercial.",
+   "otros": "Parcela única e indivisible (toda la zona).",
+   "segregacion": "No: parcela única indivisible."
+  },
+  "a9.1": {
+   "nombre": "Industrial en el nucli urbà",
+   "articulo": "Art. 234-235",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+2 (11 m)",
+   "usos": "Industria de 1ª y 2ª categoría, almacén, oficinas, garajes. En La Llana y C-59: también comercial, oficinas, restauración.",
+   "otros": "Establecimiento mínimo 300 m². Alineación a vial."
+  },
+  "a9.2": {
+   "nombre": "Sectors industrials (La Borda / El Pinatar)",
+   "articulo": "Art. 236",
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "La Borda PB+2 (vol. 7 m³/m²); El Pinatar PB+1",
+   "usos": "Industrial hasta 4ª categoría, almacenes, comercio al por mayor, estaciones de servicio, oficinas, restauración, recreativo (≤250 personas).",
+   "otros": "La Borda: parcela mínima 2.000 m² y 25 m de fachada, separaciones 8/5/5 m. El Pinatar: 1.000 m² y 15 m, separaciones 3/2/2 m."
+  },
+  "a9.2.1": {
+   "nombre": "Industrial alineació a vial",
+   "articulo": "Art. 237",
+   "usos": "Los de A9.2 (incluye estaciones de servicio).",
+   "otros": "Condiciones de A9.2 salvo separación a calle."
+  },
+  "a9.2.2": {
+   "nombre": "Industrial alineació a vial – parcel·les A i B",
+   "articulo": "Art. 238",
+   "usos": "Los de A9.2.",
+   "otros": "Parcelas existentes e indivisibles (9.981 m² y 3.930 m²), solo planta baja.",
+   "segregacion": "No: parcelas indivisibles."
+  },
+  "a9.3": {
+   "nombre": "Industrial fora del nucli urbà",
+   "articulo": "Art. 239",
+   "usos": "Solo la actividad actual.",
+   "otros": "Cada ámbito es una parcela única indivisible; no se permite aumentar la edificabilidad.",
+   "segregacion": "No: parcela única indivisible."
+  }
+ }
+}
