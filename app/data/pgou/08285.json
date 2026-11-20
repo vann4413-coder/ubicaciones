@@ -1,0 +1,82 @@
+{
+ "municipio": "Torelló",
+ "codigo_ine": "08285",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de Torelló (2006)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=199639&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "h": {
+   "nombre": "Illes de parcel·lació industrial",
+   "articulo": "Art. 76",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Volumen máx. 5 m³/m²",
+   "ocupacion_max": "90 %",
+   "altura_max": "9,50 m",
+   "usos": "Industrial de 2ª a 4ª categoría; comercial de competencia municipal (mayorista, maquinaria, venta vinculada a la producción). No alimentación al detalle.",
+   "otros": "Naves entre medianeras. Hay variantes con parcela mínima distinta (p. ej. Av. del Castell 500 m²).",
+   "segregacion": "Parcelas mínimas indivisibles."
+  },
+  "j": {
+   "nombre": "Solars d'edificació residencial aïllada",
+   "articulo": "Art. 78",
+   "parcela_minima_m2": 350,
+   "edificabilidad": "0,7 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "usos": "Vivienda unifamiliar aislada.",
+   "otros": "Hay sectores con parcela mínima de 400 m²."
+  },
+  "l-1": {
+   "nombre": "Indústria aïllada amb residència",
+   "articulo": "Art. 80",
+   "parcela_minima_m2": 500,
+   "edificabilidad": "1 m²t/m²s (vol. máx. 6 m³/m²)",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial hasta 3ª categoría con vivienda vinculada; comercial de competencia municipal limitado.",
+   "otros": "Retirada mínima 2 m al perímetro."
+  },
+  "l-2": {
+   "nombre": "Indústria aïllada sense habitatge",
+   "articulo": "Art. 80",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial de 4ª y 5ª categoría.",
+   "otros": "Una sola industria por parcela; prohibido dividir las parcelas actuales. Sector Matabosch: parcela mínima 2.000 m², ocupación 60 %.",
+   "segregacion": "No: prohibido dividir las parcelas actuales."
+  },
+  "l-10": {
+   "nombre": "Indústria aïllada (sector carrer del Ter)",
+   "articulo": "Art. 80",
+   "parcela_minima_m2": 2000,
+   "ocupacion_max": "60 %",
+   "usos": "Industrial de 1ª a 5ª categoría.",
+   "otros": "Sin subdivisión interior. Separaciones: 3 m a fachada, 4 m laterales y fondo."
+  },
+  "l-11": {
+   "nombre": "Indústria aïllada amb subdivisions interiors",
+   "articulo": "Art. 80",
+   "parcela_minima_m2": 2000,
+   "ocupacion_max": "60 %",
+   "usos": "Industrial; comercio al por mayor y venta de maquinaria; oficinas propias. No vivienda ni grandes establecimientos comerciales.",
+   "otros": "Subdivisión en propiedad horizontal. Separaciones: 7 m a fachada, 4 m laterales y fondo."
+  },
+  "l-12": {
+   "nombre": "Comercial aïllat (carrer del Ter)",
+   "articulo": "Art. 80",
+   "edificabilidad": "1.500 m² de techo (1.800 m² incluida la gasolinera)",
+   "altura_max": "9,50 m",
+   "usos": "Únicamente comercial; se contempla gasolinera dentro del techo máximo.",
+   "otros": "Parcela única de unos 3.982 m².",
+   "segregacion": "No: parcela única."
+  },
+  "l": {
+   "nombre": "Solars d'indústria aïllada",
+   "articulo": "Art. 80",
+   "parcela_minima_m2": 500,
+   "edificabilidad": "1 m²t/m²s (vol. máx. 6 m³/m²)",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial hasta 3ª categoría con vivienda vinculada; comercial de competencia municipal limitado.",
+   "otros": "Parámetros según subzona (L-1, L-2, L-10, L-11, L-12); se muestran los de L-1."
+  }
+ }
+}
