@@ -1,0 +1,106 @@
+{
+ "municipio": "Vilassar de Dalt",
+ "codigo_ine": "08214",
+ "plan": "Pla d'ordenació urbanística municipal de Vilassar de Dalt – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=381470&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "51": {
+   "nombre": "Unitats de residència aïllada (parcela de 175 a 250 m²)",
+   "articulo": "Art. 271-277",
+   "parcela_minima_m2": 175,
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "52": {
+   "nombre": "Unitats de residència aïllada (parcela de 250 a 400 m²)",
+   "articulo": "Art. 271-277",
+   "parcela_minima_m2": 250,
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "53": {
+   "nombre": "Unitats de residència aïllada (parcela de 400 a 500 m²)",
+   "articulo": "Art. 271-277",
+   "parcela_minima_m2": 400,
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "54": {
+   "nombre": "Unitats de residència aïllada (parcela de 500 a 800 m²)",
+   "articulo": "Art. 271-277",
+   "parcela_minima_m2": 500,
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "55": {
+   "nombre": "Unitats de residència aïllada (parcela de 800 a 1.000 m²)",
+   "articulo": "Art. 271-277",
+   "parcela_minima_m2": 800,
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "56": {
+   "nombre": "Unitats de residència aïllada (parcela de 1.000 m² o más)",
+   "articulo": "Art. 271-277",
+   "parcela_minima_m2": 1000,
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "61": {
+   "nombre": "Indústria col·lectiva aïllada",
+   "articulo": "Art. 279",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "1,2 m²t/m²s",
+   "usos": "Industrial."
+  },
+  "62": {
+   "nombre": "Indústria col·lectiva agrupada en filera",
+   "articulo": "Art. 280",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,4 m²t/m²s",
+   "usos": "Industrial."
+  },
+  "63": {
+   "nombre": "Indústria col·lectiva agrupada en illa",
+   "articulo": "Art. 281",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "2 m²t/m²s",
+   "usos": "Industrial."
+  },
+  "64": {
+   "nombre": "Sectors industrials desenvolupats",
+   "articulo": "Art. 282",
+   "usos": "Industrial.",
+   "otros": "Parámetros del plan parcial del sector."
+  },
+  "65": {
+   "nombre": "Conjunts industrials unitaris",
+   "articulo": "Art. 283",
+   "usos": "Industrial.",
+   "otros": "Parámetros del conjunto existente."
+  },
+  "66": {
+   "nombre": "Indústria unitària aïllada",
+   "articulo": "Art. 284",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,2 m²t/m²s",
+   "usos": "Industrial.",
+   "otros": "Dos actividades por parcela mínima."
+  },
+  "67": {
+   "nombre": "Indústria unitària agrupada en filera",
+   "articulo": "Art. 285",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,4 m²t/m²s",
+   "usos": "Industrial."
+  },
+  "68": {
+   "nombre": "Indústries unitàries agrupades en illa",
+   "articulo": "Art. 286",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,2 m²t/m²s",
+   "usos": "Industrial."
+  }
+ }
+}
