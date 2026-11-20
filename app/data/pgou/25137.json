@@ -1,0 +1,71 @@
+{
+ "municipio": "Mollerussa",
+ "codigo_ine": "25137",
+ "plan": "Pla d'ordenació urbanística municipal de Mollerussa – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=198094&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "6a": {
+   "nombre": "Habitatge unifamiliar aïllat en parcel·la petita",
+   "articulo": "Art. 154",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,80 m²t/m²s (varía por subzona 6a.1–6a.6)",
+   "usos": "Vivienda unifamiliar aislada.",
+   "otros": "Subzona 6a.2: parcela mínima 300 m²."
+  },
+  "6b": {
+   "nombre": "Habitatge aïllat en parcel·la mitjana",
+   "articulo": "Art. 155",
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada.",
+   "otros": "No se admite parcelación con división horizontal."
+  },
+  "6c": {
+   "nombre": "Habitatge aïllat en parcel·la gran",
+   "articulo": "Art. 156",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,50 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "7a": {
+   "nombre": "Indústria entre mitgeres",
+   "articulo": "Art. 157-158",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,20 m²t/m²s",
+   "usos": "Industria I dominante; almacén, oficinas, restauración, aparcamiento compatibles; comercio de grandes superficies (vehículos, materiales…) condicionado.",
+   "otros": "Un establecimiento por parcela. Subzonas: 7a.3 450 m² y 13 m; 7a.4 1.500 m²."
+  },
+  "8a": {
+   "nombre": "Indústria en parcel·la aïllada",
+   "articulo": "Art. 159-160",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,00 m²t/m²s",
+   "usos": "Industria III dominante; industria I y II, almacén, restauración, aparcamiento compatibles; comercio de grandes superficies condicionado.",
+   "otros": "Subzona 8a.0: 4.000 m² (2.500 m² si no es posible). Subzona 8a.1: 1.000 m² y 0,75 m²t/m². Un establecimiento por parcela."
+  },
+  "9a": {
+   "nombre": "Activitats industrials, terciàries i logístiques",
+   "articulo": "Art. 161-162",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (10 m)",
+   "usos": "Industrial, terciario y logístico.",
+   "otros": "9a.1–9a.3: parcelas únicas según plano (9a.1 y 9a.2 70 % de ocupación)."
+  },
+  "10b": {
+   "nombre": "Serveis privats – benzineres",
+   "articulo": "Art. 163-164",
+   "usos": "Gasolinera.",
+   "otros": "Parcelas existentes indivisibles; frente el existente.",
+   "segregacion": "No: parcelas existentes indivisibles."
+  }
+ }
+}
