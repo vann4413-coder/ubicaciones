@@ -1,0 +1,221 @@
+{
+ "municipio": "Montmeló",
+ "codigo_ine": "08135",
+ "plan": "Pla d'ordenació urbanística municipal de Montmeló (2012) – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=231690&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "1": {
+   "nombre": "Centre històric",
+   "articulo": "Art. 139-144",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "usos": "Residencial y usos urbanos."
+  },
+  "1a": {
+   "nombre": "Centre històric – alineada a carrer",
+   "articulo": "Art. 139-143",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "usos": "Residencial y usos urbanos."
+  },
+  "1b": {
+   "nombre": "Centre històric – unifamiliar",
+   "articulo": "Art. 139-144",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "usos": "Vivienda unifamiliar."
+  },
+  "2": {
+   "nombre": "Edificació en ordenació contínua",
+   "articulo": "Art. 147-149",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 6,
+   "usos": "Residencial y usos urbanos.",
+   "otros": "Fondo mínimo de parcela 10 m."
+  },
+  "3": {
+   "nombre": "Edificació amb ordenació oberta",
+   "articulo": "Art. 152-161",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 12,
+   "usos": "Residencial plurifamiliar."
+  },
+  "4a": {
+   "nombre": "Edificació en filera – desenvolupament individual",
+   "articulo": "Art. 164-171",
+   "parcela_minima_m2": 80,
+   "frente_minimo_m": 5.5,
+   "usos": "Vivienda unifamiliar en hilera.",
+   "otros": "Fondo mínimo 15 m."
+  },
+  "4b": {
+   "nombre": "Edificació en filera – conjunts unitaris",
+   "articulo": "Art. 167-174",
+   "frente_minimo_m": 5.5,
+   "usos": "Vivienda unifamiliar en hilera."
+  },
+  "5a": {
+   "nombre": "Unifamiliar aïllada en parcel·la petita",
+   "articulo": "Art. 177-182",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,64 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada.",
+   "otros": "Fondo mínimo 15 m."
+  },
+  "5b": {
+   "nombre": "Unifamiliar aïllada en parcel·la singular",
+   "articulo": "Art. 180-181",
+   "edificabilidad": "La existente (ampliable con límites)",
+   "usos": "Vivienda unifamiliar aislada.",
+   "otros": "El parcelario actual no se puede subdividir."
+  },
+  "6.1": {
+   "nombre": "Indústria agrupada – Industrial circuit",
+   "articulo": "Art. 183-193",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "usos": "Industria A; compatibles almacén, servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración.",
+   "otros": "Naves entre medianeras con proyecto unitario; un establecimiento por parcela."
+  },
+  "6.2.1": {
+   "nombre": "Indústria agrupada – Sota el Molí, Pla del Viver i Pla del Tren (I)",
+   "articulo": "Art. 183-194",
+   "parcela_minima_m2": 440,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "Según alineación y gálibo de planos",
+   "usos": "Industria A; compatibles almacén, servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración."
+  },
+  "6.2.2": {
+   "nombre": "Indústria agrupada – Sota el Molí, Pla del Viver i Pla del Tren (II)",
+   "articulo": "Art. 183-194",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "Según alineación y gálibo de planos",
+   "usos": "Industria A; compatibles almacén, servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración."
+  },
+  "6.3": {
+   "nombre": "Indústria agrupada – Industrial Nord-est",
+   "articulo": "Art. 183-193",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "75 %",
+   "usos": "Industria A; compatibles almacén, servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración."
+  },
+  "6.4": {
+   "nombre": "Indústria agrupada – Passeig del Riu",
+   "articulo": "Art. 183-193",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "usos": "Industria A; compatibles almacén, servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración.",
+   "otros": "Se admiten parcelas preexistentes menores."
+  },
+  "6.5": {
+   "nombre": "Indústria agrupada – c/ Tallers / c/ Fonts dels Creixents",
+   "articulo": "Art. 183-193",
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,20 m²t/m²s",
+   "usos": "Industria A; compatibles almacén, servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración."
+  },
+  "7a": {
+   "nombre": "Indústria aïllada",
+   "articulo": "Art. 195-203",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "usos": "Industria A; compatibles servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración.",
+   "otros": "Se admiten parcelas preexistentes menores."
+  },
+  "7a1": {
+   "nombre": "Indústria aïllada – Industrial circuit",
+   "articulo": "Art. 195-203",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": 35,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Industria A; compatibles servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración.",
+   "otros": "Un establecimiento por parcela."
+  },
+  "7a2": {
+   "nombre": "Indústria aïllada – Sota el Molí, Pla del Viver i Pla del Tren",
+   "articulo": "Art. 195-204",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Industria A; compatibles servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración."
+  },
+  "7b1": {
+   "nombre": "Indústria aïllada – Industrial Nord-est",
+   "articulo": "Art. 195-205",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "usos": "Industria A; compatibles servicios técnicos y aparcamiento. Condicionado: comercial solo equipamientos comerciales singulares (venta al por mayor, automoción y carburantes, maquinaria, materiales…), oficinas, hotelero y restauración."
+  },
+  "8": {
+   "nombre": "Terciari i dotacions privades",
+   "articulo": "Art. 206-220",
+   "usos": "Residencial colectivo, hotelero, oficinas, restauración, almacenes, industria A, equipamientos; comercial condicionado a la legislación sectorial."
+  },
+  "8b1": {
+   "nombre": "Terciari – hotel carrer Vic",
+   "articulo": "Art. 212",
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Terciario.",
+   "otros": "Parcelas existentes indivisibles."
+  },
+  "8b3": {
+   "nombre": "Terciari – zona de comerç",
+   "articulo": "Art. 214",
+   "parcela_minima_m2": 5000,
+   "edificabilidad": "1,50 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "usos": "Terciario y comercial.",
+   "otros": "Parcela única."
+  },
+  "8b4": {
+   "nombre": "Terciari – establiments",
+   "articulo": "Art. 215",
+   "parcela_minima_m2": 8000,
+   "ocupacion_max": "70 %",
+   "usos": "Terciario y comercial."
+  },
+  "8b5": {
+   "nombre": "Terciari – Agrupa",
+   "articulo": "Art. 216",
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "usos": "Terciario.",
+   "otros": "Parcelas existentes indivisibles."
+  },
+  "8b6": {
+   "nombre": "Terciari – avda. Pompeu Fabra",
+   "articulo": "Art. 217",
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Terciario.",
+   "otros": "Parcelas existentes indivisibles."
+  },
+  "8b7": {
+   "nombre": "Terciari – benzinera carrer Vic",
+   "articulo": "Art. 218",
+   "edificabilidad": "La existente + 15 %",
+   "ocupacion_max": "La existente + 15 %",
+   "usos": "Uso dominante: gasolinera.",
+   "otros": "Parcela existente indivisible."
+  }
+ }
+}
