@@ -82,6 +82,14 @@ def _num(v) -> float | None:
 SEDE_CDYG = "https://www1.sedecatastro.gob.es/CYCBienInmueble/SECImprimirCroquisYDatos.aspx"
 
 
+def _sup(v) -> float | None:
+    """Superficie: el Catastro a veces la da con punto de miles ("1.405" = 1405 m²)."""
+    t = str(v).strip() if v not in (None, "") else ""
+    if re.fullmatch(r"\d{1,3}(\.\d{3})+", t):
+        return float(t.replace(".", ""))
+    return _num(v)
+
+
 def _rc20(rc: dict | None) -> str:
     rc = rc or {}
     return "".join(str(rc.get(k, "")) for k in ("pc1", "pc2", "car", "cc1", "cc2"))
@@ -121,14 +129,14 @@ def parse_dnprc(d: dict) -> dict:
                               "url": url_cdyg(_rc20((bi.get("idbi") or {}).get("rc")), (dt.get("loine") or {}).get("cp", ""), str(dt.get("cmc", "")))}]
             if _rc20((bi.get("idbi") or {}).get("rc")) and dt.get("cmc") else [],
             uso=debi.get("luso", ""),
-            sup_construida=_num(debi.get("sfc")),
+            sup_construida=_sup(debi.get("sfc")),
             anio_construccion=int(debi["ant"]) if str(debi.get("ant", "")).isdigit() else None,
-            sup_suelo=_num((finca.get("dff") or {}).get("ss")),
+            sup_suelo=_sup((finca.get("dff") or {}).get("ss")),
             tipo_finca=finca.get("ltp", ""),
             construcciones=[
                 {
                     "uso": c.get("lcd", ""),
-                    "superficie": _num((c.get("dfcons") or {}).get("stl")),
+                    "superficie": _sup((c.get("dfcons") or {}).get("stl")),
                     "tipologia": (c.get("dvcons") or {}).get("dtip", ""),
                 }
                 for c in _lista(bico.get("lcons"))
@@ -144,7 +152,7 @@ def parse_dnprc(d: dict) -> dict:
         inmuebles.append(
             {
                 "uso": debi.get("luso", ""),
-                "superficie": _num(debi.get("sfc")),
+                "superficie": _sup(debi.get("sfc")),
                 "anio": int(debi["ant"]) if str(debi.get("ant", "")).isdigit() else None,
                 "municipio": dt.get("nm", ""),
                 "provincia": dt.get("np", ""),
