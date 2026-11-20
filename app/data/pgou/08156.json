@@ -1,0 +1,110 @@
+{
+ "municipio": "Palau-solità i Plegamans",
+ "codigo_ine": "08156",
+ "plan": "Pla d'ordenació urbanística municipal de Palau-solità i Plegamans – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=273606&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "7a": {
+   "nombre": "Industrial aïllada en parcel·la gran – Riera de Caldes",
+   "articulo": "Art. 386",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": 50,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Se consideran edificables las parcelas existentes a la entrada en vigor del POUM. No se admite compartimentar naves."
+  },
+  "7b": {
+   "nombre": "Industrial aïllada en parcel·la gran – Can Valls (SUD-09)",
+   "articulo": "Art. 387",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Parcela mínima: la de cada volumen edificable definido en planos."
+  },
+  "7c": {
+   "nombre": "Industrial aïllada en parcel·la gran – Can Valls (SUD-09)",
+   "articulo": "Art. 387",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Parcela mínima: la de cada volumen edificable definido en planos."
+  },
+  "7d": {
+   "nombre": "Industrial aïllada en parcel·la gran – Palau Industrial",
+   "articulo": "Art. 388",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad)."
+  },
+  "7e": {
+   "nombre": "Industrial aïllada en parcel·la gran – Can Burguès",
+   "articulo": "Art. 389",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Sin superficie mínima; la parcelación depende de la fachada mínima y de los ámbitos edificatorios."
+  },
+  "7f": {
+   "nombre": "Industrial aïllada en parcel·la mitjana – Riera de Caldes",
+   "articulo": "Art. 390",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad)."
+  },
+  "7g": {
+   "nombre": "Industrial aïllada en parcel·la mitjana – Can Parera",
+   "articulo": "Art. 391",
+   "edificabilidad": "1,00 m²t/m²s",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Parcela mínima: la existente. Se admite compartimentar naves."
+  },
+  "7h": {
+   "nombre": "Industrial aïllada en parcel·la mitjana – Can Cortès Sud",
+   "articulo": "Art. 392",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad)."
+  },
+  "7i": {
+   "nombre": "Industrial-comercial aïllada – Can Valls (SUD-09)",
+   "articulo": "Art. 393",
+   "edificabilidad": "1,263 m²t/m²s",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Parcela mínima: la de cada volumen edificable."
+  },
+  "7j": {
+   "nombre": "Industrial aïllada en parcel·la petita – Riera de Caldes",
+   "articulo": "Art. 394",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad)."
+  },
+  "7k": {
+   "nombre": "Industrial entre mitgeres – Riera de Caldes",
+   "articulo": "Art. 395",
+   "parcela_minima_m2": 500,
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Se consideran edificables las parcelas existentes."
+  },
+  "7l": {
+   "nombre": "Industrial entre mitgeres – Can Valls (SUD-09)",
+   "articulo": "Art. 396",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,85 m²t/m²s",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad)."
+  },
+  "7m": {
+   "nombre": "Industrial aïllada amb volumetria flexible – SUD-10 Llevant",
+   "articulo": "Art. 397",
+   "edificabilidad": "Según plan parcial",
+   "usos": "Industrial; admite estación de servicio (en algunas subzonas, ligada a la propia actividad).",
+   "otros": "Parámetros fijados por el plan parcial."
+  }
+ }
+}
