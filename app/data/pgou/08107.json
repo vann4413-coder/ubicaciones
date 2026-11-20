@@ -1,0 +1,111 @@
+{
+ "municipio": "Lliçà d'Amunt",
+ "codigo_ine": "08107",
+ "plan": "Pla d'ordenació urbanística municipal de Lliçà d'Amunt – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=453075&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "3a": {
+   "nombre": "Ciutat jardí – subzona 3a",
+   "articulo": "Art. 177-181",
+   "parcela_minima_m2": 250,
+   "edificabilidad": "0,70 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "3b": {
+   "nombre": "Ciutat jardí – subzona 3b",
+   "articulo": "Art. 177-181",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "0,55 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "3c": {
+   "nombre": "Ciutat jardí – subzona 3c",
+   "articulo": "Art. 177-181",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,45 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "3d": {
+   "nombre": "Ciutat jardí – subzona 3d",
+   "articulo": "Art. 177-181",
+   "parcela_minima_m2": 800,
+   "edificabilidad": "0,40 m²t/m²s",
+   "usos": "Vivienda unifamiliar aislada."
+  },
+  "11a": {
+   "nombre": "Terciari – volumetria específica",
+   "articulo": "Art. 206-209",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "altura_max": "11 m",
+   "usos": "Terciario y comercial; admite estación de servicio."
+  },
+  "11b": {
+   "nombre": "Terciari aïllat",
+   "articulo": "Art. 206-210",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "55 %",
+   "altura_max": "PB+2 (11 m)",
+   "usos": "Terciario y comercial; admite estación de servicio.",
+   "otros": "Separación 10 m a calle; 20 m al sistema hidrográfico. Superficie mínima por actividad industrial, almacén o estación de servicio: 300 m²."
+  },
+  "11c": {
+   "nombre": "Terciari – polígon amb reparcel·lació",
+   "articulo": "Art. 206-211",
+   "edificabilidad": "0,35 m²t/m²s",
+   "altura_max": "PB+2",
+   "usos": "Terciario y comercial; admite estación de servicio y aparcamiento.",
+   "otros": "Parcelas según el proyecto de reparcelación (2010). Estación de servicio: mínimo 300 m² y 15 m de fachada."
+  },
+  "12a": {
+   "nombre": "Indústria agrupada",
+   "articulo": "Art. 212-214",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "usos": "Industrial.",
+   "otros": "Volumetria específica según planos; 20 m al sistema hidrográfico."
+  },
+  "12b": {
+   "nombre": "Indústria amb nau compartida",
+   "articulo": "Art. 212-215",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 15,
+   "usos": "Industrial.",
+   "otros": "Volumetria específica según planos."
+  },
+  "12c": {
+   "nombre": "Indústria aïllada",
+   "articulo": "Art. 212-216",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "55 %",
+   "altura_max": "PB+2 (11 m)",
+   "usos": "Industrial; admite estación de servicio.",
+   "otros": "Separación 10 m a calle."
+  },
+  "12d": {
+   "nombre": "Indústria de gran format",
+   "articulo": "Art. 212-217",
+   "usos": "Industrial.",
+   "otros": "Parcela mínima: la que resulta del plano de parcelación aprobado."
+  },
+  "13a": {
+   "nombre": "Industrial-logística (sector)",
+   "articulo": "Art. 237",
+   "usos": "Industrial y logístico.",
+   "otros": "Techo total del sector 353.000 m²."
+  },
+  "13c": {
+   "nombre": "Comercial-terciària (sector)",
+   "articulo": "Art. 239",
+   "altura_max": "PB+2",
+   "usos": "Comercial y terciario.",
+   "otros": "Techo total 60.000 m²."
+  }
+ }
+}
