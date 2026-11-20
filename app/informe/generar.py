@@ -8,7 +8,7 @@ from app.analisis import evolucion, parcela_metricas, puntuacion, resumen
 from app.fuentes import (catastro, gasolineras, geocoder, inundabilidad, osm, poblacion, red_electrica, suelo,
                          suelos_contaminados, trafico, urbanismo)
 from app.fuentes import entorno as entorno_5km
-from app.fuentes import pgou, terreno, titulares
+from app.fuentes import pgou, recarga, terreno, titulares
 from app.fuentes.base import error, resultado
 
 log = logging.getLogger(__name__)
@@ -61,6 +61,11 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
     if traf.get("estado") in ("ok", "sin_dato"):
         traf["via_parcela"] = trafico.via_de_la_parcela(traf, parcela.get("direccion", ""), nombre_muni)
     red = red_electrica.consultar(g)
+    try:
+        rec = recarga.consultar(g, config.RADIO_ENTORNO_MAX)
+    except Exception as e:  # noqa: BLE001
+        log.exception("Fallo en puntos de recarga")
+        rec = error(recarga.FUENTE, f"Error inesperado: {e}")
     snu = any(c.get("codigo", "").upper().startswith("SNU") and c.get("pct", 0) >= 50 for c in (urb.get("clasificaciones") or []))
     precio = suelo.consultar(cod_ine, pob.get("poblacion") if pob.get("estado") == "ok" else None,
                              parcela.get("sup_grafica"), suelo_no_urbanizable=snu)
@@ -100,6 +105,7 @@ async def construir(rc: str, potencia_mw: float | None = None, sup_minima: float
         "entorno5": entorno5,
         "titulares": titul,
         "gasolineras": gas,
+        "recarga": rec,
         "poblacion": pob,
         "suelo": precio,
         "puntuaciones": punt,
@@ -137,7 +143,7 @@ def anexo(inf: dict) -> list[dict]:
         ("Parcela", "parcela"), ("Urbanismo", "urbanismo"), ("Cambios de planeamiento", "cambios"), ("Suelos contaminados", "suelos_contaminados"),
         ("Inundabilidad (ACA)", "inundabilidad_aca"), ("Inundabilidad (SNCZI)", "inundabilidad_snczi"),
         ("Tráfico", "trafico"), ("Red eléctrica", "red"), ("Entorno (2 km)", "entorno"), ("Entorno (5 km)", "entorno5"),
-        ("Gasolineras", "gasolineras"), ("Actividades y titulares", "titulares"),
+        ("Gasolineras", "gasolineras"), ("Puntos de recarga", "recarga"), ("Actividades y titulares", "titulares"),
         ("Población", "poblacion"), ("Valor del suelo", "suelo"), ("Terreno, riesgos y afecciones", "terreno"),
     ]:
         d = inf.get(clave) or {}

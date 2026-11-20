@@ -35,12 +35,27 @@ async def _refrescar_capacidad_red():
                 logging.getLogger(__name__).warning("No se pudo refrescar la capacidad de red: %s", e)
 
 
+async def _refrescar_puntos_recarga():
+    """El registro oficial de puntos de recarga (DGT) se publica cada 24 h: se descarga al arrancar si falta y luego a diario."""
+    import asyncio
+    from app.fuentes import recarga
+    await asyncio.sleep(30)
+    while True:
+        if recarga.caducado():
+            try:
+                await asyncio.to_thread(recarga.descargar)
+            except BaseException as e:  # noqa: BLE001 - no debe tumbar el servidor
+                logging.getLogger(__name__).warning("No se pudo actualizar los puntos de recarga: %s", e)
+        await asyncio.sleep(3 * 3600)
+
+
 @asynccontextmanager
 async def ciclo(app: FastAPI):
     import asyncio
-    tarea = asyncio.create_task(_refrescar_capacidad_red())
+    tareas = [asyncio.create_task(_refrescar_capacidad_red()), asyncio.create_task(_refrescar_puntos_recarga())]
     yield
-    tarea.cancel()
+    for tarea in tareas:
+        tarea.cancel()
     await http.cerrar()
 
 
