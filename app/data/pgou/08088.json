@@ -1,0 +1,137 @@
+{
+ "municipio": "La Garriga",
+ "codigo_ine": "08088",
+ "plan": "Pla General d'Ordenació de La Garriga – Text refós (juliol 2001), normativa urbanística",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=162545&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "a1": {
+   "nombre": "Nucli antic",
+   "articulo": "Art. 50-55",
+   "altura_max": "Según plano: PB+2 (10,50 m) a PB+3 (13,50 m)",
+   "usos": "Vivienda y usos urbanos compatibles."
+  },
+  "a2": {
+   "nombre": "Eixample",
+   "articulo": "Art. 56-60",
+   "altura_max": "Según plano: PB+1 (7,50 m) a PB+3 (13,50 m)",
+   "usos": "Vivienda plurifamiliar y usos urbanos compatibles."
+  },
+  "a3": {
+   "nombre": "Cases en filera",
+   "articulo": "Art. 61-75",
+   "frente_minimo_m": 6,
+   "altura_max": "PB+1 (7,50 m) en general",
+   "usos": "Vivienda unifamiliar en hilera.",
+   "otros": "Parámetros por subzona (A3.1–A3.4)."
+  },
+  "a4.1": {
+   "nombre": "Ciutat jardí – parcela 200 m²",
+   "articulo": "Art. 76-81",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "usos": "Vivienda unifamiliar; sanitario-asistencial, hotelero, restauración."
+  },
+  "a4.2": {
+   "nombre": "Ciutat jardí – parcela 400 m²",
+   "articulo": "Art. 76-81",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "usos": "Vivienda unifamiliar; sanitario-asistencial, hotelero, restauración."
+  },
+  "a4.3": {
+   "nombre": "Ciutat jardí – parcela 500 m²",
+   "articulo": "Art. 76-81",
+   "parcela_minima_m2": 500,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1 (6,30 m)",
+   "usos": "Vivienda unifamiliar; sanitario-asistencial, hotelero, restauración.",
+   "otros": "Separaciones: 6 m a calle, 3 m laterales, 6 m fondo."
+  },
+  "a4.4": {
+   "nombre": "Ciutat jardí – parcela 800 m²",
+   "articulo": "Art. 76-81",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "usos": "Vivienda unifamiliar; sanitario-asistencial, hotelero, restauración.",
+   "otros": "Separaciones: 10 m a calle, 5 m laterales y fondo."
+  },
+  "a6": {
+   "nombre": "Plurifamiliar aïllada",
+   "articulo": "Art. 88-94",
+   "altura_max": "Según plano: PB+1 a PB+3",
+   "usos": "Vivienda plurifamiliar."
+  },
+  "a9": {
+   "nombre": "Indústria en transformació d'ús",
+   "articulo": "Art. 103-106",
+   "edificabilidad": "Transformación por PEMU: 1,5 m²t/m²s bruta",
+   "altura_max": "PB+3",
+   "usos": "Mientras dure la industria: industrial hasta 3ª categoría y almacén; tras la transformación, vivienda plurifamiliar.",
+   "otros": "Transformación por plan especial de manzanas completas con cesión del 30 %."
+  },
+  "a10.1": {
+   "nombre": "Indústria aïllada – Polígon Congost",
+   "articulo": "Art. 107-114",
+   "edificabilidad": "1,25 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "13 m",
+   "usos": "Industrial hasta 3ª categoría y almacenes. Compatibles: comercio al por mayor y comercial vinculado a la industria, estaciones de servicio, oficinas vinculadas, restauración; recreativo solo en el polígono Congost (art. 112).",
+   "otros": "Parcelas actuales de la reparcelación: no se permite dividirlas. Separaciones 10 m a calle y lindes. No se admite compartimentar naves.",
+   "segregacion": "No se permite dividir las parcelas existentes."
+  },
+  "a10.2": {
+   "nombre": "Indústria aïllada – Can Illa",
+   "articulo": "Art. 107-112, 115-116",
+   "ocupacion_max": "68–75 % según manzana",
+   "altura_max": "13,50 m",
+   "usos": "Industrial hasta 3ª categoría y almacenes. Compatibles: comercio al por mayor y comercial vinculado a la industria, estaciones de servicio, oficinas vinculadas, restauración; recreativo solo en el polígono Congost (art. 112).",
+   "otros": "Parcelas actuales de la reparcelación: no se permite dividirlas. No se admite compartimentar naves.",
+   "segregacion": "No se permite dividir las parcelas existentes."
+  },
+  "a10.3": {
+   "nombre": "Indústria aïllada – Met Sidru",
+   "articulo": "Art. 107-112, 117-118",
+   "parcela_minima_m2": 400,
+   "edificabilidad": "1,25 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "13 m",
+   "usos": "Industrial hasta 3ª categoría y almacenes. Compatibles: comercio al por mayor y comercial vinculado a la industria, estaciones de servicio, oficinas vinculadas, restauración; recreativo solo en el polígono Congost (art. 112).",
+   "otros": "Separaciones: 11 m a c/ Vulcà y Av. Generalitat, 4 m a vecinos, 8 m a zonas verdes."
+  },
+  "a11": {
+   "nombre": "Gran indústria",
+   "articulo": "Art. 119-123",
+   "parcela_minima_m2": 5000,
+   "edificabilidad": "Volumen máx. 8 m³/m²",
+   "ocupacion_max": "50 %",
+   "altura_max": "16 m",
+   "usos": "Industrial hasta 3ª categoría, almacén, comercio al por mayor, oficinas de la industria. No se admite estación de servicio.",
+   "otros": "No se admite compartimentar naves ni naves en hilera."
+  },
+  "a12.1": {
+   "nombre": "Comercial – establiments mitjans",
+   "articulo": "Art. 124-130",
+   "ocupacion_max": "75 %",
+   "altura_max": "13,50 m",
+   "usos": "Comercial.",
+   "otros": "Techo máximo 2.000 m²."
+  },
+  "a12.2": {
+   "nombre": "Comercial – establiments grans",
+   "articulo": "Art. 124-132",
+   "ocupacion_max": "75 %",
+   "altura_max": "13,50 m",
+   "usos": "Comercial.",
+   "otros": "Techo máximo 6.000 m²."
+  }
+ }
+}

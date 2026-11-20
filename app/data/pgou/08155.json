@@ -1,0 +1,95 @@
+{
+ "municipio": "Palafolls",
+ "codigo_ine": "08155",
+ "plan": "Revisió del Pla general d'ordenació de Palafolls – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=408517&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "u1": {
+   "nombre": "Vila històrica",
+   "articulo": "Art. 142, 161-173",
+   "frente_minimo_m": 5,
+   "edificabilidad": "Ordenación detallada del plan (PERI: 1,42 m²t/m²s neta)",
+   "altura_max": "PB+2 (10 m)",
+   "usos": "Vivienda, residencial, comercial y oficinas hasta 300 m², industria limitada.",
+   "otros": "Parcelación existente; fachada mínima 5 m en divisiones."
+  },
+  "u2": {
+   "nombre": "Suburbana en fronts continus",
+   "articulo": "Art. 143, 174-182",
+   "frente_minimo_m": 12,
+   "edificabilidad": "Ordenación detallada (PERI: 2,0 m²t/m²s neta)",
+   "altura_max": "PB+2 (10 m)",
+   "usos": "Vivienda, residencial, comercial, oficinas, industria hasta 400 m² de techo.",
+   "otros": "Nuevas parcelaciones: fachada mínima 12 m (5 m para unifamiliar)."
+  },
+  "u3": {
+   "nombre": "Suburbana en ocupacions flexibles",
+   "articulo": "Art. 144, 183-189",
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,5 m²t/m²s neta",
+   "altura_max": "PB+2 (10 m)",
+   "ocupacion_max": "70 % (PERI)",
+   "usos": "Vivienda, residencial, comercial y oficinas hasta 400 m², industria limitada.",
+   "otros": "No se puede subdividir si resultan fachadas inferiores a 12 m."
+  },
+  "u4": {
+   "nombre": "Ciutat-jardí",
+   "articulo": "Art. 145, 190-197",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (6,30 m)",
+   "usos": "Vivienda unifamiliar; comercial y oficinas hasta 200 m².",
+   "otros": "Separaciones 3 m a todos los lindes. Parcelas menores segregadas antes del plan son edificables."
+  },
+  "u5": {
+   "nombre": "Industrial",
+   "articulo": "Art. 146, 202-209",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (7,50 m); 16 m en UA 4 y 5",
+   "usos": "Industrial, un establecimiento por parcela. No vivienda ni comercial (solo oficinas propias).",
+   "otros": "Edificación aislada, separaciones de 5 m a calle y lindes. Parcelación solo mediante PERI con parcela mínima de 3.000 m²."
+  },
+  "v1": {
+   "nombre": "Creixement dens",
+   "articulo": "Art. 147, 231-235",
+   "altura_max": "PB+2 (9,40 m)",
+   "usos": "Vivienda, residencial, comercial, oficinas, industria limitada.",
+   "otros": "Parámetros según plan parcial y fichas de sector."
+  },
+  "v2": {
+   "nombre": "Creixement en ciutat-jardí",
+   "articulo": "Art. 148, 236-246",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1 (6,30 m)",
+   "usos": "Vivienda unifamiliar, residencial, comercial y oficinas hasta 200 m². No industrial.",
+   "otros": "Separaciones 4 m. Una vivienda por cada 600 m² de parcela."
+  },
+  "v3": {
+   "nombre": "Creixement industrial i d'activitats",
+   "articulo": "Art. 149, 247-258",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Industrial, un establecimiento por parcela; oficinas propias. En sectores 15, 19-20 y 27 (Mas Puigverd, Mas Reixach) solo las actividades listadas; no lavado de vehículos.",
+   "otros": "Separaciones 5 m. Sector 19-20 Mas Puigverd: parcela mínima 4.000 m²."
+  },
+  "v4": {
+   "nombre": "Creixement de petites activitats",
+   "articulo": "Art. 150, 259-267",
+   "parcela_minima_m2": 300,
+   "edificabilidad": "1,5 m²t/m²s neta (0,8 bruta)",
+   "altura_max": "PB+1 (7,10 m)",
+   "usos": "Pequeñas actividades y almacenes; no vivienda.",
+   "otros": "Parcela máxima 900 m²."
+  }
+ }
+}
