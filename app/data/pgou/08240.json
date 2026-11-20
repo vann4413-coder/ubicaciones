@@ -1,0 +1,42 @@
+{
+ "municipio": "Sant Sadurní d'Anoia",
+ "codigo_ine": "08240",
+ "plan": "Pla d'ordenació urbanística municipal de Sant Sadurní d'Anoia – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=219000&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-20",
+ "zonas": {
+  "18": {
+   "nombre": "Indústria petita, magatzems i tallers",
+   "articulo": "Art. 169-174",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1 (8 m)",
+   "usos": "Industrial (clau 7) en todas sus categorías y usos complementarios. Las estaciones de servicio se ubican en los sectores industriales (art. 67)."
+  },
+  "19a": {
+   "nombre": "Indústria en filera",
+   "articulo": "Art. 175-176, 178",
+   "parcela_minima_m2": 400,
+   "usos": "Industrial (clau 7) en todas sus categorías y usos complementarios. Las estaciones de servicio se ubican en los sectores industriales (art. 67).",
+   "otros": "Parámetros según el plan parcial de cada sector; en algún sector la parcela mínima es 1.000 m². Molí del Recó: ocupación máx. 80 %."
+  },
+  "19b": {
+   "nombre": "Indústria aïllada",
+   "articulo": "Art. 175, 177-178",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "ocupacion_max": "40–70 % según sector",
+   "usos": "Industrial (clau 7) en todas sus categorías y usos complementarios. Las estaciones de servicio se ubican en los sectores industriales (art. 67).",
+   "otros": "Can Ferrer I: ocupación 40 %, separaciones 8 m a calle y 3 m al resto. Can Ferrer II: 70 %. Molí del Recó: parcela mínima 2.000 m² y ocupación 70 %. Hasta dos sótanos."
+  },
+  "20": {
+   "nombre": "Gran indústria (Molí del Recó)",
+   "articulo": "Art. 179-180",
+   "parcela_minima_m2": 100000,
+   "edificabilidad": "0,6 m²t/m²s (un único establecimiento)",
+   "ocupacion_max": "55 %",
+   "altura_max": "PB+1",
+   "usos": "Industrial (clau 7) en todas sus categorías y usos complementarios. Las estaciones de servicio se ubican en los sectores industriales (art. 67)."
+  }
+ }
+}
