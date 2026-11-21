@@ -223,7 +223,7 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
 
 
 @app.post("/api/admin/lote")
-async def lote(request: Request):
+async def api_lote(request: Request):
     """Solo administradores: verificación de suelo de hasta 25 ubicaciones [{id, lon, lat} o {id, rc}]."""
     import asyncio
     from app.cuentas import es_admin
