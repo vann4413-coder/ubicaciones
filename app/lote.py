@@ -23,6 +23,7 @@ log = logging.getLogger(__name__)
 DIR = config.DATOS_DIR / "lotes"
 PAUSA_S = 3
 _tareas: dict[str, asyncio.Task] = {}
+_turno = asyncio.Lock()  # una sola consulta a la vez entre todos los lotes: el Catastro limita por IP
 
 
 # ------------------------------------------------------------------ ficha de una ubicación
@@ -282,8 +283,11 @@ async def _procesar(id_: str) -> None:
     espera = PAUSA_S
     for i, e in enumerate(pend):
         for intento in range(6):
+            if not (d / "estado.json").exists():
+                return  # lote borrado
             try:
-                r = await asyncio.wait_for(ficha(e), 150)
+                async with _turno:
+                    r = await asyncio.wait_for(ficha(e), 150)
             except asyncio.TimeoutError:
                 r = {"id": e["id"], "error": "Tiempo agotado"}
             if not _bloqueo(r):
@@ -308,6 +312,17 @@ def reanudar_pendientes() -> None:
     for e in lista():
         if e.get("situacion") != "terminado":
             lanzar(e["id"])
+
+
+def borrar(id_: str) -> None:
+    """Detiene y elimina un lote."""
+    import shutil
+    t = _tareas.pop(id_, None)
+    if t and not t.done():
+        t.cancel()
+    d = DIR / id_
+    if d.is_dir() and d.parent == DIR:
+        shutil.rmtree(d, ignore_errors=True)
 
 
 def fichero_salida(id_: str):

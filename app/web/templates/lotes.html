@@ -14,7 +14,8 @@
   {% for l in lotes %}
     <tr><td>{{ l.nombre }}<br><small>pestaña {{ l.hoja }}</small></td><td>{{ l.creado }}</td><td>{{ l.situacion }}</td>
     <td>{{ l.hechos }} / {{ l.errores }} / {{ l.total }}</td>
-    <td>{% if l.situacion == "terminado" %}<a class="btn" href="/admin/lotes/{{ l.id }}.xlsx">Descargar</a>{% else %}<a class="btn btn-sec" href="/admin/lotes/{{ l.id }}.xlsx?parcial=1">Descargar parcial</a>{% endif %}</td></tr>
+    <td>{% if l.situacion == "terminado" %}<a class="btn" href="/admin/lotes/{{ l.id }}.xlsx">Descargar</a>{% else %}<a class="btn btn-sec" href="/admin/lotes/{{ l.id }}.xlsx?parcial=1">Descargar parcial</a>{% endif %}
+      <form method="post" action="/admin/lotes/{{ l.id }}/borrar" onsubmit="return confirm('¿Borrar este lote?')" style="margin-top:6px"><button class="btn btn-sec" type="submit">Borrar</button></form></td></tr>
   {% endfor %}
   </table>
   <p><small>Actualiza la página para ver el avance.</small></p>

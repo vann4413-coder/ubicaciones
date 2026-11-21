@@ -270,6 +270,15 @@ async def lotes_subir(request: Request, fichero: UploadFile):
     return RedirectResponse("/admin/lotes", status_code=303)
 
 
+@app.post("/admin/lotes/{id_}/borrar")
+async def lotes_borrar(request: Request, id_: str):
+    _admin(request)
+    from fastapi.responses import RedirectResponse
+    if re.fullmatch(r"[0-9a-f-]+", id_):
+        lote.borrar(id_)
+    return RedirectResponse("/admin/lotes", status_code=303)
+
+
 @app.get("/admin/lotes/{id_}.xlsx")
 async def lotes_descargar(request: Request, id_: str, parcial: bool = False):
     _admin(request)
