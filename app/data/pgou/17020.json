@@ -1,0 +1,51 @@
+{
+ "municipio": "Bescanó",
+ "codigo_ine": "17020",
+ "plan": "Pla d'ordenació urbanística municipal de Bescanó – Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=275863&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "7a": {
+   "nombre": "Indústria – històric",
+   "articulo": "Art. 126.3",
+   "altura_max": "9 m",
+   "usos": "Industrial.",
+   "otros": "Ampliaciones hasta agotar la edificabilidad de la parcela; para nuevas parcelas rige el régimen de 7c."
+  },
+  "7b": {
+   "nombre": "Indústria entre mitgeres",
+   "articulo": "Art. 126.4",
+   "altura_max": "8 m (una planta)",
+   "usos": "Industrial."
+  },
+  "7c": {
+   "nombre": "Indústria aïllada",
+   "articulo": "Art. 126.5",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "altura_max": "PB+1 (hasta 13,5 m)",
+   "usos": "Industrial.",
+   "otros": "Separación 5 m a calle y la mitad de la altura (mín. 3 m) al resto; fachada máxima de edificio 50 m."
+  },
+  "7c1": {
+   "nombre": "Indústria aïllada – subzona 7c1",
+   "articulo": "Art. 126.5.14",
+   "usos": "Industrial.",
+   "otros": "Edificabilidad según la edificación actual sin superar la máxima de parcela."
+  },
+  "7c2": {
+   "nombre": "Indústria aïllada – subzona 7c2",
+   "articulo": "Art. 126.5.15",
+   "usos": "Industrial.",
+   "otros": "Edificabilidad: la existente; un plan especial puede aumentarla un 20 %."
+  },
+  "8": {
+   "nombre": "Zona de serveis i comercial",
+   "articulo": "Art. 127",
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "usos": "Servicios y comercial."
+  }
+ }
+}
