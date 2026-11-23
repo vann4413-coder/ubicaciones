@@ -1,0 +1,49 @@
+{
+ "municipio": "Castelló d'Empúries",
+ "codigo_ine": "17047",
+ "plan": "Pla d'ordenació urbanística municipal de Castelló d'Empúries – Text refós, normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=259234&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "7a": {
+   "nombre": "Industrial històric",
+   "articulo": "Art. 134-135",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 10,
+   "ocupacion_max": "75 %",
+   "altura_max": "8 m (PB+1) a 11 m (PB+2)",
+   "usos": "Industrial."
+  },
+  "7c": {
+   "nombre": "Indústria aïllada",
+   "articulo": "Art. 136",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 20,
+   "ocupacion_max": "75 %",
+   "altura_max": "12 m",
+   "usos": "Industrial; comercial y oficinas de actividades económicas.",
+   "otros": "Hay variantes por ámbito; en alguna la fachada mínima es de 30 m."
+  },
+  "8a": {
+   "nombre": "Serveis – hoteler / residencial temporal",
+   "articulo": "Art. 137-138",
+   "ocupacion_max": "35 %",
+   "usos": "Hotelero.",
+   "otros": "Parcela mínima: la parcela única existente."
+  },
+  "8b": {
+   "nombre": "Serveis – terciari / comercial",
+   "articulo": "Art. 139",
+   "altura_max": "13,60 m (PB+3)",
+   "usos": "Terciario, comercial, estación de servicio y garajes, espectáculos.",
+   "otros": "Retranqueos de 14 m a la Av. Tramuntana y 5 m al resto."
+  },
+  "26e1": {
+   "nombre": "Serveis a la xarxa viària (benzineres en sòl no urbanitzable)",
+   "articulo": "Art. 192",
+   "usos": "Exclusivamente expedición de combustibles y servicios asociados a la estación.",
+   "otros": "Estaciones existentes en suelo no urbanizable. D-11 (carretera vieja de Empuriabrava): edificación y usos CONFORMES. D-12 (carretera de Sant Pere): edificación y usos DISCONFORMES (fuera de ordenación). Condiciones en las fichas del documento C.2."
+  }
+ }
+}
