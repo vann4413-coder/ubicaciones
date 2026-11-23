@@ -1,0 +1,58 @@
+{
+ "municipio": "Deltebre",
+ "codigo_ine": "43901",
+ "plan": "Pla d'ordenació urbanística municipal de Deltebre (2021) – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=470727&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "a1": {
+   "nombre": "Indústria",
+   "articulo": "Art. 131-132",
+   "parcela_minima_m2": 640,
+   "frente_minimo_m": 18,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "12 m",
+   "usos": "Industrial en todos los niveles; comercial, oficinas, servicios técnicos, aparcamiento y estación de servicio."
+  },
+  "a1.b": {
+   "nombre": "Indústria – benzinera",
+   "articulo": "Art. 132",
+   "parcela_minima_m2": 640,
+   "frente_minimo_m": 18,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "12 m",
+   "usos": "Uso exclusivo: estación de servicio."
+  },
+  "a2a": {
+   "nombre": "Serveis – hoteler",
+   "articulo": "Art. 133-134",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+3 (13,50 m)",
+   "usos": "Hotelero, restauración, oficinas, comercial, recreativo."
+  },
+  "a2b": {
+   "nombre": "Serveis – comercial",
+   "articulo": "Art. 135",
+   "parcela_minima_m2": 600,
+   "edificabilidad": "0,6 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+1 (8,50 m)",
+   "usos": "Comercial; industrial niveles 3 y 4; admite estación de servicio."
+  },
+  "a1b": {
+   "nombre": "Indústria – benzinera",
+   "articulo": "Art. 132",
+   "parcela_minima_m2": 640,
+   "frente_minimo_m": 18,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "12 m",
+   "usos": "Uso exclusivo: estación de servicio."
+  }
+ }
+}
