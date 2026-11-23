@@ -1,0 +1,49 @@
+{
+ "municipio": "Llers",
+ "codigo_ine": "17093",
+ "plan": "Revisió-adaptació del Pla general d'ordenació de Llers – Text refós de la normativa (2006)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=65878&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "a7.1": {
+   "nombre": "Industrial per alineació a vial",
+   "articulo": "Art. 58",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "90 %",
+   "altura_max": "PB+1 (9,60 m)",
+   "usos": "Industrial y almacenes."
+  },
+  "a7.3": {
+   "nombre": "Indústria aïllada en parcel·les no subdivisibles",
+   "articulo": "Art. 58",
+   "usos": "Industrial y almacenes.",
+   "otros": "Parcelas ocupadas por industrias indivisibles a efectos de licencia.",
+   "segregacion": "No: parcelas indivisibles."
+  },
+  "a7.4": {
+   "nombre": "Zones industrials opcionalment remodelables",
+   "articulo": "Art. 58",
+   "edificabilidad": "0,4 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1 (9,60 m)",
+   "usos": "Industrial; remodelación opcional hacia usos de zona a1."
+  },
+  "a9.1": {
+   "nombre": "Usos específics – benzineres",
+   "articulo": "Art. 60",
+   "usos": "Estaciones de servicio (uso principal).",
+   "otros": "Zona específica para gasolineras; parámetros según la disposición de la normativa sectorial. No se permite aumentar el techo edificado existente."
+  },
+  "a9.2": {
+   "nombre": "Usos específics – hoteler",
+   "articulo": "Art. 60",
+   "parcela_minima_m2": 3000,
+   "edificabilidad": "0,7 m²t/m²s",
+   "altura_max": "PB+4 (15,70 m)",
+   "usos": "Hotelero."
+  }
+ }
+}
