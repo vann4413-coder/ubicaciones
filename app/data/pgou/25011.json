@@ -1,0 +1,65 @@
+{
+ "municipio": "Alcarràs",
+ "codigo_ine": "25011",
+ "plan": "Pla d'ordenació urbanística municipal d'Alcarràs – Text refós, normes",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=205419&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "2a.1": {
+   "nombre": "Nucli urbà industrial intensitat I",
+   "articulo": "Secció 15",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,5 m²t/m²s",
+   "usos": "Industrial; usos complementarios (oficinas, almacén, comercio limitado). La estación de servicio tiene zona propia (2c)."
+  },
+  "2a.2": {
+   "nombre": "Nucli urbà industrial intensitat II",
+   "articulo": "Secció 16",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "usos": "Industrial; usos complementarios (oficinas, almacén, comercio limitado). La estación de servicio tiene zona propia (2c)."
+  },
+  "2a.3": {
+   "nombre": "Nucli urbà industrial intensitat III",
+   "articulo": "Secció 17",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "10 m",
+   "usos": "Industrial; usos complementarios (oficinas, almacén, comercio limitado). La estación de servicio tiene zona propia (2c)."
+  },
+  "2b.1": {
+   "nombre": "Nucli urbà industrial intensitat IV",
+   "articulo": "Secció 18",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "15 m",
+   "usos": "Industrial; usos complementarios (oficinas, almacén, comercio limitado). La estación de servicio tiene zona propia (2c)."
+  },
+  "2b.2": {
+   "nombre": "Nucli urbà industrial intensitat V",
+   "articulo": "Secció 19, art. 238",
+   "parcela_minima_m2": 5000,
+   "frente_minimo_m": 50,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "15 m",
+   "usos": "Industrial (uso principal); una vivienda vinculada en parcelas de más de 3.000 m²."
+  },
+  "2c": {
+   "nombre": "Servei de carreteres (estació de serveis)",
+   "articulo": "Secció 20, art. 239-242",
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "10 m",
+   "usos": "Uso principal (100 %): estación de servicio.",
+   "otros": "Fondo mínimo de parcela 45 m. Edificación aislada."
+  }
+ }
+}
