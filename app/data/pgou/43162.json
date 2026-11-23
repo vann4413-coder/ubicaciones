@@ -1,0 +1,53 @@
+{
+ "municipio": "Vandellòs i l'Hospitalet de l'Infant",
+ "codigo_ine": "43162",
+ "plan": "Pla d'ordenació urbanística municipal de Vandellòs i l'Hospitalet de l'Infant – Normativa urbanística",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=257558&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "st2": {
+   "nombre": "Estació de servei",
+   "articulo": "Art. 132-135",
+   "edificabilidad": "0,20 m²t/m²s (máx. 300 m² de techo; marquesinas no computan)",
+   "usos": "Estación de servicio.",
+   "otros": "Volumetría específica. Nuevas estaciones solo en polígono industrial o donde lo prevea el POUM; en suelo no urbanizable, mediante plan especial."
+  },
+  "7.1a": {
+   "nombre": "Indústria aïllada (7.1a)",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 1800,
+   "frente_minimo_m": 30,
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1 (12 m)",
+   "usos": "Industrial; estación de servicio admitida en polígono industrial (art. 134).",
+   "otros": "Separaciones 8 m a calle y 5 m a lindes."
+  },
+  "7.1b": {
+   "nombre": "Indústria aïllada (7.1b)",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 4000,
+   "frente_minimo_m": 40,
+   "altura_max": "PB+1 (12 m)",
+   "usos": "Industrial; estación de servicio admitida en polígono industrial (art. 134).",
+   "otros": "Separaciones 12 m a calle y 5 m a lindes."
+  },
+  "7.2a": {
+   "nombre": "Indústria entre mitgeres (7.2a)",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "altura_max": "PB+1 (10 m)",
+   "usos": "Industrial; estación de servicio admitida en polígono industrial (art. 134)."
+  },
+  "7.2b": {
+   "nombre": "Indústria entre mitgeres (7.2b)",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": 1300,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,74 m²t/m²s",
+   "altura_max": "PB+1 (10 m)",
+   "usos": "Industrial; estación de servicio admitida en polígono industrial (art. 134)."
+  }
+ }
+}
