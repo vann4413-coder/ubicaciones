@@ -1,0 +1,39 @@
+{
+ "municipio": "La Jonquera",
+ "codigo_ine": "17086",
+ "plan": "Pla d'ordenació urbanística municipal de La Jonquera – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=61915&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "7": {
+   "nombre": "Zona comercial",
+   "articulo": "Art. 146-149",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2 (12 m)",
+   "usos": "Comercial y estaciones de servicio (con las condiciones del art. 58).",
+   "otros": "Estación de servicio solo en zonas 7, 8 y 10, con parcela mínima de 15.000 m², instalación a ambos lados de la carretera (salvo acceso por rotonda o paso a distinto nivel), informe favorable de carreteras y 70 m mínimo entre accesos a la N-II y la estación más próxima (art. 58)."
+  },
+  "8": {
+   "nombre": "Zona industrial",
+   "articulo": "Art. 150-154",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²t/m²s (0,50 en algunas subzonas)",
+   "ocupacion_max": "50 %",
+   "altura_max": "12 m",
+   "usos": "Industrial hasta 3ª categoría y estaciones de servicio (con las condiciones del art. 58).",
+   "otros": "Estación de servicio solo en zonas 7, 8 y 10, con parcela mínima de 15.000 m², instalación a ambos lados de la carretera (salvo acceso por rotonda o paso a distinto nivel), informe favorable de carreteras y 70 m mínimo entre accesos a la N-II y la estación más próxima (art. 58)."
+  },
+  "10": {
+   "nombre": "Sectors de desenvolupament industrial",
+   "articulo": "Art. 191-200",
+   "edificabilidad": "0,35 m²t/m²s bruta (según sector)",
+   "altura_max": "12 m",
+   "usos": "Industrial y actividades económicas; estaciones de servicio con las condiciones del art. 58.",
+   "otros": "Estación de servicio solo en zonas 7, 8 y 10, con parcela mínima de 15.000 m², instalación a ambos lados de la carretera (salvo acceso por rotonda o paso a distinto nivel), informe favorable de carreteras y 70 m mínimo entre accesos a la N-II y la estación más próxima (art. 58)."
+  }
+ }
+}
