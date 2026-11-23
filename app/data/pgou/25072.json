@@ -1,0 +1,89 @@
+{
+ "municipio": "Cervera",
+ "codigo_ine": "25072",
+ "plan": "Pla d'ordenació urbanística municipal de Cervera (2016) – Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=278021&downloadType=inline&idioma=ca",
+ "modificaciones": [],
+ "revisado": "2026-11-23",
+ "zonas": {
+  "6a": {
+   "nombre": "Sòl industrial compacte (parcel·les > 350 m²)",
+   "articulo": "Art. 188-190",
+   "parcela_minima_m2": 350,
+   "frente_minimo_m": 10,
+   "usos": "Industrial, almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado.",
+   "otros": "Ocupación máxima: la actual."
+  },
+  "6b": {
+   "nombre": "Sòl industrial compacte (parcel·les > 450 m²)",
+   "articulo": "Art. 188-190",
+   "parcela_minima_m2": 450,
+   "usos": "Industrial, almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado.",
+   "otros": "Ocupación según gálibos de los planos."
+  },
+  "6c": {
+   "nombre": "Sòl industrial compacte (parcel·les > 600 m²)",
+   "articulo": "Art. 188-190",
+   "parcela_minima_m2": 600,
+   "usos": "Industrial, almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado.",
+   "otros": "Ocupación según gálibos de los planos."
+  },
+  "6d": {
+   "nombre": "Sòl industrial compacte (parcel·les > 1.000 m²)",
+   "articulo": "Art. 188-190",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "usos": "Industrial, almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado."
+  },
+  "7a": {
+   "nombre": "Sòl industrial aïllat (parcel·les > 1.000 m²)",
+   "articulo": "Art. 191-193",
+   "parcela_minima_m2": 1000,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "15 m",
+   "usos": "Industrial (una actividad por parcela), almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado."
+  },
+  "7b": {
+   "nombre": "Sòl industrial aïllat (parcel·les > 2.000 m²)",
+   "articulo": "Art. 191-193",
+   "parcela_minima_m2": 2000,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "15 m",
+   "usos": "Industrial (una actividad por parcela), almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado."
+  },
+  "7c": {
+   "nombre": "Sòl industrial aïllat (parcel·les > 4.000 m²)",
+   "articulo": "Art. 191-193",
+   "parcela_minima_m2": 4000,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "15 m",
+   "usos": "Industrial (una actividad por parcela), almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado."
+  },
+  "7d": {
+   "nombre": "Sòl industrial aïllat (parcel·les > 60.000 m²)",
+   "articulo": "Art. 191-193",
+   "parcela_minima_m2": 60000,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "15 m",
+   "usos": "Industrial (una actividad por parcela), almacenes, talleres, estaciones de servicio y lavado de vehículos, comercial vinculado."
+  },
+  "9a": {
+   "nombre": "Comercial (ocupació 100 %)",
+   "articulo": "Art. 209-212",
+   "parcela_minima_m2": 400,
+   "ocupacion_max": "100 %",
+   "usos": "Comercial."
+  },
+  "9b": {
+   "nombre": "Comercial (ocupació 70 %)",
+   "articulo": "Art. 213",
+   "parcela_minima_m2": 1000,
+   "ocupacion_max": "70 %",
+   "usos": "Comercial; estaciones de servicio, garaje y lavado de vehículos."
+  }
+ }
+}
