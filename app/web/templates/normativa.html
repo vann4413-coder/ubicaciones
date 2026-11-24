@@ -21,6 +21,8 @@
   .tabla-zonas td.n { white-space: nowrap; }
   .municipios { columns: 3 220px; gap: 24px; padding: 0; list-style: none; }
   .municipios li { padding: 4px 0; break-inside: avoid; }
+  .usos-si { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 18px; }
+  .usos-si li { color: var(--tinta); }
   .nota-legal { font-size: 13px; color: var(--suave); margin-top: 30px; }
   @media (max-width: 640px) { .tabla-zonas .opc { display: none; } }
 </style>
@@ -28,8 +30,8 @@
 {% block contenido %}
 {% macro consulta(lugar) %}
 <section class="consulta">
-  <h2>¿En qué zona está tu parcela{% if lugar %} de {{ lugar }}{% endif %}?</h2>
-  <p>Escribe la dirección o la referencia catastral y consulta gratis su calificación urbanística y si es inundable. Si te interesa, descarga el informe completo con parcela mínima, valor del suelo, tráfico y entorno.</p>
+  <h2>¿Qué se puede construir en tu parcela{% if lugar %} de {{ lugar }}{% endif %}?</h2>
+  <p>Escribe la dirección o la referencia catastral y consulta gratis en qué zona está y si es inundable. Si te interesa, descarga el informe completo: usos permitidos, parcela mínima, edificabilidad, valor del suelo, accesos y entorno.</p>
   <form action="/app" method="get">
     <input name="q" placeholder="Dirección o referencia catastral{% if lugar %} en {{ lugar }}{% endif %}" required>
     <button class="btn" type="submit">Consultar gratis</button>
@@ -38,8 +40,8 @@
 {% endmacro %}
 
 {% if vista == "indice" %}
-  <h1>Normativa urbanística por municipio</h1>
-  <p class="bajada">Parcela mínima, edificabilidad, ocupación, altura y usos permitidos de cada zona urbanística, resumidos de las normas de planeamiento de {{ municipios|length }} municipios de Cataluña.</p>
+  <h1>¿Qué se puede construir en una parcela o solar?</h1>
+  <p class="bajada">Usos permitidos, parcela mínima, edificabilidad, ocupación y altura de cada zona urbanística, resumidos de las normas de planeamiento de {{ municipios|length }} municipios de Cataluña. Para vivienda, naves, comercio, oficinas, hoteles, equipamientos y cualquier otra actividad.</p>
   {{ consulta("") }}
   <ul class="municipios">
   {% for ms, m in municipios.items() %}<li><a href="/normativa/{{ ms }}">{{ m.nombre }}</a> <small>({{ m.zonas|length }} zonas)</small></li>{% endfor %}
@@ -47,8 +49,8 @@
 
 {% elif vista == "municipio" %}
   <div class="migas"><a href="/normativa">Normativa</a> › {{ m.nombre }}</div>
-  <h1>Normativa urbanística de {{ m.nombre }}</h1>
-  <p class="bajada">Zonas de {{ m.nombre }} con su parcela mínima, edificabilidad y usos permitidos. {% if m.pgm %}{{ m.nombre }} se rige por el Pla General Metropolità de Barcelona.{% endif %}</p>
+  <h1>Qué se puede construir en {{ m.nombre }}</h1>
+  <p class="bajada">Zonas urbanísticas de {{ m.nombre }} con lo que se puede construir o instalar en cada una: usos permitidos, parcela mínima y edificabilidad. {% if m.pgm %}{{ m.nombre }} se rige por el Pla General Metropolità de Barcelona.{% endif %}</p>
   <table class="tabla-zonas">
     <tr><th>Zona</th><th>Nombre</th><th>Parcela mínima</th><th class="opc">Edificabilidad</th></tr>
     {% for zs, z in m.zonas.items() %}
@@ -61,8 +63,8 @@
 
 {% else %}
   <div class="migas"><a href="/normativa">Normativa</a> › <a href="/normativa/{{ ms }}">{{ m.nombre }}</a> › Zona {{ z.clave }}</div>
-  <h1>Zona {{ z.clave }} de {{ m.nombre }}: {{ z.nombre }}</h1>
-  <p class="bajada">Parámetros urbanísticos de la zona {{ z.clave }} de {{ m.nombre }}{% if z.articulo %} ({{ z.articulo }}){% endif %}.</p>
+  <h1>Qué se puede construir en la zona {{ z.clave }} de {{ m.nombre }}</h1>
+  <p class="bajada">{{ z.nombre }}{% if z.articulo %} · {{ z.articulo }}{% endif %}. Usos permitidos y parámetros para construir en un solar o parcela de esta zona.</p>
   <div class="fichas">
     <div class="ficha destacada"><span>Parcela mínima</span><b>{{ (n(z.parcela_minima_m2) ~ " m²") if z.parcela_minima_m2 else "No fijada" }}</b></div>
     {% if z.frente_minimo_m %}<div class="ficha"><span>Fachada mínima</span><b>{{ n(z.frente_minimo_m) }} m</b></div>{% endif %}
@@ -70,13 +72,15 @@
     {% if z.ocupacion_max %}<div class="ficha"><span>Ocupación máxima</span><b>{{ z.ocupacion_max }}</b></div>{% endif %}
     {% if z.altura_max %}<div class="ficha"><span>Altura máxima</span><b>{{ z.altura_max }}</b></div>{% endif %}
   </div>
+  {% set si, no = puede %}
   <div class="texto">
-    {% if z.usos %}<h2>Usos permitidos</h2><p>{{ z.usos }}</p>{% endif %}
+    <h2>¿Qué se puede poner en esta zona?</h2>
+    {% if si %}<ul class="usos-si">{% for u in si %}<li>✓ {{ u }}</li>{% endfor %}</ul>{% endif %}
+    {% if no %}<p><b>No admitido o muy limitado:</b> {{ no|join(", ") }}.</p>{% endif %}
+    {% if not si and not no %}<p>La normativa resumida no detalla los usos de esta zona: consulta la parcela concreta o el texto oficial.</p>{% endif %}
+    {% if z.usos %}<h2>Usos según la normativa</h2><p>{{ z.usos }}</p>{% endif %}
     {% if z.otros %}<h2>Otras condiciones</h2><p>{{ z.otros }}</p>{% endif %}
     {% if z.segregacion %}<h2>¿Se puede segregar?</h2><p>{{ z.segregacion }}</p>{% endif %}
-    <h2>¿Se puede poner una gasolinera en la zona {{ z.clave }}?</h2>
-    {% if gas %}<p>La normativa de esta zona menciona las estaciones de servicio:</p><ul>{% for f in gas %}<li>{{ f }}</li>{% endfor %}</ul>
-    {% else %}<p>La normativa de esta zona no menciona expresamente las estaciones de servicio. Antes de plantear una gasolinera o un punto de recarga hay que revisar la regulación general de usos del plan y pedir el certificado de compatibilidad urbanística al ayuntamiento.</p>{% endif %}
   </div>
   {{ consulta(m.nombre) }}
   {% if otras %}

@@ -28,7 +28,21 @@ NOMBRES_PGM = {
     "08245": "Santa Coloma de Gramenet", "08263": "Sant Vicenç dels Horts", "08266": "Cerdanyola del Vallès",
     "08282": "Tiana", "08289": "Torrelles de Llobregat", "08301": "Viladecans", "08904": "Badia del Vallès",
 }
-GASOLINERA = re.compile(r"estaci[oó]n(es)? de servicio|gasolinera|benziner|estaci[oó] de servei|carburant", re.I)
+USOS = [  # (etiqueta, patrón en el texto de usos de la zona; castellano o catalán)
+    ("Vivienda", r"vivienda|habitatge|residencial|unifamiliar|plurifamiliar"),
+    ("Industria y naves", r"industri"),
+    ("Almacén y logística", r"almac[eé]n|magatzem|log[ií]stic"),
+    ("Comercio y tiendas", r"comerc"),
+    ("Oficinas y despachos", r"oficin|despatx|despacho"),
+    ("Hotel y alojamiento", r"hotel|hoteler|allotjament"),
+    ("Restauración (bar, restaurante)", r"restaura|\bbar\b"),
+    ("Talleres de vehículos", r"taller"),
+    ("Gasolinera / estación de servicio", r"estaci[oó]n(es)? de servicio|gasolinera|benziner|estaci[oó] de servei|carburant"),
+    ("Aparcamiento", r"aparcamiento|aparcament|estacionament|garaje|garatge"),
+    ("Equipamientos (sanitario, educativo, deportivo…)", r"equipament|equipamiento|sanitari|educati|esportiu|deportiv|dotaci"),
+    ("Recreativo y ocio", r"recreati|ocio|lleure|l[uú]dic|espect[aá]cul"),
+]
+NEGACION = re.compile(r"^(no|nunca|prohib|excepto|salvo)\b|\bno se admite|\bno s.admet|\bno se permite|\bno es permet|\bprohib", re.I)
 
 
 def slug(t: str) -> str:
@@ -71,9 +85,19 @@ def municipios() -> dict:
     return dict(sorted(salida.items(), key=lambda kv: slug(kv[1]["nombre"]).replace("l-", "").replace("el-", "")))
 
 
-def frases_gasolinera(z: dict) -> list[str]:
-    texto = " ".join(str(z.get(k) or "") for k in ("usos", "otros", "nombre"))
-    return [f.strip() for f in re.split(r"(?<=[.;])\s+(?=[A-ZÁÉÍÓÚÑ])", texto) if GASOLINERA.search(f)][:3]
+def que_se_puede(z: dict) -> tuple[list[str], list[str]]:
+    """Usos que el texto de la zona admite y los que excluye expresamente (lectura orientativa del resumen)."""
+    texto = " ".join(str(z.get(k) or "") for k in ("usos", "otros"))
+    trozos = [t.strip() for t in re.split(r"[.;]\s+|\.\s*$|:\s+(?=No\b)", texto) if t.strip()]
+    si, no = [], []
+    for etiqueta, patron in USOS:
+        rx = re.compile(patron, re.I)
+        for t in trozos:
+            if rx.search(t):
+                (no if NEGACION.search(t) else si).append(etiqueta)
+    si = [u for u in dict.fromkeys(si)]
+    no = [u for u in dict.fromkeys(no) if u not in si]
+    return si, no
 
 
 def _n(v):
@@ -97,9 +121,9 @@ def _pintar(plantilla: str, request: Request, **datos) -> HTMLResponse:
 async def indice(request: Request):
     ms = municipios()
     return _pintar("normativa.html", request, vista="indice", municipios=ms, ruta="/normativa",
-                   titulo="Normativa urbanística por municipio en Cataluña",
-                   descripcion=f"Parcela mínima, edificabilidad, ocupación y usos permitidos de cada zona urbanística en {len(ms)} "
-                               "municipios de Cataluña. Consulta gratis en qué zona está tu parcela.")
+                   titulo="Qué se puede construir en tu parcela: normativa urbanística por municipio en Cataluña",
+                   descripcion=f"Qué se puede construir o instalar en una parcela o solar: usos permitidos, parcela mínima, edificabilidad "
+                               f"y altura de cada zona urbanística en {len(ms)} municipios de Cataluña. Consulta gratis tu parcela.")
 
 
 @router.get("/normativa/{ms}", response_class=HTMLResponse)
@@ -108,9 +132,9 @@ async def municipio(request: Request, ms: str):
     if not m:
         raise HTTPException(404, "Municipio no encontrado")
     return _pintar("normativa.html", request, vista="municipio", m=m, ms=ms, ruta=f"/normativa/{ms}",
-                   titulo=f"Normativa urbanística de {m['nombre']}: zonas, parcela mínima y usos",
-                   descripcion=f"Zonas urbanísticas de {m['nombre']} con su parcela mínima, edificabilidad, ocupación, altura y usos "
-                               "permitidos (industrial, comercial, gasolineras…). Consulta gratis tu parcela.")
+                   titulo=f"Qué se puede construir en {m['nombre']}: zonas urbanísticas, parcela mínima y usos",
+                   descripcion=f"Qué se puede construir o poner en una parcela o solar de {m['nombre']}: zonas urbanísticas con su parcela "
+                               "mínima, edificabilidad, altura y usos permitidos (vivienda, naves, comercio, oficinas…). Consulta gratis tu parcela.")
 
 
 @router.get("/normativa/{ms}/{zs}", response_class=HTMLResponse)
@@ -122,7 +146,7 @@ async def zona(request: Request, ms: str, zs: str):
     pm = f", parcela mínima {_n(z['parcela_minima_m2'])} m²" if z.get("parcela_minima_m2") else ""
     otras = [(k, v) for k, v in m["zonas"].items() if k != zs]
     return _pintar("normativa.html", request, vista="zona", m=m, ms=ms, z=z, zs=zs, otras=otras,
-                   gas=frases_gasolinera(z), ruta=f"/normativa/{ms}/{zs}",
-                   titulo=f"Zona {z['clave']} de {m['nombre']}: {z.get('nombre', '')}",
-                   descripcion=f"Zona {z['clave']} ({z.get('nombre', '')}) de {m['nombre']}{pm}: edificabilidad, ocupación, altura y usos "
-                               "permitidos. ¿Se puede poner una gasolinera? Consulta gratis tu parcela.")
+                   puede=que_se_puede(z), ruta=f"/normativa/{ms}/{zs}",
+                   titulo=f"Qué se puede construir en la zona {z['clave']} de {m['nombre']} ({z.get('nombre', '')})",
+                   descripcion=f"Qué se puede construir o instalar en un solar de la zona {z['clave']} ({z.get('nombre', '')}) de {m['nombre']}{pm}: "
+                               "usos permitidos, edificabilidad, ocupación y altura. Consulta gratis tu parcela.")
