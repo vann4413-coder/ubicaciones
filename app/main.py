@@ -68,6 +68,8 @@ app = FastAPI(title=config.MARCA, lifespan=ciclo)
 app.mount("/static", StaticFiles(directory=WEB), name="static")
 app.include_router(rutas_cuenta)
 app.include_router(rutas_legales)
+from app.normativa import router as rutas_normativa, urls as urls_normativa  # noqa: E402
+app.include_router(rutas_normativa)
 
 _informes: dict[tuple, tuple[float, dict]] = {}
 TTL_INFORME = 3600
@@ -300,8 +302,9 @@ async def robots():
 
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap():
-    paginas = ["", "app", "aviso-legal", "privacidad", "condiciones", "cookies"]
-    urls = "".join(f"<url><loc>https://parcelas360.com/{p}</loc></url>" for p in paginas)
+    from urllib.parse import quote
+    paginas = ["", "app", "aviso-legal", "privacidad", "condiciones", "cookies"] + [u.lstrip("/") for u in urls_normativa()]
+    urls = "".join(f"<url><loc>https://parcelas360.com/{quote(p)}</loc></url>" for p in paginas)
     return Response(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>',
                     media_type="application/xml")
 

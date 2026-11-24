@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ titulo }} · {{ marca }}</title>
+{% if descripcion %}<meta name="description" content="{{ descripcion }}">{% endif %}
+{% if ruta and base_url %}<link rel="canonical" href="{{ base_url }}{{ ruta }}">{% endif %}
+{% block cabeza %}{% endblock %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/static/web.css">
@@ -13,6 +16,7 @@
   <div class="contenedor nav-in">
     <a class="logo" href="/"><i></i>{{ marca }}</a>
     <div class="nav-links">
+      <a href="/normativa">Normativa</a>
       <a href="/#precios">Precios</a>
       <a href="/app">Analizar parcela</a>
       {% if usuario %}<a href="/cuenta">Mi cuenta</a>{% else %}<a href="/cuenta">Entrar</a>{% endif %}

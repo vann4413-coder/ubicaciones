@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block cabeza %}
+<style>
+  .migas { font-size: 14px; color: var(--suave); margin-bottom: 14px; }
+  .migas a { color: var(--suave); }
+  .consulta { background: var(--marca); color: #fff; border-radius: 16px; padding: 24px; margin: 26px 0; display: grid; gap: 12px; }
+  .consulta h2 { color: #fff; font-size: 21px; }
+  .consulta p { margin: 0; color: #dbe5f0; }
+  .consulta form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .consulta input { flex: 1 1 260px; padding: 13px 14px; border-radius: 10px; border: 0; font: inherit; }
+  .fichas { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin: 18px 0; }
+  .ficha { border: 1px solid var(--linea); border-radius: 12px; padding: 14px 16px; background: #fff; }
+  .ficha span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--suave); }
+  .ficha b { font-size: 19px; color: var(--marca); }
+  .ficha.destacada { border-color: var(--acento); background: #fff8ea; }
+  .texto { max-width: 75ch; }
+  .texto h2 { font-size: 22px; color: var(--marca); margin: 30px 0 10px; }
+  .tabla-zonas { width: 100%; border-collapse: collapse; font-size: 15px; margin: 10px 0 20px; }
+  .tabla-zonas th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--suave); border-bottom: 2px solid var(--linea); padding: 8px 10px; }
+  .tabla-zonas td { border-bottom: 1px solid var(--linea); padding: 10px; vertical-align: top; }
+  .tabla-zonas td.n { white-space: nowrap; }
+  .municipios { columns: 3 220px; gap: 24px; padding: 0; list-style: none; }
+  .municipios li { padding: 4px 0; break-inside: avoid; }
+  .nota-legal { font-size: 13px; color: var(--suave); margin-top: 30px; }
+  @media (max-width: 640px) { .tabla-zonas .opc { display: none; } }
+</style>
+{% endblock %}
+{% block contenido %}
+{% macro consulta(lugar) %}
+<section class="consulta">
+  <h2>¿En qué zona está tu parcela{% if lugar %} de {{ lugar }}{% endif %}?</h2>
+  <p>Escribe la dirección o la referencia catastral y consulta gratis su calificación urbanística y si es inundable. Si te interesa, descarga el informe completo con parcela mínima, valor del suelo, tráfico y entorno.</p>
+  <form action="/app" method="get">
+    <input name="q" placeholder="Dirección o referencia catastral{% if lugar %} en {{ lugar }}{% endif %}" required>
+    <button class="btn" type="submit">Consultar gratis</button>
+  </form>
+</section>
+{% endmacro %}
+
+{% if vista == "indice" %}
+  <h1>Normativa urbanística por municipio</h1>
+  <p class="bajada">Parcela mínima, edificabilidad, ocupación, altura y usos permitidos de cada zona urbanística, resumidos de las normas de planeamiento de {{ municipios|length }} municipios de Cataluña.</p>
+  {{ consulta("") }}
+  <ul class="municipios">
+  {% for ms, m in municipios.items() %}<li><a href="/normativa/{{ ms }}">{{ m.nombre }}</a> <small>({{ m.zonas|length }} zonas)</small></li>{% endfor %}
+  </ul>
+
+{% elif vista == "municipio" %}
+  <div class="migas"><a href="/normativa">Normativa</a> › {{ m.nombre }}</div>
+  <h1>Normativa urbanística de {{ m.nombre }}</h1>
+  <p class="bajada">Zonas de {{ m.nombre }} con su parcela mínima, edificabilidad y usos permitidos. {% if m.pgm %}{{ m.nombre }} se rige por el Pla General Metropolità de Barcelona.{% endif %}</p>
+  <table class="tabla-zonas">
+    <tr><th>Zona</th><th>Nombre</th><th>Parcela mínima</th><th class="opc">Edificabilidad</th></tr>
+    {% for zs, z in m.zonas.items() %}
+    <tr><td class="n"><a href="/normativa/{{ ms }}/{{ zs }}"><b>{{ z.clave }}</b></a></td><td><a href="/normativa/{{ ms }}/{{ zs }}">{{ z.nombre }}</a></td>
+      <td class="n">{{ (n(z.parcela_minima_m2) ~ " m²") if z.parcela_minima_m2 else "—" }}</td><td class="opc">{{ z.edificabilidad or "—" }}</td></tr>
+    {% endfor %}
+  </table>
+  {{ consulta(m.nombre) }}
+  <p class="nota-legal">Resumen orientativo de {{ m.plan }}. Puede haber modificaciones puntuales o planeamiento derivado posterior: prevalece siempre el texto oficial{% if m.documento %} (<a href="{{ m.documento }}" rel="nofollow noopener" target="_blank">documento oficial</a>){% endif %}.</p>
+
+{% else %}
+  <div class="migas"><a href="/normativa">Normativa</a> › <a href="/normativa/{{ ms }}">{{ m.nombre }}</a> › Zona {{ z.clave }}</div>
+  <h1>Zona {{ z.clave }} de {{ m.nombre }}: {{ z.nombre }}</h1>
+  <p class="bajada">Parámetros urbanísticos de la zona {{ z.clave }} de {{ m.nombre }}{% if z.articulo %} ({{ z.articulo }}){% endif %}.</p>
+  <div class="fichas">
+    <div class="ficha destacada"><span>Parcela mínima</span><b>{{ (n(z.parcela_minima_m2) ~ " m²") if z.parcela_minima_m2 else "No fijada" }}</b></div>
+    {% if z.frente_minimo_m %}<div class="ficha"><span>Fachada mínima</span><b>{{ n(z.frente_minimo_m) }} m</b></div>{% endif %}
+    {% if z.edificabilidad %}<div class="ficha"><span>Edificabilidad</span><b>{{ z.edificabilidad }}</b></div>{% endif %}
+    {% if z.ocupacion_max %}<div class="ficha"><span>Ocupación máxima</span><b>{{ z.ocupacion_max }}</b></div>{% endif %}
+    {% if z.altura_max %}<div class="ficha"><span>Altura máxima</span><b>{{ z.altura_max }}</b></div>{% endif %}
+  </div>
+  <div class="texto">
+    {% if z.usos %}<h2>Usos permitidos</h2><p>{{ z.usos }}</p>{% endif %}
+    {% if z.otros %}<h2>Otras condiciones</h2><p>{{ z.otros }}</p>{% endif %}
+    {% if z.segregacion %}<h2>¿Se puede segregar?</h2><p>{{ z.segregacion }}</p>{% endif %}
+    <h2>¿Se puede poner una gasolinera en la zona {{ z.clave }}?</h2>
+    {% if gas %}<p>La normativa de esta zona menciona las estaciones de servicio:</p><ul>{% for f in gas %}<li>{{ f }}</li>{% endfor %}</ul>
+    {% else %}<p>La normativa de esta zona no menciona expresamente las estaciones de servicio. Antes de plantear una gasolinera o un punto de recarga hay que revisar la regulación general de usos del plan y pedir el certificado de compatibilidad urbanística al ayuntamiento.</p>{% endif %}
+  </div>
+  {{ consulta(m.nombre) }}
+  {% if otras %}
+  <div class="texto"><h2>Otras zonas de {{ m.nombre }}</h2></div>
+  <table class="tabla-zonas">
+    <tr><th>Zona</th><th>Nombre</th><th>Parcela mínima</th></tr>
+    {% for k, o in otras[:40] %}<tr><td class="n"><a href="/normativa/{{ ms }}/{{ k }}"><b>{{ o.clave }}</b></a></td><td><a href="/normativa/{{ ms }}/{{ k }}">{{ o.nombre }}</a></td><td class="n">{{ (n(o.parcela_minima_m2) ~ " m²") if o.parcela_minima_m2 else "—" }}</td></tr>{% endfor %}
+  </table>
+  {% endif %}
+  <p class="nota-legal">Resumen orientativo de {{ m.plan }}. Puede haber modificaciones puntuales o planeamiento derivado posterior: prevalece siempre el texto oficial{% if m.documento %} (<a href="{{ m.documento }}" rel="nofollow noopener" target="_blank">documento oficial</a>){% endif %}. Para una parcela concreta, pide la cédula urbanística al ayuntamiento.</p>
+{% endif %}
+{% endblock %}
