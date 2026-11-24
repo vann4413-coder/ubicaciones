@@ -59,6 +59,7 @@ def municipios() -> dict:
     ficheros = {f.stem: json.loads(f.read_text(encoding="utf-8")) for f in DATOS.glob("*.json") if f.stem != "alias"}
 
     def zonas_de(d):
+        from app.fuentes.pgou import regla_gasolinera
         zs, vistos = {}, set()
         for clave, z in (d.get("zonas") or {}).items():
             if not isinstance(z, dict) or id(z) in vistos:
@@ -67,7 +68,8 @@ def municipios() -> dict:
             if firma in vistos:
                 continue
             vistos.add(firma)
-            zs["zona-" + slug(clave)] = {"clave": clave.upper() if clave[:1].isalpha() else clave, **z}
+            g = regla_gasolinera(d, z)
+            zs["zona-" + slug(clave)] = {"clave": clave.upper() if clave[:1].isalpha() else clave, **z, **({"gasolinera": g} if g else {})}
         return zs
 
     for ine, d in ficheros.items():

@@ -35,5 +35,10 @@
    "usos": "Industrial y actividades económicas; estaciones de servicio con las condiciones del art. 58.",
    "otros": "Estación de servicio solo en zonas 7, 8 y 10, con parcela mínima de 15.000 m², instalación a ambos lados de la carretera (salvo acceso por rotonda o paso a distinto nivel), informe favorable de carreteras y 70 m mínimo entre accesos a la N-II y la estación más próxima (art. 58)."
   }
+ },
+ "gasolinera": {
+  "parcela_minima_m2": 15000,
+  "articulo": "Art. 58",
+  "condiciones": "Solo en las zonas 7 (comercial), 8 (industrial) y 10 (desarrollo industrial). Instalación a ambos lados de la carretera salvo acceso por rotonda o paso a distinto nivel, informe favorable de carreteras y 70 m mínimo entre accesos a la N-II y la estación más próxima."
  }
 }

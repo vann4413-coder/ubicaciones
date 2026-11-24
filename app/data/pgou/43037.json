@@ -30,7 +30,11 @@
    "parcela_minima_m2": 150,
    "frente_minimo_m": 7.5,
    "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
-   "otros": "Parcel·la i façana mínimes: l'existent; es pot subdividir si en resulten parcel·les de més de 150 m² i 7,5 m de façana. Densitat 1 habitatge/100 m² construïts. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+   "otros": "Parcel·la i façana mínimes: l'existent; es pot subdividir si en resulten parcel·les de més de 150 m² i 7,5 m de façana. Densitat 1 habitatge/100 m² construïts. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 1500,
+    "condiciones": "Solo en ejes urbanos interiores, estaciones de 500 a 1.500 m² o menores, con estudio de movilidad."
+   }
   },
   "OD3": {
    "nombre": "Ordenació aïllada densa de tres plantes",
@@ -41,7 +45,11 @@
    "ocupacion_max": "40 % (soterrani 50 %)",
    "altura_max": "PB+2",
    "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
-   "otros": "Separacions 4 m a carrer i fons, 2 m a la resta. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+   "otros": "Separacions 4 m a carrer i fons, 2 m a la resta. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 1500,
+    "condiciones": "Solo en ejes urbanos interiores, estaciones de 500 a 1.500 m² o menores, con estudio de movilidad."
+   }
   },
   "OD5s": {
    "nombre": "Ordenació aïllada densa de cinc plantes (Segur)",
@@ -52,7 +60,11 @@
    "ocupacion_max": "40 % (soterrani 60 %)",
    "altura_max": "PB+4",
    "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
-   "otros": "Separacions 4 m a tots els llindars. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+   "otros": "Separacions 4 m a tots els llindars. Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 1500,
+    "condiciones": "Solo en ejes urbanos interiores, estaciones de 500 a 1.500 m² o menores, con estudio de movilidad."
+   }
   },
   "OD5": {
    "nombre": "Ordenació aïllada densa de cinc plantes",
@@ -63,13 +75,21 @@
    "ocupacion_max": "40 % (soterrani 60 %)",
    "altura_max": "PB+4",
    "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
-   "otros": "Separacions 4 m a tots els llindars (5 m al passeig Marítim). Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+   "otros": "Separacions 4 m a tots els llindars (5 m al passeig Marítim). Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 1500,
+    "condiciones": "Solo en ejes urbanos interiores, estaciones de 500 a 1.500 m² o menores, con estudio de movilidad."
+   }
   },
   "DD": {
    "nombre": "Densificació mitjançant actuacions de dotació",
    "articulo": "Art. 67",
    "usos": "Habitatge, comerç, oficines, serveis, hoteler i equipaments.",
-   "otros": "Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat."
+   "otros": "Gasolinera: només en eixos urbans interiors (estacions de 500-1.500 m² o menors) i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 1500,
+    "condiciones": "Solo en ejes urbanos interiores, estaciones de 500 a 1.500 m² o menores, con estudio de movilidad."
+   }
   },
   "OV": {
    "nombre": "Ordenació volumètrica específica",
@@ -81,7 +101,11 @@
    "nombre": "Promocions en filera",
    "articulo": "Art. 69",
    "usos": "Habitatge.",
-   "otros": "Edificabilitat: l'assignada per la llicència de la promoció original. Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+   "otros": "Edificabilitat: l'assignada per la llicència de la promoció original. Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 500,
+    "condiciones": "Solo estaciones de menos de 500 m², separadas más de 15 m de cualquier edificación, con estudio de movilidad."
+   }
   },
   "X250": {
    "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 250",
@@ -92,7 +116,11 @@
    "ocupacion_max": "40 %",
    "altura_max": "PB+1 (7,50 m)",
    "usos": "Habitatge (1 per cada 250 m², màx. 2); oficines dels residents.",
-   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 500,
+    "condiciones": "Solo estaciones de menos de 500 m², separadas más de 15 m de cualquier edificación, con estudio de movilidad."
+   }
   },
   "X400": {
    "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 400",
@@ -103,7 +131,11 @@
    "ocupacion_max": "35 %",
    "altura_max": "PB+1 (7,50 m)",
    "usos": "Habitatge (1 per cada 400 m², màx. 2); oficines dels residents.",
-   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 500,
+    "condiciones": "Solo estaciones de menos de 500 m², separadas más de 15 m de cualquier edificación, con estudio de movilidad."
+   }
   },
   "X600": {
    "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 600",
@@ -114,7 +146,11 @@
    "ocupacion_max": "30 %",
    "altura_max": "PB+1 (7,50 m)",
    "usos": "Un habitatge per parcel·la.",
-   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 500,
+    "condiciones": "Solo estaciones de menos de 500 m², separadas más de 15 m de cualquier edificación, con estudio de movilidad."
+   }
   },
   "X1000": {
    "nombre": "Habitatges unifamiliars aïllats – ciutat jardí 1000",
@@ -125,7 +161,11 @@
    "ocupacion_max": "35 %",
    "altura_max": "PB+1 (7,50 m)",
    "usos": "Un habitatge per parcel·la.",
-   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat."
+   "otros": "Gasolinera: només estacions de menys de 500 m², separades més de 15 m de qualsevol edificació, i amb estudi de mobilitat.",
+   "gasolinera": {
+    "superficie_maxima_m2": 500,
+    "condiciones": "Solo estaciones de menos de 500 m², separadas más de 15 m de cualquier edificación, con estudio de movilidad."
+   }
   },
   "C250": {
    "nombre": "Condominis d'habitatges 250",

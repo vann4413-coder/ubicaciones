@@ -67,6 +67,7 @@
   <p class="bajada">{{ z.nombre }}{% if z.articulo %} · {{ z.articulo }}{% endif %}. Usos permitidos y parámetros para construir en un solar o parcela de esta zona.</p>
   <div class="fichas">
     <div class="ficha destacada"><span>Parcela mínima</span><b>{{ (n(z.parcela_minima_m2) ~ " m²") if z.parcela_minima_m2 else "No fijada" }}</b></div>
+    {% if z.gasolinera and z.gasolinera.parcela_minima_m2 %}<div class="ficha destacada"><span>Parcela mínima para gasolinera</span><b>{{ n(z.gasolinera.parcela_minima_m2) }} m²</b></div>{% endif %}
     {% if z.frente_minimo_m %}<div class="ficha"><span>Fachada mínima</span><b>{{ n(z.frente_minimo_m) }} m</b></div>{% endif %}
     {% if z.edificabilidad %}<div class="ficha"><span>Edificabilidad</span><b>{{ z.edificabilidad }}</b></div>{% endif %}
     {% if z.ocupacion_max %}<div class="ficha"><span>Ocupación máxima</span><b>{{ z.ocupacion_max }}</b></div>{% endif %}
@@ -79,6 +80,7 @@
     {% if no %}<p><b>No admitido o muy limitado:</b> {{ no|join(", ") }}.</p>{% endif %}
     {% if not si and not no %}<p>La normativa resumida no detalla los usos de esta zona: consulta la parcela concreta o el texto oficial.</p>{% endif %}
     {% if z.usos %}<h2>Usos según la normativa</h2><p>{{ z.usos }}</p>{% endif %}
+    {% if z.gasolinera %}<h2>Condiciones para gasolineras y estaciones de servicio</h2><p>{% if z.gasolinera.parcela_minima_m2 %}Parcela mínima específica: <b>{{ n(z.gasolinera.parcela_minima_m2) }} m²</b>{% if z.gasolinera.frente_minimo_m %} y {{ n(z.gasolinera.frente_minimo_m) }} m de fachada{% endif %}{% if z.parcela_minima_m2 and z.parcela_minima_m2 != z.gasolinera.parcela_minima_m2 %}, distinta de la general de la zona ({{ n(z.parcela_minima_m2) }} m²){% endif %}. {% endif %}{{ z.gasolinera.condiciones }}{% if z.gasolinera.articulo %} ({{ z.gasolinera.articulo }}){% endif %}</p>{% endif %}
     {% if z.otros %}<h2>Otras condiciones</h2><p>{{ z.otros }}</p>{% endif %}
     {% if z.segregacion %}<h2>¿Se puede segregar?</h2><p>{{ z.segregacion }}</p>{% endif %}
   </div>

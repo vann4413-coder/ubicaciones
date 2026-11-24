@@ -131,6 +131,10 @@ def riesgos_y_pasos(inf: dict) -> list[dict]:
     if pg.get("parcela_minima_m2") and sup and sup < pg["parcela_minima_m2"]:
         pasos.append({"tipo": "riesgo", "texto": f"La parcela es menor que la parcela mínima de la zona ({_n(pg['parcela_minima_m2'])} m²): "
                       "confirmar con el ayuntamiento que es edificable."})
+    g = pg.get("gasolinera") or {}
+    if g.get("parcela_minima_m2") and sup and sup < g["parcela_minima_m2"]:
+        pasos.append({"tipo": "riesgo", "texto": f"Para una estación de servicio el plan exige una parcela mínima de {_n(g['parcela_minima_m2'])} m²"
+                      f" y esta tiene {_n(sup)} m²."})
     te = inf.get("terreno") or {}
     for a in te.get("afecciones") or []:
         if a["grupo"] in ("Protección", "Patrimonio", "Riesgo químico") or a["capa"] in ("zona-servitud-fluvial", "pendents-20-percent"):

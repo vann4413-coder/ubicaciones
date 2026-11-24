@@ -49,5 +49,9 @@
    "altura_max": "PB+1 (10 m)",
    "usos": "Industrial; estación de servicio admitida en polígono industrial (art. 134)."
   }
+ },
+ "gasolinera": {
+  "articulo": "Art. 132-135",
+  "condiciones": "Nuevas estaciones solo en polígono industrial o donde lo prevea el POUM (clave ST2); en suelo no urbanizable, mediante plan especial. Edificabilidad 0,20 m²t/m²s y máximo 300 m² de techo (las marquesinas no computan)."
  }
 }

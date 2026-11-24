@@ -51,7 +51,12 @@
    "ocupacion_max": "55 %",
    "altura_max": "PB+2 (11 m)",
    "usos": "Terciario y comercial; admite estación de servicio.",
-   "otros": "Separación 10 m a calle; 20 m al sistema hidrográfico. Superficie mínima por actividad industrial, almacén o estación de servicio: 300 m²."
+   "otros": "Separación 10 m a calle; 20 m al sistema hidrográfico. Superficie mínima por actividad industrial, almacén o estación de servicio: 300 m².",
+   "gasolinera": {
+    "parcela_minima_m2": 300,
+    "articulo": "Art. 210",
+    "condiciones": "Superficie mínima por actividad de estación de servicio: 300 m²."
+   }
   },
   "11c": {
    "nombre": "Terciari – polígon amb reparcel·lació",
@@ -59,7 +64,13 @@
    "edificabilidad": "0,35 m²t/m²s",
    "altura_max": "PB+2",
    "usos": "Terciario y comercial; admite estación de servicio y aparcamiento.",
-   "otros": "Parcelas según el proyecto de reparcelación (2010). Estación de servicio: mínimo 300 m² y 15 m de fachada."
+   "otros": "Parcelas según el proyecto de reparcelación (2010). Estación de servicio: mínimo 300 m² y 15 m de fachada.",
+   "gasolinera": {
+    "parcela_minima_m2": 300,
+    "frente_minimo_m": 15,
+    "articulo": "Art. 211",
+    "condiciones": "Estación de servicio: mínimo 300 m² y 15 m de fachada."
+   }
   },
   "12a": {
    "nombre": "Indústria agrupada",

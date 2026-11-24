@@ -383,6 +383,13 @@
     {% endfor %}
     </table>
     {% if pg.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica < pg.parcela_minima_m2 %}<div class="aviso">La parcela ({{ inf.parcela.sup_grafica|num }} m²) es menor que la parcela mínima de la zona ({{ pg.parcela_minima_m2|num }} m²): consultar si es edificable por ser preexistente o si requiere agrupación.</div>{% endif %}
+    {% set g = pg.gasolinera %}
+    <div class="info"><b>Parcela mínima para estación de servicio:</b>
+      {% if g and g.parcela_minima_m2 %}{{ g.parcela_minima_m2|num }} m²{% if g.frente_minimo_m %} y {{ g.frente_minimo_m|num }} m de fachada{% endif %}{% if pg.parcela_minima_m2 and pg.parcela_minima_m2 != g.parcela_minima_m2 %}, distinta de la parcela mínima general de la zona ({{ pg.parcela_minima_m2|num }} m²){% endif %}.
+      {% elif g and g.superficie_maxima_m2 %}el plan no fija una mínima específica, pero limita la estación a {{ g.superficie_maxima_m2|num }} m² como máximo.
+      {% else %}el plan no fija una específica para gasolineras; rige la de la zona{% if pg.parcela_minima_m2 %} ({{ pg.parcela_minima_m2|num }} m²){% endif %}.{% endif %}
+      {% if g and g.condiciones %}<br><small>{{ g.condiciones }}{% if g.articulo %} ({{ g.articulo }}){% endif %}</small>{% endif %}</div>
+    {% if g and g.parcela_minima_m2 and inf.parcela.sup_grafica and inf.parcela.sup_grafica < g.parcela_minima_m2 %}<div class="aviso">La parcela ({{ inf.parcela.sup_grafica|num }} m²) es menor que la parcela mínima que el plan exige para una estación de servicio ({{ g.parcela_minima_m2|num }} m²).</div>{% endif %}
     {% if pg.segregacion %}<div class="{{ 'info' if pg.segregacion.posible else 'aviso' }}"><b>¿Se puede segregar?</b> {{ pg.segregacion.texto }}</div>{% endif %}
     <p class="pie">{{ pg.plan }}{% if pg.modificaciones %}. Modificaciones posteriores de las normas: {{ pg.modificaciones|join("; ") }}. Comprobar si afectan a la zona{% endif %}.{% if pg.documento %} <a href="{{ pg.documento }}">Ver las normas</a>.{% endif %}</p>
     {% endif %}

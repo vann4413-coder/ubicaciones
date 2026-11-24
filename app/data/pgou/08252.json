@@ -51,5 +51,9 @@
    "ocupacion_max": "60 %",
    "otros": "No se permite segregar en parcelas inferiores a 10.000 m². No se admite industria compartida."
   }
+ },
+ "gasolinera": {
+  "articulo": "Art. 100 y 208",
+  "condiciones": "Admitida en la zona 7.2 (no en 7.1). Fachada a vial de más de 15 m, espacio de espera de vehículos dentro de la parcela, surtidores y tanques a ≥20 m de viviendas o equipamientos y ≥10 m de otros edificios; no se admiten nuevas estaciones con frente a la carretera de Barcelona."
  }
 }

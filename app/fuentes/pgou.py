@@ -41,10 +41,27 @@ def _candidatas(clave: str) -> list[str]:
     return salida
 
 
+def regla_gasolinera(m: dict | None, z: dict | None) -> dict | None:
+    """Condiciones propias de las estaciones de servicio: las del municipio, completadas o sustituidas por las de la zona.
+    Campos: parcela_minima_m2, frente_minimo_m, superficie_maxima_m2, condiciones, articulo."""
+    base = dict((m or {}).get("gasolinera") or {})
+    base.update((z or {}).get("gasolinera") or {})
+    return base or None
+
+
 def zona(cod_ine5: str, clave_municipal: str, descripcion: str = "") -> dict | None:
     m = _municipio(cod_ine5)
     if not m:
         return None
+    z = _zona(m, clave_municipal, descripcion)
+    if z is not None:
+        g = regla_gasolinera(m, z)
+        if g:
+            z["gasolinera"] = g
+    return z
+
+
+def _zona(m: dict, clave_municipal: str, descripcion: str = "") -> dict | None:
     zonas = {k.lower(): v for k, v in (m.get("zonas") or {}).items()}
     variantes = [clave_municipal]
     if re.match(r"^\s*\d+-\d", clave_municipal or ""):
@@ -104,4 +121,6 @@ def consultar(cod_ine5: str, calificaciones: list[dict]) -> dict | None:
     return {"plan": m.get("plan", ""), "documento": m.get("documento", ""), "modificaciones": m.get("modificaciones", []),
             "revisado": m.get("revisado", ""), "zonas": filas,
             "parcela_minima_m2": next((f["zona"].get("parcela_minima_m2") for f in filas
-                                       if f["zona"] and f["zona"].get("parcela_minima_m2")), None)}
+                                       if f["zona"] and f["zona"].get("parcela_minima_m2")), None),
+            "gasolinera": next((f["zona"]["gasolinera"] for f in filas if f["zona"] and f["zona"].get("gasolinera")),
+                               regla_gasolinera(m, None))}

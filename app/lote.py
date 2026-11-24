@@ -131,9 +131,9 @@ def leer_ubicaciones(ruta) -> tuple[str, int, list[dict]]:
 
 CAB = ["REF. CATASTRAL", "DIST. PUNTO A PARCELA (m)", "DIRECCIÓN CATASTRAL", "USO CATASTRAL", "SUP. PARCELA (m²)",
        "SUP. CONSTRUIDA (m²)", "AÑO CONSTRUCCIÓN", "Nº INMUEBLES", "CLASIFICACIÓN DEL SUELO", "CALIFICACIÓN URBANÍSTICA",
-       "COMPATIBILIDAD GASOLINERA", "PARCELA MÍNIMA DE LA ZONA", "¿CUMPLE PARCELA MÍNIMA?", "¿SEGREGABLE?",
+       "COMPATIBILIDAD GASOLINERA", "PARCELA MÍNIMA DE LA ZONA", "PARCELA MÍNIMA PARA GASOLINERA", "¿CUMPLE PARCELA MÍNIMA?", "¿SEGREGABLE?",
        "FLUJO PREFERENTE (%)", "INUNDABLE T100 / T500 (%)", "OBSERVACIONES SUELO"]
-ANCHO = [17, 11, 32, 16, 11, 11, 9, 9, 24, 44, 30, 24, 12, 32, 11, 13, 70]
+ANCHO = [17, 11, 32, 16, 11, 11, 9, 9, 24, 44, 30, 24, 26, 12, 32, 11, 13, 70]
 NIVEL = {"compatible": ("Compatible", "verde"), "condicionado": ("Condicionado (normativa municipal)", "ambar"),
          "plan_especial": ("Solo con plan especial (suelo no urbanizable)", "rojo"), "incompatible": ("No compatible", "rojo")}
 RELLENO = {"verde": "D1FADF", "ambar": "FEF0C7", "rojo": "FEE4E2"}
@@ -179,6 +179,23 @@ def fila_resultado(r: dict) -> tuple[list, dict]:
             obs.append(f"Zona {principal['clave_parcela']}: {z['otros']}")
     else:
         pm_txt, cumple = "Normativa municipal no cargada", "—"
+    g = (z.get("gasolinera") if z else None) or (pg.get("gasolinera") if pg else None) or {}
+    if g.get("parcela_minima_m2"):
+        pmg = g["parcela_minima_m2"]
+        g_txt = f"{pmg:,.0f} m²".replace(",", ".") + (" (distinta de la de la zona)" if pm and pm != pmg else "")
+        if sup and sup < pmg:
+            cumple = "NO"
+            obs.append(f"Para gasolinera el plan exige {pmg:,.0f} m²".replace(",", ".") + f" y la parcela tiene {_r(sup)} m².")
+        elif cumple == "—" and sup:
+            cumple = "Sí"
+    elif g.get("superficie_maxima_m2"):
+        g_txt = f"Sin mínima; estación de {g['superficie_maxima_m2']:,.0f} m² como máximo".replace(",", ".")
+    elif pg:
+        g_txt = "No fija una específica: rige la de la zona"
+    else:
+        g_txt = "—"
+    if g.get("condiciones"):
+        obs.append("Gasolinera: " + g["condiciones"])
     zfp = aca.get("zfp_pct") or 0
     if zfp:
         obs.append("Parte de la parcela en zona de flujo preferente: no se autorizan nuevas gasolineras en esa parte.")
@@ -192,16 +209,16 @@ def fila_resultado(r: dict) -> tuple[list, dict]:
         obs.append("Parcela muy grande: probablemente la estación ocupa solo una parte (centro comercial, polígono…).")
     vals = [r.get("rc"), _r(r.get("dist_punto_m")) or 0, r.get("direccion_catastro"), r.get("uso"), _r(sup),
             _r(r.get("sup_construida")), r.get("anio"), r.get("num_inmuebles"), _agrupa(u.get("clasificaciones"), False),
-            _agrupa(u.get("calificaciones"), True) or u.get("mensaje"), txt, pm_txt, cumple,
+            _agrupa(u.get("calificaciones"), True) or u.get("mensaje"), txt, pm_txt, g_txt, cumple,
             (pg.get("segregacion") or {}).get("texto") if pg else None, _r(zfp, 1),
             f"{_r(aca.get('t100_pct') or 0, 1)} / {_r(aca.get('t500_pct') or 0, 1)}" if aca.get("estado") == "ok" else "Sin dato",
             " ".join(obs) or None]
     if c:
         col[10] = c
     if cumple in ("Sí", "NO"):
-        col[12] = "verde" if cumple == "Sí" else "rojo"
+        col[13] = "verde" if cumple == "Sí" else "rojo"
     if zfp:
-        col[14] = "rojo"
+        col[15] = "rojo"
     return vals, col
 
 
@@ -218,7 +235,7 @@ def escribir(entrada, salida, hoja: str, fila_cab: int, resultados: dict) -> Non
         vals, col = fila_resultado(r)
         for i, v in enumerate(vals):
             c = ws.cell(int(fila), c0 + i, v)
-            c.alignment = Alignment(wrap_text=i in (2, 8, 9, 10, 11, 13, 16), vertical="top")
+            c.alignment = Alignment(wrap_text=i in (2, 8, 9, 10, 11, 12, 14, 17), vertical="top")
             if i in col:
                 c.fill = PatternFill("solid", fgColor=RELLENO[col[i]])
     nota = ws.cell(fila_cab, c0 + len(CAB) + 1, f"Verificación de suelo generada el {time.strftime('%d/%m/%Y')} con datos públicos: "
