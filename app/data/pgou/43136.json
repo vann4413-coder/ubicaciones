@@ -1,0 +1,130 @@
+{
+ "municipio": "Sant Carles de la Ràpita",
+ "codigo_ine": "43136",
+ "plan": "Pla d'ordenació urbanística municipal de Sant Carles de la Ràpita (2014), Normativa urbanística",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=256660&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Núcleo urbano",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2.1": {
+   "nombre": "Ensanche, intensidad 1",
+   "articulo": "Art. 152 y 155",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 7.5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "100 % en PB",
+   "altura_max": "14,20 m, PB+3",
+   "usos": "Residencial unifamiliar y plurifamiliar",
+   "otros": ""
+  },
+  "2.2": {
+   "nombre": "Ensanche, intensidad 2",
+   "articulo": "Art. 153 y 155",
+   "parcela_minima_m2": 130,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "100 % en PB",
+   "altura_max": "10,90 m, PB+2",
+   "usos": "Residencial unifamiliar y plurifamiliar",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 156-170",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,60 m²t/m²s (3.1); 0,80-1,50 en 3.2",
+   "ocupacion_max": "25 % + 2 % auxiliar (3.1)",
+   "altura_max": "7,60 m, PB+1",
+   "usos": "Vivienda unifamiliar y pareada",
+   "otros": ""
+  },
+  "3.1": {
+   "nombre": "Ciudad jardín unifamiliar",
+   "articulo": "Art. 170",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "7,60 m, PB+1",
+   "usos": "Vivienda unifamiliar y pareada",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Edificación aislada",
+   "articulo": "Art. 171-176",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "30 % + 5 % auxiliar",
+   "altura_max": "17,50 m, PB+4",
+   "usos": "Residencial unifamiliar y plurifamiliar",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Volumetría específica",
+   "articulo": "Art. 177-180",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según perímetros reguladores",
+   "ocupacion_max": null,
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Verde privado",
+   "articulo": "Art. 181-182",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Industrial",
+   "articulo": "Art. 183-185",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,1 m²t/m²s (incluido desdoblamiento de plantas)",
+   "ocupacion_max": null,
+   "altura_max": "2 plantas",
+   "usos": "Industrial",
+   "otros": "Separaciones: 8 m a calle y 5 m a lindes. Subdivisión de la edificación cada 350 m²t."
+  },
+  "ST2": {
+   "nombre": "Estación de servicio",
+   "articulo": "Art. 134-137",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,20 m²t/m²s; techo máximo 400 m²",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Venta al público de carburantes",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "No se admiten nuevas estaciones de servicio en núcleos urbanos consolidados, salvo en polígono industrial o donde el POUM lo prevé (clave ST2). Se ordenan con plan especial: 0,20 m²t/m²s y techo máximo de 400 m².",
+    "articulo": "Art. 134-137"
+   }
+  }
+ },
+ "gasolinera": {
+  "condiciones": "No se admiten nuevas estaciones de servicio en núcleos urbanos consolidados, salvo en polígono industrial o donde el POUM lo prevé (clave ST2). Se ordenan con plan especial: 0,20 m²t/m²s y techo máximo de 400 m².",
+  "articulo": "Art. 134-137"
+ }
+}

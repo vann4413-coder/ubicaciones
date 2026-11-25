@@ -1,0 +1,237 @@
+{
+ "municipio": "La Bisbal d'Empordà",
+ "codigo_ine": "17022",
+ "plan": "Pla d'ordenació urbanística municipal de La Bisbal d'Empordà (2015), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=268842&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "R1": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Sección 1",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "R2": {
+   "nombre": "Urbano tradicional",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "R3": {
+   "nombre": "Ordenación cerrada",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "R3b: frente mínimo 8 m."
+  },
+  "R4": {
+   "nombre": "Ordenación abierta",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "R5": {
+   "nombre": "Casas agrupadas",
+   "articulo": "Sección 5",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": "R5a frente 5 m; R5b 5,50 m."
+  },
+  "R6": {
+   "nombre": "Casas aisladas",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": 225,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,65-0,90 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": "R6a 300 m² y 15 m; R6b 225 m² y 8,50 m; R6c parcela existente."
+  },
+  "R6a": {
+   "nombre": "Casas aisladas R6a",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,90 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "R6b": {
+   "nombre": "Casas aisladas R6b",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": 225,
+   "frente_minimo_m": 8.5,
+   "edificabilidad": "0,65 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "R6c": {
+   "nombre": "Casas aisladas R6c",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": "",
+   "segregacion": "Parcela existente."
+  },
+  "A1": {
+   "nombre": "Industrial",
+   "articulo": "Art. 213-220",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75-1,15 m²t/m²s según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial y comercial; hotelero, restauración, recreativo, oficinas, almacenes, talleres de vehículos, logístico, servicios, servicio viario y estación de servicio",
+   "otros": "A1a: parcela existente; A1b: 1.750 m² y 20 m; A1c1/A1c3: 500 m² y 10 m; A1c2: 400 m² y 5 m.",
+   "gasolinera": {
+    "condiciones": "La estación de servicio es uso admitido en la zona industrial (A1).",
+    "articulo": "Art. 217 (regulación de usos, clave A1)"
+   }
+  },
+  "A1a": {
+   "nombre": "Industrial A1a",
+   "articulo": "Art. 215-216",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial y comercial; hotelero, restauración, recreativo, oficinas, almacenes, talleres de vehículos, logístico, servicios, servicio viario y estación de servicio",
+   "otros": "",
+   "segregacion": "Parcela existente.",
+   "gasolinera": {
+    "condiciones": "La estación de servicio es uso admitido en la zona industrial (A1).",
+    "articulo": "Art. 217 (regulación de usos, clave A1)"
+   }
+  },
+  "A1b": {
+   "nombre": "Industria aislada (L'Aigueta)",
+   "articulo": "Art. 215-216",
+   "parcela_minima_m2": 1750,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,75-1,00 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial y comercial; hotelero, restauración, recreativo, oficinas, almacenes, talleres de vehículos, logístico, servicios, servicio viario y estación de servicio",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "La estación de servicio es uso admitido en la zona industrial (A1).",
+    "articulo": "Art. 217 (regulación de usos, clave A1)"
+   }
+  },
+  "A1c1": {
+   "nombre": "Industria entre medianeras A1c1",
+   "articulo": "Art. 215-216",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial y comercial; hotelero, restauración, recreativo, oficinas, almacenes, talleres de vehículos, logístico, servicios, servicio viario y estación de servicio",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "La estación de servicio es uso admitido en la zona industrial (A1).",
+    "articulo": "Art. 217 (regulación de usos, clave A1)"
+   }
+  },
+  "A1c2": {
+   "nombre": "Industria entre medianeras A1c2",
+   "articulo": "Art. 215-216",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 5,
+   "edificabilidad": "1,15 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial y comercial; hotelero, restauración, recreativo, oficinas, almacenes, talleres de vehículos, logístico, servicios, servicio viario y estación de servicio",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "La estación de servicio es uso admitido en la zona industrial (A1).",
+    "articulo": "Art. 217 (regulación de usos, clave A1)"
+   }
+  },
+  "A1c3": {
+   "nombre": "Industria entre medianeras A1c3",
+   "articulo": "Art. 215-216",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial y comercial; hotelero, restauración, recreativo, oficinas, almacenes, talleres de vehículos, logístico, servicios, servicio viario y estación de servicio",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "La estación de servicio es uso admitido en la zona industrial (A1).",
+    "articulo": "Art. 217 (regulación de usos, clave A1)"
+   }
+  },
+  "AT": {
+   "nombre": "Industrial en transformación de usos",
+   "articulo": "Sección 8",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Transformación de usos industriales",
+   "otros": ""
+  },
+  "A2": {
+   "nombre": "Servicios",
+   "articulo": "Sección 9",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Servicios y terciario",
+   "otros": ""
+  },
+  "M2": {
+   "nombre": "Conservación",
+   "articulo": "Sección 10",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (Can Gassull: 0,45 m²t/m²s)",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela existente."
+  }
+ }
+}
