@@ -1,0 +1,113 @@
+{
+ "municipio": "Tordera",
+ "codigo_ine": "08284",
+ "plan": "Revisió del Pla general d'ordenació de Tordera (2004), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=248140&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "vila historica": {
+   "nombre": "Vila històrica (casco antiguo)",
+   "articulo": "Art. 266-276",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según gálibo de altura y profundidad de planos",
+   "ocupacion_max": "60 % en planes de reforma",
+   "altura_max": "10,30 m, PB+2",
+   "usos": "Vivienda; usos admitidos del recinto urbano (comercio, oficinas, servicios)",
+   "otros": "",
+   "segregacion": "Ancho mínimo de fachada para dividir: 5 m."
+  },
+  "fronts continus": {
+   "nombre": "Crecimiento urbano en frentes continuos",
+   "articulo": "Art. 277-290",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según gálibo de altura y profundidad de planos",
+   "ocupacion_max": "70 % en planta baja",
+   "altura_max": "10,30 m, PB+2 (12,50 m y PB+3 en calles de 12 m o más)",
+   "usos": "Vivienda; usos admitidos del recinto urbano (comercio, oficinas, servicios)",
+   "otros": "",
+   "segregacion": "Fachada mínima 12 m para nuevas parcelaciones."
+  },
+  "ocupacions flexibles": {
+   "nombre": "Crecimiento urbano en ocupaciones flexibles",
+   "articulo": "Art. 300-305",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según gálibos de planos",
+   "ocupacion_max": "Según planos; profundidad máxima 20 m",
+   "altura_max": "Según planos",
+   "usos": "Vivienda; usos admitidos del recinto urbano (comercio, oficinas, servicios)",
+   "otros": "",
+   "segregacion": "Se respeta la parcelación actual; fachada mínima 12 m para nuevas divisiones."
+  },
+  "ciutat jardi": {
+   "nombre": "Ciudad jardín (recinto urbano)",
+   "articulo": "Art. 306-312",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "6,30 m, PB+1",
+   "usos": "Vivienda unifamiliar; almacén limitado a 200 m²",
+   "otros": "No se admite plurifamiliar ni propiedad horizontal. En urbanizaciones residenciales la parcela mínima es la del plano de parcelación de cada sector."
+  },
+  "industrial": {
+   "nombre": "Urbanizaciones industriales",
+   "articulo": "Art. 533-545",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,1 m²t/m²s (índice neto en Can Buscà; ver cada unidad)",
+   "ocupacion_max": "Según unidad",
+   "altura_max": "10 m, PB+1",
+   "usos": "Industrial (mediana y pequeña industria)",
+   "otros": "Unidades UI01 Fibracolor, UI02 Can Verdalet, UI03 Can Buscà, UI04, UI05 Inditex, UI06.",
+   "segregacion": "La parcelación es la existente según planos de parcelación."
+  },
+  "comercial n-ii": {
+   "nombre": "Zona comercial y equipamiento privado de la N-II (Fibracolor)",
+   "articulo": "Art. 546-552",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "13,5 m",
+   "usos": "Comercio mediano y grande (automóvil, maquinaria, materiales de construcción, bricolaje, mueble), restauración, hotelero, cultural, educativo, deportivo y de ocio; gasolineras",
+   "otros": "Separación mínima de 25 m a la N-II y 6 m al resto. 1 plaza de aparcamiento cada 50 m² construidos.",
+   "gasolinera": {
+    "parcela_minima_m2": 500,
+    "condiciones": "Se admiten gasolineras; para gasolinera y restauración la parcela mínima baja a 500 m² (1.000 m² para el resto de usos).",
+    "articulo": "Art. 548-549"
+   }
+  }
+ },
+ "por_descripcion": [
+  [
+   "hist[oò]ric",
+   "vila historica"
+  ],
+  [
+   "fronts? contin",
+   "fronts continus"
+  ],
+  [
+   "flexibl",
+   "ocupacions flexibles"
+  ],
+  [
+   "ciutat.?jard|unifamiliar a[ïi]llad",
+   "ciutat jardi"
+  ],
+  [
+   "comercial|equipament privat|serveis",
+   "comercial n-ii"
+  ],
+  [
+   "ind[uú]stri",
+   "industrial"
+  ]
+ ]
+}
