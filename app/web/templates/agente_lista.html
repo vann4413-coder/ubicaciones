@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block contenido %}
+<p class="antetitulo antetitulo-int">Agente 360</p>
+<h1>Analiza tu lista de ubicaciones</h1>
+<p class="bajada">Sube el Excel con las ubicaciones que estás valorando —direcciones, referencias catastrales o coordenadas— y el agente te lo devuelve con cada fila completada: parcela catastral, superficie, clasificación y calificación del suelo, <b>usos admitidos en la zona</b>, parcela mínima, si se puede segregar, flujo preferente e inundabilidad. Tus columnas se conservan tal cual.</p>
+
+{% if error %}<div class="aviso-web">{{ error }}</div>{% endif %}
+{% if ok %}<div class="aviso-web ok">{{ ok }} Te avisamos por correo cuando termine; puedes cerrar esta página.</div>{% endif %}
+
+{% if not usuario %}
+<div class="caja">
+  <h2>Pruébalo gratis con {{ prueba }} ubicaciones</h2>
+  <p>Crea una cuenta gratuita, sube tu Excel y el agente analiza las primeras {{ prueba }} filas sin coste. Para listas más largas, los planes Profesional ({{ limites.profesional }} ubicaciones al mes) y Empresa ({{ limites.empresa }} al mes).</p>
+  <div class="acciones-web">
+    <a class="btn" href="/cuenta?siguiente=/agente/lista">Crear cuenta o entrar</a>
+    <a class="btn btn-sec" href="/agente/plantilla.xlsx">Descargar plantilla</a>
+  </div>
+</div>
+{% else %}
+<div class="caja">
+  <h2>Sube tu Excel</h2>
+  <p class="cupo">
+  {% if cupo.tipo == "plan" %}
+    {% if cupo.limite is none %}Ubicaciones sin límite con tu plan.{% else %}Este mes has enviado <b>{{ cupo.usadas }}</b> de {{ cupo.limite }} ubicaciones: te quedan <b>{{ cupo.quedan }}</b>.{% endif %}
+  {% elif cupo.tipo == "prueba" %}
+    {% if cupo.quedan %}Prueba gratuita: te quedan <b>{{ cupo.quedan }}</b> ubicaciones. Si tu lista es más larga, se analizan las primeras.{% else %}Ya has usado la prueba gratuita. Elige un plan para analizar más listas.{% endif %}
+  {% else %}Sin límite (modo demostración).{% endif %}
+  </p>
+  {% if cupo.quedan != 0 %}
+  <form method="post" action="/agente/lista" enctype="multipart/form-data" class="form-lista">
+    <label>Fichero Excel (.xlsx) <input type="file" name="fichero" accept=".xlsx" required></label>
+    <div class="acciones-web">
+      <button class="btn" type="submit">Analizar lista</button>
+      <a class="btn btn-sec" href="/agente/plantilla.xlsx">Descargar plantilla</a>
+    </div>
+  </form>
+  <small class="acepto">Basta una columna con <b>DIRECCIÓN</b> (y mejor también <b>MUNICIPIO</b>), <b>REFERENCIA CATASTRAL</b> o <b>LATITUD</b> y <b>LONGITUD</b>. Cada ubicación tarda unos segundos: una lista de 100 está en menos de una hora.</small>
+  {% endif %}
+  {% if cupo.tipo == "prueba" or (cupo.tipo == "plan" and cupo.quedan == 0) %}
+  <div class="acciones-web">
+    <a class="btn{% if cupo.quedan %} btn-sec{% endif %}" href="/suscribirse?plan=profesional">Profesional · 39 €/mes · {{ limites.profesional }} ubicaciones</a>
+    <a class="btn btn-sec" href="/suscribirse?plan=empresa">Empresa · 99 €/mes · {{ limites.empresa }} ubicaciones</a>
+  </div>
+  {% endif %}
+</div>
+
+<div class="caja">
+  <h2>Tus listas</h2>
+  {% if lotes %}
+  <div class="tabla-scroll"><table class="tabla-web"><tr><th>Fichero</th><th>Enviada</th><th>Situación</th><th>Analizadas</th><th></th></tr>
+  {% for l in lotes %}
+    <tr><td>{{ l.nombre }}</td><td>{{ l.creado }}</td><td>{{ l.situacion }}</td>
+    <td>{{ l.hechos }} de {{ l.total }}{% if l.errores %} · {{ l.errores }} sin datos{% endif %}</td>
+    <td class="acciones-fila">{% if l.situacion == "terminado" %}<a class="btn btn-peq" href="/agente/lista/{{ l.id }}.xlsx">Descargar</a>{% elif l.hechos %}<a class="btn btn-sec btn-peq" href="/agente/lista/{{ l.id }}.xlsx?parcial=1">Descargar lo hecho</a>{% endif %}
+      <form method="post" action="/agente/lista/{{ l.id }}/borrar" onsubmit="return confirm('¿Borrar esta lista?')"><button class="btn btn-sec btn-peq" type="submit">Borrar</button></form></td></tr>
+  {% endfor %}
+  </table></div>
+  <p><small>Actualiza la página para ver el avance.</small></p>
+  {% else %}<p>Aún no has enviado ninguna lista.</p>{% endif %}
+</div>
+{% endif %}
+
+<div class="caja">
+  <h2>Qué te devuelve el agente en cada fila</h2>
+  <ul class="lista-columnas">
+    <li><b>Parcela catastral</b>: referencia, dirección, uso, superficie de parcela y construida, año y nº de inmuebles.</li>
+    <li><b>Urbanismo</b>: clasificación y calificación del suelo (Mapa Urbanístic de Catalunya).</li>
+    <li><b>Qué se puede poner</b>: usos que admite y excluye la zona según las normas del municipio.</li>
+    <li><b>Parcela mínima</b> de la zona (y la específica para estación de servicio cuando el plan la fija), si la cumple y si se puede segregar.</li>
+    <li><b>Agua</b>: zona de flujo preferente e inundabilidad T100 / T500 (ACA).</li>
+    <li><b>Observaciones</b> para revisar antes de seguir: parcela demasiado pequeña, fincas con varios inmuebles, punto que no cae en parcela…</li>
+  </ul>
+  <p><small>Resultados orientativos elaborados con datos públicos oficiales. No sustituyen a la cèdula urbanística ni a la nota simple. De momento, Cataluña.</small></p>
+</div>
+{% endblock %}

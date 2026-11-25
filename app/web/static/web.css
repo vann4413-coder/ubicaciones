@@ -218,3 +218,40 @@ body { -webkit-font-smoothing: antialiased; }
 }
 @media (max-width: 369px) { .buscador-grande input { font-size: 15px; } }
 @media (prefers-reduced-motion: reduce) { .btn, .tarjeta, .sector, .plan { transition: none; } }
+
+/* Agente 360 · Analiza tu lista */
+.antetitulo-int { color: var(--ambar); margin-bottom: 6px; }
+.tabla-scroll { overflow-x: auto; }
+.tabla-web { border-collapse: collapse; width: 100%; font-size: 14px; }
+.tabla-web th, .tabla-web td { border-bottom: 1px solid var(--linea); padding: 10px 8px; text-align: left; vertical-align: top; }
+.tabla-web th { color: var(--suave); font-weight: 600; font-size: 13px; }
+.acciones-fila { display: flex; gap: 6px; flex-wrap: wrap; }
+.acciones-fila form { margin: 0; }
+.cupo { margin: 0; }
+.form-lista { display: grid; gap: 12px; }
+.lista-columnas { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--suave); }
+.lista-columnas b { color: var(--tinta); }
+
+/* Portada Agente 360 */
+.hero-lista { margin: 10px 0 0; }
+.hero-lista a { color: var(--acento); font-weight: 700; text-decoration: none; }
+.hero-lista a:hover { text-decoration: underline; }
+.rejilla-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.capacidad { display: flex; flex-direction: column; gap: 10px; }
+.capacidad p { flex: 1; }
+.capacidad .btn { align-self: flex-start; margin-top: 6px; }
+.estado { align-self: flex-start; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
+.estado.ok { background: #e3f5ea; color: #13703f; }
+.estado.pronto { background: #eef1f5; color: var(--suave); }
+.muestra-tit small { display: block; font-size: 12px; font-weight: 500; opacity: .75; margin-top: 2px; }
+.muestra-lista table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.muestra-lista th { text-align: left; color: var(--suave); font-weight: 600; font-size: 11px; text-transform: uppercase; padding: 10px 10px 6px; border-bottom: 1px solid var(--linea); }
+.muestra-lista td { padding: 9px 10px; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.muestra-lista td small { display: block; color: var(--suave); font-size: 11px; }
+.muestra-lista td:first-child { font-weight: 600; }
+.chip { display: inline-block; padding: 3px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; line-height: 1.3; }
+.chip.v { background: #d1fadf; color: #0f5c32; } .chip.a { background: #fef0c7; color: #7a4a00; } .chip.r { background: #fee4e2; color: #8f2318; }
+.muestra-fichas .f:not(.v):not(.a) { border-top-color: var(--marca); }
+.cta .acciones-web .btn { text-align: center; }
+@media (max-width: 980px) { .rejilla-3 { grid-template-columns: minmax(0, 1fr); max-width: 560px; } }
+@media (max-width: 640px) { .muestra-lista th:nth-child(2), .muestra-lista td:nth-child(2) { display: none; } }

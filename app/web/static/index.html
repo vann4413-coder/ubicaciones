@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{MARCA}} · Informe de idoneidad de parcelas en Cataluña</title>
+<title>{{MARCA}} · Agente 360: tu agente de expansión para analizar parcelas en Cataluña</title>
 <link rel="canonical" href="https://parcelas360.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://parcelas360.com/">
-<meta property="og:title" content="{{MARCA}} · Informe de idoneidad de parcelas en Cataluña">
-<meta property="og:description" content="Urbanismo, parcela mínima, valor del suelo, catastro, inundabilidad, tráfico (IMD), red eléctrica y entorno de cualquier parcela de Cataluña en un informe PDF en minutos.">
+<meta property="og:title" content="{{MARCA}} · Agente 360: tu agente de expansión para analizar parcelas en Cataluña">
+<meta property="og:description" content="Dale una dirección o una lista de 400 ubicaciones y el Agente 360 te dice qué se puede poner en cada parcela: urbanismo, usos admitidos, parcela mínima, inundabilidad, tráfico, red eléctrica y entorno.">
 <meta property="og:locale" content="es_ES">
-<meta name="description" content="Introduce una dirección o referencia catastral y obtén en minutos un informe con catastro, urbanismo y parcela mínima, valor del suelo, flujo preferente, tráfico, red eléctrica y entorno.">
+<meta name="description" content="El Agente 360 analiza por ti parcelas de Cataluña: qué se puede construir, usos admitidos, parcela mínima, catastro, inundabilidad, tráfico, red eléctrica y entorno. Una ubicación o una lista entera en Excel.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="/static/web.css">
@@ -21,9 +21,9 @@
   <div class="contenedor nav-in">
     <a class="logo" href="/"><i></i>{{MARCA}}</a>
     <div class="nav-links">
-      <a href="#incluye">Qué incluye</a>
-      <a href="#para-quien">Para quién</a>
-      <a href="#como">Cómo funciona</a>
+      <a href="#agente">El agente</a>
+      <a href="/agente/lista">Analiza tu lista</a>
+      <a href="/normativa">Normativa</a>
       <a href="#precios">Precios</a>
       <a href="/cuenta">Entrar</a>
       <a class="btn btn-peq" href="/app">Probar ahora</a>
@@ -34,9 +34,9 @@
 <header class="hero">
   <div class="contenedor hero-in">
     <div class="hero-texto">
-      <p class="antetitulo">Cataluña · datos oficiales · en minutos</p>
-      <h1>Todo lo que necesitas saber de una parcela, en un solo informe</h1>
-      <p class="entradilla">Catastro, urbanismo con parcela mínima y edificabilidad, valor de referencia del suelo, flujo preferente, tráfico, red eléctrica, riesgos del terreno y todo lo que hay en 5 km a la redonda. Escribe una dirección o referencia catastral y obtén un informe de idoneidad con puntuación para cada uso.</p>
+      <p class="antetitulo">Agente 360 · Cataluña · datos oficiales</p>
+      <h1>Tu agente de expansión: dime dónde y te digo qué se puede poner</h1>
+      <p class="entradilla">El Agente 360 hace por ti la revisión previa de cada ubicación: catastro, urbanismo, usos admitidos, parcela mínima, inundabilidad, tráfico, red eléctrica y entorno. Dale una parcela y tienes el informe en minutos; dale tu lista en Excel y te la devuelve completa.</p>
       <form class="buscador-grande" action="/app" method="get">
         <input name="q" placeholder="Dirección, referencia catastral o coordenadas" aria-label="Dirección, referencia catastral o coordenadas" required>
         <button class="btn" type="submit">Analizar parcela</button>
@@ -53,31 +53,58 @@
         })();
       </script>
       <p class="ejemplos">Prueba con: <a href="/app?q=Carrer%20Prat%20de%20la%20Riba%20110%2C%20Matar%C3%B3">Prat de la Riba 110, Mataró</a> · <a href="/app">o elige en el mapa</a></p>
+      <p class="hero-lista"><a href="/agente/lista">¿Tienes una lista de ubicaciones? Súbela en Excel y pruébalo gratis con 5 &rarr;</a></p>
     </div>
     <div class="hero-muestra" aria-hidden="true">
-      <div class="muestra">
-        <div class="muestra-cab"><span><i></i>{{MARCA}}</span><small>Informe de idoneidad</small></div>
-        <div class="muestra-tit">Av. de Barcelona · Tàrrega</div>
-        <div class="muestra-mapa"><span class="poli"></span><span class="pin p1">1</span><span class="pin p2">2</span><span class="pin p3">3</span></div>
-        <div class="muestra-notas">
-          <div><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" class="pista"/><circle cx="40" cy="40" r="34" class="arco v" stroke-dasharray="209 214"/><text x="40" y="47">98</text></svg><small>Gasolinera</small></div>
-          <div><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" class="pista"/><circle cx="40" cy="40" r="34" class="arco v" stroke-dasharray="205 214"/><text x="40" y="47">96</text></svg><small>Recarga</small></div>
-          <div><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" class="pista"/><circle cx="40" cy="40" r="34" class="arco v" stroke-dasharray="182 214"/><text x="40" y="47">85</text></svg><small>Retail</small></div>
-          <div><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" class="pista"/><circle cx="40" cy="40" r="34" class="arco v" stroke-dasharray="214 214"/><text x="40" y="47">100</text></svg><small>Promotor</small></div>
-        </div>
+      <div class="muestra muestra-lista">
+        <div class="muestra-cab"><span><i></i>Agente 360</span><small>Analiza tu lista</small></div>
+        <div class="muestra-tit">ubicaciones_expansion.xlsx<small>4 de 4 analizadas</small></div>
+        <table>
+          <tr><th>Ubicación</th><th>Suelo</th><th>Qué se puede poner</th></tr>
+          <tr><td>Av. Catalunya · Tàrrega<small>3.120 m²</small></td><td>Urbano · industrial</td><td><span class="chip v">Naves, logística, servicios</span></td></tr>
+          <tr><td>Ctra. N-II · Girona<small>8.450 m²</small></td><td>Urbano · terciario</td><td><span class="chip v">Comercio, restauración</span></td></tr>
+          <tr><td>C-17 · Vic<small>1.950 m²</small></td><td>Urbano · residencial</td><td><span class="chip a">Vivienda; comercio en planta baja</span></td></tr>
+          <tr><td>Camí Ral · Mataró<small>640 m²</small></td><td>Urbano · residencial</td><td><span class="chip r">Bajo parcela mínima</span></td></tr>
+        </table>
         <div class="muestra-fichas">
-          <span class="f v">Flujo preferente<b>No</b></span>
-          <span class="f v">Tráfico<b>30.716 veh/día</b></span>
-          <span class="f a">Entorno 5 km<b>312 actividades</b></span>
+          <span class="f a">Flujo preferente<b>1 de 4</b></span>
+          <span class="f v">Segregables<b>2 de 4</b></span>
+          <span class="f a">Revisar<b>1 parcela</b></span>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<section id="incluye" class="bloque">
+<section id="agente" class="bloque">
   <div class="contenedor">
-    <h2>Qué incluye cada informe</h2>
+    <h2>Qué hace el Agente 360 por tu equipo</h2>
+    <p class="bajada">La revisión previa de una ubicación son horas de Catastro, visor urbanístico, normas municipales, mapas de inundabilidad y aforos. El agente la hace por ti y te deja solo las ubicaciones que merecen una visita.</p>
+    <div class="rejilla-3">
+      <article class="tarjeta capacidad">
+        <span class="estado ok">Disponible</span>
+        <h3>Analiza tu lista</h3>
+        <p>Sube el Excel con las ubicaciones que tienes en estudio —direcciones, referencias catastrales o coordenadas— y te lo devuelve con suelo, usos admitidos, parcela mínima, segregación e inundabilidad de cada una. Tus columnas no se tocan.</p>
+        <a class="btn" href="/agente/lista">Probar gratis con 5</a>
+      </article>
+      <article class="tarjeta capacidad">
+        <span class="estado ok">Disponible</span>
+        <h3>Informe completo de una parcela</h3>
+        <p>Para la ubicación que te interesa de verdad: urbanismo y PGOU, valor del suelo, tráfico, red eléctrica, puntos de recarga, competencia y riesgos, con puntuación por uso y PDF para compartir.</p>
+        <a class="btn btn-sec" href="/app">Analizar una parcela</a>
+      </article>
+      <article class="tarjeta capacidad">
+        <span class="estado pronto">Próximamente</span>
+        <h3>Pregúntale a la parcela</h3>
+        <p>«¿Puedo poner aquí un supermercado?», «¿qué me falta para una electrolinera?». Pregunta en lenguaje normal y el agente te contesta con los datos de esa parcela y la norma que aplica.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="incluye" class="bloque gris">
+  <div class="contenedor">
+    <h2>Qué revisa el agente en cada parcela</h2>
     <p class="bajada">Lo que hoy se consulta a mano en una docena de webs, cruzado sobre la parcela exacta y con la fecha de cada dato.</p>
     <div class="rejilla-4">
       <article class="tarjeta"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3z"/><path d="M9 4v13M15 7v13"/></svg></span><h3>Catastro</h3><p>Referencia, superficie, construcciones, colindantes, frente a vial y forma útil de la parcela.</p></article>
@@ -96,10 +123,10 @@
   </div>
 </section>
 
-<section id="para-quien" class="bloque gris">
+<section id="para-quien" class="bloque">
   <div class="contenedor">
-    <h2>Un informe, cinco tipos de cliente</h2>
-    <p class="bajada">El mismo informe completo para todos. Cada uno mira lo que le importa.</p>
+    <h2>Para cualquier equipo que busca suelo</h2>
+    <p class="bajada">El mismo análisis completo para todos. Cada uno mira lo que le importa.</p>
     <div class="rejilla-5">
       <div class="sector"><h3>Recarga eléctrica</h3><p>Capacidad de red, tráfico y actividad del entorno para decidir dónde instalar.</p></div>
       <div class="sector"><h3>Estaciones de servicio</h3><p>Flujo preferente, accesos, IMD y estaciones cercanas con su precio.</p></div>
@@ -110,18 +137,18 @@
   </div>
 </section>
 
-<section id="como" class="bloque">
+<section id="como" class="bloque gris">
   <div class="contenedor">
     <h2>Cómo funciona</h2>
     <div class="pasos">
-      <div class="paso"><span>1</span><h3>Busca la parcela</h3><p>Dirección, referencia catastral, coordenadas o un clic en el mapa.</p></div>
-      <div class="paso"><span>2</span><h3>Confirma la parcela</h3><p>La ves dibujada sobre la ortofoto y, si hay varias, eliges la buena.</p></div>
-      <div class="paso"><span>3</span><h3>Recibe el informe</h3><p>En pantalla y en PDF, con mapas, puntuación, riesgos y próximos pasos.</p></div>
+      <div class="paso"><span>1</span><h3>Dale el encargo</h3><p>Una dirección, una referencia catastral, un clic en el mapa o tu Excel con todas las ubicaciones.</p></div>
+      <div class="paso"><span>2</span><h3>El agente trabaja</h3><p>Consulta Catastro, Mapa Urbanístic, normas municipales, ACA, aforos, red eléctrica y entorno de cada parcela.</p></div>
+      <div class="paso"><span>3</span><h3>Recibe el resultado</h3><p>El informe en pantalla y PDF, o tu Excel completado y un aviso por correo cuando está listo.</p></div>
     </div>
   </div>
 </section>
 
-<section id="precios" class="bloque gris">
+<section id="precios" class="bloque">
   <div class="contenedor">
     <h2>Precios</h2>
     <p class="bajada">Sin permanencia. El mismo informe completo en todos los planes.</p>
@@ -142,24 +169,24 @@
         <span class="etiqueta">Recomendado</span>
         <h3>Profesional</h3>
         <p class="precio">39 €<small> / mes</small></p>
-        <ul><li>30 informes al mes</li><li>Historial de informes</li><li>Para equipos de expansión y agentes</li></ul>
+        <ul><li>30 informes al mes</li><li>Analiza tu lista: 50 ubicaciones al mes</li><li>Historial de informes</li><li>Para equipos de expansión y agentes</li></ul>
         <a class="btn" href="/suscribirse?plan=profesional">Suscribirme</a>
       </div>
       <div class="plan">
         <h3>Empresa</h3>
         <p class="precio">99 €<small> / mes</small></p>
-        <ul><li>Uso intensivo: hasta 150 informes al mes</li><li>Historial de informes</li><li>Para operadores, cadenas y consultoras</li></ul>
+        <ul><li>Uso intensivo: hasta 150 informes al mes</li><li>Analiza tu lista: 300 ubicaciones al mes</li><li>Historial de informes</li><li>Para operadores, cadenas y consultoras</li></ul>
         <a class="btn btn-sec" href="/suscribirse?plan=empresa">Suscribirme</a>
       </div>
     </div>
-    <p class="nota-precios">IVA incluido.</p>
+    <p class="nota-precios">IVA incluido. Analiza tu lista se puede probar gratis con 5 ubicaciones al crear una cuenta.</p>
   </div>
 </section>
 
 <section class="cta">
   <div class="contenedor cta-in">
-    <h2>Analiza tu primera parcela ahora</h2>
-    <a class="btn btn-claro" href="/app">Abrir el mapa</a>
+    <h2>Pon al agente a trabajar con tu lista</h2>
+    <div class="acciones-web"><a class="btn" href="/agente/lista">Subir mi Excel</a><a class="btn btn-claro" href="/app">Analizar una parcela</a></div>
   </div>
 </section>
 

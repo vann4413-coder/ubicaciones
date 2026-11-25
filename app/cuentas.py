@@ -23,6 +23,10 @@ DURACION_SESION = 60 * 60 * 24 * 30  # 30 días
 # para quien ya lo tuviera contratado, pero ya no se ofrece.
 LIMITES = {"profesional": 30, "empresa": int(os.getenv("UBI_LIMITE_EMPRESA", "150")), "premium": None}
 INFORMES_PACK = 10
+# «Analiza tu lista» (Agente 360): ubicaciones al mes por plan (None = sin límite) y prueba gratuita por cuenta.
+LIMITES_LISTA = {"profesional": int(os.getenv("UBI_LISTA_PROFESIONAL", "50")),
+                 "empresa": int(os.getenv("UBI_LISTA_EMPRESA", "300")), "premium": None}
+PRUEBA_LISTA = int(os.getenv("UBI_LISTA_PRUEBA", "5"))
 
 _lock = threading.Lock()
 _con: sqlite3.Connection | None = None
@@ -187,6 +191,26 @@ def registrar_uso(usuario: dict, rc: str) -> None:
     with _lock:
         db().execute("INSERT OR IGNORE INTO uso (usuario_id, rc, mes, fecha) VALUES (?, ?, ?, ?)", (usuario["id"], rc, _mes(), _ahora()))
         db().commit()
+
+
+def cupo_lista(usuario: dict | None) -> dict:
+    """Cuántas ubicaciones puede enviar ahora a «Analiza tu lista».
+
+    {"tipo": "plan"|"prueba"|"ninguno"|"libre", "limite": int|None, "usadas": int, "quedan": int|None}
+    """
+    from app import lote, pagos
+    if not usuario:
+        return {"tipo": "ninguno", "limite": 0, "usadas": 0, "quedan": 0}
+    plan = plan_activo(usuario)
+    if not pagos.activos() and not plan:
+        return {"tipo": "libre", "limite": None, "usadas": 0, "quedan": None}
+    if plan:
+        limite = LIMITES_LISTA.get(plan)
+        usadas = lote.ubicaciones_usadas(usuario["id"], time.strftime("%Y-%m"))
+        return {"tipo": "plan", "plan": plan, "limite": limite, "usadas": usadas,
+                "quedan": None if limite is None else max(0, limite - usadas)}
+    usadas = lote.ubicaciones_usadas(usuario["id"])
+    return {"tipo": "prueba", "limite": PRUEBA_LISTA, "usadas": usadas, "quedan": max(0, PRUEBA_LISTA - usadas)}
 
 
 # ---------- Packs de informes (bonos de pago único, sin caducidad) ----------

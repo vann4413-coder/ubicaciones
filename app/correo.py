@@ -14,6 +14,7 @@ Variables de entorno SMTP (en Railway):
 Sin usuario y clave, no se envía nada (la web funciona igual).
 """
 import asyncio
+from html import escape
 import logging
 import os
 import smtplib
@@ -101,4 +102,32 @@ async def enviar_informe(destino: str, rc: str, url_informe: str, url_pdf: str, 
         return True
     except Exception as e:  # noqa: BLE001  un fallo de correo no debe romper la compra
         log.warning("No se pudo enviar el correo del informe %s: %s", rc, e)
+        return False
+
+
+async def enviar_aviso_lista(destino: str, nombre: str, total: int) -> bool:
+    """Aviso de que una lista de «Analiza tu lista» ya está terminada."""
+    if not activo() or not destino:
+        return False
+    url = (os.getenv("UBI_URL_PUBLICA", "").rstrip("/") or "https://parcelas360.com") + "/agente/lista"
+    c = _cfg()
+    m = EmailMessage()
+    m["From"] = formataddr((config.MARCA, c["usuario"] or _resend()["desde"]))
+    m["To"] = destino
+    m["Subject"] = f"Tu lista ya está analizada · {config.MARCA}"
+    m.set_content(f"Hola:\n\nEl Agente 360 ha terminado de analizar «{nombre}» ({total} ubicaciones).\n\n"
+                  f"Descarga el Excel con los resultados aquí: {url}\n\nUn saludo,\n{config.MARCA}\nhttps://parcelas360.com\n")
+    m.add_alternative(f"""<div style="font-family:Arial,sans-serif;font-size:15px;color:#1d2b3a;max-width:560px">
+<p>Hola:</p>
+<p>El <b>Agente 360</b> ha terminado de analizar <b>{escape(nombre)}</b> ({total} ubicaciones).</p>
+<p><a href="{url}" style="display:inline-block;background:#12355b;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Descargar resultados</a></p>
+<p>Un saludo,<br><b>{config.MARCA}</b><br><a href="https://parcelas360.com">parcelas360.com</a></p></div>""", subtype="html")
+    try:
+        if _resend()["clave"]:
+            await _enviar_resend(m)
+        else:
+            await asyncio.to_thread(_enviar, m)
+        return True
+    except Exception as e:  # noqa: BLE001
+        log.warning("No se pudo enviar el aviso de lista: %s", e)
         return False

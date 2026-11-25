@@ -1,6 +1,6 @@
-"""Verificación de suelo por lotes (solo administración).
+"""Verificación de suelo por lotes («Analiza tu lista» del Agente 360, para clientes y administración).
 
-Se sube un Excel con una pestaña que tenga columnas LATITUD y LONGITUD (o REFERENCIA CATASTRAL) y,
+Se sube un Excel con una pestaña que tenga columnas LATITUD y LONGITUD, REFERENCIA CATASTRAL o DIRECCIÓN y,
 en segundo plano y despacio para no saturar al Catastro, se añade a cada fila: referencia catastral,
 superficies, uso, año, clasificación y calificación urbanística, compatibilidad con gasolinera,
 parcela mínima de la zona, segregación e inundabilidad. Al terminar se descarga el mismo Excel ampliado.
@@ -35,6 +35,13 @@ async def ficha(e: dict) -> dict:
     sal = {"id": e.get("id")}
     try:
         rc = (e.get("rc") or "").strip().upper()[:14]
+        if not rc and "lat" not in e and e.get("dir"):
+            cands = await geocoder.buscar(e["dir"])
+            if not cands:
+                return {**sal, "error": f"No se encuentra la dirección «{e['dir']}»"}
+            e = {**e, "lon": cands[0]["lon"], "lat": cands[0]["lat"]}
+            rc = (cands[0].get("rc") or "")[:14]
+            sal["ubicada_por"] = cands[0].get("etiqueta") or e["dir"]
         if not rc:
             cands = await catastro.rc_cercana(float(e["lon"]), float(e["lat"]))
             if not cands:
@@ -95,7 +102,11 @@ def _cabecera(ws):
                 cols.setdefault("lon", c)
             elif "REFERENCIA CATASTRAL" in h or h in ("RC", "REF. CATASTRAL", "REF CATASTRAL"):
                 cols.setdefault("rc", c)
-        if ("lat" in cols and "lon" in cols) or "rc" in cols:
+            elif (h.startswith("DIRECCION") or h.startswith("ADRECA") or h == "DOMICILIO") and "CATASTRAL" not in h:
+                cols.setdefault("dir", c)
+            elif h in ("MUNICIPIO", "MUNICIPI", "POBLACION", "LOCALIDAD", "POBLACIO", "CIUDAD"):
+                cols.setdefault("mun", c)
+        if ("lat" in cols and "lon" in cols) or "rc" in cols or "dir" in cols:
             return fila, cols
     return None, {}
 
@@ -118,22 +129,27 @@ def leer_ubicaciones(ruta) -> tuple[str, int, list[dict]]:
                     rc = catastro.normalizar_rc(str(ws.cell(f, cols["rc"]).value or ""))
                     if rc:
                         e["rc"] = rc[:14]
+                if "dir" in cols and "lat" not in e and "rc" not in e:
+                    d = str(ws.cell(f, cols["dir"]).value or "").strip()
+                    m = str(ws.cell(f, cols["mun"]).value or "").strip() if "mun" in cols else ""
+                    if d:
+                        e["dir"] = f"{d}, {m}" if m and m.lower() not in d.lower() else d
             except ValueError:
                 pass
-            if "lat" in e or "rc" in e:
+            if "lat" in e or "rc" in e or "dir" in e:
                 salida.append(e)
         if salida:
             return ws.title, fila_cab, salida
-    raise ValueError("No encuentro ninguna pestaña con columnas LATITUD y LONGITUD o REFERENCIA CATASTRAL.")
+    raise ValueError("No encuentro ninguna pestaña con columnas LATITUD y LONGITUD, REFERENCIA CATASTRAL o DIRECCIÓN. Descarga la plantilla y copia tus ubicaciones en ella.")
 
 
 # ------------------------------------------------------------------ escritura del Excel de salida
 
 CAB = ["REF. CATASTRAL", "DIST. PUNTO A PARCELA (m)", "DIRECCIÓN CATASTRAL", "USO CATASTRAL", "SUP. PARCELA (m²)",
        "SUP. CONSTRUIDA (m²)", "AÑO CONSTRUCCIÓN", "Nº INMUEBLES", "CLASIFICACIÓN DEL SUELO", "CALIFICACIÓN URBANÍSTICA",
-       "COMPATIBILIDAD GASOLINERA", "PARCELA MÍNIMA DE LA ZONA", "PARCELA MÍNIMA PARA GASOLINERA", "¿CUMPLE PARCELA MÍNIMA?", "¿SEGREGABLE?",
+       "USOS ADMITIDOS EN LA ZONA (orientativo)", "COMPATIBILIDAD GASOLINERA", "PARCELA MÍNIMA DE LA ZONA", "PARCELA MÍNIMA PARA GASOLINERA", "¿CUMPLE PARCELA MÍNIMA?", "¿SEGREGABLE?",
        "FLUJO PREFERENTE (%)", "INUNDABLE T100 / T500 (%)", "OBSERVACIONES SUELO"]
-ANCHO = [17, 11, 32, 16, 11, 11, 9, 9, 24, 44, 30, 24, 26, 12, 32, 11, 13, 70]
+ANCHO = [17, 11, 32, 16, 11, 11, 9, 9, 24, 44, 40, 30, 24, 26, 12, 32, 11, 13, 70]
 NIVEL = {"compatible": ("Compatible", "verde"), "condicionado": ("Condicionado (normativa municipal)", "ambar"),
          "plan_especial": ("Solo con plan especial (suelo no urbanizable)", "rojo"), "incompatible": ("No compatible", "rojo")}
 RELLENO = {"verde": "D1FADF", "ambar": "FEF0C7", "rojo": "FEE4E2"}
@@ -152,6 +168,18 @@ def _agrupa(lista, con_codigo: bool) -> str:
         m[k.strip()] = m.get(k.strip(), 0) + (x.get("pct") or 0)
     orden = sorted(((k, v) for k, v in m.items() if v >= 1), key=lambda kv: -kv[1])
     return "; ".join(f"{k} ({v:.0f} %)" for k, v in orden[:5])
+
+
+def _usos(z: dict) -> str | None:
+    """Usos que admite y que excluye la zona principal según su normativa (lectura orientativa)."""
+    from app.normativa import que_se_puede
+    si, no = que_se_puede(z)
+    partes = []
+    if si:
+        partes.append("Sí: " + ", ".join(si))
+    if no:
+        partes.append("No: " + ", ".join(no))
+    return ". ".join(partes) or (z.get("usos") or None)
 
 
 def fila_resultado(r: dict) -> tuple[list, dict]:
@@ -201,6 +229,8 @@ def fila_resultado(r: dict) -> tuple[list, dict]:
         obs.append("Parte de la parcela en zona de flujo preferente: no se autorizan nuevas gasolineras en esa parte.")
     if comp.get("nota"):
         obs.append(comp["nota"])
+    if r.get("ubicada_por"):
+        obs.append(f"Ubicada a partir de la dirección ({r['ubicada_por']}): confirmar que es la parcela correcta.")
     if r.get("dist_punto_m"):
         obs.append(f"El punto de origen cae fuera de parcela; se ha tomado la más cercana (a {_r(r['dist_punto_m'])} m): confirmar.")
     if (r.get("num_inmuebles") or 0) > 1:
@@ -209,16 +239,16 @@ def fila_resultado(r: dict) -> tuple[list, dict]:
         obs.append("Parcela muy grande: probablemente la estación ocupa solo una parte (centro comercial, polígono…).")
     vals = [r.get("rc"), _r(r.get("dist_punto_m")) or 0, r.get("direccion_catastro"), r.get("uso"), _r(sup),
             _r(r.get("sup_construida")), r.get("anio"), r.get("num_inmuebles"), _agrupa(u.get("clasificaciones"), False),
-            _agrupa(u.get("calificaciones"), True) or u.get("mensaje"), txt, pm_txt, g_txt, cumple,
+            _agrupa(u.get("calificaciones"), True) or u.get("mensaje"), _usos(z) if z else None, txt, pm_txt, g_txt, cumple,
             (pg.get("segregacion") or {}).get("texto") if pg else None, _r(zfp, 1),
             f"{_r(aca.get('t100_pct') or 0, 1)} / {_r(aca.get('t500_pct') or 0, 1)}" if aca.get("estado") == "ok" else "Sin dato",
             " ".join(obs) or None]
     if c:
-        col[10] = c
+        col[11] = c
     if cumple in ("Sí", "NO"):
-        col[13] = "verde" if cumple == "Sí" else "rojo"
+        col[14] = "verde" if cumple == "Sí" else "rojo"
     if zfp:
-        col[15] = "rojo"
+        col[16] = "rojo"
     return vals, col
 
 
@@ -235,7 +265,7 @@ def escribir(entrada, salida, hoja: str, fila_cab: int, resultados: dict) -> Non
         vals, col = fila_resultado(r)
         for i, v in enumerate(vals):
             c = ws.cell(int(fila), c0 + i, v)
-            c.alignment = Alignment(wrap_text=i in (2, 8, 9, 10, 11, 12, 14, 17), vertical="top")
+            c.alignment = Alignment(wrap_text=i in (2, 8, 9, 10, 11, 12, 13, 15, 18), vertical="top")
             if i in col:
                 c.fill = PatternFill("solid", fgColor=RELLENO[col[i]])
     nota = ws.cell(fila_cab, c0 + len(CAB) + 1, f"Verificación de suelo generada el {time.strftime('%d/%m/%Y')} con datos públicos: "
@@ -259,26 +289,49 @@ def _guardar(id_: str, estado: dict, resultados: dict | None = None) -> None:
         (d / "resultados.json").write_text(json.dumps(resultados, ensure_ascii=False), encoding="utf-8")
 
 
-def lista() -> list[dict]:
+def lista(usuario_id: int | None = None) -> list[dict]:
+    """Todos los lotes (administración) o solo los de un usuario."""
     if not DIR.exists():
         return []
     salida = [{"id": d.name, **_estado(d.name)} for d in DIR.iterdir() if d.is_dir()]
+    if usuario_id is not None:
+        salida = [e for e in salida if e.get("usuario_id") == usuario_id]
     return sorted(salida, key=lambda e: e.get("creado", ""), reverse=True)
+
+
+def ubicaciones_usadas(usuario_id: int, mes: str | None = None) -> int:
+    """Ubicaciones enviadas por un usuario (en un mes «AAAA-MM» o en total)."""
+    return sum(e.get("total") or 0 for e in lista(usuario_id) if not mes or (e.get("creado") or "").startswith(mes))
 
 
 def lista_por_id(id_: str) -> dict:
     return _estado(id_)
 
 
-def crear(nombre: str, contenido: bytes) -> str:
+MAX_FILAS = 1000
+
+
+def crear(nombre: str, contenido: bytes, usuario: dict | None = None, maximo: int | None = None) -> str:
+    """Guarda el Excel y lanza el proceso. Con «maximo» solo se analizan las primeras filas."""
+    import shutil
     id_ = time.strftime("%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:6]
     d = DIR / id_
     d.mkdir(parents=True)
-    (d / "entrada.xlsx").write_bytes(contenido)
-    hoja, fila_cab, ubic = leer_ubicaciones(d / "entrada.xlsx")
+    try:
+        (d / "entrada.xlsx").write_bytes(contenido)
+        hoja, fila_cab, ubic = leer_ubicaciones(d / "entrada.xlsx")
+    except Exception:
+        shutil.rmtree(d, ignore_errors=True)
+        raise
+    en_fichero = len(ubic)
+    tope = min(MAX_FILAS, maximo if maximo is not None else MAX_FILAS)
+    ubic = ubic[:max(0, tope)]
     (d / "ubicaciones.json").write_text(json.dumps(ubic), encoding="utf-8")
-    _guardar(id_, {"nombre": nombre, "hoja": hoja, "fila_cab": fila_cab, "total": len(ubic), "hechos": 0, "errores": 0,
-                   "situacion": "en cola", "creado": time.strftime("%Y-%m-%d %H:%M")}, {})
+    est = {"nombre": nombre, "hoja": hoja, "fila_cab": fila_cab, "total": len(ubic), "en_fichero": en_fichero,
+           "hechos": 0, "errores": 0, "situacion": "en cola", "creado": time.strftime("%Y-%m-%d %H:%M")}
+    if usuario:
+        est.update(usuario_id=usuario["id"], email=usuario.get("email"))
+    _guardar(id_, est, {})
     lanzar(id_)
     return id_
 
@@ -323,6 +376,11 @@ async def _procesar(id_: str) -> None:
     est["situacion"] = "terminado"
     est["terminado"] = time.strftime("%Y-%m-%d %H:%M")
     _guardar(id_, est)
+    if est.get("email") and not est.get("avisado"):
+        from app import correo
+        if await correo.enviar_aviso_lista(est["email"], est.get("nombre") or "tu lista", est["total"]):
+            est["avisado"] = True
+            _guardar(id_, est)
 
 
 def reanudar_pendientes() -> None:
