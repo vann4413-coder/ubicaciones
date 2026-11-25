@@ -1,0 +1,224 @@
+{
+ "municipio": "Alella",
+ "codigo_ine": "08003",
+ "plan": "Pla d'ordenació urbanística municipal d'Alella (2014), Normativa urbanística",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=408811&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "9": {
+   "nombre": "Dotaciones privadas de interés comunitario",
+   "articulo": "Art. 195-199",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Equipamientos privados",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Art. 215-221",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría existente",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Volumetría definida",
+   "articulo": "Art. 222-226",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar o plurifamiliar",
+   "otros": ""
+  },
+  "12": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 229-234",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "12b y 12c: parcela existente, única e indivisible."
+  },
+  "12a": {
+   "nombre": "Ensanche, plurifamiliar aislada",
+   "articulo": "Art. 231",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "12b": {
+   "nombre": "Ensanche, unifamiliar en hilera",
+   "articulo": "Art. 231",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": "",
+   "segregacion": "Parcela existente, única e indivisible."
+  },
+  "12c": {
+   "nombre": "Ensanche 12c",
+   "articulo": "Art. 231",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela existente, única e indivisible."
+  },
+  "13": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 235-241",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,20-0,80 m²t/m²s según subzona",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Parcela mínima de 200 a 2.000 m² según subzona (13b1-13d2)."
+  },
+  "13b1": {
+   "nombre": "Ciudad jardín intensiva aislada",
+   "articulo": "Art. 237-238",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "13b2": {
+   "nombre": "Ciudad jardín intensiva agrupada",
+   "articulo": "Art. 237-238",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "13c1": {
+   "nombre": "Ciudad jardín semiintensiva aislada",
+   "articulo": "Art. 237-238",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "13c2": {
+   "nombre": "Ciudad jardín semiintensiva agrupada",
+   "articulo": "Art. 237-238",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 40,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "13d1": {
+   "nombre": "Ciudad jardín extensiva",
+   "articulo": "Art. 237-238",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "13d2": {
+   "nombre": "Ciudad jardín extensiva (2.000 m²)",
+   "articulo": "Art. 237-238",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,20 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Industrial",
+   "articulo": "Art. 242-248",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial",
+   "otros": "14a: parcela existente indivisible (se pueden agrupar 2); 14b: 400 m²."
+  },
+  "14a": {
+   "nombre": "Industrial consolidada anterior al PGO",
+   "articulo": "Art. 244",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial",
+   "otros": "",
+   "segregacion": "Parcela existente, única e indivisible."
+  },
+  "14b": {
+   "nombre": "Industrial aislada intensiva",
+   "articulo": "Art. 244",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "16": {
+   "nombre": "Productivo de oficinas, comercial y servicios",
+   "articulo": "Art. 249-255",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 18,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Oficinas, comercial y servicios",
+   "otros": "16b y 16c: parcela existente, única e indivisible."
+  },
+  "16a": {
+   "nombre": "Aislada de usos singulares y mixtos",
+   "articulo": "Art. 251",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 18,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Oficinas, comercial, servicios y usos mixtos",
+   "otros": ""
+  }
+ }
+}

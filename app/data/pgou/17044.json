@@ -1,0 +1,135 @@
+{
+ "municipio": "Cassà de la Selva",
+ "codigo_ine": "17044",
+ "plan": "Pla d'ordenació urbanística municipal de Cassà de la Selva (2009), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=300037&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "A": {
+   "nombre": "Casco antiguo",
+   "articulo": "Sección 1",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "A1 protección integral, A2 conservación de fachada, A3 conjuntos homogéneos, A4 espacios libres."
+  },
+  "B": {
+   "nombre": "Conjuntos urbanísticos",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según parámetros de planos",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "La parcela existente, con un mínimo de 120 m²."
+  },
+  "C": {
+   "nombre": "Manzanas con patio",
+   "articulo": "Sección 1 (cap. 3)",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "D": {
+   "nombre": "Manzanas compactas",
+   "articulo": "Sección 2 (cap. 3)",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según parámetros de planos",
+   "ocupacion_max": "100 %",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "E": {
+   "nombre": "Agrupaciones residenciales en hilera",
+   "articulo": "Sección 3 (cap. 3)",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según parámetros de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda unifamiliar en hilera",
+   "otros": ""
+  },
+  "G": {
+   "nombre": "Agrupaciones de uso mixto",
+   "articulo": "Sección 5 (cap. 3)",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según parámetros de planos",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial y actividades",
+   "otros": ""
+  },
+  "H": {
+   "nombre": "Residencial unifamiliar aislada",
+   "articulo": "Sección 1 (cap. 4)",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,6 m²t/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": "Bifamiliar pareada: 600 m² y 20 m."
+  },
+  "I": {
+   "nombre": "Residencial plurifamiliar en bloque aislado",
+   "articulo": "Sección 2 (cap. 4)",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles; estación de servicio compatible",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Estación de servicio compatible en las zonas industrial aislada (J), bloque plurifamiliar aislado (I) y usos terciarios (R).",
+    "articulo": "Cuadros de usos, claves I, J y R"
+   }
+  },
+  "J": {
+   "nombre": "Industrial aislada",
+   "articulo": "Sección 3 (cap. 4)",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial, almacén y talleres; comercio pequeño, mediano y grande, restauración y recreativo; estación de servicio",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Estación de servicio compatible en las zonas industrial aislada (J), bloque plurifamiliar aislado (I) y usos terciarios (R).",
+    "articulo": "Cuadros de usos, claves I, J y R"
+   }
+  },
+  "R": {
+   "nombre": "Usos terciarios",
+   "articulo": "Sección 4 (cap. 4)",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 30,
+   "edificabilidad": "La indicada en el plano de ordenación",
+   "ocupacion_max": "Según plano",
+   "altura_max": "Según plano",
+   "usos": "Terciario, comercial y servicios; estación de servicio compatible",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Estación de servicio compatible en las zonas industrial aislada (J), bloque plurifamiliar aislado (I) y usos terciarios (R).",
+    "articulo": "Cuadros de usos, claves I, J y R"
+   }
+  }
+ }
+}
