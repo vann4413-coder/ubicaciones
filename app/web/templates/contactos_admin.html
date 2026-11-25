@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Contactos recibidos</h1>
+<div class="caja"><div class="tabla-scroll"><table class="tabla-web">
+<tr><th>Fecha</th><th>Nombre / empresa</th><th>Contacto</th><th>Interés</th><th>Mensaje</th><th>Correo</th></tr>
+{% for f in filas %}<tr><td>{{ f.fecha[:16].replace("T", " ") }}</td><td>{{ f.nombre }}<br><small>{{ f.empresa or "" }}</small></td>
+<td><a href="mailto:{{ f.email }}">{{ f.email }}</a><br><small>{{ f.telefono or "" }}</small></td><td>{{ f.interes }}</td>
+<td style="white-space:pre-wrap">{{ f.mensaje }}</td><td>{{ "Reenviado" if f.enviado else "No reenviado" }}</td></tr>
+{% else %}<tr><td colspan="6">Aún no hay contactos.</td></tr>{% endfor %}
+</table></div></div>
+{% endblock %}

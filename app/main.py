@@ -72,6 +72,8 @@ from app.normativa import router as rutas_normativa, urls as urls_normativa  # n
 app.include_router(rutas_normativa)
 from app.rutas_agente import router as rutas_agente  # noqa: E402
 app.include_router(rutas_agente)
+from app.rutas_contacto import router as rutas_contacto  # noqa: E402
+app.include_router(rutas_contacto)
 
 _informes: dict[tuple, tuple[float, dict]] = {}
 TTL_INFORME = 3600
@@ -223,7 +225,39 @@ async def informe_html(request: Request, rc: str, potencia_mw: float | None = No
         aviso = "Guarda esta página en favoritos: con este enlace puedes volver a abrir el informe cuando quieras."
     else:
         aviso = ""
-    return render.html(inf, barra={"pdf": f"/informe/{rc}.pdf" + (f"?{urlencode(q)}" if q else ""), "aviso": aviso})
+    from app import agente
+    return render.html(inf, barra={"pdf": f"/informe/{rc}.pdf" + (f"?{urlencode(q)}" if q else ""), "aviso": aviso,
+                                   "agente": agente.disponible(), "consulta": urlencode(q)})
+
+
+@app.post("/api/pregunta/{rc}")
+async def pregunta(request: Request, rc: str, potencia_mw: float | None = None, sup_minima: float | None = None,
+                   grupos: str | None = None):
+    """Agente 360 · «Pregúntale a la parcela». Solo para quien tiene acceso al informe completo de esa parcela."""
+    from app import agente
+    from app.rutas_cuenta import usuario_actual
+    rc = _rc_valida(rc)
+    permitido, _ = acceso(request, rc, registrar=False)
+    if not permitido:
+        raise HTTPException(403, "Necesitas el informe completo de esta parcela para preguntar al agente.")
+    if not agente.disponible():
+        raise HTTPException(503, "El agente no está disponible en este momento.")
+    datos = await request.json()
+    texto = str(datos.get("pregunta") or "").strip()
+    if len(texto) < 3:
+        raise HTTPException(400, "Escribe una pregunta.")
+    u = usuario_actual(request)
+    clave = f"{u['id'] if u else (request.client.host if request.client else '-')}:{rc}"
+    if not agente.cupo(clave):
+        raise HTTPException(429, f"Has llegado al máximo de {agente.LIMITE_DIA} preguntas de hoy sobre esta parcela.")
+    inf = await _informe(rc, potencia_mw, sup_minima, grupos)
+    try:
+        respuesta = await agente.preguntar(inf, texto, datos.get("historial") if isinstance(datos.get("historial"), list) else [])
+    except Exception:  # noqa: BLE001
+        logging.getLogger(__name__).exception("Agente 360")
+        raise HTTPException(502, "El agente no ha podido responder. Vuelve a intentarlo en un momento.") from None
+    agente.registrar(clave)
+    return {"respuesta": respuesta, "quedan": agente.cupo(clave)}
 
 
 @app.post("/api/admin/lote")
@@ -305,7 +339,7 @@ async def robots():
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap():
     from urllib.parse import quote
-    paginas = ["", "app", "agente/lista", "aviso-legal", "privacidad", "condiciones", "cookies"] + [u.lstrip("/") for u in urls_normativa()]
+    paginas = ["", "app", "agente/lista", "contacto", "aviso-legal", "privacidad", "condiciones", "cookies"] + [u.lstrip("/") for u in urls_normativa()]
     urls = "".join(f"<url><loc>https://parcelas360.com/{quote(p)}</loc></url>" for p in paginas)
     return Response(f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>',
                     media_type="application/xml")

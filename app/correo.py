@@ -131,3 +131,38 @@ async def enviar_aviso_lista(destino: str, nombre: str, total: int) -> bool:
     except Exception as e:  # noqa: BLE001
         log.warning("No se pudo enviar el aviso de lista: %s", e)
         return False
+
+
+async def enviar_contacto(datos: dict) -> bool:
+    """Reenvía al buzón de Parcelas 360 una consulta del formulario de contacto (responder = contestar al cliente)."""
+    destino = os.getenv("UBI_CONTACTO_DESTINO", "").strip() or _resend()["respuesta"]
+    if not activo():
+        return False
+    c = _cfg()
+    m = EmailMessage()
+    m["From"] = formataddr((config.MARCA, c["usuario"] or _resend()["desde"]))
+    m["To"] = destino
+    m["Reply-To"] = datos.get("email", "")
+    m["Subject"] = f"Contacto web · {datos.get('nombre', '')}" + (f" ({datos['empresa']})" if datos.get("empresa") else "")
+    filas = [("Nombre", "nombre"), ("Correo", "email"), ("Empresa", "empresa"), ("Teléfono", "telefono"), ("Interés", "interes")]
+    texto = "\n".join(f"{t}: {datos.get(k) or '-'}" for t, k in filas) + "\n\n" + (datos.get("mensaje") or "")
+    m.set_content(texto)
+    m.add_alternative("<div style='font-family:Arial,sans-serif;font-size:14px'>" + "".join(
+        f"<p><b>{t}:</b> {escape(str(datos.get(k) or '-'))}</p>" for t, k in filas) + "<p>" +
+        escape(datos.get("mensaje") or "").replace("\n", "<br>") + "</p></div>", subtype="html")
+    try:
+        if _resend()["clave"]:
+            from app import http
+            r = _resend()
+            resp = await http.cliente().post(
+                "https://api.resend.com/emails", headers={"Authorization": f"Bearer {r['clave']}"},
+                json={"from": formataddr((config.MARCA, r["desde"])), "to": [destino], "subject": m["Subject"], "text": texto,
+                      "html": m.get_body(("html",)).get_content(), "reply_to": datos.get("email") or r["respuesta"]}, timeout=30)
+            if resp.status_code >= 300:
+                raise RuntimeError(f"Resend {resp.status_code}")
+        else:
+            await asyncio.to_thread(_enviar, m)
+        return True
+    except Exception as e:  # noqa: BLE001
+        log.warning("No se pudo reenviar el contacto: %s", e)
+        return False

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Contacto</h1>
+<p class="bajada">¿Tienes una lista de ubicaciones que revisar, quieres el plan para tu equipo o una colaboración? Déjanos tus datos y te respondemos en 24-48 horas laborables. También puedes escribirnos a <a href="mailto:tuparcela360@gmail.com">tuparcela360@gmail.com</a>.</p>
+{% if ok %}<div class="aviso-web ok">Gracias. Hemos recibido tu mensaje y te responderemos lo antes posible.</div>{% endif %}
+{% if error %}<div class="aviso-web">{{ error }}</div>{% endif %}
+{% if not ok %}
+<form class="caja form-contacto" method="post" action="/contacto">
+  <div class="dos-col">
+    <label>Nombre * <input name="nombre" required maxlength="120" autocomplete="name"></label>
+    <label>Correo electrónico * <input name="email" type="email" required maxlength="160" autocomplete="email" value="{{ usuario.email if usuario else '' }}"></label>
+    <label>Empresa <input name="empresa" maxlength="160" autocomplete="organization"></label>
+    <label>Teléfono <input name="telefono" maxlength="40" autocomplete="tel"></label>
+  </div>
+  <label>¿Sobre qué nos escribes?
+    <select name="interes">{% for i in intereses %}<option{% if i == interes %} selected{% endif %}>{{ i }}</option>{% endfor %}</select>
+  </label>
+  <label>Mensaje * <textarea name="mensaje" rows="6" required maxlength="4000" placeholder="Cuéntanos qué necesitas: municipios, número de ubicaciones, tipo de actividad…"></textarea></label>
+  <input name="web" tabindex="-1" autocomplete="off" class="trampa" aria-hidden="true">
+  <label class="acepto"><input type="checkbox" name="acepto" value="1" required> He leído la <a href="/privacidad" target="_blank">política de privacidad</a> y acepto que se usen mis datos para responder a mi consulta.</label>
+  <button class="btn" type="submit">Enviar mensaje</button>
+</form>
+{% endif %}
+{% endblock %}

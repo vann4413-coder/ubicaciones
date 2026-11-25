@@ -256,3 +256,11 @@ body { -webkit-font-smoothing: antialiased; }
 @media (max-width: 980px) { .rejilla-3 { grid-template-columns: minmax(0, 1fr); max-width: 560px; } }
 @media (max-width: 640px) { .muestra-lista th:nth-child(2), .muestra-lista td:nth-child(2) { display: none; } }
 .enlace-plan { text-align: center; font-size: 14px; font-weight: 600; }
+
+/* Contacto */
+.form-contacto select, .form-contacto textarea { padding: 12px 14px; border: 1px solid var(--linea); border-radius: 10px; font: inherit; }
+.form-contacto .btn { justify-self: start; }
+.trampa { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-contacto label.acepto { display: block; font-weight: 500; }
+.form-contacto label.acepto input { width: auto; padding: 0; margin-right: 8px; }
+.form-contacto select { background: #fff; }

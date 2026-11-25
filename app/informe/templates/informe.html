@@ -226,7 +226,71 @@
   }
   @media print { .barra-web { display: none; } }
 </style>
-<div class="barra-web"><span>{{ barra.aviso or "" }}</span><a href="/app">Volver al mapa</a><a class="principal" href="{{ barra.pdf }}">Descargar PDF</a></div>
+<div class="barra-web"><span>{{ barra.aviso or "" }}</span><a href="/app">Volver al mapa</a>{% if barra.agente %}<a href="#" onclick="abrirAgente();return false">Pregúntale a la parcela</a>{% endif %}<a class="principal" href="{{ barra.pdf }}">Descargar PDF</a></div>
+{% if barra.agente %}
+<style>
+  @media print { .agente-boton, .agente { display: none !important; } }
+  .agente-boton { position: fixed; right: 20px; bottom: 20px; z-index: 30; background: #12355b; color: #fff; border: 0; border-radius: 999px;
+    padding: 14px 20px; font: 700 15px Inter, sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,.25); cursor: pointer; }
+  .agente-boton i { display: inline-block; width: 10px; height: 10px; background: #f5a623; border-radius: 3px; margin-right: 8px; }
+  .agente { position: fixed; right: 20px; bottom: 20px; z-index: 31; width: min(420px, calc(100vw - 24px)); height: min(620px, calc(100vh - 90px));
+    background: #fff; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.3); display: none; flex-direction: column; overflow: hidden;
+    font-family: Inter, sans-serif; color: #12263a; }
+  .agente.abierto { display: flex; }
+  .agente-cab { background: #12355b; color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+  .agente-cab b { font-size: 15px; } .agente-cab small { display: block; opacity: .75; font-size: 12px; }
+  .agente-cab button { margin-left: auto; background: none; border: 0; color: #fff; font-size: 22px; cursor: pointer; }
+  .agente-msgs { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: #f4f6f9; }
+  .agente-msg { max-width: 88%; padding: 10px 12px; border-radius: 12px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+  .agente-msg.u { align-self: flex-end; background: #12355b; color: #fff; border-bottom-right-radius: 4px; }
+  .agente-msg.a { align-self: flex-start; background: #fff; border: 1px solid #e3e8ee; border-bottom-left-radius: 4px; }
+  .agente-msg.e { align-self: center; background: #fff6e5; font-size: 13px; }
+  .agente-sug { display: flex; flex-wrap: wrap; gap: 6px; }
+  .agente-sug button { background: #fff; border: 1px solid #c9d3de; border-radius: 999px; padding: 6px 10px; font: 500 13px Inter, sans-serif; color: #12355b; cursor: pointer; }
+  .agente form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #e3e8ee; }
+  .agente input { flex: 1; border: 1px solid #c9d3de; border-radius: 10px; padding: 10px 12px; font: 15px Inter, sans-serif; }
+  .agente form button { background: #f5a623; border: 0; border-radius: 10px; padding: 0 14px; font: 700 14px Inter, sans-serif; color: #12355b; cursor: pointer; }
+  .agente-pie { font-size: 11px; color: #5b6b7b; padding: 0 12px 10px; }
+</style>
+<button class="agente-boton" onclick="abrirAgente()"><i></i>Pregúntale a la parcela</button>
+<div class="agente" id="agente" role="dialog" aria-label="Agente 360">
+  <div class="agente-cab"><div><b>Agente 360</b><small>Pregunta lo que quieras sobre esta parcela</small></div><button onclick="cerrarAgente()" aria-label="Cerrar">×</button></div>
+  <div class="agente-msgs" id="agente-msgs">
+    <div class="agente-msg a">Hola. Tengo todos los datos del informe de esta parcela: urbanismo, normativa de la zona, inundabilidad, tráfico, red eléctrica y entorno. ¿Qué quieres saber?</div>
+    <div class="agente-sug" id="agente-sug">
+      <button>¿Qué se puede construir aquí?</button><button>¿Puedo poner una gasolinera?</button><button>¿Cabe un supermercado?</button>
+      <button>¿Qué me falta para una electrolinera?</button><button>¿Se puede segregar?</button><button>¿Qué riesgos tiene?</button>
+    </div>
+  </div>
+  <form id="agente-form"><input id="agente-q" placeholder="Escribe tu pregunta…" autocomplete="off" maxlength="800"><button>Enviar</button></form>
+  <div class="agente-pie">Respuestas orientativas basadas en los datos del informe. Confírmalas con la cédula urbanística.</div>
+</div>
+<script>
+(function () {
+  var url = "/api/pregunta/{{ inf.rc }}" + ("{{ barra.consulta }}" ? "?" + "{{ barra.consulta|safe }}" : "");
+  var hist = [], ocupado = false, msgs = document.getElementById("agente-msgs");
+  window.abrirAgente = function () { document.getElementById("agente").classList.add("abierto"); document.getElementById("agente-q").focus(); };
+  window.cerrarAgente = function () { document.getElementById("agente").classList.remove("abierto"); };
+  function burbuja(t, c) { var d = document.createElement("div"); d.className = "agente-msg " + c; d.textContent = t; msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d; }
+  function enviar(q) {
+    q = (q || "").trim(); if (!q || ocupado) return;
+    ocupado = true; var s = document.getElementById("agente-sug"); if (s) s.remove();
+    burbuja(q, "u"); var esp = burbuja("Analizando la parcela…", "a");
+    fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, credentials: "same-origin",
+                 body: JSON.stringify({ pregunta: q, historial: hist }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok) { esp.className = "agente-msg e"; esp.textContent = x.j.detail || "No se ha podido responder."; return; }
+        esp.textContent = x.j.respuesta; hist.push({ rol: "usuario", texto: q }, { rol: "agente", texto: x.j.respuesta });
+      })
+      .catch(function () { esp.className = "agente-msg e"; esp.textContent = "Sin conexión. Vuelve a intentarlo."; })
+      .then(function () { ocupado = false; msgs.scrollTop = msgs.scrollHeight; });
+  }
+  document.getElementById("agente-form").addEventListener("submit", function (e) { e.preventDefault(); var i = document.getElementById("agente-q"); enviar(i.value); i.value = ""; });
+  document.getElementById("agente-sug").addEventListener("click", function (e) { if (e.target.tagName === "BUTTON") enviar(e.target.textContent); });
+})();
+</script>
+{% endif %}
 {% endif %}
 
 {# ======================= PORTADA ======================= #}
