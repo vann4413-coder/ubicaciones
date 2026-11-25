@@ -1,0 +1,392 @@
+{
+ "municipio": "Castell d'Aro, Platja d'Aro i s'Agaró",
+ "codigo_ine": "17048",
+ "plan": "Pla d'ordenació urbanística municipal de Castell-Platja d'Aro (2017), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=230362&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Núcleos históricos",
+   "articulo": "Art. 130-136",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría existente y planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Entorno de los núcleos históricos",
+   "articulo": "Art. 137-142",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría existente",
+   "ocupacion_max": "Según planos",
+   "altura_max": "6,50 m, PB+1 (2b)",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "S'Agaró y La Conca",
+   "articulo": "Art. 148-151",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,3 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "6,50 m, PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "5b": {
+   "nombre": "Residencial Pineda de Bas 5b",
+   "articulo": "Art. 161",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "9,60 m, PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Residencial turístico",
+   "articulo": "Art. 162-172",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,35-1,00 m²t/m²s según subzona",
+   "ocupacion_max": "20-40 %",
+   "altura_max": "6,5-9,6 m",
+   "usos": "Residencial y turístico; servicios compatibles",
+   "otros": "Parcela mínima de 400 a 1.200 m² según subzona."
+  },
+  "6a": {
+   "nombre": "Residencial turístico 6a",
+   "articulo": "Art. 165-169",
+   "parcela_minima_m2": 1200,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,35 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "6,5 m, PB+1",
+   "usos": "Residencial y turístico; servicios compatibles",
+   "otros": ""
+  },
+  "6b": {
+   "nombre": "Residencial turístico 6b",
+   "articulo": "Art. 165-169",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "9,60 m, PB+2",
+   "usos": "Residencial y turístico; servicios compatibles",
+   "otros": ""
+  },
+  "6c": {
+   "nombre": "Residencial turístico 6c",
+   "articulo": "Art. 165-169",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "9,60 m, PB+2",
+   "usos": "Residencial y turístico; servicios compatibles",
+   "otros": ""
+  },
+  "6d": {
+   "nombre": "Residencial turístico 6d",
+   "articulo": "Art. 165-169",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "9,60 m, PB+2",
+   "usos": "Residencial y turístico; servicios compatibles",
+   "otros": ""
+  },
+  "6e": {
+   "nombre": "Residencial turístico 6e",
+   "articulo": "Art. 165-169",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "9,60 m, PB+2",
+   "usos": "Residencial y turístico; servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Casas adosadas",
+   "articulo": "Art. 173-178",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": "9,60 m, PB+2",
+   "usos": "Vivienda unifamiliar adosada",
+   "otros": "71: 250 m²; 72: 150 m²."
+  },
+  "8": {
+   "nombre": "Casas unifamiliares aisladas",
+   "articulo": "Art. 179-190",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,30-0,60 m²t/m²s según subzona",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": "8a 400 m², 8b 600 m²; 8e parcelación existente."
+  },
+  "8a": {
+   "nombre": "Casas aisladas 8a",
+   "articulo": "Art. 184",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "8b": {
+   "nombre": "Casas aisladas 8b",
+   "articulo": "Art. 185",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "8c": {
+   "nombre": "Casas aisladas 8c",
+   "articulo": "Art. 186",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "8d": {
+   "nombre": "Casas aisladas 8d",
+   "articulo": "Art. 187",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,35 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "8e": {
+   "nombre": "Casas aisladas 8e",
+   "articulo": "Art. 188",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,30 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": "",
+   "segregacion": "Parcelación existente."
+  },
+  "9a": {
+   "nombre": "Paseo marítimo 9a",
+   "articulo": "Art. 194-196",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,20 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "10,20 m, PB+2",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "9b": {
+   "nombre": "Paseo marítimo 9b",
+   "articulo": "Art. 194-196",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,60 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "13,30 m, PB+3",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "9c": {
+   "nombre": "Paseo marítimo 9c",
+   "articulo": "Art. 194-196",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 16,
+   "edificabilidad": "2,16 m²t/m²s",
+   "ocupacion_max": "37 %",
+   "altura_max": "19 m, PB+5",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Paseo marítimo",
+   "articulo": "Art. 191-196",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "1,20-2,16 m²t/m²s",
+   "ocupacion_max": "37-40 %",
+   "altura_max": "10,20-19 m",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Frente comercial",
+   "articulo": "Art. 197-205",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 6,
+   "edificabilidad": "1,5-2 m²t/m²s",
+   "ocupacion_max": "70-80 %",
+   "altura_max": "11,20-14,40 m",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "10a": {
+   "nombre": "Frente comercial 10a",
+   "articulo": "Art. 200",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 6,
+   "edificabilidad": "1,50 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "11,20 m, PB+2",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "10b": {
+   "nombre": "Frente comercial 10b",
+   "articulo": "Art. 201",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 6,
+   "edificabilidad": "2 m²t/m²s",
+   "ocupacion_max": "80 %",
+   "altura_max": "14,40 m, PB+3",
+   "usos": "Comercial, restauración, oficinas y servicios; vivienda",
+   "otros": ""
+  },
+  "10-benzinera": {
+   "nombre": "Frente comercial, gasolinera",
+   "articulo": "Art. 205",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según necesidades funcionales; complementarios hasta 400 m²",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Suministro de carburantes; pequeño comercio y restauración complementarios",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Subzona específica para gasolinera (10-Benzinera): instalaciones de suministro de carburantes según sus necesidades funcionales, con pequeño comercio y restauración complementarios de hasta 400 m² de techo.",
+    "articulo": "Art. 205"
+   }
+  },
+  "11": {
+   "nombre": "Hotelero",
+   "articulo": "Art. 206-219",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,5-2,16 m²t/m²s según subzona",
+   "ocupacion_max": "30-100 %",
+   "altura_max": "10,60-20,50 m",
+   "usos": "Hotelero",
+   "otros": "11a: parcela existente; 11d y 11v: 1.500 m²; 11e: 2.000 m²."
+  },
+  "11b": {
+   "nombre": "Hotelero 11b",
+   "articulo": "Art. 210-213",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "13,90 m, PB+3",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "11c": {
+   "nombre": "Hotelero 11c",
+   "articulo": "Art. 210-213",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 18,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "13,90 m, PB+3",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "11d": {
+   "nombre": "Hotelero 11d",
+   "articulo": "Art. 210-213",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,50 m²t/m²s",
+   "ocupacion_max": "100 %",
+   "altura_max": "13,90 m, PB+3",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "11e": {
+   "nombre": "Hotelero 11e",
+   "articulo": "Art. 210-213",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "2,16 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "20,50 m, PB+5",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "11a": {
+   "nombre": "Hoteles con jardín",
+   "articulo": "Art. 209",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "10,60 m, PB+2",
+   "usos": "Hotelero",
+   "otros": "",
+   "segregacion": "Parcela existente al aprobarse el POUM."
+  },
+  "12": {
+   "nombre": "Industrial",
+   "articulo": "Art. 220-225",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75-1,00 m²t/m²s",
+   "ocupacion_max": "60-70 %",
+   "altura_max": "10-11,20 m",
+   "usos": "Industrial; vivienda en 12a",
+   "otros": ""
+  },
+  "12a": {
+   "nombre": "Industrial 12a",
+   "articulo": "Art. 223",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,00 m²t/m²s (+ vivienda)",
+   "ocupacion_max": "70 %",
+   "altura_max": "11,20 m, PB+2",
+   "usos": "Industrial y vivienda",
+   "otros": ""
+  },
+  "12b": {
+   "nombre": "Industrial 12b",
+   "articulo": "Art. 224",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "10 m, PB+1",
+   "usos": "Industrial; una actividad por parcela mínima",
+   "otros": ""
+  }
+ }
+}
