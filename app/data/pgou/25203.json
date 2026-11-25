@@ -1,0 +1,228 @@
+{
+ "municipio": "La Seu d'Urgell",
+ "codigo_ine": "25203",
+ "plan": "Revisió del Pla general d'ordenació urbana de La Seu d'Urgell (2003), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=9275&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1a": {
+   "nombre": "Centro histórico de La Seu d'Urgell",
+   "articulo": "Art. 249",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "1c": {
+   "nombre": "Barrios de vertiente",
+   "articulo": "Art. 251",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable y patio",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "1": {
+   "nombre": "Centro histórico y barrios tradicionales",
+   "articulo": "Art. 248-252",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2a": {
+   "nombre": "Ensanche en manzana cerrada",
+   "articulo": "Art. 253",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 7.5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según patio de manzana",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 253-255",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 7.5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según patio de manzana",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3a": {
+   "nombre": "Edificación en hilera tradicional",
+   "articulo": "Art. 256",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,759-1,05 m²t/m²s",
+   "ocupacion_max": "45 %",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3b": {
+   "nombre": "Edificación en hilera desarrollada",
+   "articulo": "Art. 257",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Algunas subzonas con parámetros propios."
+  },
+  "4a": {
+   "nombre": "Unifamiliar aislada, parcela pequeña",
+   "articulo": "Art. 259",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "4b": {
+   "nombre": "Unifamiliar aislada, parcela mediana",
+   "articulo": "Art. 260",
+   "parcela_minima_m2": 750,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "4c": {
+   "nombre": "Unifamiliar aislada, parcela grande",
+   "articulo": "Art. 261",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,20 m²t/m²s (4c1: 0,05)",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "5a": {
+   "nombre": "Plurifamiliar aislada",
+   "articulo": "Art. 263",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "5b": {
+   "nombre": "Plurifamiliar con volumetría específica",
+   "articulo": "Art. 264",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "6a": {
+   "nombre": "Conjuntos unitarios de baja densidad",
+   "articulo": "Art. 266",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s (6a1)",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda",
+   "otros": "",
+   "segregacion": "Parcela mínima: la existente."
+  },
+  "6b": {
+   "nombre": "Conjuntos unitarios plurifamiliares",
+   "articulo": "Art. 267",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela mínima: la existente."
+  },
+  "7a": {
+   "nombre": "Industria urbana",
+   "articulo": "Art. 269",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "2,00 m²t/m²s (bruta del sector)",
+   "ocupacion_max": "80 %",
+   "altura_max": null,
+   "usos": "Industrial; almacenes, talleres y servicios",
+   "otros": ""
+  },
+  "7b": {
+   "nombre": "Industria entre medianeras",
+   "articulo": "Art. 270",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,04 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial; almacenes, talleres y servicios",
+   "otros": ""
+  },
+  "7c": {
+   "nombre": "Industria aislada",
+   "articulo": "Art. 271",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 36,
+   "edificabilidad": "1,04 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial; almacenes, talleres y servicios",
+   "otros": ""
+  },
+  "8a": {
+   "nombre": "Servicios terciario-logísticos existentes",
+   "articulo": "Art. 273",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,225-1,25 m²t/m²s según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Terciario y hotelero existente (motel, parador, hostal…)",
+   "otros": "",
+   "segregacion": "Parcelas indivisibles."
+  },
+  "8b": {
+   "nombre": "Servicios terciario-logísticos de nueva creación",
+   "articulo": "Art. 274",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Terciario y logístico",
+   "otros": "Parcela mínima según planeamiento derivado.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio forman parte del sistema de infraestructuras de servicios técnicos. En los sectores terciario-logísticos nuevos (8b) solo si el plan parcial lo contempla expresamente y garantiza la integración paisajística.",
+    "articulo": "Sistema de servicios técnicos; sector 8b"
+   }
+  }
+ }
+}

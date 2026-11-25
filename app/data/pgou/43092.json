@@ -1,0 +1,212 @@
+{
+ "municipio": "Mont-roig del Camp",
+ "codigo_ine": "43092",
+ "plan": "Pla d'ordenació urbanística municipal de Mont-roig del Camp, Normativa urbanística (vol. VII)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=687629&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Art. 164",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda, hotelero, comercio, oficinas y servicios compatibles",
+   "otros": "1 vivienda como máximo por cada 100 m² construidos."
+  },
+  "2": {
+   "nombre": "Edificación según alineación a vial",
+   "articulo": "Art. 165",
+   "parcela_minima_m2": 90,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda, hotelero, comercio, oficinas y servicios compatibles",
+   "otros": "Parcela mínima 80-90 m² según subzona; nunca menos de 70 m² y 5 m de fachada."
+  },
+  "3": {
+   "nombre": "Edificación aislada plurifamiliar de alta densidad",
+   "articulo": "Art. 166",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda, hotelero, comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Edificación aislada plurifamiliar de densidad media",
+   "articulo": "Art. 167",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda, hotelero, comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,55-1,2 m²t/m²s según subzona",
+   "ocupacion_max": "30-60 % según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda, residencia, educativo, cultural; comercio en algunas subzonas",
+   "otros": "28 subzonas: parcela mínima de 150 m² (5.1) a 1.000 m² (5.2); la mayoría entre 400 y 500 m²."
+  },
+  "5.1": {
+   "nombre": "Ciudad jardín 5.1",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,2 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": null,
+   "usos": "Vivienda",
+   "otros": ""
+  },
+  "5.2": {
+   "nombre": "Ciudad jardín 5.2",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": null,
+   "usos": "Vivienda",
+   "otros": ""
+  },
+  "5.3": {
+   "nombre": "Ciudad jardín 5.3",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,55-0,75 m²t/m²s",
+   "ocupacion_max": "30-50 %",
+   "altura_max": null,
+   "usos": "Vivienda",
+   "otros": ""
+  },
+  "5.4": {
+   "nombre": "Ciudad jardín 5.4",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,55 m²t/m²s",
+   "ocupacion_max": "45 %",
+   "altura_max": null,
+   "usos": "Vivienda",
+   "otros": ""
+  },
+  "5.5": {
+   "nombre": "Ciudad jardín 5.5",
+   "articulo": "Art. 168",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,55 m²t/m²s",
+   "ocupacion_max": "35-37 %",
+   "altura_max": null,
+   "usos": "Vivienda",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Mantenimiento de la estructura edificatoria",
+   "articulo": "Art. 169",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Vivienda, hotelero, comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Se mantiene la estructura existente."
+  },
+  "7": {
+   "nombre": "Industria-taller",
+   "articulo": "Art. 170",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,2 m²t/m²s (7.1)",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Altura según ordenanza (ningún elemento por encima de 13 m)",
+   "usos": "Industrial hasta 3.ª categoría, estación de servicio, administrativo, deportivo, restauración, recreativo y comercial",
+   "otros": "Separaciones: 5 m a fachada, 3 m a fondo y laterales.",
+   "gasolinera": {
+    "condiciones": "No se admiten nuevas estaciones de servicio en núcleos urbanos consolidados (salvo polígonos industriales) ni en suelo no urbanizable; donde el POUM las prevé (clave C.3) se ordenan con plan especial, con 0,30 m²t/m²s y techo máximo de 500 m² (marquesinas aparte). La zona industria-taller (7) las admite.",
+    "articulo": "Art. 147-150 y 170"
+   }
+  },
+  "8": {
+   "nombre": "Comercial, restaurante y otros servicios privados",
+   "articulo": "Art. 171",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,20-1,85 m²t/m²s según subzona (8E1-8E12)",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Comercial, restauración y servicios privados",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Hotelera",
+   "articulo": "Art. 172",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona (9.1, 9.2)",
+   "ocupacion_max": null,
+   "altura_max": "Según subzona",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Espacio libre entre edificaciones y verde privado",
+   "articulo": "Art. 173",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación (conserva el índice de la parcela principal)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Volumetría específica",
+   "articulo": "Art. 174",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda, restauración, cultural y oficinas",
+   "otros": ""
+  },
+  "C.3": {
+   "nombre": "Estación de servicio",
+   "articulo": "Art. 147-150",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,30 m²t/m²s; techo máximo 500 m²",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Venta al público de gasolina, gasóleo y lubricantes",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "No se admiten nuevas estaciones de servicio en núcleos urbanos consolidados (salvo polígonos industriales) ni en suelo no urbanizable; donde el POUM las prevé (clave C.3) se ordenan con plan especial, con 0,30 m²t/m²s y techo máximo de 500 m² (marquesinas aparte). La zona industria-taller (7) las admite.",
+    "articulo": "Art. 147-150 y 170"
+   }
+  }
+ },
+ "gasolinera": {
+  "condiciones": "No se admiten nuevas estaciones de servicio en núcleos urbanos consolidados (salvo polígonos industriales) ni en suelo no urbanizable; donde el POUM las prevé (clave C.3) se ordenan con plan especial, con 0,30 m²t/m²s y techo máximo de 500 m² (marquesinas aparte). La zona industria-taller (7) las admite.",
+  "articulo": "Art. 147-150 y 170"
+ }
+}
