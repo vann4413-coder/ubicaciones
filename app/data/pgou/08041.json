@@ -1,0 +1,132 @@
+{
+ "municipio": "Canovelles",
+ "codigo_ine": "08041",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de Canovelles (2007)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=151452&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "I": {
+   "nombre": "Residencial en manzana cerrada",
+   "articulo": "Art. 156-164",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planos (altura y perímetro regulador)",
+   "ocupacion_max": "Según perímetro regulador",
+   "altura_max": "Según planos",
+   "usos": "Residencial; hotelero, comercial, oficinas, educativo, recreativo, deportivo, sociocultural, sanitario; industrial en 1.ª y 2.ª situación; bar",
+   "otros": "Parcela mínima 100 m² con al menos 70 m² edificables."
+  },
+  "II": {
+   "nombre": "Residencial unifamiliar aislada",
+   "articulo": "Art. 165-168",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "25 % (+5 % auxiliares)",
+   "altura_max": "9 m, PB+2",
+   "usos": "Vivienda unifamiliar; comercio hasta 250 m² de techo",
+   "otros": "Separación mínima a lindes 4 m."
+  },
+  "III bis": {
+   "nombre": "Residencial unifamiliar en hilera",
+   "articulo": "Art. 169",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 50,
+   "edificabilidad": "0,42 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "9 m, PB+2",
+   "usos": "Residencial",
+   "otros": "Máximo 2 parcelas; separación a lindes 4 m."
+  },
+  "IV": {
+   "nombre": "Industrial de edificación aislada",
+   "articulo": "Art. 170-172",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "50 % (70 % en parcelas < 1 ha ya ocupadas)",
+   "altura_max": "15 m",
+   "usos": "Almacén, comercial, oficinas al servicio de la industria, estaciones de servicio y garajes, industrial categorías 1-4, recreativo, bar y restaurante; vivienda de 100 m² por instalación",
+   "otros": "Parcela mínima 1.000 m² (industria independiente) o 400 m² (agrupada en manzana). Separaciones: 10 m a vial, 5 m al resto.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio son uso admitido en la zona industrial (clave IV).",
+    "articulo": "Art. 172"
+   }
+  },
+  "V": {
+   "nombre": "Conservación de polígonos residenciales",
+   "articulo": "Art. 173-175",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (no se admite ampliación)",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercial hasta 250 m², oficinas, industrial cat. 1, sanitario-asistencial",
+   "otros": "Solo conservación, reforma y sustitución sin aumento de volumen.",
+   "segregacion": "Parcela mínima no fijada; se conserva la estructura existente."
+  },
+  "1": {
+   "nombre": "Residencial en manzana cerrada",
+   "articulo": "Art. 156-164",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planos (altura y perímetro regulador)",
+   "ocupacion_max": "Según perímetro regulador",
+   "altura_max": "Según planos",
+   "usos": "Residencial; hotelero, comercial, oficinas, educativo, recreativo, deportivo, sociocultural, sanitario; industrial en 1.ª y 2.ª situación; bar",
+   "otros": "Parcela mínima 100 m² con al menos 70 m² edificables."
+  },
+  "2": {
+   "nombre": "Residencial unifamiliar aislada",
+   "articulo": "Art. 165-168",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": "25 % (+5 % auxiliares)",
+   "altura_max": "9 m, PB+2",
+   "usos": "Vivienda unifamiliar; comercio hasta 250 m² de techo",
+   "otros": "Separación mínima a lindes 4 m."
+  },
+  "3bis": {
+   "nombre": "Residencial unifamiliar en hilera",
+   "articulo": "Art. 169",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 50,
+   "edificabilidad": "0,42 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "9 m, PB+2",
+   "usos": "Residencial",
+   "otros": "Máximo 2 parcelas; separación a lindes 4 m."
+  },
+  "4": {
+   "nombre": "Industrial de edificación aislada",
+   "articulo": "Art. 170-172",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "50 % (70 % en parcelas < 1 ha ya ocupadas)",
+   "altura_max": "15 m",
+   "usos": "Almacén, comercial, oficinas al servicio de la industria, estaciones de servicio y garajes, industrial categorías 1-4, recreativo, bar y restaurante; vivienda de 100 m² por instalación",
+   "otros": "Parcela mínima 1.000 m² (industria independiente) o 400 m² (agrupada en manzana). Separaciones: 10 m a vial, 5 m al resto.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio son uso admitido en la zona industrial (clave IV).",
+    "articulo": "Art. 172"
+   }
+  },
+  "5": {
+   "nombre": "Conservación de polígonos residenciales",
+   "articulo": "Art. 173-175",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (no se admite ampliación)",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercial hasta 250 m², oficinas, industrial cat. 1, sanitario-asistencial",
+   "otros": "Solo conservación, reforma y sustitución sin aumento de volumen.",
+   "segregacion": "Parcela mínima no fijada; se conserva la estructura existente."
+  }
+ }
+}

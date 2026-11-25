@@ -1,0 +1,178 @@
+{
+ "municipio": "Balaguer",
+ "codigo_ine": "25040",
+ "plan": "Text refós de les Normes subsidiàries de planejament de Balaguer (2010)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=220604&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Ordenación según alineación de vial",
+   "articulo": "Art. 70-72",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable y plantas",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Hasta 16 m y 5 plantas según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "1a": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Art. 72 bis a",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "100 % en planta baja",
+   "altura_max": "Según tramo de calle",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "1b": {
+   "nombre": "Edificación en hilera",
+   "articulo": "Art. 72 bis b",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según subzona (PB+1 a PB+3)",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Se aceptan las parcelas existentes de menor tamaño."
+  },
+  "2": {
+   "nombre": "Ordenación opcional",
+   "articulo": "Art. 73-76",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según modelo teórico de alineación de vial",
+   "ocupacion_max": "Según opción de ordenación",
+   "altura_max": "13 a 16 m según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2e": {
+   "nombre": "Ordenación opcional especial",
+   "articulo": "Art. 76",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según zona 2",
+   "ocupacion_max": "Según zona 2",
+   "altura_max": "Según zona 2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Parcela mínima: 6 m de ancho y 22 m de fondo."
+  },
+  "3": {
+   "nombre": "Según ordenación anterior",
+   "articulo": "Art. 77-79",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "3a": {
+   "nombre": "Según ordenación anterior, aparejada",
+   "articulo": "Art. 79",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,65 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "3b": {
+   "nombre": "Según ordenación anterior, subzona B",
+   "articulo": "Art. 79",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "2 plantas sobre la ocupación original",
+   "ocupacion_max": "La original del proyecto",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Ordenación mixta",
+   "articulo": "Art. 80-82",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según ordenación",
+   "ocupacion_max": "100 % (50 % en 4a)",
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "En 4a, parcela mínima 400 m² y ordenación específica."
+  },
+  "4a": {
+   "nombre": "Ordenación mixta, ámbito 4a",
+   "articulo": "Art. 80-82",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación específica",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "4a1": {
+   "nombre": "Mixta, unifamiliar en hilera",
+   "articulo": "Art. 82 bis a",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 5.5,
+   "edificabilidad": "Según profundidad edificable (12 m)",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "10 m, PB+2",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Usos industriales",
+   "articulo": "Art. 84-86",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "60 %",
+   "altura_max": "10 m, 2 plantas (chimeneas y depósitos sin límite)",
+   "usos": "Eminentemente industrial; almacenes y actividades productivas",
+   "otros": "Parcela mínima: la existente en junio de 2000; para segregar hace falta planeamiento previo.",
+   "segregacion": "No sin planeamiento previo: la parcela mínima es la existente (2000)."
+  },
+  "5a": {
+   "nombre": "Industrial familiar",
+   "articulo": "Art. 87",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según estudio de detalle (vivienda vinculada máx. 0,2 m²t/m²s)",
+   "ocupacion_max": "100 % en planta baja",
+   "altura_max": "11 m, PB+2",
+   "usos": "Eminentemente industrial; almacenes y actividades productivas; vivienda vinculada a la actividad en plantas superiores",
+   "otros": ""
+  },
+  "5b": {
+   "nombre": "Industrial polígono Campllong",
+   "articulo": "Art. 87 bis",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial Campllong (5b2a: 0,84 m²t/m²s)",
+   "ocupacion_max": "Según plan parcial",
+   "altura_max": "Según plan parcial",
+   "usos": "Eminentemente industrial; almacenes y actividades productivas",
+   "otros": "Subzonas 5b1 (aislada), 5b2 y 5b3 (entre medianeras): condiciones del plan parcial del sector industrial Campllong (1991, mod. 2003)."
+  },
+  "6": {
+   "nombre": "Ensanche de densidad media",
+   "articulo": "Art. 88-90",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según altura y profundidad edificable (18 m)",
+   "ocupacion_max": "100 %",
+   "altura_max": "Según ancho de vial: PB+2 (<10 m), PB+3 (10-15 m), PB+5 (≥15 m)",
+   "usos": "Eminentemente residencial",
+   "otros": ""
+  }
+ }
+}

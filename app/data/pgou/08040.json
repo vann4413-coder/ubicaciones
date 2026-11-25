@@ -1,0 +1,343 @@
+{
+ "municipio": "Canet de Mar",
+ "codigo_ine": "08040",
+ "plan": "Pla d'ordenació urbanística municipal de Canet de Mar (2020), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=385668&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "R1": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Art. 152-171",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Frente máximo 8 m.",
+   "segregacion": "Parcela mínima no exigida; frente entre 4,5 y 8 m."
+  },
+  "R2": {
+   "nombre": "Urbano tradicional",
+   "articulo": "Art. 172-182",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles; ejes comerciales en R2c",
+   "otros": "1 vivienda cada 90 m² de techo. R2b (frente carretera) frente mínimo 8 m.",
+   "segregacion": "Parcela mínima no exigida."
+  },
+  "R2b": {
+   "nombre": "Urbano tradicional, frente carretera",
+   "articulo": "Art. 172-182",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "1 vivienda cada 90 m² de techo.",
+   "segregacion": "Parcela mínima no exigida; frente mínimo 8 m."
+  },
+  "R3": {
+   "nombre": "Manzana cerrada",
+   "articulo": "Art. 183-190",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Frente mínimo: R3a 4,5 m; R3b 6,5 m; R3c 20 m; R3d 8 m.",
+   "segregacion": "Parcela mínima no exigida."
+  },
+  "R3b": {
+   "nombre": "Manzana cerrada, parcela mediana",
+   "articulo": "Art. 183-190",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela mínima no exigida."
+  },
+  "R3c": {
+   "nombre": "Manzana cerrada, parcela grande",
+   "articulo": "Art. 183-190",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 20,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela mínima no exigida."
+  },
+  "R3d": {
+   "nombre": "Manzana cerrada, tolerancia industrial",
+   "articulo": "Art. 183-190",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles; tolerancia industrial",
+   "otros": "",
+   "segregacion": "Parcela mínima no exigida."
+  },
+  "R4": {
+   "nombre": "Manzana abierta (plurifamiliar aislada)",
+   "articulo": "Art. 191-198",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona (21 subzonas R4a-R4u)",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Residencial plurifamiliar; servicios",
+   "otros": "Parámetros propios de cada subzona: ver art. 194-197."
+  },
+  "R5": {
+   "nombre": "Casas agrupadas",
+   "articulo": "Art. 199-206",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Residencial unifamiliar agrupada",
+   "otros": "Parcela mínima según subzona (R5a no exigida)."
+  },
+  "R6": {
+   "nombre": "Casas aisladas",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,32-0,50 m²t/m²s según subzona",
+   "ocupacion_max": "25-35 % según subzona",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar (bifamiliar en parcelas ≥ 1.000 m² en R6f-R6i)",
+   "otros": "Parcela mínima según subzona: R6a 200, R6b-c 400, R6d-e 500, R6f-g 600, R6h-i 1.000 m²."
+  },
+  "R6a": {
+   "nombre": "Casas aisladas, parcela 200 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "35 %",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6b": {
+   "nombre": "Casas aisladas, parcela 400 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,37 m²t/m²s",
+   "ocupacion_max": "30 % + 5 % secundaria",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6c": {
+   "nombre": "Casas aisladas, parcela 400 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "30 % + 5 % secundaria",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6d": {
+   "nombre": "Casas aisladas, parcela 500 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,45 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6e": {
+   "nombre": "Casas aisladas, parcela 500 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 16,
+   "edificabilidad": "0,45 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6f": {
+   "nombre": "Casas aisladas, parcela 600 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,35 m²t/m²s",
+   "ocupacion_max": "30 % + 5 % secundaria",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6g": {
+   "nombre": "Casas aisladas, parcela 600 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,45 m²t/m²s",
+   "ocupacion_max": "30 % + 5 % secundaria",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6h": {
+   "nombre": "Casas aisladas, parcela 1000 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,324 m²t/m²s",
+   "ocupacion_max": "25 % + 5 % secundaria",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6i": {
+   "nombre": "Casas aisladas, parcela 1000 m²",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,38 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Residencial unifamiliar",
+   "otros": ""
+  },
+  "R6j": {
+   "nombre": "Casas históricas",
+   "articulo": "Art. 207-214",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Existente (+100 m² auxiliares)",
+   "ocupacion_max": "Existente + 100 m²",
+   "altura_max": "Existente",
+   "usos": "Residencial",
+   "otros": "",
+   "segregacion": "Parcela indivisible."
+  },
+  "A1": {
+   "nombre": "Industrial",
+   "articulo": "Art. 215-223",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,666-0,875 m²t/m²s según subzona",
+   "ocupacion_max": "60 % (aislada)",
+   "altura_max": "PB+1",
+   "usos": "Industrial; comercio al por mayor y comercio singular al detalle, talleres de vehículos, logística, oficinas y servicios, recreativo, sanitario, educativo, deportivo, sociocultural, administrativo, abastecimiento y servicios urbanos",
+   "otros": "Parcela mínima: A1a y A1b 2.500 m², A1c 400 m², A1d 1.000 m²."
+  },
+  "A1a": {
+   "nombre": "Industria aislada",
+   "articulo": "Art. 215-223",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,666 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1",
+   "usos": "Industrial; comercio al por mayor y comercio singular al detalle, talleres de vehículos, logística, oficinas y servicios, recreativo, sanitario, educativo, deportivo, sociocultural, administrativo, abastecimiento y servicios urbanos",
+   "otros": "Separaciones: 8 m a vial, 5 m al resto."
+  },
+  "A1b": {
+   "nombre": "Industria-servicios aislada",
+   "articulo": "Art. 215-223",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,666 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "PB+1",
+   "usos": "Industrial; comercio al por mayor y comercio singular al detalle, talleres de vehículos, logística, oficinas y servicios, recreativo, sanitario, educativo, deportivo, sociocultural, administrativo, abastecimiento y servicios urbanos; además hotelero, restauración y estación de servicio",
+   "otros": "Separaciones: 8 m a vial, 5 m al resto. En parcelas que lindan con equipamientos públicos no se admiten comercio mayorista, talleres ni logística.",
+   "gasolinera": {
+    "condiciones": "Estación de servicio admitida solo en la clave A1b (salvo parcelas que lindan con equipamientos públicos).",
+    "articulo": "Art. 222"
+   }
+  },
+  "A1c": {
+   "nombre": "Industria agrupada, nave pequeña",
+   "articulo": "Art. 215-223",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,875 m²t/m²s",
+   "ocupacion_max": "Según planos",
+   "altura_max": "PB+1",
+   "usos": "Industrial; comercio al por mayor y comercio singular al detalle, talleres de vehículos, logística, oficinas y servicios, recreativo, sanitario, educativo, deportivo, sociocultural, administrativo, abastecimiento y servicios urbanos",
+   "otros": ""
+  },
+  "A1d": {
+   "nombre": "Industria agrupada, nave mediana",
+   "articulo": "Art. 215-223",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 19,
+   "edificabilidad": "0,875 m²t/m²s",
+   "ocupacion_max": "Según planos",
+   "altura_max": "PB+1",
+   "usos": "Industrial; comercio al por mayor y comercio singular al detalle, talleres de vehículos, logística, oficinas y servicios, recreativo, sanitario, educativo, deportivo, sociocultural, administrativo, abastecimiento y servicios urbanos",
+   "otros": ""
+  },
+  "A2": {
+   "nombre": "Servicios (terciario)",
+   "articulo": "Art. 224-231",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona (0,05-1,2 m²t/m²s)",
+   "ocupacion_max": "Según subzona (5-80 %)",
+   "altura_max": "Según subzona",
+   "usos": "Comercial; hotelero, restauración, recreativo y espectáculos, oficinas, industria-taller tipo I y equipamientos",
+   "otros": "A2e solo hotelero. Parcela mínima solo en A2f (3.000 m²)."
+  },
+  "A2f": {
+   "nombre": "Servicios singulares",
+   "articulo": "Art. 224-231",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,305 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "Según subzona",
+   "usos": "Comercial; hotelero, restauración, recreativo y espectáculos, oficinas, industria-taller tipo I y equipamientos",
+   "otros": "Separación 5 m a todos los límites."
+  },
+  "A2e": {
+   "nombre": "Servicios turísticos",
+   "articulo": "Art. 224-231",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,724 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según subzona",
+   "usos": "Hotelero (único uso principal); restauración y recreativo subsidiarios",
+   "otros": ""
+  },
+  "M": {
+   "nombre": "Transformación",
+   "articulo": "Art. 232-239",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según perímetro de ocupación y plantas",
+   "ocupacion_max": "Según planos (M1) o existente (M2)",
+   "altura_max": "Según planos o existente",
+   "usos": "Transformación a residencial y servicios; se mantienen los usos existentes",
+   "otros": "M1 Rial dels Oms, M2 transformación industrial."
+  }
+ }
+}
