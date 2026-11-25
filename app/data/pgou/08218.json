@@ -1,0 +1,204 @@
+{
+ "municipio": "Sant Joan de Vilatorrada",
+ "codigo_ine": "08218",
+ "plan": "Pla d'ordenació urbanística municipal de Sant Joan de Vilatorrada (2003), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=109970&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1a": {
+   "nombre": "Núcleo antiguo en alineación a vial",
+   "articulo": "Art. 193",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "1b": {
+   "nombre": "Núcleo antiguo en volumetría específica",
+   "articulo": "Art. 194",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría de planos",
+   "ocupacion_max": null,
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2a": {
+   "nombre": "Ensanche urbano en manzana cerrada",
+   "articulo": "Art. 196",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela mínima según planos de ordenación."
+  },
+  "2b": {
+   "nombre": "Ensanche urbano en manzana abierta",
+   "articulo": "Art. 197",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": null,
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela mínima según planos de ordenación."
+  },
+  "3a": {
+   "nombre": "Unifamiliar en hilera tradicional",
+   "articulo": "Art. 199",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": null,
+   "altura_max": "Según planos",
+   "usos": "Vivienda unifamiliar",
+   "otros": "",
+   "segregacion": "Parcela mínima según planos de ordenación."
+  },
+  "3b": {
+   "nombre": "Unifamiliar en hilera nueva",
+   "articulo": "Art. 200",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 5.4,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": null,
+   "altura_max": "Según planos",
+   "usos": "Vivienda unifamiliar",
+   "otros": "",
+   "segregacion": "Parcela mínima según planos de ordenación."
+  },
+  "4a": {
+   "nombre": "Ciudad jardín, parcela especial",
+   "articulo": "Art. 202",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "6,15 m, PB+1",
+   "usos": "Vivienda unifamiliar (bifamiliar y pareada manteniendo la parcela mínima por vivienda)",
+   "otros": ""
+  },
+  "4b": {
+   "nombre": "Ciudad jardín, parcela pequeña",
+   "articulo": "Art. 203",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "6,15 m, PB+1",
+   "usos": "Vivienda unifamiliar (bifamiliar y pareada manteniendo la parcela mínima por vivienda)",
+   "otros": ""
+  },
+  "4c": {
+   "nombre": "Ciudad jardín, parcela mediana",
+   "articulo": "Art. 204",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "6,15 m, PB+1",
+   "usos": "Vivienda unifamiliar (bifamiliar y pareada manteniendo la parcela mínima por vivienda)",
+   "otros": ""
+  },
+  "4d": {
+   "nombre": "Ciudad jardín, parcela grande",
+   "articulo": "Art. 205",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 32,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "6,15 m, PB+1",
+   "usos": "Vivienda unifamiliar (bifamiliar y pareada manteniendo la parcela mínima por vivienda)",
+   "otros": ""
+  },
+  "4e": {
+   "nombre": "Ciudad jardín, parcela muy grande",
+   "articulo": "Art. 206",
+   "parcela_minima_m2": 3000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "6,15 m, PB+1",
+   "usos": "Vivienda unifamiliar (bifamiliar y pareada manteniendo la parcela mínima por vivienda)",
+   "otros": ""
+  },
+  "5a": {
+   "nombre": "Edificación abierta consolidada",
+   "articulo": "Art. 208",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": null,
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Parcela existente."
+  },
+  "5b": {
+   "nombre": "Edificación abierta según planeamiento derivado",
+   "articulo": "Art. 209",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento derivado",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "6a": {
+   "nombre": "Industria en edificación continua",
+   "articulo": "Art. 211",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 9,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": null,
+   "altura_max": "10 m, PB+2",
+   "usos": "Industrial y almacenes; usos según el cuadro de compatibilidad",
+   "otros": ""
+  },
+  "6b": {
+   "nombre": "Industria en edificación aislada",
+   "articulo": "Art. 212",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": null,
+   "altura_max": "10 m",
+   "usos": "Industrial y almacenes; usos según el cuadro de compatibilidad",
+   "otros": ""
+  },
+  "7a": {
+   "nombre": "Actividades y servicios urbanos en contenedores tradicionales",
+   "articulo": "Art. 214",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "8 m",
+   "usos": "Actividades económicas y servicios urbanos",
+   "otros": ""
+  },
+  "7b": {
+   "nombre": "Actividades y servicios urbanos en nuevos contenedores",
+   "articulo": "Art. 215",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": "10 m, PB+2",
+   "usos": "Actividades económicas y servicios urbanos",
+   "otros": ""
+  }
+ }
+}
