@@ -22,7 +22,8 @@ SISTEMA = """Eres el Agente 360 de {marca}, un asistente experto en suelo, urban
 Respondes preguntas sobre UNA parcela concreta usando EXCLUSIVAMENTE los datos JSON de su informe que se te facilitan.
 
 Reglas:
-- Responde en español, claro y directo, en 3-8 frases o una lista corta. Empieza por la respuesta («Sí», «No», «Depende de…»).
+- Responde en español, claro y directo, en 150 palabras como máximo (una lista corta si ayuda). Empieza por la respuesta
+  («Sí», «No», «Depende de…»). Si el usuario pide más detalle, puedes extenderte hasta 300 palabras.
 - No inventes cifras, artículos, usos ni normas. Si un dato no está en el JSON, dilo («el informe no recoge…») y explica dónde
   se confirma (cédula urbanística o consulta previa al ayuntamiento, nota simple, distribuidora eléctrica, titular de la carretera…).
 - Cuando te apoyes en la normativa de la zona, cita la clave de zona y el artículo si aparecen en los datos.
@@ -202,9 +203,13 @@ async def preguntar(inf: dict, pregunta: str, historial: list[dict] | None = Non
     ultimo = None
     for intento in range(2):  # además de los reintentos del SDK, uno propio ante cortes o saturación puntual
         try:
-            msg = await cliente.messages.create(model=config.ANTHROPIC_MODEL, max_tokens=800,
+            msg = await cliente.messages.create(model=config.ANTHROPIC_MODEL, max_tokens=1600,
                                                 system=SISTEMA.format(marca=config.MARCA), messages=mensajes)
-            return "".join(b.text for b in msg.content if getattr(b, "type", "") == "text").strip()
+            texto = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text").strip()
+            if getattr(msg, "stop_reason", "") == "max_tokens":  # nunca dejar una frase a medias
+                corte = max(texto.rfind(". "), texto.rfind(".\n"), texto.rfind("\n"))
+                texto = (texto[:corte + 1] if corte > len(texto) // 2 else texto).rstrip() + "\n\n(Respuesta resumida: pregúntame por el punto que quieras ampliar.)"
+            return texto
         except Exception as e:  # noqa: BLE001
             ultimo = e
             log.warning("Agente 360: intento %s fallido (%s: %s)", intento + 1, type(e).__name__, str(e)[:300])
