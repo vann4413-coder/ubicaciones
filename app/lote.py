@@ -258,7 +258,7 @@ def escribir(entrada, salida, hoja: str, fila_cab: int, resultados: dict) -> Non
     c0 = ws.max_column + 1
     for i, (h, w) in enumerate(zip(CAB, ANCHO)):
         c = ws.cell(fila_cab, c0 + i, h)
-        c.font, c.fill = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="1F7A55")
+        c.font, c.fill = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="102E35")
         c.alignment = Alignment(wrap_text=True, vertical="center")
         ws.column_dimensions[get_column_letter(c0 + i)].width = w
     for fila, r in resultados.items():

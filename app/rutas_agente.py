@@ -114,7 +114,7 @@ async def plantilla():
     ws.append(["Ejemplo con coordenadas", None, None, None, 41.6436, 0.6085])
     for i, w in enumerate([30, 34, 18, 24, 12, 12], start=1):
         c = ws.cell(1, i)
-        c.font, c.fill = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="1F7A55")
+        c.font, c.fill = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="102E35")
         ws.column_dimensions[c.column_letter].width = w
     ws.cell(6, 1, "Rellena una fila por ubicación con la dirección y el municipio, la referencia catastral o las "
                   "coordenadas (basta con una de las tres). Puedes añadir las columnas propias que quieras.").font = Font(italic=True, color="667085")

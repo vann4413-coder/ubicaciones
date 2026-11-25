@@ -62,11 +62,11 @@ mapa.on("load", () => {
     paint: { "text-color": "#5e35b1", "text-halo-color": "#fff", "text-halo-width": 1.5 } });
 
   mapa.addSource("radios", { type: "geojson", data: vacio() });
-  mapa.addLayer({ id: "radios", type: "line", source: "radios", paint: { "line-color": "#1f7a55", "line-width": 2, "line-dasharray": [3, 3] } });
+  mapa.addLayer({ id: "radios", type: "line", source: "radios", paint: { "line-color": "#102e35", "line-width": 2, "line-dasharray": [3, 3] } });
   mapa.addSource("radios-etq", { type: "geojson", data: vacio() });
   mapa.addLayer({ id: "radios-etq", type: "symbol", source: "radios-etq",
     layout: { "text-field": ["get", "t"], "text-font": ["Noto Sans Bold"], "text-size": 12, "text-allow-overlap": true },
-    paint: { "text-color": "#fff", "text-halo-color": "#1f7a55", "text-halo-width": 3 } });
+    paint: { "text-color": "#fff", "text-halo-color": "#102e35", "text-halo-width": 3 } });
 
   mapa.addSource("parcela", { type: "geojson", data: vacio() });
   mapa.addLayer({ id: "parcela", type: "fill", source: "parcela", paint: { "fill-color": "#e11d48", "fill-opacity": 0.18 } });
@@ -236,11 +236,11 @@ $("generar").addEventListener("submit", async (e) => {
   }
 });
 
-const COLOR_SEM = { verde: "#1e9e5a", ambar: "#e08a00", rojo: "#d64032", gris: "#9aa5b1" };
+const COLOR_SEM = { verde: "#15805d", ambar: "#b7791f", rojo: "#b42318", gris: "#64748b" };
 function rosco(valor, sem) {
   const arco = valor == null ? "" : `<circle cx="40" cy="40" r="34" fill="none" stroke="${COLOR_SEM[sem]}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(213.6 * valor / 100).toFixed(1)} 213.6" transform="rotate(-90 40 40)"/>`;
   return `<svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="#e7ecf1" stroke-width="8"/>${arco}
-    <text x="40" y="47" text-anchor="middle" font-size="22" font-weight="800" fill="#14231c" font-family="Inter, sans-serif">${valor ?? "—"}</text></svg>`;
+    <text x="40" y="47" text-anchor="middle" font-size="22" font-weight="800" fill="#182c32" font-family="Inter, sans-serif">${valor ?? "—"}</text></svg>`;
 }
 
 function pintarResultado(inf, rc, qs) {
@@ -302,7 +302,7 @@ function prepararEntorno(inf) {
   }));
   const osm = (e5.puntos || []).filter((p) => !(gas.length && p.cat === "gasolineras"));
   const orden = Object.fromEntries(estado.categorias.map((c, i) => [c.clave, i]));
-  estado.puntos = [...gas, ...osm].map((p) => ({ ...p, color: color[p.cat] || "#9aa5b1", nombreCat: nombreCat[p.cat] || "",
+  estado.puntos = [...gas, ...osm].map((p) => ({ ...p, color: color[p.cat] || "#64748b", nombreCat: nombreCat[p.cat] || "",
     img: "ico-" + p.cat, orden: orden[p.cat] ?? 99 })).sort((a, b) => a.distancia_m - b.distancia_m);
 
   // Por defecto se ven todas menos «otros comercios» y «oficinas» (son muchísimos).

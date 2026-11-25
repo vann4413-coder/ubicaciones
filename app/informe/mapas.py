@@ -156,7 +156,7 @@ def construir(inf: dict) -> dict:
                 pts = gas
             capas.append({"trazo": "#fff", "relleno": color, "opacidad": 1, "ancho": 1, "geoms": _pts(pts, 28)})
         capas += [
-            {"trazo": "#1f7a55", "relleno": "none", "ancho": 2, "discontinua": True, "opacidad": 0,
+            {"trazo": "#102e35", "relleno": "none", "ancho": 2, "discontinua": True, "opacidad": 0,
              "geoms": [g.centroid.buffer(r).exterior for r in (1000, 2000, 5000) if r <= radio]},
             {"trazo": "#e11d48", "relleno": "#e11d48", "opacidad": 0.9, "ancho": 2, "geoms": [g.centroid.buffer(45)]},
         ]

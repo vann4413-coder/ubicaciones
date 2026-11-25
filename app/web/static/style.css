@@ -1,8 +1,8 @@
 /* Herramienta: panel lateral + mapa. Misma identidad que la portada y el informe. */
 [hidden] { display: none !important; }
 :root {
-  --tinta: #14231c; --suave: #5b6b7b; --linea: #e3e8ee; --fondo: #f4f6f9; --marca: #1f7a55; --marca-2: #186447;
-  --acento: #b8e04a; --verde: #1e9e5a; --ambar: #e08a00; --rojo: #d64032; --gris: #9aa5b1;
+  --tinta: #182c32; --suave: #64748b; --linea: #dce5e7; --fondo: #f4f7f6; --marca: #102e35; --marca-2: #0b2328;
+  --acento: #a8e063; --verde: #15805d; --ambar: #b7791f; --rojo: #b42318; --gris: #64748b;
   --g-marca: #2f6f8f; --g-indep: #1f8a70; --g-super: #8a4b8f;
 }
 * { box-sizing: border-box; }
@@ -41,7 +41,7 @@ input:focus { outline: 2px solid var(--acento); outline-offset: 0; border-color:
 button { background: var(--marca); color: #fff; border: 0; border-radius: 10px; padding: 10px 16px; font: inherit; font-weight: 700; cursor: pointer; }
 button:hover { background: var(--marca-2); }
 button:disabled { opacity: .55; cursor: wait; }
-#btn-generar { width: 100%; margin-top: 12px; padding: 14px; background: var(--acento); color: #0e2a1f; font-size: 15px; }
+#btn-generar { width: 100%; margin-top: 12px; padding: 14px; background: var(--acento); color: #102e35; font-size: 15px; }
 #btn-generar:hover { filter: brightness(1.05); }
 #resultados, #lista-parcelas { list-style: none; padding: 0; margin: 0; }
 #resultados li, #lista-parcelas li { padding: 9px 11px; border: 1px solid var(--linea); border-radius: 10px; margin-bottom: 6px; cursor: pointer; }
@@ -83,7 +83,7 @@ summary { cursor: pointer; color: var(--marca); font-weight: 600; }
 .acciones a.sec { background: #fff; color: var(--marca); border: 1.5px solid var(--marca); }
 .comp-filtros { display: flex; flex-wrap: wrap; gap: 6px; }
 .comp-filtros button { background: #fff; color: var(--tinta); border: 1px solid var(--linea); padding: 6px 10px; font-weight: 600; font-size: 12.5px; border-radius: 99px; }
-.comp-filtros button[aria-pressed="true"] { background: #f3fae4; border-color: var(--acento); }
+.comp-filtros button[aria-pressed="true"] { background: #eef7e1; border-color: var(--acento); }
 .comp-lista { list-style: none; margin: 0; padding: 0; border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; }
 .comp-lista li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: center; padding: 8px 10px; border-top: 1px solid var(--linea); cursor: pointer; }
 .comp-lista li:first-child { border-top: 0; }
@@ -130,9 +130,11 @@ footer input { width: auto; }
 .nota .mejor { display: block; font-size: 11px; color: var(--suave); margin-top: 4px; line-height: 1.25; padding: 0 2px; }
 .enlace-ficha { display: block; text-align: center; color: var(--marca); font-weight: 600; font-size: 13px; margin-top: -6px; }
 .acciones.una { grid-template-columns: 1fr; }
-.acciones.una a { background: var(--acento); color: #0e2a1f; }
+.acciones.una a { background: var(--acento); color: #102e35; }
 .nota-acceso { font-size: 12.5px; color: var(--suave); margin: -6px 0 0; text-align: center; }
 .cab .cuenta { color: #fff; font-size: 12.5px; text-decoration: underline; align-self: flex-start; margin-top: 2px; }
 
 .legal-app { display: block; width: 100%; font-size: 11px; color: #6b7a8c; margin-top: 6px; }
 .legal-app a { color: inherit; }
+
+.cab b, .logo, h1, h2, h3 { font-family: Manrope, Inter, system-ui, sans-serif; }

@@ -62,8 +62,8 @@ def mensaje_informe(destino: str, rc: str, url_informe: str, url_pdf: str, direc
     m.add_alternative(f"""<div style="font-family:Arial,sans-serif;font-size:15px;color:#1d2b3a;max-width:560px">
 <p>Hola:</p>
 <p>Gracias por tu compra. Tu informe de la parcela <b>{rc}</b>{lugar} ya está disponible.</p>
-<p><a href="{url_informe}" style="display:inline-block;background:#1f7a55;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Ver el informe</a>
-&nbsp;<a href="{url_pdf}" style="display:inline-block;background:#b8e04a;color:#14231c;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold">Descargar el PDF</a></p>
+<p><a href="{url_informe}" style="display:inline-block;background:#102e35;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Ver el informe</a>
+&nbsp;<a href="{url_pdf}" style="display:inline-block;background:#a8e063;color:#182c32;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold">Descargar el PDF</a></p>
 <p style="color:#5b6b7b;font-size:13px">Guarda este correo: los enlaces te permiten volver a abrir el informe cuando quieras.</p>
 <p>Un saludo,<br><b>{config.MARCA}</b><br><a href="https://parcelas360.com">parcelas360.com</a></p></div>""", subtype="html")
     return m
@@ -120,7 +120,7 @@ async def enviar_aviso_lista(destino: str, nombre: str, total: int) -> bool:
     m.add_alternative(f"""<div style="font-family:Arial,sans-serif;font-size:15px;color:#1d2b3a;max-width:560px">
 <p>Hola:</p>
 <p>El <b>Agente 360</b> ha terminado de analizar <b>{escape(nombre)}</b> ({total} ubicaciones).</p>
-<p><a href="{url}" style="display:inline-block;background:#1f7a55;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Descargar resultados</a></p>
+<p><a href="{url}" style="display:inline-block;background:#102e35;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Descargar resultados</a></p>
 <p>Un saludo,<br><b>{config.MARCA}</b><br><a href="https://parcelas360.com">parcelas360.com</a></p></div>""", subtype="html")
     try:
         if _resend()["clave"]:
