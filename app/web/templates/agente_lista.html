@@ -33,7 +33,7 @@
       <a class="btn btn-sec" href="/agente/plantilla.xlsx">Descargar plantilla</a>
     </div>
   </form>
-  <small class="acepto">Si la lista no cabe en lo que te queda, te damos a elegir antes de cobrar nada. Basta una columna con <b>DIRECCIÓN</b> (y mejor también <b>MUNICIPIO</b>), <b>REFERENCIA CATASTRAL</b> o <b>LATITUD</b> y <b>LONGITUD</b>. Cada ubicación tarda unos segundos: una lista de 100 está en menos de una hora.</small>
+  <small class="acepto"><b>Subir no cobra nada.</b> Si la lista no cabe en lo que te queda, aparece en «Tus listas» con el precio exacto como lista suelta (99 € hasta 100 ubicaciones, 0,80 € cada una más) y eliges si pagarla o analizar solo las incluidas. Basta una columna con <b>DIRECCIÓN</b> (y mejor también <b>MUNICIPIO</b>), <b>REFERENCIA CATASTRAL</b> o <b>LATITUD</b> y <b>LONGITUD</b>. Cada ubicación tarda unos segundos: una lista de 100 está en menos de una hora.</small>
   {% if cupo.tipo == "prueba" or (cupo.tipo == "plan" and cupo.quedan == 0) %}
   <div class="acciones-web">
     <a class="btn btn-sec" href="/suscribirse?plan=profesional">Profesional · 79 €/mes · {{ limites.profesional }} ubicaciones</a>
