@@ -1,0 +1,180 @@
+{
+ "municipio": "Llinars del Vallès",
+ "codigo_ine": "08106",
+ "plan": "Revisió del Pla general d'ordenació de Llinars del Vallès (2003), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=96875&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Edificación antigua y tradicional",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Edificación cerrada semiintensiva",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según profundidad y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Edificación abierta",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subclave",
+   "ocupacion_max": "40 % conjunto",
+   "altura_max": "Según subclave",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Edificación en hilera",
+   "articulo": "Sección 5",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 9,
+   "edificabilidad": "Según línea máxima de edificación",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda unifamiliar en hilera o pareada",
+   "otros": "4a: frente 6 m por vivienda; 4b: 250 m² (agrupada) o 400 m² (aislada)."
+  },
+  "5": {
+   "nombre": "Edificación aislada unifamiliar",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,55-0,80 m²t/m²s",
+   "ocupacion_max": "20-40 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": "Parcela mínima: 5a 400, 5b 600, 5c 800, 5e 500 m²."
+  },
+  "5a": {
+   "nombre": "Unifamiliar aislada 5a",
+   "articulo": "Art. 234-236",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "5b": {
+   "nombre": "Unifamiliar aislada 5b",
+   "articulo": "Art. 237-239",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,72 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "5c": {
+   "nombre": "Unifamiliar aislada 5c",
+   "articulo": "Art. 240-242",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,55 m²t/m²s",
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "5e": {
+   "nombre": "Unifamiliar aislada 5e",
+   "articulo": "Art. 246-248",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Ordenación especial",
+   "articulo": "Sección 7",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Conservación de la estructura urbana",
+   "articulo": "Sección 8",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Se conserva la estructura existente."
+  },
+  "8": {
+   "nombre": "Industrial",
+   "articulo": "Sección 9",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "40-70 % según subzona",
+   "altura_max": "12 m, PB+2",
+   "usos": "Industrial, almacenes, comercio pequeño, mediano y grande, estaciones de servicio",
+   "otros": "8a: parcela única; 8b: 600 m² y 18 m.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio son uso admitido en la zona industrial (claves 8a y 8b).",
+    "articulo": "Sección 9, clave 8"
+   }
+  },
+  "8a": {
+   "nombre": "Industrial 8a (parcela única)",
+   "articulo": "Sección 9",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": "40 %",
+   "altura_max": "12 m, PB+2",
+   "usos": "Industrial, almacenes, comercio pequeño, mediano y grande, estaciones de servicio",
+   "otros": "",
+   "segregacion": "Parcela única.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio son uso admitido en la zona industrial (claves 8a y 8b).",
+    "articulo": "Sección 9, clave 8"
+   }
+  },
+  "8b": {
+   "nombre": "Industrial 8b",
+   "articulo": "Art. 260",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "0,60 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial, almacenes, comercio pequeño, mediano y grande, estaciones de servicio",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio son uso admitido en la zona industrial (claves 8a y 8b).",
+    "articulo": "Sección 9, clave 8"
+   }
+  }
+ }
+}

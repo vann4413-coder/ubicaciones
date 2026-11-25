@@ -1,0 +1,166 @@
+{
+ "municipio": "Abrera",
+ "codigo_ine": "08001",
+ "plan": "Revisió del Pla general d'ordenació d'Abrera (1988), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=149340&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 140",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,8 m²t/m²s",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Vivienda plurifamiliar entre medianeras",
+   "articulo": "Art. 141",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable",
+   "ocupacion_max": null,
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Vivienda plurifamiliar aislada",
+   "articulo": "Art. 142",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,8 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "Según ordenanza",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Conservación de la estructura urbana y edificatoria",
+   "articulo": "Art. 143",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Vivienda unifamiliar entre medianeras",
+   "articulo": "Art. 144",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona (5a-5d)",
+   "ocupacion_max": null,
+   "altura_max": "Según subzona",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Vivienda unifamiliar aislada",
+   "articulo": "Art. 145",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Según subzona (6a-6g)",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Pequeña industria",
+   "articulo": "Art. 146",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Pequeña industria y talleres",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Industria",
+   "articulo": "Art. 147",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "50-60 %",
+   "altura_max": "Libre",
+   "usos": "Industrial",
+   "otros": "Separación mínima de 10 m a viales."
+  },
+  "11": {
+   "nombre": "Protección de paisaje",
+   "articulo": "Art. 150",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Paisajístico",
+   "otros": ""
+  },
+  "12": {
+   "nombre": "Verde privado",
+   "articulo": "Art. 151",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "13": {
+   "nombre": "Residencial semiintensiva",
+   "articulo": "Art. 151 bis",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Comercial",
+   "articulo": "Art. 151 ter",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Comercial y servicios",
+   "otros": ""
+  },
+  "23": {
+   "nombre": "Desarrollo residencial",
+   "articulo": "Art. 157",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial",
+   "otros": ""
+  },
+  "24": {
+   "nombre": "Desarrollo industrial",
+   "articulo": "Art. 158",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s (bruta)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Industrial",
+   "otros": ""
+  }
+ }
+}

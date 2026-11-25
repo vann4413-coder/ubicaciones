@@ -1,0 +1,232 @@
+{
+ "municipio": "Santa Coloma de Farners",
+ "codigo_ine": "17180",
+ "plan": "Text refós de la revisió del Pla general de Santa Coloma de Farners",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=142385&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "I": {
+   "nombre": "Casco urbano",
+   "articulo": "Normes, zona I",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "II": {
+   "nombre": "Casas en hilera",
+   "articulo": "Normes, zona II",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "III": {
+   "nombre": "Ciudad jardín intensiva",
+   "articulo": "Normes, zona III",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "50 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "IV": {
+   "nombre": "Ciudad jardín semiintensiva",
+   "articulo": "Normes, zona IV",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "V": {
+   "nombre": "Ciudad jardín extensiva",
+   "articulo": "Normes, zona V",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "30 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "VI": {
+   "nombre": "Ordenaciones de volumen definido",
+   "articulo": "Normes, zona VI",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría definida",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "VII": {
+   "nombre": "Industria",
+   "articulo": "Normes, zona VII",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": "Según plantas",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial; procesos de transformación de usos",
+   "otros": ""
+  },
+  "VIII": {
+   "nombre": "Polígono industrial nuevo",
+   "articulo": "Normes, zona VIII",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": "65 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial",
+   "otros": "Industrias alineadas con otras: parcela menor según ordenanza."
+  },
+  "IX": {
+   "nombre": "Verde privado",
+   "articulo": "Normes, zona IX",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "X": {
+   "nombre": "Comercio y servicios",
+   "articulo": "Normes, zona X",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Comercio y servicios",
+   "otros": ""
+  },
+  "1": {
+   "nombre": "Casco urbano",
+   "articulo": "Normes, zona I",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Casas en hilera",
+   "articulo": "Normes, zona II",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Ciudad jardín intensiva",
+   "articulo": "Normes, zona III",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "50 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Ciudad jardín semiintensiva",
+   "articulo": "Normes, zona IV",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Ciudad jardín extensiva",
+   "articulo": "Normes, zona V",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "30 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Ordenaciones de volumen definido",
+   "articulo": "Normes, zona VI",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría definida",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Industria",
+   "articulo": "Normes, zona VII",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": "Según plantas",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial; procesos de transformación de usos",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Polígono industrial nuevo",
+   "articulo": "Normes, zona VIII",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": "65 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial",
+   "otros": "Industrias alineadas con otras: parcela menor según ordenanza."
+  },
+  "9": {
+   "nombre": "Verde privado",
+   "articulo": "Normes, zona IX",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Comercio y servicios",
+   "articulo": "Normes, zona X",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenanza",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Comercio y servicios",
+   "otros": ""
+  }
+ }
+}
