@@ -1,0 +1,204 @@
+{
+ "municipio": "Cubelles",
+ "codigo_ine": "08074",
+ "plan": "Text refós de les Normes urbanístiques de planejament general de Cubelles (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=117986&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según altura y profundidad",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Ensanche",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según altura y profundidad",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,28-0,6 m²t/m²s según intensidad",
+   "ocupacion_max": "Según intensidad",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada (hasta 4 viviendas agrupadas en parcelas múltiplo de la mínima)",
+   "otros": "Parcela mínima: 3a 600 m², 3b 400 m², 3c 200 m²."
+  },
+  "3a": {
+   "nombre": "Ciudad jardín, intensidad I",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,28 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "3b": {
+   "nombre": "Ciudad jardín, intensidad II",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 13,
+   "edificabilidad": "0,32 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "3c": {
+   "nombre": "Ciudad jardín, intensidad III",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,6 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Residencial abierta",
+   "articulo": "Sección 5",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,85-1,30 m²t/m²s según intensidad",
+   "ocupacion_max": null,
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Parcela mínima de 250 a 500 m² según intensidad (4a-4d)."
+  },
+  "4a": {
+   "nombre": "Residencial abierta, intensidad I",
+   "articulo": "Sección 5",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 11,
+   "edificabilidad": "1,30 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "4b": {
+   "nombre": "Residencial abierta, intensidad II",
+   "articulo": "Sección 5",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,85 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Ordenaciones específicas",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación específica",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Especial Centro Energético",
+   "articulo": "Sección 7 y Anexo 1",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según Plan parcial Centre Energètic del Foix",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Instalaciones energéticas",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Conservación de la tipología",
+   "articulo": "Sección 9",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Se conserva la parcelación existente."
+  },
+  "9": {
+   "nombre": "Sujeta a anterior ordenación volumétrica",
+   "articulo": "Sección 10",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación anterior",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "PB+1 a PB+3 según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Desarrollo residencial",
+   "articulo": "Sección 2 (urbanizable)",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,33-0,40 m²t/m²s (bruta)",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Residencial uni y plurifamiliar",
+   "otros": ""
+  },
+  "12": {
+   "nombre": "Plan parcial en ejecución",
+   "articulo": "Sección 3 (urbanizable)",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial (0,18-0,96 m²t/m²s según intensidad)",
+   "ocupacion_max": null,
+   "altura_max": "PB+1 a PB+2",
+   "usos": "Residencial",
+   "otros": "Parcela mínima de 400 a 1.000 m² según intensidad."
+  },
+  "13": {
+   "nombre": "Planeamiento de legalización",
+   "articulo": "Sección 4 (urbanizable)",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,27 m²t/m²s (bruta)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Desarrollo industrial",
+   "articulo": "Sección 5 (urbanizable)",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,45 m²t/m²s (bruta)",
+   "ocupacion_max": "50 % de la parcela",
+   "altura_max": "10 m",
+   "usos": "Industrial categorías 1-3, comercial, comercial concentrado, almacenes y estaciones de servicio",
+   "otros": "Solo una industria o actividad por parcela.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio son uso admitido en la zona de desarrollo industrial (clave 14).",
+    "articulo": "Sección 5, clave 14"
+   }
+  }
+ }
+}

@@ -1,0 +1,130 @@
+{
+ "municipio": "Polinyà",
+ "codigo_ine": "08167",
+ "plan": "Pla general d'ordenació urbana de Polinyà (2003), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=278743&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Ordenación antigua y tradicional",
+   "articulo": "Sección 1",
+   "parcela_minima_m2": 100,
+   "frente_minimo_m": 5,
+   "edificabilidad": "Según plantas de los planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "En la subzona tradicional, 150 m² y 8 m de fachada."
+  },
+  "2": {
+   "nombre": "Manzana cerrada",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según plantas y ancho de vial",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Residencial en ordenación abierta",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,65-1,00 m²t/m²s según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3a": {
+   "nombre": "Ordenación abierta, edificación aislada",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "1,00 m²t/m²s (+0,10 complementario)",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3b": {
+   "nombre": "Ordenación abierta, ciudad jardín",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,65 m²t/m²s",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Unifamiliar (subzonas 4a-4g)",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda; usos de 3a (4a-4e) o 3b (4f-4g)",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Comercial",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1,00 m²t/m²s",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Comercial y servicios",
+   "otros": "Fachada mínima 25-30 m según subzona."
+  },
+  "7": {
+   "nombre": "Industrial",
+   "articulo": "Sección 7",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1,00 m²t/m²s (8 m³/m²)",
+   "ocupacion_max": "Según parcela",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial y almacenaje; estaciones de servicio y talleres en parcela exclusiva",
+   "otros": "Subzona 7* (junto a zonas residenciales) sin industria de 4.ª categoría ni estaciones de servicio.",
+   "gasolinera": {
+    "condiciones": "Estaciones de servicio y talleres de automoción admitidos en la zona industrial (clave 7) en parcela exclusiva para ese uso; no en la subzona 7* próxima a zonas residenciales.",
+    "articulo": "Sección 7"
+   }
+  },
+  "8": {
+   "nombre": "Desarrollo residencial",
+   "articulo": "Suelo urbanizable",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,30-0,60 m²t/m²s (bruta) según intensidad",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Desarrollo industrial",
+   "articulo": "Suelo urbanizable",
+   "parcela_minima_m2": 2400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,45 m²t/m²s (bruta)",
+   "ocupacion_max": "60 %",
+   "altura_max": null,
+   "usos": "Industrial",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Estaciones de servicio y talleres de automoción admitidos en la zona industrial (clave 7) en parcela exclusiva para ese uso; no en la subzona 7* próxima a zonas residenciales.",
+    "articulo": "Sección 7"
+   }
+  }
+ }
+}

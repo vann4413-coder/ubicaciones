@@ -1,0 +1,146 @@
+{
+ "municipio": "Lliçà de Vall",
+ "codigo_ine": "08108",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de Lliçà de Vall (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=115011&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "2": {
+   "nombre": "Suburbana",
+   "articulo": "Sección 2",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según altura reguladora",
+   "ocupacion_max": "Según planos",
+   "altura_max": "6,80 m (PB+1) o 9,80 m (PB+2)",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Fachada mínima 8 m al subdividir."
+  },
+  "3": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Sección 3",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,4-0,6 m²t/m²s según subzona",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Una subzona con fachada mínima 11 m y 0,6 m²t/m²s."
+  },
+  "4": {
+   "nombre": "Residencial abierta",
+   "articulo": "Sección 4",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 18,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "Espacio privado máximo 70 %",
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Ordenación en hilera",
+   "articulo": "Sección 5",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial unifamiliar en hilera",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Sujeta a anterior ordenación volumétrica",
+   "articulo": "Sección 6",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La de la ordenación anterior",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Industrial",
+   "articulo": "Sección 7",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 40,
+   "edificabilidad": "0,8 m²t/m²s",
+   "ocupacion_max": "60 % (hasta 65 %)",
+   "altura_max": "11 m",
+   "usos": "Industrial, almacén, comercial concentrado, estaciones de servicio y garajes",
+   "otros": "7a polígono industrial, 7b industrias puntuales, 7c actuaciones unitarias (parcela mínima 10.000 m², ocupación 75 %). Fachada 25 m en Pardellot y La Casilla.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio y garajes son uso admitido en las zonas industriales (clave 7).",
+    "articulo": "Sección 7, clave 7"
+   }
+  },
+  "7c": {
+   "nombre": "Industrial, actuaciones unitarias",
+   "articulo": "Sección 7",
+   "parcela_minima_m2": 10000,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación aislada",
+   "ocupacion_max": "75 %",
+   "altura_max": "11 m",
+   "usos": "Industrial, almacén, comercial concentrado, estaciones de servicio y garajes",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio y garajes son uso admitido en las zonas industriales (clave 7).",
+    "articulo": "Sección 7, clave 7"
+   }
+  },
+  "8": {
+   "nombre": "Ordenación especial",
+   "articulo": "Sección 8",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación específica",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Verde privado",
+   "articulo": "Sección 10",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Desarrollo residencial",
+   "articulo": "Suelo urbanizable",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,32-0,35 m²t/m²s (bruta)",
+   "ocupacion_max": "25-40 %",
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar",
+   "otros": "Parcela mínima 800 m² por vivienda unifamiliar."
+  },
+  "12": {
+   "nombre": "Desarrollo industrial",
+   "articulo": "Suelo urbanizable",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,50 m²t/m²s (bruta)",
+   "ocupacion_max": "50 % (hasta 60 %)",
+   "altura_max": null,
+   "usos": "Industrial, almacén, comercial concentrado, estaciones de servicio y garajes",
+   "otros": "Cada industria con un mínimo de 1.000 m² construidos.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio y garajes son uso admitido en las zonas industriales (clave 7).",
+    "articulo": "Sección 7, clave 7"
+   }
+  }
+ }
+}

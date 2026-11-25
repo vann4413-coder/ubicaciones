@@ -1,0 +1,111 @@
+{
+ "municipio": "Piera",
+ "codigo_ine": "08161",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de Piera (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=117272&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 117",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según número de plantas regulado",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; oficinas, administrativo, sociocultural y recreativo; comercio e industria compatible según regulación de usos",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 118",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "100 % en PB y 70 % en plantas",
+   "altura_max": "Según planos",
+   "usos": "Residencial; oficinas, administrativo, sociocultural y recreativo; comercio e industria compatible según regulación de usos",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Residencial semiintensiva",
+   "articulo": "Art. 119",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "45 %",
+   "altura_max": "Según plantas reguladas",
+   "usos": "Residencial; oficinas, administrativo, sociocultural y recreativo; comercio e industria compatible según regulación de usos",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Residencial extensiva",
+   "articulo": "Art. 120",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,5 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "Según plantas reguladas",
+   "usos": "Residencial; oficinas, administrativo, sociocultural y recreativo; comercio e industria compatible según regulación de usos",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Ciudad jardín, intensidad 1",
+   "articulo": "Art. 121",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,06 m²t/m²s",
+   "ocupacion_max": "Según pendiente",
+   "altura_max": "9 m, PB+2",
+   "usos": "Vivienda unifamiliar; garajes, comercio e industria según regulación de usos",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Ciudad jardín, intensidad 2",
+   "articulo": "Art. 122",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": "0,80 m²t/m²s",
+   "ocupacion_max": "Según pendiente",
+   "altura_max": "9 m, PB+2",
+   "usos": "Vivienda unifamiliar; garajes, comercio e industria según regulación de usos",
+   "otros": "Se admiten parcelas inscritas de 250 a 400 m²."
+  },
+  "7": {
+   "nombre": "Ciudad jardín, intensidad 3",
+   "articulo": "Art. 123",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "Según pendiente",
+   "altura_max": "9 m, PB+2",
+   "usos": "Vivienda unifamiliar; garajes, comercio e industria según regulación de usos",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Ciudad jardín, intensidad 4",
+   "articulo": "Art. 124",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,4 m²t/m²s",
+   "ocupacion_max": "Según pendiente",
+   "altura_max": "9 m, PB+2",
+   "usos": "Vivienda unifamiliar; garajes, comercio e industria según regulación de usos",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Industrial (industria aislada)",
+   "articulo": "Art. 125",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Volumen máximo 3,2 m³/m²",
+   "ocupacion_max": "50 %",
+   "altura_max": "Según actividad",
+   "usos": "Industrial; una vivienda por parcela; usos públicos solo adscritos a la industria",
+   "otros": ""
+  }
+ }
+}
