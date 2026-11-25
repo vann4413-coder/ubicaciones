@@ -26,7 +26,7 @@ INFORMES_PACK = 10
 # «Analiza tu lista» (Agente 360): ubicaciones al mes por plan (None = sin límite) y prueba gratuita por cuenta.
 LIMITES_LISTA = {"profesional": int(os.getenv("UBI_LISTA_PROFESIONAL", "50")),
                  "empresa": int(os.getenv("UBI_LISTA_EMPRESA", "300")), "premium": None}
-PRUEBA_LISTA = int(os.getenv("UBI_LISTA_PRUEBA", "5"))
+PRUEBA_LISTA = int(os.getenv("UBI_LISTA_PRUEBA", "3"))
 
 _lock = threading.Lock()
 _con: sqlite3.Connection | None = None

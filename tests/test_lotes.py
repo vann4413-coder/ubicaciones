@@ -61,9 +61,9 @@ def test_agente_lista_cliente(monkeypatch, tmp_path):
     assert "Analiza tu lista" in cli.get("/agente/lista").text
     ruta = _excel(tmp_path, [(str(i), f"Carrer Major {i}", "Vic") for i in range(1, 9)])
     r = cli.post("/agente/lista", files={"fichero": ("mi.xlsx", ruta.read_bytes())}, follow_redirects=False)
-    assert r.status_code == 303 and "primeras%205" in r.headers["location"]
+    assert r.status_code == 303 and "primeras%203" in r.headers["location"]
     mios = lote.lista(7)
-    assert len(mios) == 1 and mios[0]["total"] == 5 and mios[0]["en_fichero"] == 8
+    assert len(mios) == 1 and mios[0]["total"] == 3 and mios[0]["en_fichero"] == 8
     assert cuentas.cupo_lista(usuario)["quedan"] == 0
     r = cli.post("/agente/lista", files={"fichero": ("mi.xlsx", ruta.read_bytes())}, follow_redirects=False)
     assert "agotado" in r.headers["location"]
