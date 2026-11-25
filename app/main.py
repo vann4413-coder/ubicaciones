@@ -184,7 +184,7 @@ async def informe_json(request: Request, rc: str, potencia_mw: float | None = No
     salida["competencia"] = generar.para_json(comp)
     salida["parcela_geojson"] = mapping(geo.geom_a_wgs84(inf["parcela"]["geom"]))
     permitido, motivo = acceso(request, rc, registrar=False)
-    salida["acceso"] = {"completo": permitido, "motivo": motivo, "pagos": pagos.activos(), "precio_informe": "1,99 €"}
+    salida["acceso"] = {"completo": permitido, "motivo": motivo, "pagos": pagos.activos(), "precio_informe": pagos.euros(pagos.PRODUCTOS["informe"]["importe"])}
     if not permitido:
         previa = {k: v for k, v in salida.items() if k in CAMPOS_PREVIA or k == "acceso"}
         previa["parcela"] = {k: salida["parcela"].get(k) for k in ("rc", "direccion", "sup_grafica", "municipio")}

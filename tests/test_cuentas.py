@@ -33,7 +33,7 @@ def test_sin_pago_redirige_a_compra(cliente):
     assert r.status_code == 303 and r.headers["location"] == "/comprar/4595201DF5949N"
     r = cliente.get("/informe/4595201DF5949N.pdf", follow_redirects=False)
     assert r.headers["location"] == "/comprar/4595201DF5949N"
-    assert "1,99 €" in cliente.get("/comprar/4595201DF5949N").text
+    assert "9,90 €" in cliente.get("/comprar/4595201DF5949N").text
 
 
 def test_compra_y_plan_dan_acceso():

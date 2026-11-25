@@ -10,7 +10,7 @@
 {% if not usuario %}
 <div class="caja">
   <h2>Pruébalo gratis con {{ prueba }} ubicaciones</h2>
-  <p>Crea una cuenta gratuita, sube tu Excel y el agente analiza las primeras {{ prueba }} filas sin coste. Para listas más largas, los planes Profesional ({{ limites.profesional }} ubicaciones al mes) y Empresa ({{ limites.empresa }} al mes).</p>
+  <p>Crea una cuenta gratuita, sube tu Excel y el agente analiza las primeras {{ prueba }} filas sin coste. Para listas más largas: lista suelta desde 99 € (hasta 100 ubicaciones) o los planes Profesional ({{ limites.profesional }} ubicaciones al mes) y Equipo ({{ limites.equipo }} al mes).</p>
   <div class="acciones-web">
     <a class="btn" href="/cuenta?siguiente=/agente/lista">Crear cuenta o entrar</a>
     <a class="btn btn-sec" href="/agente/plantilla.xlsx">Descargar plantilla</a>
@@ -23,10 +23,9 @@
   {% if cupo.tipo == "plan" %}
     {% if cupo.limite is none %}Ubicaciones sin límite con tu plan.{% else %}Este mes has enviado <b>{{ cupo.usadas }}</b> de {{ cupo.limite }} ubicaciones: te quedan <b>{{ cupo.quedan }}</b>.{% endif %}
   {% elif cupo.tipo == "prueba" %}
-    {% if cupo.quedan %}Prueba gratuita: te quedan <b>{{ cupo.quedan }}</b> ubicaciones. Si tu lista es más larga, se analizan las primeras.{% else %}Ya has usado la prueba gratuita. Elige un plan para analizar más listas.{% endif %}
+    {% if cupo.quedan %}Prueba gratuita: te quedan <b>{{ cupo.quedan }}</b> ubicaciones.{% else %}Ya has usado la prueba gratuita.{% endif %} Si tu lista es más larga, puedes pagarla como lista suelta (99 € hasta 100 ubicaciones) o suscribirte.
   {% else %}Sin límite (modo demostración).{% endif %}
   </p>
-  {% if cupo.quedan != 0 %}
   <form method="post" action="/agente/lista" enctype="multipart/form-data" class="form-lista">
     <label>Fichero Excel (.xlsx) <input type="file" name="fichero" accept=".xlsx" required></label>
     <div class="acciones-web">
@@ -34,12 +33,11 @@
       <a class="btn btn-sec" href="/agente/plantilla.xlsx">Descargar plantilla</a>
     </div>
   </form>
-  <small class="acepto">Basta una columna con <b>DIRECCIÓN</b> (y mejor también <b>MUNICIPIO</b>), <b>REFERENCIA CATASTRAL</b> o <b>LATITUD</b> y <b>LONGITUD</b>. Cada ubicación tarda unos segundos: una lista de 100 está en menos de una hora.</small>
-  {% endif %}
+  <small class="acepto">Si la lista no cabe en lo que te queda, te damos a elegir antes de cobrar nada. Basta una columna con <b>DIRECCIÓN</b> (y mejor también <b>MUNICIPIO</b>), <b>REFERENCIA CATASTRAL</b> o <b>LATITUD</b> y <b>LONGITUD</b>. Cada ubicación tarda unos segundos: una lista de 100 está en menos de una hora.</small>
   {% if cupo.tipo == "prueba" or (cupo.tipo == "plan" and cupo.quedan == 0) %}
   <div class="acciones-web">
-    <a class="btn{% if cupo.quedan %} btn-sec{% endif %}" href="/suscribirse?plan=profesional">Profesional · 39 €/mes · {{ limites.profesional }} ubicaciones</a>
-    <a class="btn btn-sec" href="/suscribirse?plan=empresa">Empresa · 99 €/mes · {{ limites.empresa }} ubicaciones</a>
+    <a class="btn btn-sec" href="/suscribirse?plan=profesional">Profesional · 79 €/mes · {{ limites.profesional }} ubicaciones</a>
+    <a class="btn btn-sec" href="/suscribirse?plan=equipo">Equipo · 149 €/mes · {{ limites.equipo }} ubicaciones</a>
   </div>
   {% endif %}
 </div>
@@ -51,7 +49,9 @@
   {% for l in lotes %}
     <tr><td>{{ l.nombre }}</td><td>{{ l.creado }}</td><td>{{ l.situacion }}</td>
     <td>{{ l.hechos }} de {{ l.total }}{% if l.errores %} · {{ l.errores }} sin datos{% endif %}</td>
-    <td class="acciones-fila">{% if l.situacion == "terminado" %}<a class="btn btn-peq" href="/agente/lista/{{ l.id }}.xlsx">Descargar</a>{% elif l.hechos %}<a class="btn btn-sec btn-peq" href="/agente/lista/{{ l.id }}.xlsx?parcial=1">Descargar lo hecho</a>{% endif %}
+    <td class="acciones-fila">{% if l.modo == "pendiente" %}{% if pagos %}<a class="btn btn-peq" href="/agente/lista/{{ l.id }}/pagar">Pagar {{ precio_lista(l.total) }} y analizar las {{ l.total }}</a>{% endif %}
+      {% if cupo.quedan %}<form method="post" action="/agente/lista/{{ l.id }}/incluidas"><button class="btn btn-sec btn-peq" type="submit">Analizar solo las primeras {{ cupo.quedan }} (incluidas)</button></form>{% endif %}
+    {% elif l.situacion == "terminado" %}<a class="btn btn-peq" href="/agente/lista/{{ l.id }}.xlsx">Descargar</a>{% elif l.hechos %}<a class="btn btn-sec btn-peq" href="/agente/lista/{{ l.id }}.xlsx?parcial=1">Descargar lo hecho</a>{% endif %}
       <form method="post" action="/agente/lista/{{ l.id }}/borrar" onsubmit="return confirm('¿Borrar esta lista?')"><button class="btn btn-sec btn-peq" type="submit">Borrar</button></form></td></tr>
   {% endfor %}
   </table></div>

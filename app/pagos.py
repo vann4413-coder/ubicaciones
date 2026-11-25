@@ -1,10 +1,10 @@
-"""Cobros con Stripe: informe suelto y pack de 10 (pagos únicos) y suscripciones Profesional y Empresa.
+"""Cobros con Stripe: informe suelto, pack de 10 y lista suelta (pagos únicos) y suscripciones Profesional y Equipo.
 
 Variables de entorno (en Railway):
   STRIPE_SECRET_KEY       clave secreta de Stripe (sk_test_… en pruebas, sk_live_… en real)
   STRIPE_WEBHOOK_SECRET   secreto del webhook (whsec_…) del endpoint /stripe/webhook
   UBI_URL_PUBLICA         dirección pública de la web (p. ej. https://ubicaciones-production.up.railway.app)
-  UBI_IVA                 IVA en % incluido en el precio (21 por defecto): 1,99 € es el total que paga el cliente
+  UBI_IVA                 IVA en % incluido en el precio (21 por defecto): 9,90 € es el total que paga el cliente
 
 Sin STRIPE_SECRET_KEY los pagos están desactivados y los informes se ven gratis (modo demostración).
 Los productos, precios y el tipo de IVA se crean solos en Stripe la primera vez (claves lookup_key).
@@ -20,18 +20,34 @@ URL_PUBLICA = os.getenv("UBI_URL_PUBLICA", "").rstrip("/")
 IVA = float(os.getenv("UBI_IVA", "21"))
 
 PRODUCTOS = {
-    "informe": {"lookup_key": "ubi_informe_suelto_iva_incl", "nombre": "Informe completo de parcela", "importe": 199, "recurrente": False},
-    "pack": {"lookup_key": "ubi_pack_10_informes_iva_incl", "nombre": "Pack de 10 informes de parcela", "importe": 1490, "recurrente": False},
-    "profesional": {"lookup_key": "ubi_plan_profesional_39_iva_incl", "nombre": "Plan Profesional (30 informes al mes)", "importe": 3900, "recurrente": True},
+    "informe": {"lookup_key": "ubi_informe_suelto_990_iva_incl", "nombre": "Informe completo de parcela", "importe": 990, "recurrente": False},
+    "pack": {"lookup_key": "ubi_pack_10_informes_6900_iva_incl", "nombre": "Pack de 10 informes de parcela", "importe": 6900, "recurrente": False},
+    "profesional": {"lookup_key": "ubi_plan_profesional_79_iva_incl", "nombre": "Plan Profesional (20 informes y 50 ubicaciones en lista al mes)", "importe": 7900, "recurrente": True},
+    "equipo": {"lookup_key": "ubi_plan_equipo_149_iva_incl", "nombre": "Plan Equipo (50 informes y 200 ubicaciones en lista al mes)", "importe": 14900, "recurrente": True},
+    # Planes antiguos: ya no se venden, se conservan para quien los tenga contratados.
     "empresa": {"lookup_key": "ubi_plan_empresa_99_iva_incl", "nombre": "Plan Empresa (uso intensivo)", "importe": 9900, "recurrente": True},
-    # Plan antiguo: ya no se vende, se conserva para quien lo tenga contratado.
     "premium": {"lookup_key": "ubi_plan_premium_iva_incl", "nombre": "Plan Premium (informes ilimitados)", "importe": 13900, "recurrente": True},
 }
+PLANES_EN_VENTA = ("profesional", "equipo")
+
+# Lista suelta («Analiza tu lista» sin plan o por encima del cupo): 99 € hasta 100 ubicaciones y 0,80 € cada una más.
+LISTA_BASE_CENT, LISTA_INCLUIDAS, LISTA_EXTRA_CENT = 9900, 100, 80
+
+
+def precio_lista(n: int) -> int:
+    """Importe en céntimos (IVA incluido) de una lista suelta de n ubicaciones."""
+    return LISTA_BASE_CENT + LISTA_EXTRA_CENT * max(0, n - LISTA_INCLUIDAS)
+
+
+def euros(cent: int) -> str:
+    return f"{cent / 100:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".").replace(",00 €", " €")
 
 # Datos para una factura completa: dirección de facturación y NIF/CIF del cliente (opcional para particulares).
 FACTURA = {"locale": "es", "billing_address_collection": "required", "tax_id_collection": {"enabled": True}}
 AVISO_INFORME = ("Al pagar aceptas las condiciones de contratación (parcelas360.com/condiciones) y pides la entrega "
                  "inmediata del informe, por lo que pierdes el derecho de desistimiento.")
+AVISO_LISTA = ("Al pagar aceptas las condiciones de contratación (parcelas360.com/condiciones) y pides que el análisis "
+               "empiece de inmediato, por lo que pierdes el derecho de desistimiento.")
 AVISO_SUSCRIPCION = ("Al suscribirte aceptas las condiciones de contratación (parcelas360.com/condiciones). La suscripción "
                      "se renueva cada mes y puedes cancelarla cuando quieras desde tu cuenta.")
 
@@ -156,6 +172,29 @@ def checkout_pack(base: str, usuario: dict, rc: str = "") -> str:
         metadata={"tipo": "pack", "informes": str(cuentas.INFORMES_PACK), "usuario_id": str(usuario["id"]), "rc": rc},
         invoice_creation={"enabled": True},
         custom_text={"submit": {"message": AVISO_INFORME}},
+        **FACTURA,
+    )
+    if usuario.get("stripe_customer"):
+        datos["customer"] = usuario["stripe_customer"]
+        datos["customer_update"] = {"name": "auto", "address": "auto"}
+    else:
+        datos["customer_email"] = usuario["email"]
+    return _crear_sesion(datos)
+
+
+def checkout_lista(lote_id: str, n: int, nombre: str, base: str, usuario: dict) -> str:
+    """Pago único de una lista suelta; al confirmarse se lanza el análisis del lote."""
+    datos = dict(
+        mode="payment",
+        line_items=[{"price_data": {"currency": "eur", "unit_amount": precio_lista(n), "tax_behavior": "inclusive",
+                                    "product_data": {"name": f"Analiza tu lista · {n} ubicaciones", "description": nombre[:200],
+                                                     "tax_code": "txcd_10000000"}},
+                     "quantity": 1, "tax_rates": tasa_iva()}],
+        success_url=_url("/pago/ok?session_id={CHECKOUT_SESSION_ID}", base),
+        cancel_url=_url("/agente/lista?error=" + "Has%20cancelado%20el%20pago.%20No%20se%20te%20ha%20cobrado%20nada.", base),
+        metadata={"tipo": "lista", "lote": lote_id, "ubicaciones": str(n), "usuario_id": str(usuario["id"])},
+        invoice_creation={"enabled": True},
+        custom_text={"submit": {"message": AVISO_LISTA}},
         **FACTURA,
     )
     if usuario.get("stripe_customer"):

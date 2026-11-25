@@ -146,7 +146,7 @@ async def pagar_informe(request: Request, rc: str, acepto: str = Form("")):
 
 @router.get("/suscribirse")
 async def suscribirse(request: Request, plan: str = "profesional", rc: str = ""):
-    if plan not in ("profesional", "empresa") or not pagos.activos():
+    if plan not in pagos.PLANES_EN_VENTA or not pagos.activos():
         return RedirectResponse("/#precios", status_code=303)
     u = usuario_actual(request)
     if not u:
@@ -195,6 +195,11 @@ async def pago_ok(request: Request, session_id: str):
     if meta.get("tipo") == "suscripcion":
         _activar_suscripcion(int(meta["usuario_id"]), ses.customer, ses.subscription, meta.get("plan"))
         return RedirectResponse("/cuenta", status_code=303)
+    if meta.get("tipo") == "lista":
+        if ses.payment_status != "paid":
+            return RedirectResponse("/agente/lista", status_code=303)
+        _activar_lista(meta, ses.customer)
+        return RedirectResponse("/agente/lista?ok=Pago%20recibido.%20Tu%20lista%20est%C3%A1%20en%20cola.", status_code=303)
     if meta.get("tipo") == "pack":
         if ses.payment_status != "paid":
             return RedirectResponse("/cuenta?cancelado=1", status_code=303)
@@ -216,6 +221,14 @@ def enviar_correo_compra(base: str, session_id: str, rc: str, email: str, token:
     asyncio.create_task(correo.enviar_informe(email, rc, f"{base}/informe/{rc}?acceso={token}",
                                               f"{base}/informe/{rc}.pdf?acceso={token}"))
     return True
+
+
+def _activar_lista(meta: dict, customer: str | None) -> None:
+    from app import lote
+    lote.activar(meta.get("lote", ""), pagada=True)  # si ya estaba activada (vuelta + webhook) no hace nada
+    uid = int(meta.get("usuario_id") or 0)
+    if uid and customer and not (cuentas.obtener(uid) or {}).get("stripe_customer"):
+        cuentas.actualizar_plan(uid, stripe_customer=customer)
 
 
 def _activar_pack(session_id: str, meta: dict, customer: str | None, importe: int | None) -> None:
@@ -248,6 +261,8 @@ async def webhook(request: Request):
         meta = obj.get("metadata") or {}
         if meta.get("tipo") == "suscripcion" and meta.get("usuario_id"):
             _activar_suscripcion(int(meta["usuario_id"]), obj.get("customer"), obj.get("subscription"), meta.get("plan"))
+        elif meta.get("tipo") == "lista" and obj.get("payment_status") == "paid":
+            _activar_lista(meta, obj.get("customer"))
         elif meta.get("tipo") == "pack" and meta.get("usuario_id") and obj.get("payment_status") == "paid":
             _activar_pack(obj["id"], meta, obj.get("customer"), obj.get("amount_total"))
         elif meta.get("tipo") == "informe" and obj.get("payment_status") == "paid":

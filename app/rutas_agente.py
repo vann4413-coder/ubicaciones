@@ -6,7 +6,7 @@ from urllib.parse import quote
 from fastapi import APIRouter, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, RedirectResponse, Response
 
-from app import cuentas, lote
+from app import cuentas, lote, pagos
 from app.rutas_cuenta import _pintar, usuario_actual
 
 router = APIRouter()
@@ -34,28 +34,53 @@ async def lista(request: Request, error: str = "", ok: str = ""):
                    descripcion="Sube un Excel con tus ubicaciones y el Agente 360 te lo devuelve con catastro, "
                                "urbanismo, usos admitidos, parcela mínima e inundabilidad de cada una.",
                    cupo=cuentas.cupo_lista(u), lotes=lote.lista(u["id"]) if u else [], error=error, ok=ok,
-                   limites=cuentas.LIMITES_LISTA, prueba=cuentas.PRUEBA_LISTA)
+                   limites=cuentas.LIMITES_LISTA, prueba=cuentas.PRUEBA_LISTA, precio_lista=lambda n: pagos.euros(pagos.precio_lista(n)),
+                   pagos=pagos.activos())
 
 
 @router.post("/agente/lista")
 async def subir(request: Request, fichero: UploadFile):
+    """Si la lista cabe en lo que le queda al cliente, se analiza ya. Si no, queda pendiente para que elija:
+    pagarla entera como lista suelta o analizar solo las ubicaciones que le cubre su plan o la prueba."""
     u = usuario_actual(request)
     if not u:
         return RedirectResponse("/cuenta?siguiente=/agente/lista", status_code=303)
     cupo = cuentas.cupo_lista(u)
-    if cupo["quedan"] == 0:
-        return RedirectResponse("/agente/lista?error=" + quote("Has agotado las ubicaciones disponibles. "
-                                                               "Elige un plan para seguir analizando listas."), status_code=303)
+    contenido = await fichero.read()
+    nombre = fichero.filename or "ubicaciones.xlsx"
     try:
-        id_ = lote.crear(fichero.filename or "ubicaciones.xlsx", await fichero.read(), usuario=u, maximo=cupo["quedan"])
+        n = len(lote.leer_ubicaciones(io.BytesIO(contenido))[2])
+        if cupo["quedan"] is None or n <= cupo["quedan"] or not pagos.activos():
+            lote.crear(nombre, contenido, usuario=u)
+            return RedirectResponse("/agente/lista?ok=" + quote(f"Recibida: {n} ubicaciones en cola."), status_code=303)
+        lote.crear(nombre, contenido, usuario=u, pendiente_pago=True)
     except Exception as e:  # noqa: BLE001
         return RedirectResponse("/agente/lista?error=" + quote(str(e)[:250]), status_code=303)
-    est = lote.lista_por_id(id_)
-    ok = f"Recibida: {est['total']} ubicaciones en cola."
-    if est.get("en_fichero", 0) > est["total"]:
-        ok += (f" Tu fichero tiene {est['en_fichero']}; se analizan las primeras {est['total']} "
-               "porque es lo que te queda disponible.")
-    return RedirectResponse("/agente/lista?ok=" + quote(ok), status_code=303)
+    return RedirectResponse("/agente/lista?error=" + quote(
+        f"Tu lista tiene {n} ubicaciones y te quedan {cupo['quedan']}. Elige abajo cómo seguir."), status_code=303)
+
+
+@router.post("/agente/lista/{id_}/incluidas")
+async def solo_incluidas(request: Request, id_: str):
+    """Analizar solo las primeras ubicaciones, las que cubre el plan o la prueba."""
+    _lote_propio(request, id_)
+    quedan = cuentas.cupo_lista(usuario_actual(request))["quedan"]
+    if not quedan or not lote.activar(id_, maximo=quedan):
+        return RedirectResponse("/agente/lista?error=" + quote("No te quedan ubicaciones incluidas."), status_code=303)
+    return RedirectResponse("/agente/lista?ok=" + quote(f"Se analizan las primeras {quedan} ubicaciones."), status_code=303)
+
+
+@router.get("/agente/lista/{id_}/pagar")
+async def pagar(request: Request, id_: str):
+    est = _lote_propio(request, id_)
+    if est.get("modo") != "pendiente" or not pagos.activos():
+        return RedirectResponse("/agente/lista", status_code=303)
+    from app.rutas_cuenta import _error_pago
+    try:
+        url = pagos.checkout_lista(id_, est["total"], est.get("nombre") or "", str(request.base_url), usuario_actual(request))
+    except Exception as e:  # noqa: BLE001
+        return _error_pago(request, e)
+    return RedirectResponse(url, status_code=303)
 
 
 @router.get("/agente/lista/{id_}.xlsx")

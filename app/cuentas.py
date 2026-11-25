@@ -19,13 +19,14 @@ RUTA_DB = Path(os.getenv("UBI_DB", str(config.DATOS_DIR / "ubicaciones.db")))
 SECRETO = (os.getenv("UBI_SECRETO") or secrets.token_hex(32)).encode()
 ADMIN = {e.strip().lower() for e in os.getenv("UBI_ADMIN_EMAILS", "").split(",") if e.strip()}
 DURACION_SESION = 60 * 60 * 24 * 30  # 30 días
-# Informes al mes por plan (None = ilimitado). «premium» es el plan antiguo (139 €, ilimitado): se mantiene
+# Informes al mes por plan (None = ilimitado). «empresa» y «premium» son planes antiguos que ya no se venden: se mantienen
 # para quien ya lo tuviera contratado, pero ya no se ofrece.
-LIMITES = {"profesional": 30, "empresa": int(os.getenv("UBI_LIMITE_EMPRESA", "150")), "premium": None}
+LIMITES = {"profesional": int(os.getenv("UBI_LIMITE_PROFESIONAL", "20")), "equipo": int(os.getenv("UBI_LIMITE_EQUIPO", "50")),
+           "empresa": 150, "premium": None}
 INFORMES_PACK = 10
 # «Analiza tu lista» (Agente 360): ubicaciones al mes por plan (None = sin límite) y prueba gratuita por cuenta.
 LIMITES_LISTA = {"profesional": int(os.getenv("UBI_LISTA_PROFESIONAL", "50")),
-                 "empresa": int(os.getenv("UBI_LISTA_EMPRESA", "300")), "premium": None}
+                 "equipo": int(os.getenv("UBI_LISTA_EQUIPO", "200")), "empresa": 300, "premium": None}
 PRUEBA_LISTA = int(os.getenv("UBI_LISTA_PRUEBA", "3"))
 
 _lock = threading.Lock()

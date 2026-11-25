@@ -7,7 +7,7 @@
 <div class="planes cuatro">
   <div class="plan destacado">
     <h3>Este informe</h3>
-    <p class="precio">1,99 €<small> IVA incl.</small></p>
+    <p class="precio">9,90 €<small> IVA incl.</small></p>
     <ul><li>Informe completo en pantalla y PDF</li><li>Ficha oficial del Catastro adjunta</li><li>Sin registro</li></ul>
     <form method="post" action="/comprar/{{ rc }}">
       <label class="acepto"><input type="checkbox" name="acepto" value="1" required> Acepto las <a href="/condiciones" target="_blank">condiciones</a> y pido la entrega inmediata del informe, por lo que pierdo el derecho de desistimiento.</label>
@@ -15,21 +15,21 @@
   </div>
   <div class="plan">
     <h3>Pack de 10</h3>
-    <p class="precio">14,90 €<small> IVA incl.</small></p>
+    <p class="precio">69 €<small> IVA incl.</small></p>
     <ul><li>Este informe y 9 más</li><li>Sin caducidad</li><li>Con tu cuenta</li></ul>
     <a class="btn btn-sec" href="/comprar-pack?rc={{ rc }}">Comprar pack</a>
   </div>
   <div class="plan">
     <h3>Profesional</h3>
-    <p class="precio">39 €<small> / mes IVA incl.</small></p>
-    <ul><li>30 informes al mes</li><li>Historial de informes</li></ul>
+    <p class="precio">79 €<small> / mes IVA incl.</small></p>
+    <ul><li>20 informes al mes</li><li>50 ubicaciones en lista al mes</li><li>Historial de informes</li></ul>
     <a class="btn btn-sec" href="/suscribirse?plan=profesional&rc={{ rc }}">Suscribirme</a>
   </div>
   <div class="plan">
-    <h3>Empresa</h3>
-    <p class="precio">99 €<small> / mes IVA incl.</small></p>
-    <ul><li>Uso intensivo: hasta 150 informes al mes</li><li>Historial de informes</li></ul>
-    <a class="btn btn-sec" href="/suscribirse?plan=empresa&rc={{ rc }}">Suscribirme</a>
+    <h3>Equipo</h3>
+    <p class="precio">149 €<small> / mes IVA incl.</small></p>
+    <ul><li>50 informes al mes</li><li>200 ubicaciones en lista al mes</li><li>Cuenta compartida por el equipo</li></ul>
+    <a class="btn btn-sec" href="/suscribirse?plan=equipo&rc={{ rc }}">Suscribirme</a>
   </div>
 </div>
 {% if not usuario %}<p class="nota-precios">¿Ya tienes suscripción o pack? <a href="/cuenta?siguiente=/informe/{{ rc }}">Entra en tu cuenta</a>.</p>{% endif %}

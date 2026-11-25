@@ -301,7 +301,8 @@ def lista(usuario_id: int | None = None) -> list[dict]:
 
 def ubicaciones_usadas(usuario_id: int, mes: str | None = None) -> int:
     """Ubicaciones enviadas por un usuario (en un mes «AAAA-MM» o en total)."""
-    return sum(e.get("total") or 0 for e in lista(usuario_id) if not mes or (e.get("creado") or "").startswith(mes))
+    return sum(e.get("total") or 0 for e in lista(usuario_id)
+               if e.get("modo", "incluida") == "incluida" and (not mes or (e.get("creado") or "").startswith(mes)))
 
 
 def lista_por_id(id_: str) -> dict:
@@ -311,8 +312,13 @@ def lista_por_id(id_: str) -> dict:
 MAX_FILAS = 1000
 
 
-def crear(nombre: str, contenido: bytes, usuario: dict | None = None, maximo: int | None = None) -> str:
-    """Guarda el Excel y lanza el proceso. Con «maximo» solo se analizan las primeras filas."""
+def crear(nombre: str, contenido: bytes, usuario: dict | None = None, maximo: int | None = None,
+          pendiente_pago: bool = False) -> str:
+    """Guarda el Excel y lanza el proceso. Con «maximo» solo se analizan las primeras filas.
+
+    Con «pendiente_pago» se guarda entera sin lanzarla: espera a que se pague (lista suelta) o a que el
+    cliente elija analizar solo lo que le cubre su plan (ver activar).
+    """
     import shutil
     id_ = time.strftime("%Y%m%d-%H%M%S-") + uuid.uuid4().hex[:6]
     d = DIR / id_
@@ -331,9 +337,32 @@ def crear(nombre: str, contenido: bytes, usuario: dict | None = None, maximo: in
            "hechos": 0, "errores": 0, "situacion": "en cola", "creado": time.strftime("%Y-%m-%d %H:%M")}
     if usuario:
         est.update(usuario_id=usuario["id"], email=usuario.get("email"))
+    if pendiente_pago:
+        est.update(situacion="pendiente de pago", modo="pendiente")
+        _guardar(id_, est, {})
+        return id_
+    est["modo"] = "incluida"
     _guardar(id_, est, {})
     lanzar(id_)
     return id_
+
+
+def activar(id_: str, pagada: bool = False, maximo: int | None = None) -> bool:
+    """Lanza una lista pendiente: pagada (entera) o recortada a las ubicaciones incluidas en el plan."""
+    d = DIR / id_
+    est = _estado(id_)
+    if not est or est.get("modo") != "pendiente":
+        return False
+    if not pagada:
+        ubic = json.loads((d / "ubicaciones.json").read_text(encoding="utf-8"))[:max(0, maximo or 0)]
+        if not ubic:
+            return False
+        (d / "ubicaciones.json").write_text(json.dumps(ubic), encoding="utf-8")
+        est["total"] = len(ubic)
+    est.update(modo="pagada" if pagada else "incluida", situacion="en cola")
+    _guardar(id_, est)
+    lanzar(id_)
+    return True
 
 
 def lanzar(id_: str) -> None:
@@ -385,7 +414,7 @@ async def _procesar(id_: str) -> None:
 
 def reanudar_pendientes() -> None:
     for e in lista():
-        if e.get("situacion") != "terminado":
+        if e.get("situacion") not in ("terminado", "pendiente de pago"):
             lanzar(e["id"])
 
 
