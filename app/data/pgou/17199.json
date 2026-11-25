@@ -1,0 +1,215 @@
+{
+ "municipio": "Torroella de Montgrí",
+ "codigo_ine": "17199",
+ "plan": "Revisió-adaptació del Pla general de Torroella de Montgrí (2002), Normes",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=139325&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "AH": {
+   "nombre": "Áreas históricas a conservar y mejorar",
+   "articulo": "Art. 152-158",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según gálibo",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Mínimo 120 m² con frente y profundidad de 15 m para nuevas parcelaciones; se respetan las parcelas inscritas."
+  },
+  "S": {
+   "nombre": "Ensanches suburbanos a completar",
+   "articulo": "Art. 159-164",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 4.6,
+   "edificabilidad": "Según gálibo",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "PC": {
+   "nombre": "Parcelaciones para casas con jardín",
+   "articulo": "Art. 165-171",
+   "parcela_minima_m2": 150,
+   "frente_minimo_m": 6,
+   "edificabilidad": "1,00-1,40 m²t/m²s según subzona",
+   "ocupacion_max": "60 % (PC2 y PC3)",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda unifamiliar",
+   "otros": "PCP: 120 m²."
+  },
+  "F": {
+   "nombre": "Promociones de casas en hilera",
+   "articulo": "Art. 172-179",
+   "parcela_minima_m2": 120,
+   "frente_minimo_m": 4.6,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Vivienda unifamiliar en hilera",
+   "otros": ""
+  },
+  "X": {
+   "nombre": "Parcelaciones para chalets",
+   "articulo": "Art. 180-186",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,40-0,50 m²t/m²s según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "6,50 m, PB+1",
+   "usos": "Vivienda unifamiliar aislada (1 por parcela)",
+   "otros": "Parcela mínima: X3 300 m², X6 600 m², X10 1.000 m²."
+  },
+  "X3": {
+   "nombre": "Chalets, parcela 300 m²",
+   "articulo": "Art. 180-186",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,50 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "6,50 m, PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "X6": {
+   "nombre": "Chalets, parcela 600 m²",
+   "articulo": "Art. 180-186",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,45 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "6,50 m, PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "X10": {
+   "nombre": "Chalets, parcela 1.000 m²",
+   "articulo": "Art. 180-186",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,40 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "6,50 m, PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "CC": {
+   "nombre": "Condominios de casas unifamiliares",
+   "articulo": "Art. 187-193",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "6,50 m (9 m en CCp)",
+   "usos": "Vivienda unifamiliar en condominio",
+   "otros": ""
+  },
+  "CB": {
+   "nombre": "Condominios de bloques",
+   "articulo": "Art. 194-199",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "30 % PB, 45 % sótano",
+   "altura_max": "Según subzona",
+   "usos": "Residencial plurifamiliar; usos no residenciales en techo complementario",
+   "otros": ""
+  },
+  "PB": {
+   "nombre": "Parcelaciones para bloques",
+   "articulo": "Art. 200-205",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "30 %",
+   "altura_max": "Hasta 12,45 m, PB+3",
+   "usos": "Residencial plurifamiliar",
+   "otros": ""
+  },
+  "MA": {
+   "nombre": "Parcelaciones para almacén-escaparate",
+   "articulo": "Art. 206-210",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 14,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": null,
+   "altura_max": "Según subzona",
+   "usos": "Almacén, exposición y venta; comercio",
+   "otros": ""
+  },
+  "PI": {
+   "nombre": "Parcelaciones de pequeñas industrias",
+   "articulo": "Art. 211-215",
+   "parcela_minima_m2": 300,
+   "frente_minimo_m": 12,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "100 % PB y planta",
+   "altura_max": "Según subzona",
+   "usos": "Pequeña industria compatible con residencial; hasta 2 viviendas por parcela",
+   "otros": ""
+  },
+  "I": {
+   "nombre": "Parcelaciones para industrias medianas",
+   "articulo": "Art. 216-222",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,90 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "7,50 m",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "GI": {
+   "nombre": "Parcelaciones para grandes industrias",
+   "articulo": "Art. 223-229",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,9 m²t/m²s (6,75 m³/m²)",
+   "ocupacion_max": "75 %",
+   "altura_max": "12 m",
+   "usos": "Industrial",
+   "otros": ""
+  },
+  "JP": {
+   "nombre": "Jardines privados",
+   "articulo": "Art. 230-232",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Jardín privado",
+   "otros": ""
+  },
+  "ZT": {
+   "nombre": "Zona de transformación",
+   "articulo": "Sección 21",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,13 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Transformación de usos existentes",
+   "otros": "",
+   "segregacion": "Parcela mínima: las existentes antes de la aprobación inicial."
+  },
+  "ST": {
+   "nombre": "Sistema de servicios técnicos",
+   "articulo": "Art. 144-146",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según necesidades funcionales",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Servicios técnicos, incluidas gasolineras",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "Las gasolineras se incluyen en el sistema de servicios técnicos (clave ST).",
+    "articulo": "Art. 144"
+   }
+  }
+ }
+}

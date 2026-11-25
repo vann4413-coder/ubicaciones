@@ -1,0 +1,143 @@
+{
+ "municipio": "Torredembarra",
+ "codigo_ine": "43153",
+ "plan": "Revisió del Pla general d'ordenació de Torredembarra (2002), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=50732&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Edificios y ámbitos a proteger",
+   "articulo": "Art. 80-84",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Los usos existentes",
+   "otros": "",
+   "segregacion": "Edificios catalogados."
+  },
+  "2": {
+   "nombre": "Núcleo antiguo",
+   "articulo": "Art. 85-91",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio limitado en planta baja; usos de equipamientos (comercio hasta 200 m²)",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Frentes de casas tradicionales",
+   "articulo": "Art. 92-98",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio limitado en planta baja; usos de equipamientos (comercio hasta 300 m²)",
+   "otros": "Subzonas 3.1 conservación y 3.2 repetibles."
+  },
+  "4": {
+   "nombre": "Manzanas de casas",
+   "articulo": "Art. 99-108",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "100 % (4.1) o según patio (4.2, 4.3)",
+   "altura_max": "Según plantas de planos",
+   "usos": "Residencial; comercio limitado en planta baja; usos de equipamientos (comercio hasta 400 m²)",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Terciario",
+   "articulo": "Art. 109-120",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "Según subzona",
+   "usos": "Centros comerciales (alimentación hasta 1.299 m²), mayoristas y exposición de automóvil, hotelero y restauración, recreativo y deportivo, estaciones de servicio y gasolineras, oficinas y aparcamiento",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "La zona terciaria general (5.1) admite estaciones de servicio, gasolineras, lavado de coches y autoservicios. Las gasolineras con frente a la N-340 necesitan plan especial para cambiar de uso.",
+    "articulo": "Art. 114"
+   }
+  },
+  "5.1": {
+   "nombre": "Terciario general",
+   "articulo": "Art. 109-120",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Centros comerciales, mayoristas y exposición de automóvil, hotelero y restauración, recreativo y deportivo, estaciones de servicio y gasolineras, oficinas y aparcamiento",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "La zona terciaria general (5.1) admite estaciones de servicio, gasolineras, lavado de coches y autoservicios. Las gasolineras con frente a la N-340 necesitan plan especial para cambiar de uso.",
+    "articulo": "Art. 114"
+   }
+  },
+  "5.2": {
+   "nombre": "Terciario hotelero",
+   "articulo": "Art. 109-120",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,75 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Exclusivamente hotelero",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Ciudad jardín",
+   "articulo": "Art. 121-130",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar; comercio hasta 50 m²",
+   "otros": "6.0 y 6.1.1: parcela existente según registro; 6.1 y 6.2: 400 m²."
+  },
+  "8": {
+   "nombre": "Volumetría específica",
+   "articulo": "Art. 131-145",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación volumétrica de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según plantas",
+   "usos": "Residencial; comercio limitado en planta baja; usos de equipamientos (comercio hasta 400 m²)",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Industrial",
+   "articulo": "Art. 146-149",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,8 m²t/m²s (6,4 m³/m²)",
+   "ocupacion_max": "80 %",
+   "altura_max": "11,50 m",
+   "usos": "Industrial; una actividad por parcela",
+   "otros": "En el ámbito del plan parcial, la parcelación del plano n.º 4 es indivisible.",
+   "segregacion": "No en el ámbito del plan parcial (parcelas indivisibles); en el resto, parcela mínima 1.000 m²."
+  },
+  "10": {
+   "nombre": "Sujeta a anterior ordenación con plan parcial",
+   "articulo": "Art. 150-155",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,5466 m²t/m²s (10.1)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial y hotelero; comercio diario hasta 50 m²",
+   "otros": "10.1: parcela de 1.000 a 2.500 m²; 10.2: 400 m² por vivienda unifamiliar."
+  }
+ }
+}
