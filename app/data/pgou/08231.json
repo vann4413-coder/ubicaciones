@@ -1,0 +1,222 @@
+{
+ "municipio": "Sant Pere de Ribes",
+ "codigo_ine": "08231",
+ "plan": "Revisió del Pla general d'ordenació de Sant Pere de Ribes (2001), Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=191111&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "7.1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 300-310",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Ocupación × altura reguladora",
+   "ocupacion_max": "80 % en planta baja",
+   "altura_max": "Según ancho de calle",
+   "usos": "Vivienda unifamiliar; pequeño comercio en planta baja",
+   "otros": ""
+  },
+  "7.2": {
+   "nombre": "Renovación o densificación",
+   "articulo": "Art. 311-320",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Ocupación × altura reguladora",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según ancho de calle",
+   "usos": "Vivienda unifamiliar; pequeño comercio en planta baja",
+   "otros": ""
+  },
+  "9.2": {
+   "nombre": "Volumetría específica, bloques aislados",
+   "articulo": "Art. 340-350",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Ocupación × altura sobre la manzana",
+   "ocupacion_max": "65 %",
+   "altura_max": "Según subzona",
+   "usos": "Plurifamiliar; administrativo",
+   "otros": ""
+  },
+  "9.3": {
+   "nombre": "Conservación de la estructura urbana y edificatoria",
+   "articulo": "Art. 351-355",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (estudio de detalle aprobado)",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Vivienda unifamiliar; pequeño comercio en planta baja",
+   "otros": "",
+   "segregacion": "Se mantiene la parcelación existente."
+  },
+  "9.4": {
+   "nombre": "Polígono de viviendas",
+   "articulo": "Art. 356-360",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente (estudio de detalle aprobado)",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Vivienda unifamiliar; pequeño comercio en planta baja",
+   "otros": "",
+   "segregacion": "Se mantiene la parcelación existente."
+  },
+  "10.1": {
+   "nombre": "Ciudad jardín unifamiliar",
+   "articulo": "Art. 361-400",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,20-1,05 m²t/m²s según intensidad (10.1a a 10.1i)",
+   "ocupacion_max": "Según intensidad",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Parcela mínima general 400 m² y fachada 12 m; algunas intensidades admiten 200 m² u 800 m²."
+  },
+  "10.2": {
+   "nombre": "Ciudad jardín unifamiliar y plurifamiliar",
+   "articulo": "Art. 401-410",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 7,
+   "edificabilidad": "Hasta 1,10 m²t/m²s según intensidad (+10 % auxiliar)",
+   "ocupacion_max": "Según intensidad",
+   "altura_max": "11,50 m, PB+3",
+   "usos": "Vivienda unifamiliar y plurifamiliar",
+   "otros": ""
+  },
+  "11.1": {
+   "nombre": "Edificios protegidos",
+   "articulo": "Art. 411-420",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; hotelero en edificios concretos",
+   "otros": "",
+   "segregacion": "Edificios catalogados: no se segregan."
+  },
+  "11.2": {
+   "nombre": "Verde privado protegido",
+   "articulo": "Art. 421-423",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Paisajístico, espacio no edificado",
+   "otros": ""
+  },
+  "12.1": {
+   "nombre": "Terciaria comercial",
+   "articulo": "Art. 424-430",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,6 m²t/m²s (12.1a), 1,5 (12.1b), 0,4 (12.1c)",
+   "ocupacion_max": "Según intensidad",
+   "altura_max": "Según intensidad",
+   "usos": "Comercial; oficinas y servicios",
+   "otros": ""
+  },
+  "12.2": {
+   "nombre": "Terciaria turística",
+   "articulo": "Art. 431-436",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,5 m²t/m²s (12.2a y 12.2b)",
+   "ocupacion_max": "Según intensidad",
+   "altura_max": "Según intensidad",
+   "usos": "Hotelero; oficinas y servicios",
+   "otros": ""
+  },
+  "12.3": {
+   "nombre": "Servicios asistenciales",
+   "articulo": "Art. 437-440",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,9 m²t/m²s (Vallpineda) o 1,5 (Vilanoveta)",
+   "ocupacion_max": "30 % (Vallpineda) u 80 % (Vilanoveta)",
+   "altura_max": "11 m PB+2 o 7,50 m PB+1",
+   "usos": "Asistencial",
+   "otros": ""
+  },
+  "13.1": {
+   "nombre": "Industrial, intensidad I",
+   "articulo": "Art. 441-446",
+   "parcela_minima_m2": 500,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,0-1,1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "8-10 m, PB+1",
+   "usos": "Industrial; se mantienen los usos actuales",
+   "otros": ""
+  },
+  "13.2": {
+   "nombre": "Industrial, intensidad II",
+   "articulo": "Art. 447-452",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 25,
+   "edificabilidad": "1,1 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "10 m, PB+1 (PB+2 en algunos casos)",
+   "usos": "Industria agrupada; se mantienen los usos actuales",
+   "otros": ""
+  },
+  "13.3": {
+   "nombre": "Industrial, intensidad III",
+   "articulo": "Art. 453-457",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,0 m²t/m²s (Les Torres) o 1,6 (Can Lloses)",
+   "ocupacion_max": "80 %",
+   "altura_max": "Según altura reguladora",
+   "usos": "Industria urbana; vivienda compatible",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Verde privado",
+   "articulo": "Art. 458-460",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio no edificado",
+   "otros": ""
+  },
+  "15": {
+   "nombre": "Conservación del uso actual",
+   "articulo": "Art. 461-465",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La actual",
+   "ocupacion_max": "Actual",
+   "altura_max": "Actual",
+   "usos": "Se mantienen los usos actuales",
+   "otros": "",
+   "segregacion": "Se conserva el estado actual."
+  },
+  "C.3": {
+   "nombre": "Estación de servicio (sistema de servicios viarios)",
+   "articulo": "Art. 207-210",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,20 m²t/m²s (las marquesinas no computan)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Estación de servicio y usos estrictamente vinculados; aparcamiento",
+   "otros": "",
+   "gasolinera": {
+    "condiciones": "No se admiten nuevas estaciones de servicio dentro de los núcleos urbanos ni en suelo no urbanizable; solo donde el plan las prevé (clave C.3) y mediante plan especial. Las de la BV-211 (sector servicios y salida de la A-16) admiten usos del automóvil y restauración.",
+    "articulo": "Art. 207-210"
+   }
+  }
+ },
+ "gasolinera": {
+  "condiciones": "No se admiten nuevas estaciones de servicio dentro de los núcleos urbanos ni en suelo no urbanizable; solo donde el plan las prevé (clave C.3) y mediante plan especial. Las de la BV-211 (sector servicios y salida de la A-16) admiten usos del automóvil y restauración.",
+  "articulo": "Art. 207-210"
+ }
+}
