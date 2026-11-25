@@ -32,14 +32,14 @@
 </svg>
 {%- endmacro -%}
 {%- macro cabecera(numero, titulo, ico) -%}
-<div class="cab"><span class="num">{{ numero }}</span>{{ icono(ico, "#0e3b2e", 18) }}<h2>{{ titulo }}</h2></div>
+<div class="cab"><span class="num">{{ numero }}</span>{{ icono(ico, "#1f7a55", 18) }}<h2>{{ titulo }}</h2></div>
 {%- endmacro -%}
 <style>
   @page { size: A4; margin: 15mm 13mm 17mm 13mm;
     @bottom-left { content: "{{ marca }} · RC {{ inf.rc }}"; font: 7.5pt Inter, Arial, sans-serif; color: #7b8794; }
     @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt Inter, Arial, sans-serif; color: #7b8794; } }
   @page :first { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
-  :root { --tinta:#14231c; --suave:#5b6b7b; --linea:#e3e8ee; --fondo:#f4f6f9; --marca:#0e3b2e; --acento:#b8e04a;
+  :root { --tinta:#14231c; --suave:#5b6b7b; --linea:#e3e8ee; --fondo:#f4f6f9; --marca:#1f7a55; --acento:#b8e04a;
           --verde:#1e9e5a; --ambar:#e08a00; --rojo:#d64032; --gris:#9aa5b1; }
   * { box-sizing: border-box; }
   body { font-family: Inter, "Helvetica Neue", Arial, sans-serif; color: var(--tinta); font-size: 9pt; line-height: 1.45; margin: 0; }
@@ -219,10 +219,10 @@
 <style>
   @media screen {
     .barra-web { position: sticky; top: 0; z-index: 10; display: flex; gap: 10px; align-items: center; justify-content: flex-end;
-      padding: 10px 16px; background: #0e3b2e; font-family: Inter, sans-serif; }
+      padding: 10px 16px; background: #1f7a55; font-family: Inter, sans-serif; }
     .barra-web a { color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,.4); }
-    .barra-web a.principal { background: #b8e04a; border-color: #b8e04a; color: #0e3b2e; }
-    .barra-web a.agente-enlace { background: #fff; color: #0e3b2e; border-color: #fff; }
+    .barra-web a.principal { background: #b8e04a; border-color: #b8e04a; color: #14231c; }
+    .barra-web a.agente-enlace { background: #fff; color: #1f7a55; border-color: #fff; }
     .barra-web span { color: #fff; margin-right: auto; font-size: 13px; opacity: .85; }
   }
   @media print { .barra-web { display: none; } }
@@ -231,28 +231,28 @@
 {% if barra.agente %}
 <style>
   @media print { .agente-boton, .agente { display: none !important; } }
-  .agente-boton { position: fixed; right: 22px; bottom: 22px; z-index: 30; background: #b8e04a; color: #0e3b2e; border: 2px solid #0e3b2e; border-radius: 999px;
-    padding: 15px 22px; font: 800 16px Inter, sans-serif; box-shadow: 0 12px 34px rgba(14,59,46,.35); cursor: pointer; animation: latido 2.4s ease-in-out 3; }
-  .agente-boton i { display: inline-block; background: #0e3b2e; color: #b8e04a; border-radius: 6px; padding: 2px 6px; margin-right: 8px; font-style: normal; font-size: 12px; }
+  .agente-boton { position: fixed; right: 22px; bottom: 22px; z-index: 30; background: #b8e04a; color: #14231c; border: 2px solid #1f7a55; border-radius: 999px;
+    padding: 15px 22px; font: 800 16px Inter, sans-serif; box-shadow: 0 12px 34px rgba(31,122,85,.35); cursor: pointer; animation: latido 2.4s ease-in-out 3; }
+  .agente-boton i { display: inline-block; background: #1f7a55; color: #b8e04a; border-radius: 6px; padding: 2px 6px; margin-right: 8px; font-style: normal; font-size: 12px; }
   .agente-boton:hover { filter: brightness(1.05); transform: translateY(-1px); }
-  @keyframes latido { 0%, 100% { box-shadow: 0 12px 34px rgba(14,59,46,.35); } 50% { box-shadow: 0 0 0 10px rgba(184,224,74,.35), 0 12px 34px rgba(14,59,46,.35); } }
+  @keyframes latido { 0%, 100% { box-shadow: 0 12px 34px rgba(31,122,85,.35); } 50% { box-shadow: 0 0 0 10px rgba(184,224,74,.35), 0 12px 34px rgba(31,122,85,.35); } }
   .agente { position: fixed; right: 20px; bottom: 20px; z-index: 31; width: min(420px, calc(100vw - 24px)); height: min(620px, calc(100vh - 90px));
     background: #fff; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.3); display: none; flex-direction: column; overflow: hidden;
     font-family: Inter, sans-serif; color: #14231c; }
   .agente.abierto { display: flex; }
-  .agente-cab { background: #0e3b2e; color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 4px solid #b8e04a; }
+  .agente-cab { background: #1f7a55; color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 10px; border-bottom: 4px solid #b8e04a; }
   .agente-cab b { font-size: 15px; } .agente-cab small { display: block; opacity: .75; font-size: 12px; }
   .agente-cab button { margin-left: auto; background: none; border: 0; color: #fff; font-size: 22px; cursor: pointer; }
   .agente-msgs { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: #f4f6f9; }
   .agente-msg { max-width: 88%; padding: 10px 12px; border-radius: 12px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
-  .agente-msg.u { align-self: flex-end; background: #0e3b2e; color: #fff; border-bottom-right-radius: 4px; }
+  .agente-msg.u { align-self: flex-end; background: #1f7a55; color: #fff; border-bottom-right-radius: 4px; }
   .agente-msg.a { align-self: flex-start; background: #fff; border: 1px solid #e3e8ee; border-bottom-left-radius: 4px; }
   .agente-msg.e { align-self: center; background: #fff6e5; font-size: 13px; }
   .agente-sug { display: flex; flex-wrap: wrap; gap: 6px; }
-  .agente-sug button { background: #fff; border: 1px solid #c9d3de; border-radius: 999px; padding: 6px 10px; font: 500 13px Inter, sans-serif; color: #0e3b2e; cursor: pointer; }
+  .agente-sug button { background: #fff; border: 1px solid #c9d3de; border-radius: 999px; padding: 6px 10px; font: 500 13px Inter, sans-serif; color: #1f7a55; cursor: pointer; }
   .agente form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #e3e8ee; }
   .agente input { flex: 1; border: 1px solid #c9d3de; border-radius: 10px; padding: 10px 12px; font: 15px Inter, sans-serif; }
-  .agente form button { background: #b8e04a; border: 0; border-radius: 10px; padding: 0 14px; font: 700 14px Inter, sans-serif; color: #0e3b2e; cursor: pointer; }
+  .agente form button { background: #b8e04a; border: 0; border-radius: 10px; padding: 0 14px; font: 700 14px Inter, sans-serif; color: #14231c; cursor: pointer; }
   .agente-pie { font-size: 11px; color: #5b6b7b; padding: 0 12px 10px; }
 </style>
 <button class="agente-boton" onclick="abrirAgente()"><i>IA</i>Pregúntale a la parcela</button>
@@ -346,8 +346,8 @@
 
 {# ======================= RIESGOS ======================= #}
 <section>
-  <div class="cab"><span class="num">!</span>{{ icono("riesgo", "#0e3b2e", 18) }}<h2>Riesgos y próximos pasos</h2></div>
-  <ul class="pasos">{% for p in inf.pasos %}<li class="{{ p.tipo }}">{{ icono("riesgo" if p.tipo == "riesgo" else "planeamiento", "#e08a00" if p.tipo == "riesgo" else "#0e3b2e", 14) }}{{ p.texto }}</li>{% endfor %}</ul>
+  <div class="cab"><span class="num">!</span>{{ icono("riesgo", "#1f7a55", 18) }}<h2>Riesgos y próximos pasos</h2></div>
+  <ul class="pasos">{% for p in inf.pasos %}<li class="{{ p.tipo }}">{{ icono("riesgo" if p.tipo == "riesgo" else "planeamiento", "#e08a00" if p.tipo == "riesgo" else "#1f7a55", 14) }}{{ p.texto }}</li>{% endfor %}</ul>
 </section>
 
 {# ======================= 1. PARCELA ======================= #}
@@ -486,14 +486,14 @@
   {% else %}
     <p class="sin">{{ u.mensaje or "Sin datos urbanísticos." }}</p>
   {% endif %}
-  <h3>{{ icono("planeamiento", "#0e3b2e", 14) }} Documentación de planeamiento de {{ inf.municipio.nombre }}</h3>
+  <h3>{{ icono("planeamiento", "#1f7a55", 14) }} Documentación de planeamiento de {{ inf.municipio.nombre }}</h3>
   <ul class="enlaces">
     {% if u.plan_general and u.plan_general.url_rpuc %}<li><a href="{{ u.plan_general.url_rpuc }}">Plan general vigente (normativa, planos y memoria)</a></li>{% endif %}
     {% for e in (inf.cambios.recientes or [])[:5] %}<li><a href="{{ e.url }}">{{ e.fecha|fecha }} · {{ e.titulo }}</a></li>{% endfor %}
   </ul>
 
   {% set c = inf.cambios %}
-  <h3>{{ icono("planeamiento", "#0e3b2e", 14) }} Cambios de planeamiento recientes</h3>
+  <h3>{{ icono("planeamiento", "#1f7a55", 14) }} Cambios de planeamiento recientes</h3>
   {% if c.estado == "ok" %}
     <p>{{ c.total_municipio }} instrumentos de planeamiento inscritos para {{ inf.municipio.nombre }}; {{ c.recientes|length }} aprobados en los últimos {{ c.anios }} años.</p>
     {% if c.recientes %}
@@ -662,7 +662,7 @@
   {% endfor %}
   </table>
   <p class="pie">«Otros comercios» y «Oficinas» se cuentan hasta 1 km. Puede no incluir naves o locales sin rótulo.</p>
-  <h3>{{ icono("entorno", "#0e3b2e", 14) }} Lugares más cercanos por tipo</h3>
+  <h3>{{ icono("entorno", "#1f7a55", 14) }} Lugares más cercanos por tipo</h3>
   <div class="lugares">
   {% for f in e5.resumen if f.clave not in ("poligonos", "oficinas") %}
     {% if f.clave == "gasolineras" and comp.estado == "ok" %}
@@ -680,7 +680,7 @@
   </div>
   {% set zonas = e5.zonas_industriales|selectattr("nombre")|list %}
   {% if zonas %}
-  <h3>{{ icono("urbanismo", "#0e3b2e", 14) }} Polígonos industriales cercanos</h3>
+  <h3>{{ icono("urbanismo", "#1f7a55", 14) }} Polígonos industriales cercanos</h3>
   <table><tr><th>Polígono</th><th class="n">Superficie</th><th class="n">Distancia</th></tr>
   {% for z in zonas[:8] %}<tr><td>{{ z.nombre }}</td><td class="n">{{ z.area_ha|num(1) }} ha</td><td class="n">{{ z.distancia_m|num }} m</td></tr>{% endfor %}
   </table>
@@ -786,7 +786,7 @@
   {% else %}
     <div class="info">Compare las imágenes para detectar usos anteriores (antigua gasolinera o industria: posible suelo contaminado), construcciones recientes o si la parcela ha estado siempre libre.</div>
   {% endif %}
-  <h3>{{ icono("suelo", "#0e3b2e", 14) }} Registro de suelos contaminados</h3>
+  <h3>{{ icono("suelo", "#1f7a55", 14) }} Registro de suelos contaminados</h3>
   {% set sc = inf.suelos_contaminados %}
   {% if sc.estado == "ok" %}
     {% if sc.en_parcela %}
