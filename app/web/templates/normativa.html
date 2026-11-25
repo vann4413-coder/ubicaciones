@@ -23,6 +23,8 @@
   .municipios li { padding: 4px 0; break-inside: avoid; }
   .usos-si { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 6px 18px; }
   .usos-si li { color: var(--tinta); }
+  .consulta-lista { margin: 12px 0 0; font-size: 15px; }
+  .consulta-lista a { font-weight: 700; }
   .nota-legal { font-size: 13px; color: var(--suave); margin-top: 30px; }
   @media (max-width: 640px) { .tabla-zonas .opc { display: none; } }
 </style>
@@ -36,6 +38,7 @@
     <input name="q" placeholder="Dirección o referencia catastral{% if lugar %} en {{ lugar }}{% endif %}" required>
     <button class="btn" type="submit">Consultar gratis</button>
   </form>
+  <p class="consulta-lista">¿Tienes varias ubicaciones{% if lugar %} en {{ lugar }} o en otros municipios{% endif %}? <a href="/agente/lista">El Agente 360 analiza tu lista en Excel: prueba gratis con 3 &rarr;</a></p>
 </section>
 {% endmacro %}
 
