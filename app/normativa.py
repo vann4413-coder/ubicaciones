@@ -42,7 +42,9 @@ USOS = [  # (etiqueta, patrón en el texto de usos de la zona; castellano o cata
     ("Equipamientos (sanitario, educativo, deportivo…)", r"equipament|equipamiento|sanitari|educati|esportiu|deportiv|dotaci"),
     ("Recreativo y ocio", r"recreati|ocio|lleure|l[uú]dic|espect[aá]cul"),
 ]
-NEGACION = re.compile(r"^(no|nunca|prohib|excepto|salvo)\b|\bno se admite|\bno s.admet|\bno se permite|\bno es permet|\bprohib", re.I)
+NEGACION = re.compile(r"^(no|nunca|prohib|excepto|salvo)\b|\bno se admite|\bno s.admet|\bno se permite|\bno es permet|\bprohib"
+                      r"|\bno admitid|\bno admès|\bno admes|\bno permitid|\bno perm[eè]s|\bno autoritza|\bno compatible|\bincompatible"
+                      r"|\bexclu[ií]d|\bexcl[oò]s", re.I)
 
 
 def slug(t: str) -> str:

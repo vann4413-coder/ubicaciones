@@ -26,6 +26,13 @@ Reglas:
 - No inventes cifras, artículos, usos ni normas. Si un dato no está en el JSON, dilo («el informe no recoge…») y explica dónde
   se confirma (cédula urbanística o consulta previa al ayuntamiento, nota simple, distribuidora eléctrica, titular de la carretera…).
 - Cuando te apoyes en la normativa de la zona, cita la clave de zona y el artículo si aparecen en los datos.
+- Empieza siempre por FICHA_RAPIDA_usos_y_parcela_minima: ahí tienes la zona, los usos que cita la norma, la compatibilidad por
+  uso según la calificación, la parcela mínima (de la zona y la de gasolinera) y si la parcela la cumple. Usa esos datos para
+  contestar con seguridad si un uso está permitido y cuál es la parcela mínima; no digas que no lo sabes si está ahí.
+- «Compatible» significa uso habitualmente admitido en esa calificación; «condicionado», que depende de la norma municipal o de
+  un trámite; «incompatible», que no cabe. Si los usos de la zona citan el uso concreto (comercial, supermercado, estación de
+  servicio…), eso manda sobre la compatibilidad genérica.
+- Formato: texto plano; puedes usar **negrita** y listas con «- ». Sin tablas ni títulos.
 - Para saber si un uso cabe, cruza: clasificación y calificación del suelo, usos admitidos y excluidos de la zona, parcela mínima
   (y la específica de gasolinera si existe), superficie y frente de la parcela, inundabilidad y flujo preferente, afecciones,
   tráfico y accesos, red eléctrica y entorno. Si hay un bloqueo (p. ej. flujo preferente, suelo no urbanizable, uso excluido), dilo primero.
@@ -55,6 +62,59 @@ def _puntuaciones(punt: dict) -> dict:
     return salida
 
 
+PERFILES_USO = {"gasolinera": "Estación de servicio", "recarga": "Puntos de recarga / electrolinera", "retail": "Comercio y supermercado",
+                "restauracion": "Restauración", "logistica": "Logística y naves", "industria": "Industria", "residencial": "Vivienda",
+                "terciario": "Oficinas y terciario", "hotelero": "Hotelero", "energia": "Energía"}
+
+
+def ficha_rapida(inf: dict) -> dict:
+    """Respuesta directa a las dos preguntas más habituales: ¿qué usos caben? y ¿cuál es la parcela mínima?"""
+    from app.normativa import que_se_puede
+    u = inf.get("urbanismo") or {}
+    pg = u.get("parametros_pgou") or {}
+    p = inf.get("parcela") or {}
+    sup = p.get("sup_grafica")
+    zonas = sorted([f for f in pg.get("zonas") or [] if f.get("zona")], key=lambda f: -(f.get("pct") or 0))
+    principal = zonas[0] if zonas else None
+    z = (principal or {}).get("zona") or {}
+    pm = z.get("parcela_minima_m2")
+    g = z.get("gasolinera") or pg.get("gasolinera") or {}
+    si, no = que_se_puede(z) if z else ([], [])
+    compat = {}
+    for clave, c in (u.get("compatibilidad") or {}).items():
+        compat[PERFILES_USO.get(clave, clave)] = {"nivel": c.get("nivel"), "motivo": c.get("motivo"), "nota": c.get("nota")}
+    ficha = {
+        "superficie_parcela_m2": sup,
+        "calificacion_principal": next((f"{c.get('codigo_municipal')} {c.get('descripcion_municipal')} ({c.get('descripcion_muc')}, {c.get('pct')} %)"
+                                        for c in (u.get("calificaciones") or [])[:1]), None),
+        "clasificacion": [c.get("descripcion") for c in u.get("clasificaciones") or []],
+        "compatibilidad_por_uso_segun_calificacion": compat or "Sin datos de urbanismo",
+        "normativa_municipal_cargada": bool(zonas),
+    }
+    if principal:
+        ficha.update({
+            "zona_principal": f"{principal.get('clave_parcela')} · {z.get('nombre')} ({z.get('articulo') or 's/art.'}) · {principal.get('pct')} % de la parcela",
+            "usos_que_cita_la_norma_de_la_zona": z.get("usos"),
+            "usos_admitidos_detectados": si, "usos_excluidos_detectados": no,
+            "parcela_minima_zona_m2": pm,
+            "cumple_parcela_minima_zona": (sup >= pm) if (pm and sup) else None,
+            "frente_minimo_m": z.get("frente_minimo_m"),
+            "edificabilidad": z.get("edificabilidad"), "ocupacion_max": z.get("ocupacion_max"), "altura_max": z.get("altura_max"),
+            "otras_condiciones": z.get("otros"),
+            "segregacion": (pg.get("segregacion") or {}).get("texto"),
+        })
+    if g:
+        ficha["regla_especifica_gasolinera"] = g
+        if g.get("parcela_minima_m2") and sup:
+            ficha["cumple_parcela_minima_gasolinera"] = sup >= g["parcela_minima_m2"]
+    elif principal:
+        ficha["regla_especifica_gasolinera"] = "El plan no fija una parcela mínima específica para gasolinera: rige la de la zona."
+    if not principal:
+        ficha["aviso"] = ("La normativa detallada del municipio (parcela mínima, edificabilidad, usos exactos) no está cargada: "
+                          "responde con la calificación y la compatibilidad general, y remite a la cédula urbanística para el detalle.")
+    return ficha
+
+
 def contexto(inf: dict) -> dict:
     """Datos de la parcela para la IA: lo útil para decidir usos, sin geometrías ni datos personales."""
     from app.analisis.resumen import hechos_clave
@@ -74,6 +134,7 @@ def contexto(inf: dict) -> dict:
                       "regla_gasolinera": z.get("gasolinera")})
     p = inf.get("parcela") or {}
     datos = {
+        "FICHA_RAPIDA_usos_y_parcela_minima": ficha_rapida(inf),
         "resumen": hechos_clave(inf),
         "parcela": {k: p.get(k) for k in ("rc", "direccion", "municipio", "clase", "uso", "sup_grafica", "sup_construida",
                                           "anio_construccion", "num_inmuebles")},
@@ -136,10 +197,19 @@ async def preguntar(inf: dict, pregunta: str, historial: list[dict] | None = Non
         else:
             unidos.append(dict(m))
     mensajes = unidos
-    cliente = anthropic.AsyncAnthropic(api_key=config.ANTHROPIC_API_KEY)
-    msg = await cliente.messages.create(model=config.ANTHROPIC_MODEL, max_tokens=700,
-                                        system=SISTEMA.format(marca=config.MARCA), messages=mensajes)
-    return msg.content[0].text.strip()
+    import asyncio
+    cliente = anthropic.AsyncAnthropic(api_key=config.ANTHROPIC_API_KEY, max_retries=4, timeout=90)
+    ultimo = None
+    for intento in range(2):  # además de los reintentos del SDK, uno propio ante cortes o saturación puntual
+        try:
+            msg = await cliente.messages.create(model=config.ANTHROPIC_MODEL, max_tokens=800,
+                                                system=SISTEMA.format(marca=config.MARCA), messages=mensajes)
+            return "".join(b.text for b in msg.content if getattr(b, "type", "") == "text").strip()
+        except Exception as e:  # noqa: BLE001
+            ultimo = e
+            log.warning("Agente 360: intento %s fallido (%s: %s)", intento + 1, type(e).__name__, str(e)[:300])
+            await asyncio.sleep(3)
+    raise ultimo
 
 
 def registrar(clave: str) -> None:

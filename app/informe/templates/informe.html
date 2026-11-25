@@ -272,6 +272,11 @@
   window.abrirAgente = function () { document.getElementById("agente").classList.add("abierto"); document.getElementById("agente-q").focus(); };
   window.cerrarAgente = function () { document.getElementById("agente").classList.remove("abierto"); };
   function burbuja(t, c) { var d = document.createElement("div"); d.className = "agente-msg " + c; d.textContent = t; msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d; }
+  function formato(t) {
+    var e = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    e = e.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/^#+\s*/gm, "");
+    return e.replace(/^\s*[-*•]\s+/gm, "• ");
+  }
   function enviar(q) {
     q = (q || "").trim(); if (!q || ocupado) return;
     ocupado = true; var s = document.getElementById("agente-sug"); if (s) s.remove();
@@ -281,7 +286,7 @@
       .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (x) {
         if (!x.ok) { esp.className = "agente-msg e"; esp.textContent = x.j.detail || "No se ha podido responder."; return; }
-        esp.textContent = x.j.respuesta; hist.push({ rol: "usuario", texto: q }, { rol: "agente", texto: x.j.respuesta });
+        esp.innerHTML = formato(x.j.respuesta); hist.push({ rol: "usuario", texto: q }, { rol: "agente", texto: x.j.respuesta });
       })
       .catch(function () { esp.className = "agente-msg e"; esp.textContent = "Sin conexión. Vuelve a intentarlo."; })
       .then(function () { ocupado = false; msgs.scrollTop = msgs.scrollHeight; });
