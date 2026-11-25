@@ -20,7 +20,7 @@ def _pts(items, radio=4):
     return out
 
 
-COLOR_GRUPO = {"marca": "#3f5f9e", "independiente": "#1f8a70", "supermercado": "#8a4b8f"}
+COLOR_GRUPO = {"marca": "#2f6f8f", "independiente": "#1f8a70", "supermercado": "#8a4b8f"}
 NOMBRE_GRUPO = {"marca": "Grandes marcas", "independiente": "Independientes y low cost", "supermercado": "Supermercados"}
 
 
@@ -156,7 +156,7 @@ def construir(inf: dict) -> dict:
                 pts = gas
             capas.append({"trazo": "#fff", "relleno": color, "opacidad": 1, "ancho": 1, "geoms": _pts(pts, 28)})
         capas += [
-            {"trazo": "#12355b", "relleno": "none", "ancho": 2, "discontinua": True, "opacidad": 0,
+            {"trazo": "#0e3b2e", "relleno": "none", "ancho": 2, "discontinua": True, "opacidad": 0,
              "geoms": [g.centroid.buffer(r).exterior for r in (1000, 2000, 5000) if r <= radio]},
             {"trazo": "#e11d48", "relleno": "#e11d48", "opacidad": 0.9, "ancho": 2, "geoms": [g.centroid.buffer(45)]},
         ]
