@@ -1,0 +1,124 @@
+{
+ "municipio": "La Llagosta",
+ "codigo_ine": "08105",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de La Llagosta (2006)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=118164&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Edificios a conservar o catalogar",
+   "articulo": "Art. V.1-V.5",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Los existentes",
+   "otros": "",
+   "segregacion": "Edificios catalogados."
+  },
+  "2": {
+   "nombre": "Mantenimiento de la estructura edificatoria",
+   "articulo": "Art. V.6-V.10",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Se mantiene la estructura existente."
+  },
+  "3": {
+   "nombre": "Edificación en hilera",
+   "articulo": "Art. V.11-V.15",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según parámetros de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Vivienda unifamiliar en hilera",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Edificación en manzana cerrada",
+   "articulo": "Art. V.16-V.20",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 4.5,
+   "edificabilidad": "Según parámetros de planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Casas aisladas",
+   "articulo": "Art. V.21-V.24",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 11,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Bloques aislados",
+   "articulo": "Art. V.25-V.29",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Edificación industrial",
+   "articulo": "Art. V.30-V.34",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,70 m²t/m²s (7.1) o 1,25 (7.2)",
+   "ocupacion_max": "50-70 % (7.1)",
+   "altura_max": "13 m (7.1) o 10 m (7.2)",
+   "usos": "Industrial; talleres, servicios y oficinas vinculados a la industria; almacén",
+   "otros": "7.1 aislada: parcela de 2.000 m² y 25 m de fachada; 7.2 agrupada (alineación de vial): 700 m² y 10 m."
+  },
+  "7.1": {
+   "nombre": "Industrial, edificación aislada",
+   "articulo": "Art. V.32",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 25,
+   "edificabilidad": "0,70 m²t/m²s",
+   "ocupacion_max": "50-70 % según tamaño de parcela",
+   "altura_max": "13 m",
+   "usos": "Industrial; talleres, servicios y oficinas vinculados a la industria; almacén",
+   "otros": ""
+  },
+  "7.2": {
+   "nombre": "Industrial, edificación agrupada",
+   "articulo": "Art. V.32",
+   "parcela_minima_m2": 700,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1,25 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "10 m",
+   "usos": "Industrial; talleres, servicios y oficinas vinculados a la industria; almacén",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Renovación urbana con transformación de uso",
+   "articulo": "Art. V.35-V.38",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento de desarrollo",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Transformación a residencial; se mantienen los usos existentes",
+   "otros": ""
+  }
+ }
+}

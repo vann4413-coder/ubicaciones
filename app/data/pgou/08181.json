@@ -1,0 +1,127 @@
+{
+ "municipio": "La Roca del Vallès",
+ "codigo_ine": "08181",
+ "plan": "Pla general d'ordenació de La Roca del Vallès (1991), Normes",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=264970&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 73-97",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 98-125",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Residencial de ordenación abierta",
+   "articulo": "Art. 98-164",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Según intensidad (3a-3f)",
+   "ocupacion_max": "50 %",
+   "altura_max": "PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Parcela mínima general 200 m² y fachada 10 m; más en intensidades bajas."
+  },
+  "4": {
+   "nombre": "Comercial",
+   "articulo": "Art. 192-198",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "PB+2",
+   "usos": "Comercial y servicios",
+   "otros": ""
+  },
+  "5": {
+   "nombre": "Conservación",
+   "articulo": "Art. 160-164",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "",
+   "segregacion": "Se mantiene la edificación existente."
+  },
+  "6": {
+   "nombre": "Industrial",
+   "articulo": "Art. 165-180",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "10 m",
+   "usos": "Industrial, almacenes, estaciones de servicio y garajes; otros usos según subzona",
+   "otros": "Subzonas 6a y 6b; fachada mínima por establecimiento.",
+   "gasolinera": {
+    "condiciones": "Las estaciones de servicio y garajes son uso permitido en la zona industrial (clave 6).",
+    "articulo": "Art. 166"
+   }
+  },
+  "7": {
+   "nombre": "Remodelación y rehabilitación",
+   "articulo": "Art. 181-191",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento especial",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial y actividades (transformación)",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Sujeta a anterior ordenación volumétrica",
+   "articulo": "Art. 192-199",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La de la ordenación anterior",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Desarrollo residencial",
+   "articulo": "Art. 230-240",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plan parcial",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial",
+   "otros": ""
+  },
+  "20": {
+   "nombre": "Verde privado protegido",
+   "articulo": "Art. 200-202",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  }
+ }
+}

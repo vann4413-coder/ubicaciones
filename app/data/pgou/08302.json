@@ -1,0 +1,166 @@
+{
+ "municipio": "Vilanova del Camí",
+ "codigo_ine": "08302",
+ "plan": "Pla d'ordenació urbanística municipal de Vilanova del Camí (2007), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=169072&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "6": {
+   "nombre": "Verde privado",
+   "articulo": "Art. 182",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Conservación del casco antiguo",
+   "articulo": "Art. 183-187",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plantas y profundidad de planos",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Densidad urbana",
+   "articulo": "Art. 188-193",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según plantas y profundidad de planos",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Aislada plurifamiliar",
+   "articulo": "Art. 194-200",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "1,50-1,80 m²t/m²s según subzona",
+   "ocupacion_max": "40-50 %",
+   "altura_max": "Según subzona",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Parcela mínima de 600 a 900 m² según subzona (9a-9c)."
+  },
+  "10": {
+   "nombre": "Viviendas en hilera",
+   "articulo": "Art. 201-210",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según planos",
+   "ocupacion_max": "Profundidad máxima 14 m",
+   "altura_max": "PB+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Unifamiliares pareadas",
+   "articulo": "Art. 211-226",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "PB+1 y bajocubierta",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Una vivienda por parcela mínima."
+  },
+  "12": {
+   "nombre": "Unifamiliares aisladas",
+   "articulo": "Art. 227-229",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,5-0,6 m²t/m²s",
+   "ocupacion_max": "25-30 %",
+   "altura_max": "PB+1 y bajocubierta",
+   "usos": "Vivienda unifamiliar",
+   "otros": "12a: 600 m² y 20 m; 12b: 900 m² y 30 m."
+  },
+  "12a": {
+   "nombre": "Unifamiliares aisladas 12a",
+   "articulo": "Art. 229",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,6 m²t/m²s",
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "12b": {
+   "nombre": "Unifamiliares aisladas 12b",
+   "articulo": "Art. 229",
+   "parcela_minima_m2": 900,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,5 m²t/m²s",
+   "ocupacion_max": "25 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "13": {
+   "nombre": "Servicios y equipamientos privados",
+   "articulo": "Art. 230-236",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subzona (0,3 m²t/m²s en algunas)",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "11,15 m, PB+2",
+   "usos": "Servicios y equipamientos privados",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Industria jardín",
+   "articulo": "Art. 237-239",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,20 m²t/m²s (5,5 m³/m²)",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1",
+   "usos": "Industrial; una vivienda por parcela",
+   "otros": "14a aislada: 2.500 m² y 30 m; 14b agrupada: 5.000 m² y 50 m."
+  },
+  "14a": {
+   "nombre": "Industria aislada",
+   "articulo": "Art. 239",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "1,20 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1",
+   "usos": "Industrial; una vivienda por parcela",
+   "otros": ""
+  },
+  "14b": {
+   "nombre": "Industria agrupada",
+   "articulo": "Art. 239",
+   "parcela_minima_m2": 5000,
+   "frente_minimo_m": 50,
+   "edificabilidad": "1,20 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "PB+1",
+   "usos": "Industrial; una vivienda por parcela",
+   "otros": ""
+  },
+  "15": {
+   "nombre": "Industria entre medianeras (fábrica Torradas)",
+   "articulo": "Art. 240",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "5 m³/m²",
+   "ocupacion_max": null,
+   "altura_max": "7,5 m",
+   "usos": "Industrial y almacén",
+   "otros": ""
+  }
+ }
+}
