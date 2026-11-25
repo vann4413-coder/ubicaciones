@@ -1,0 +1,112 @@
+{
+ "municipio": "L'Escala",
+ "codigo_ine": "17062",
+ "plan": "Pla general d'ordenació del municipi de L'Escala (1993), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=201521&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Edificios singulares a conservar",
+   "articulo": "Art. 102",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Los existentes",
+   "otros": "",
+   "segregacion": "Edificios catalogados."
+  },
+  "2": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 103",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "PB+3",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Viviendas unifamiliares de implantación fija",
+   "articulo": "Art. 104",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "9,60 m",
+   "usos": "Vivienda unifamiliar; comercio compatible",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Viviendas plurifamiliares de implantación fija",
+   "articulo": "Art. 105",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Viviendas plurifamiliares aisladas",
+   "articulo": "Art. 107",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,3-1,5 m²t/m²s según subtipo",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "Parcela mínima de 400 a 1.200 m² según subtipo."
+  },
+  "8": {
+   "nombre": "Residencial-comercial de implantación mixta",
+   "articulo": "Art. 108",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,5-2,0 m²t/m²s según subtipo",
+   "ocupacion_max": "Según líneas de planos en PB",
+   "altura_max": null,
+   "usos": "Residencial y comercial",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Servicios de ocio",
+   "articulo": "Art. 110",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según subtipo",
+   "ocupacion_max": null,
+   "altura_max": "7 m",
+   "usos": "Ocio y recreativo",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Servicios hoteleros",
+   "articulo": "Art. 111",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,5-2,0 m²t/m²s según subtipo",
+   "ocupacion_max": null,
+   "altura_max": "PB+2 a PB+4",
+   "usos": "Hotelero",
+   "otros": ""
+  },
+  "12": {
+   "nombre": "Industrial",
+   "articulo": "Art. 112",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 6,
+   "edificabilidad": "5 m³/m²",
+   "ocupacion_max": null,
+   "altura_max": "PB+1",
+   "usos": "Industrial compatible con el turismo, almacenes, talleres de servicio, comercio al por mayor o hipermercados, ocio; una vivienda vinculada por cada 400 m²",
+   "otros": ""
+  }
+ }
+}

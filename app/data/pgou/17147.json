@@ -1,0 +1,210 @@
+{
+ "municipio": "Ripoll",
+ "codigo_ine": "17147",
+ "plan": "Pla d'ordenació urbanística municipal de Ripoll (2008), Normativa",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=203500&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "6": {
+   "nombre": "Núcleo histórico",
+   "articulo": "Art. 170-185",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según volumetría existente y planos",
+   "ocupacion_max": "Según planos",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": "6.1 vila, 6.2 ravals, 6.3 reducción de volumetría."
+  },
+  "7": {
+   "nombre": "Ensanche",
+   "articulo": "Art. 186-205",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Hasta PB+3",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Suburbana",
+   "articulo": "Art. 206-214",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Hasta PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Edificación aislada unifamiliar",
+   "articulo": "Art. 215-218",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "edificabilidad": "Según intensidad",
+   "ocupacion_max": "Según intensidad",
+   "altura_max": "Según intensidad",
+   "usos": "Vivienda unifamiliar; hotelero, pequeño comercio (en vías principales), oficinas, restauración y equipamientos",
+   "otros": "Parcela mínima: 9.1 1.000 m², 9.2 800, 9.3 600, 9.4 400, 9.5 200 m²."
+  },
+  "9.1": {
+   "nombre": "Unifamiliar aislada, intensidad 1",
+   "articulo": "Art. 217",
+   "parcela_minima_m2": 1000,
+   "frente_minimo_m": 24,
+   "edificabilidad": null,
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar; hotelero, pequeño comercio (en vías principales), oficinas, restauración y equipamientos",
+   "otros": ""
+  },
+  "9.2": {
+   "nombre": "Unifamiliar aislada, intensidad 2",
+   "articulo": "Art. 217",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": null,
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar; hotelero, pequeño comercio (en vías principales), oficinas, restauración y equipamientos",
+   "otros": ""
+  },
+  "9.3": {
+   "nombre": "Unifamiliar aislada, intensidad 3",
+   "articulo": "Art. 217",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": 20,
+   "edificabilidad": null,
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar; hotelero, pequeño comercio (en vías principales), oficinas, restauración y equipamientos",
+   "otros": ""
+  },
+  "9.4": {
+   "nombre": "Unifamiliar aislada, intensidad 4",
+   "articulo": "Art. 217",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 16,
+   "edificabilidad": null,
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar; hotelero, pequeño comercio (en vías principales), oficinas, restauración y equipamientos",
+   "otros": "En el antiguo plan parcial de Cal Deu, dos viviendas en parcelas ≥ 500 m²."
+  },
+  "9.5": {
+   "nombre": "Unifamiliar aislada, intensidad 5",
+   "articulo": "Art. 217",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 14,
+   "edificabilidad": null,
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Vivienda unifamiliar; hotelero, pequeño comercio (en vías principales), oficinas, restauración y equipamientos",
+   "otros": ""
+  },
+  "10.1": {
+   "nombre": "Edificación aislada plurifamiliar 1",
+   "articulo": "Art. 219-224",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 16,
+   "edificabilidad": "1,20 m²t/m²s",
+   "ocupacion_max": null,
+   "altura_max": "12,20 m, PB+3",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "10.2": {
+   "nombre": "Plurifamiliar aislada con volumetría consolidada",
+   "articulo": "Art. 225-227",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "La existente",
+   "ocupacion_max": "Existente",
+   "altura_max": "Existente",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Verde privado",
+   "articulo": "Art. 231-233",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación propia",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "12": {
+   "nombre": "Industrial objeto de remodelación urbana",
+   "articulo": "Art. 234-238",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,90 m²t/m²s (global del PMU)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial y actividades (transformación por PMU)",
+   "otros": ""
+  },
+  "13": {
+   "nombre": "Industria aislada",
+   "articulo": "Art. 239-250",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,65 m²t/m²s",
+   "ocupacion_max": "60 % (13.1)",
+   "altura_max": "12 m",
+   "usos": "Industrial y almacenes; usos de actividad económica según la ordenanza",
+   "otros": "13.1: parcela mínima 10.000 m² y frente 60 m; 13.2: 2.500 m² y 30 m."
+  },
+  "13.1": {
+   "nombre": "Industria aislada, intensidad 1",
+   "articulo": "Art. 241-245",
+   "parcela_minima_m2": 10000,
+   "frente_minimo_m": 60,
+   "edificabilidad": "0,65 m²t/m²s",
+   "ocupacion_max": "60 %",
+   "altura_max": "12 m",
+   "usos": "Industrial y almacenes; usos de actividad económica según la ordenanza",
+   "otros": ""
+  },
+  "13.2": {
+   "nombre": "Industria aislada, intensidad 2",
+   "articulo": "Art. 246-250",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 30,
+   "edificabilidad": "0,65 m²t/m²s (4,5 m³/m²)",
+   "ocupacion_max": "Según separaciones",
+   "altura_max": null,
+   "usos": "Industrial y almacenes; usos de actividad económica según la ordenanza",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Industrial según perímetros reguladores",
+   "articulo": "Art. 262-268",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según alineaciones de planos",
+   "ocupacion_max": "Según alineaciones",
+   "altura_max": "5 m en planta baja",
+   "usos": "Industrial y almacenes; usos de actividad económica según la ordenanza",
+   "otros": ""
+  },
+  "15": {
+   "nombre": "Actividades económicas en edificación aislada",
+   "articulo": "Art. 269-275",
+   "parcela_minima_m2": 2500,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,60 m²t/m²s (3,5 m³/m²)",
+   "ocupacion_max": "50 %",
+   "altura_max": null,
+   "usos": "Actividades económicas terciarias e industriales",
+   "otros": ""
+  }
+ }
+}

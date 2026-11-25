@@ -1,0 +1,144 @@
+{
+ "municipio": "Esparreguera",
+ "codigo_ine": "08076",
+ "plan": "Revisió del Pla general d'ordenació d'Esparreguera, Normes urbanístiques",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=256006&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "1": {
+   "nombre": "Ordenación antigua y tradicional",
+   "articulo": "Art. 129-134",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "9-16,5 m según tramo (PB+2 a PB+4)",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "2": {
+   "nombre": "Ordenación en manzana cerrada",
+   "articulo": "Art. 135-140",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 15,
+   "edificabilidad": "Según profundidad edificable",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "9-19,5 m (PB+2 a PB+5)",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "3": {
+   "nombre": "Edificación aislada",
+   "articulo": "Art. 141-146",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "1 m²t/m²s",
+   "ocupacion_max": "40 %",
+   "altura_max": "10,50 m, PB+2",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "4": {
+   "nombre": "Edificación unifamiliar aislada",
+   "articulo": "Art. 147-153",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 12,
+   "edificabilidad": "0,25-1,00 m²t/m²s según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "7,5 m",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": "Frente mínimo de 12 a 24 m según subzona."
+  },
+  "5": {
+   "nombre": "Unifamiliar en hilera",
+   "articulo": "Art. 154-158",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6,
+   "edificabilidad": "Según subzona",
+   "ocupacion_max": "Según subzona",
+   "altura_max": "7,50 m",
+   "usos": "Vivienda unifamiliar en hilera",
+   "otros": ""
+  },
+  "6": {
+   "nombre": "Ordenación volumétrica específica",
+   "articulo": "Art. 159-163",
+   "parcela_minima_m2": 600,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,60 m²t/m²s (2,40 y 3,00 en subzonas)",
+   "ocupacion_max": "40 %",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "7": {
+   "nombre": "Implantación industrial",
+   "articulo": "Art. 164-172",
+   "parcela_minima_m2": 250,
+   "frente_minimo_m": 12,
+   "edificabilidad": "1,10-2 m²t/m²s según subzona",
+   "ocupacion_max": null,
+   "altura_max": "Según subzona",
+   "usos": "Industrial y almacenes; comercial y servicios con estudio previo; recreativo y deportivo vinculado",
+   "otros": ""
+  },
+  "8": {
+   "nombre": "Específica de Can Sedó",
+   "articulo": "Art. 173-175",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ordenación específica",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Usos mixtos (antigua colonia industrial)",
+   "otros": ""
+  },
+  "9": {
+   "nombre": "Verde privado a proteger",
+   "articulo": "Art. 176",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Sin edificación (usos deportivos hasta 10 %)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Espacio libre privado",
+   "otros": ""
+  },
+  "10": {
+   "nombre": "Desarrollo residencial",
+   "articulo": "Art. 205-220",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "0,4-0,6 m²t/m²s (bruta del sector)",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial",
+   "otros": ""
+  },
+  "11": {
+   "nombre": "Desarrollo industrial",
+   "articulo": "Art. 228-232",
+   "parcela_minima_m2": 1500,
+   "frente_minimo_m": 14,
+   "edificabilidad": "0,70 m²t/m²s (bruta)",
+   "ocupacion_max": "70 %",
+   "altura_max": null,
+   "usos": "Industrial y almacenes; comercial y servicios con estudio previo; recreativo y deportivo vinculado",
+   "otros": ""
+  },
+  "11b": {
+   "nombre": "Servicios",
+   "articulo": "Art. 233-237",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 20,
+   "edificabilidad": "0,60 m²t/m²s (bruta)",
+   "ocupacion_max": "50 %",
+   "altura_max": null,
+   "usos": "Comercial y servicios",
+   "otros": ""
+  }
+ }
+}

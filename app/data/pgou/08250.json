@@ -1,0 +1,101 @@
+{
+ "municipio": "Santa Margarida de Montbui",
+ "codigo_ine": "08250",
+ "plan": "Normes subsidiàries de planejament de Santa Margarida de Montbui (1983)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=134593&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "11": {
+   "nombre": "Casco antiguo",
+   "articulo": "Art. 99-104",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 6.5,
+   "edificabilidad": "Según profundidad edificable y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "12": {
+   "nombre": "Residencial urbana tipo I (ensanche)",
+   "articulo": "Art. 105-108",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": 8,
+   "edificabilidad": "Según profundidad (12 m) y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "13": {
+   "nombre": "Residencial urbana tipo II",
+   "articulo": "Art. 109-113",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "14": {
+   "nombre": "Residencial urbana tipo III",
+   "articulo": "Art. 114-118",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad (12 m) y plantas",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según ancho de vial",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "15": {
+   "nombre": "Edificación aislada tipo I",
+   "articulo": "Art. 119-125",
+   "parcela_minima_m2": 240,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "30 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar aislada",
+   "otros": ""
+  },
+  "16": {
+   "nombre": "Edificación aislada tipo II",
+   "articulo": "Art. 126-131",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "20 %",
+   "altura_max": "Según ordenanza",
+   "usos": "Vivienda unifamiliar aislada; una vivienda por parcela",
+   "otros": ""
+  },
+  "17": {
+   "nombre": "Renovación urbana en transformación de uso",
+   "articulo": "Art. 132-136",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según planeamiento de desarrollo",
+   "ocupacion_max": null,
+   "altura_max": null,
+   "usos": "Residencial y comercial (transformación)",
+   "otros": ""
+  },
+  "18": {
+   "nombre": "Industrial",
+   "articulo": "Art. 137-142",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable y altura",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según ordenanza",
+   "usos": "Industrial; vivienda solo al servicio de la actividad",
+   "otros": "La parcelación se define por unidad de actuación; las parcelas resultantes no son segregables.",
+   "segregacion": "No: la unidad de parcela definida no es segregable."
+  }
+ }
+}

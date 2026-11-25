@@ -1,0 +1,133 @@
+{
+ "municipio": "Vallirana",
+ "codigo_ine": "08295",
+ "plan": "Text refós de les Normes urbanístiques del planejament general de Vallirana (2005)",
+ "documento": "https://planejamenturbanisme.territori.gencat.cat/RPUC-portal/rest/consulta/documents?documentId=117197&downloadType=inline&idioma=ca",
+ "modificaciones": [
+  "Modificaciones posteriores (ver RPUC)"
+ ],
+ "revisado": "2026-11-25",
+ "zonas": {
+  "entre mitgeres": {
+   "nombre": "Edificación entre medianeras",
+   "articulo": "Normes, zona entre medianeras",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según profundidad edificable y plantas de planos",
+   "ocupacion_max": "Según profundidad edificable",
+   "altura_max": "Según planos",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "plurifamiliar aillada": {
+   "nombre": "Plurifamiliar aislada",
+   "articulo": "Normes, zona plurifamiliar aislada",
+   "parcela_minima_m2": null,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "45 %",
+   "altura_max": "11 m, PB+3",
+   "usos": "Residencial; comercio, oficinas y servicios compatibles",
+   "otros": ""
+  },
+  "unifamiliar aillada": {
+   "nombre": "Unifamiliar aislada",
+   "articulo": "Normes, zona unifamiliar aislada",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "10-40 % según subzona",
+   "altura_max": "PB+1 a PB+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": "Parcela mínima: A1 200 m², A2 400 m², A3 800 m², A4 2.000 m² (fachada 10-30 m)."
+  },
+  "a1": {
+   "nombre": "Unifamiliar aislada A1",
+   "articulo": "",
+   "parcela_minima_m2": 200,
+   "frente_minimo_m": 10,
+   "edificabilidad": null,
+   "ocupacion_max": "40 %",
+   "altura_max": "PB+1",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "a2": {
+   "nombre": "Unifamiliar aislada A2",
+   "articulo": "",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": 15,
+   "edificabilidad": null,
+   "ocupacion_max": "30 %",
+   "altura_max": "PB+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "a3": {
+   "nombre": "Unifamiliar aislada A3",
+   "articulo": "",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": 20,
+   "edificabilidad": null,
+   "ocupacion_max": "20 %",
+   "altura_max": "PB+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "a4": {
+   "nombre": "Unifamiliar aislada A4",
+   "articulo": "",
+   "parcela_minima_m2": 2000,
+   "frente_minimo_m": 30,
+   "edificabilidad": null,
+   "ocupacion_max": "10 %",
+   "altura_max": "PB+2",
+   "usos": "Vivienda unifamiliar",
+   "otros": ""
+  },
+  "industrial": {
+   "nombre": "Industrial",
+   "articulo": "Normes, zona industrial",
+   "parcela_minima_m2": 800,
+   "frente_minimo_m": null,
+   "edificabilidad": "1,60 m²t/m²s",
+   "ocupacion_max": "70 %",
+   "altura_max": "15 m",
+   "usos": "Industrial y almacenes",
+   "otros": ""
+  },
+  "comercial": {
+   "nombre": "Comercial",
+   "articulo": "Normes, zona comercial",
+   "parcela_minima_m2": 400,
+   "frente_minimo_m": null,
+   "edificabilidad": "Según ocupación y altura",
+   "ocupacion_max": "20-30 % según subzona",
+   "altura_max": "7 m",
+   "usos": "Vivienda unifamiliar; bar y comercio en planta baja",
+   "otros": "Parcela mínima de 400 a 2.000 m² según subzona."
+  }
+ },
+ "por_descripcion": [
+  [
+   "mitgeres|casc|nucli",
+   "entre mitgeres"
+  ],
+  [
+   "plurifamiliar",
+   "plurifamiliar aillada"
+  ],
+  [
+   "unifamiliar|ciutat.?jard",
+   "unifamiliar aillada"
+  ],
+  [
+   "ind[uú]stri",
+   "industrial"
+  ],
+  [
+   "comer",
+   "comercial"
+  ]
+ ]
+}
