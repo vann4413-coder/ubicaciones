@@ -13,7 +13,7 @@ from shapely.geometry import box, mapping
 from shapely.ops import unary_union
 
 from app import config, geo
-from app.fuentes import catastro, gencat_wfs
+from app.fuentes import catastro, gencat_wfs, geocoder
 
 log = logging.getLogger(__name__)
 MAX_KM2 = 5.0       # zona máxima por búsqueda (unos 2 x 2 km)
@@ -122,8 +122,20 @@ async def buscar(bbox_wgs: tuple[float, float, float, float] | None = None, sup_
             "geometria": mapping(geo.geom_a_wgs84(g.simplify(0.5))),
         })
     salida.sort(key=lambda x: -x["superficie_m2"])
+    # nombre del municipio de cada parcela (una consulta por municipio distinto)
+    nombres: dict[tuple, str] = {}
+    for x in salida:
+        k = x["municipio_ine"] or (round(x["lon"], 2), round(x["lat"], 2))
+        if k not in nombres:
+            try:
+                m = await geocoder.municipio_en_punto(x["lon"], x["lat"])
+                nombres[k] = m["nombre"] if m else ""
+            except Exception:  # noqa: BLE001
+                nombres[k] = ""
+        x["municipio"] = nombres[k]
     res = {"parcelas": salida, "resumen": {"zonas_actividad": len(activ), "parcelas": len(salida),
                                             "sin_edificar": sum(1 for x in salida if x["pct_edificado"] < 1),
-                                            "superficie_total_m2": sum(x["superficie_m2"] for x in salida), "km2": round(km2, 1)}}
+                                            "superficie_total_m2": sum(x["superficie_m2"] for x in salida), "km2": round(km2, 1),
+                                            "municipios": sorted({x["municipio"] for x in salida if x.get("municipio")})}}
     _cache[clave] = (time.time(), res)
     return res

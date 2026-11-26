@@ -15,6 +15,11 @@
   .estado-suelo { font-size: 14px; color: var(--suave); margin: 6px 0 10px; min-height: 20px; }
   .dibujando #mapa-suelo canvas { cursor: crosshair !important; }
   #b-dibujar.activo { background: var(--acento); color: #102e35; border-color: var(--acento); }
+  .ir-a { position: relative; display: flex; gap: 8px; max-width: 640px; margin: 6px 0 14px; }
+  .ir-a input { flex: 1; padding: 10px 12px; border: 1px solid var(--linea); border-radius: 8px; font: inherit; }
+  .ir-a ul { position: absolute; top: 46px; left: 0; right: 70px; z-index: 5; list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid var(--linea); border-radius: 8px; box-shadow: 0 6px 18px rgba(16,46,53,.12); }
+  .ir-a ul:empty { display: none; } .ir-a li { padding: 9px 12px; cursor: pointer; font-size: 14px; } .ir-a li:hover { background: #f4f7f6; }
+  .donde { font-weight: 700; color: var(--marca); }
   .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
   .tag.v { background: #dff3ea; color: #15805d; } .tag.a { background: #fbf0dc; color: #8a5a12; }
   @media (max-width: 900px) { .suelo { grid-template-columns: 1fr; } #mapa-suelo, .lista-suelo { height: 50vh; } }
@@ -23,6 +28,7 @@
 {% block contenido %}
 <h1>Buscador de suelo industrial disponible</h1>
 <p class="bajada">Dos formas de elegir la zona: <b>dibújala</b> con el botón «Dibujar zona» (clic en cada esquina y doble clic o clic en el primer punto para cerrar) o, sin dibujar, se busca en <b>lo que se ve en el mapa</b>. Máximo unos 5 km² (un polígono industrial o un barrio). Salen las parcelas calificadas como actividad económica en el Mapa Urbanístic que están sin edificar o casi, según las construcciones del Catastro.</p>
+<form class="ir-a" id="ir-a"><input id="ir-q" placeholder="Ir a un municipio, polígono industrial o dirección (p. ej. Pineda de Mar)" autocomplete="off"><button class="btn" type="submit">Ir</button><ul id="ir-res"></ul></form>
 <div class="filtros">
   <label>Superficie mínima (m²) <input type="number" id="f-sup" value="1000" min="0" step="100"></label>
   <label>Edificado máximo (%) <input type="number" id="f-edif" value="10" min="0" max="100" step="5"></label>
@@ -32,7 +38,7 @@
   <button class="btn" id="b-buscar">Buscar</button>
   <a class="btn btn-sec" id="b-excel" href="#" hidden>Descargar Excel</a>
 </div>
-<div class="estado-suelo" id="estado">Zona actual: acerca el mapa para empezar.</div>
+<div class="estado-suelo"><span class="donde" id="donde"></span> <span id="estado">Escribe un municipio arriba o acerca el mapa a la zona.</span></div>
 <div class="suelo">
   <div id="mapa-suelo"></div>
   <div class="lista-suelo" id="lista"></div>
@@ -47,6 +53,8 @@
   mapa.on("load", () => {
     mapa.addSource("orto", { type: "raster", tiles: [wms("https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms", "orto-hibrida")], tileSize: 256 });
     mapa.addLayer({ id: "orto", type: "raster", source: "orto", minzoom: 14, paint: { "raster-opacity": 0.85 } });
+    mapa.addSource("busq", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    mapa.addLayer({ id: "busq", type: "line", source: "busq", paint: { "line-color": "#102e35", "line-width": 2, "line-dasharray": [4, 2] } });
     mapa.addSource("p", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
     mapa.addLayer({ id: "p", type: "fill", source: "p", paint: { "fill-color": ["case", ["<", ["get", "pct_edificado"], 1], "#15805d", "#b7791f"], "fill-opacity": 0.45 } });
     mapa.addLayer({ id: "p-b", type: "line", source: "p", paint: { "line-color": "#102e35", "line-width": 1.5 } });
@@ -107,12 +115,34 @@
     vertices.push(p); capaDibujo();
   });
   mapa.on("dblclick", (e) => { if (dibujando) { e.preventDefault(); cerrar(); } });
+  async function irA_lugar(r) { document.getElementById("ir-res").innerHTML = ""; mapa.flyTo({ center: [r.lon, r.lat], zoom: 15 }); }
+  document.getElementById("ir-a").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const q = document.getElementById("ir-q").value.trim(); if (q.length < 2) return;
+    const ul = document.getElementById("ir-res"); ul.innerHTML = "<li>Buscando…</li>";
+    try {
+      const { resultados } = await (await fetch(`/api/buscar?q=${encodeURIComponent(q)}`)).json();
+      ul.innerHTML = "";
+      if (!resultados || !resultados.length) { ul.innerHTML = "<li>No encontrado. Prueba con otro nombre.</li>"; setTimeout(() => ul.innerHTML = "", 2500); return; }
+      if (resultados.length === 1) return irA_lugar(resultados[0]);
+      resultados.forEach((r) => { const li = document.createElement("li"); li.textContent = r.etiqueta; li.onclick = () => irA_lugar(r); ul.appendChild(li); });
+    } catch (err) { ul.innerHTML = ""; }
+  });
   function zona() { const b = mapa.getBounds(); return [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()].map((v) => v.toFixed(5)).join(","); }
   function km2() { const b = mapa.getBounds(); const dx = (b.getEast() - b.getWest()) * 111 * Math.cos(b.getCenter().lat * Math.PI / 180); const dy = (b.getNorth() - b.getSouth()) * 111; return dx * dy; }
+  let tDonde = null;
+  mapa.on("moveend", () => {
+    clearTimeout(tDonde);
+    tDonde = setTimeout(async () => {
+      const el = document.getElementById("donde");
+      if (mapa.getZoom() < 11) { el.textContent = ""; return; }
+      try { const c = mapa.getCenter(); const m = await (await fetch(`/api/municipio?lon=${c.lng}&lat=${c.lat}`)).json(); el.textContent = m.nombre ? `Estás en: ${m.nombre}.` : ""; } catch (e) { el.textContent = ""; }
+    }, 500);
+  });
   mapa.on("moveend", () => { if (vertices.length) return; const k = km2(); document.getElementById("estado").textContent = k > 5 ? `Zona actual: ${k.toFixed(0)} km². Acerca el mapa hasta unos 5 km² para buscar.` : `Zona actual: ${k.toFixed(1)} km². Lista para buscar.`; });
   function abrir(rc) {
     const p = datos.parcelas.find((x) => x.rc === rc); if (!p) return;
-    new maplibregl.Popup().setLngLat([p.lon, p.lat]).setHTML(`<b>${p.rc}</b><br>${fmt(p.superficie_m2)} m² · ${p.pct_edificado} % edificado<br>${p.calificacion}<br><a href="/informe/${p.rc}" target="_blank">Ver informe</a> · <a href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC=${p.rc}" target="_blank">Catastro</a>`).addTo(mapa);
+    new maplibregl.Popup().setLngLat([p.lon, p.lat]).setHTML(`<b>${p.rc}</b><br>${fmt(p.superficie_m2)} m² · ${p.pct_edificado} % edificado<br>${p.municipio ? p.municipio + "<br>" : ""}${p.calificacion}<br><a href="/informe/${p.rc}" target="_blank">Ver informe</a> · <a href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC=${p.rc}" target="_blank">Catastro</a>`).addTo(mapa);
   }
   window.irA = (rc) => { const p = datos.parcelas.find((x) => x.rc === rc); mapa.flyTo({ center: [p.lon, p.lat], zoom: 17 }); setTimeout(() => abrir(rc), 900); };
   document.getElementById("b-buscar").addEventListener("click", async () => {
@@ -124,6 +154,9 @@
     const q = `bbox=${zona()}&sup_min=${filtros.sup_min}&max_edif=${filtros.max_edif}&terciario=${filtros.terciario}`;
     const est = document.getElementById("estado"); est.textContent = "Buscando… consulta el Mapa Urbanístic y el Catastro (puede tardar hasta un minuto).";
     const ex = document.getElementById("b-excel"); ex.hidden = true;
+    datos = null; mapa.getSource("p").setData({ type: "FeatureCollection", features: [] }); document.getElementById("lista").innerHTML = "";
+    const bb = mapa.getBounds();
+    mapa.getSource("busq").setData(conZona ? { type: "FeatureCollection", features: [] } : { type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [[[bb.getWest(), bb.getSouth()], [bb.getEast(), bb.getSouth()], [bb.getEast(), bb.getNorth()], [bb.getWest(), bb.getNorth()], [bb.getWest(), bb.getSouth()]]] } });
     try {
       const r = conZona
         ? await fetch("/api/admin/suelo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...filtros, poligono: vertices }) })
@@ -132,13 +165,14 @@
       if (!r.ok) { est.textContent = j.detail || "No se ha podido buscar."; return; }
       datos = j;
       mapa.getSource("p").setData({ type: "FeatureCollection", features: j.parcelas.map((p) => ({ type: "Feature", geometry: p.geometria, properties: { rc: p.rc, pct_edificado: p.pct_edificado } })) });
-      est.textContent = `${j.resumen.parcelas} parcelas disponibles (${j.resumen.sin_edificar} sin ninguna construcción) · ${fmt(j.resumen.superficie_total_m2 || 0)} m² en total · ${j.resumen.zonas_actividad} zonas de actividad económica en la zona.`;
-      document.getElementById("lista").innerHTML = j.parcelas.map((p) => `<div class="item" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_m2)} m²</b><span class="tag ${p.pct_edificado < 1 ? "v" : "a"}">${p.pct_edificado < 1 ? "Sin edificar" : p.pct_edificado + " % edificado"}</span><small>${p.rc} · ${p.calificacion}</small></div>`).join("") || '<div class="item">No hay suelo disponible con estos filtros en esta zona.</div>';
+      const munis = (j.resumen.municipios || []).length ? ` en ${j.resumen.municipios.join(", ")}` : "";
+      est.textContent = `${j.resumen.parcelas} parcelas disponibles${munis} (${j.resumen.sin_edificar} sin ninguna construcción) · ${fmt(j.resumen.superficie_total_m2 || 0)} m² en total · ${j.resumen.zonas_actividad} zonas de actividad económica en la zona.`;
+      document.getElementById("lista").innerHTML = j.parcelas.map((p) => `<div class="item" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_m2)} m²</b><span class="tag ${p.pct_edificado < 1 ? "v" : "a"}">${p.pct_edificado < 1 ? "Sin edificar" : p.pct_edificado + " % edificado"}</span><small><b style="font-size:13px">${p.municipio || ""}</b> · ${p.rc} · ${p.calificacion}</small></div>`).join("") || (j.resumen.zonas_actividad ? '<div class="item">Hay suelo industrial en la zona, pero todo está edificado o las parcelas son más pequeñas que el mínimo. Prueba a subir el «Edificado máximo» o bajar la superficie mínima.</div>' : '<div class="item">En la zona buscada no hay suelo calificado como industrial. Muévete hasta el polígono industrial (con la ortofoto se ven las naves) y vuelve a buscar.</div>');
       if (conZona) { ex.href = "#"; ex.onclick = (ev) => { ev.preventDefault(); const f = document.createElement("form"); f.method = "post"; f.action = "/admin/suelo.xlsx";
         const i = document.createElement("input"); i.type = "hidden"; i.name = "datos"; i.value = JSON.stringify({ ...filtros, poligono: vertices }); f.appendChild(i); document.body.appendChild(f); f.submit(); f.remove(); }; }
       else { ex.href = `/admin/suelo.xlsx?${q}`; ex.onclick = null; }
       ex.hidden = !j.parcelas.length;
-    } catch (e) { est.textContent = "Error de conexión. Vuelve a intentarlo."; }
+    } catch (e) { est.textContent = "La búsqueda ha tardado demasiado o ha fallado. Prueba con una zona más pequeña."; }
   });
   function alertar(t) { document.getElementById("estado").textContent = t; }
 })();

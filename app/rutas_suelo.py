@@ -75,15 +75,15 @@ def _excel(res: dict) -> Response:
     wb = Workbook()
     ws = wb.active
     ws.title = "Suelo disponible"
-    cab = ["REF. CATASTRAL", "SUPERFICIE (m²)", "% EDIFICADO", "TIPO", "CALIFICACIÓN", "CALIFICACIÓN MUC", "LATITUD", "LONGITUD",
+    cab = ["REF. CATASTRAL", "MUNICIPIO", "SUPERFICIE (m²)", "% EDIFICADO", "TIPO", "CALIFICACIÓN", "CALIFICACIÓN MUC", "LATITUD", "LONGITUD",
            "INFORME", "CATASTRO"]
     ws.append(cab)
-    for i, w in enumerate([17, 14, 12, 12, 40, 36, 11, 11, 40, 50], start=1):
+    for i, w in enumerate([17, 22, 14, 12, 12, 40, 36, 11, 11, 40, 50], start=1):
         c = ws.cell(1, i)
         c.font, c.fill = Font(bold=True, color="FFFFFF"), PatternFill("solid", fgColor="102E35")
         ws.column_dimensions[c.column_letter].width = w
     for p in res["parcelas"]:
-        ws.append([p["rc"], p["superficie_m2"], p["pct_edificado"], p["tipo"], p["calificacion"], p["calificacion_muc"], p["lat"], p["lon"],
+        ws.append([p["rc"], p.get("municipio", ""), p["superficie_m2"], p["pct_edificado"], p["tipo"], p["calificacion"], p["calificacion_muc"], p["lat"], p["lon"],
                    f"https://parcelas360.com/informe/{p['rc']}",
                    f"https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC={p['rc']}"])
     buf = io.BytesIO()

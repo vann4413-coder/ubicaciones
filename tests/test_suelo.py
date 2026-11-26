@@ -52,10 +52,15 @@ def test_buscar(monkeypatch):
     monkeypatch.setattr(catastro, "parcelas_en_bbox", parc)
     monkeypatch.setattr(catastro, "edificios_en_bbox", edif)
     monkeypatch.setattr(suelo, "PAUSA_S", 0)
+
+    async def muni(lon, lat):
+        return {"nombre": "Pineda de Mar", "codigo6": "081638", "codigo_ine": "08163", "comarca": "Maresme"}
+    monkeypatch.setattr(suelo.geocoder, "municipio_en_punto", muni)
     suelo._cache.clear()
     lon1, lat1 = geo.a_wgs84(x0 + 1000, y0 + 1000)
     r = asyncio.run(suelo.buscar((2.44, 41.54, lon1, lat1), sup_min=1000, max_edif_pct=10))
     assert [p["rc"] for p in r["parcelas"]] == ["1111111DF1111A"]
+    assert r["parcelas"][0]["municipio"] == "Pineda de Mar" and r["resumen"]["municipios"] == ["Pineda de Mar"]
     assert r["parcelas"][0]["pct_edificado"] == 0 and r["parcelas"][0]["calificacion"] == "2d1 Zona industrial"
     r = asyncio.run(suelo.buscar((2.44, 41.54, lon1, lat1), sup_min=1000, max_edif_pct=60))
     assert {p["rc"] for p in r["parcelas"]} == {"1111111DF1111A", "2222222DF2222A"}
@@ -63,6 +68,7 @@ def test_buscar(monkeypatch):
     pol = [geo.a_wgs84(x0, y0), geo.a_wgs84(x0 + 150, y0), geo.a_wgs84(x0 + 150, y0 + 150), geo.a_wgs84(x0, y0 + 150)]
     r = asyncio.run(suelo.buscar(None, sup_min=1000, max_edif_pct=60, poligono_wgs=[list(v) for v in pol]))
     assert [p["rc"] for p in r["parcelas"]] == ["1111111DF1111A"]
+    assert r["parcelas"][0]["municipio"] == "Pineda de Mar" and r["resumen"]["municipios"] == ["Pineda de Mar"]
 
 
 def test_zona_grande():
