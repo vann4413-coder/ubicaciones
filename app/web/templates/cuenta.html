@@ -55,6 +55,9 @@
       <ul class="historial">{% for h in historial %}<li><a href="/informe/{{ h.rc }}">{{ h.rc }}</a> <span>{{ h.fecha }}</span> <a href="/informe/{{ h.rc }}.pdf">PDF</a></li>{% endfor %}</ul>
     {% else %}<p>Aún no has generado ningún informe. <a href="/app">Analiza una parcela</a>.</p>{% endif %}
   </div>
+  {% if admin %}<div class="caja"><h2>Administración</h2><div class="acciones-web">
+    <a class="btn btn-sec" href="/admin/suelo">Buscador de suelo industrial</a><a class="btn btn-sec" href="/admin/lotes">Lotes</a>
+    <a class="btn btn-sec" href="/admin/contactos">Contactos</a></div></div>{% endif %}
   <form method="post" action="/cuenta/salir"><button class="btn btn-sec" type="submit">Cerrar sesión</button></form>
 {% endif %}
 {% endblock %}

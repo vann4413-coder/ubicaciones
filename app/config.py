@@ -16,6 +16,7 @@ USER_AGENT = os.getenv("UBI_USER_AGENT", "PlataformaUbicaciones/0.1 (informes de
 CATASTRO_COORD = "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCoordenadas.svc/json"
 CATASTRO_CALLEJERO = "https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc/json"
 CATASTRO_WFS_CP = "https://ovc.catastro.meh.es/INSPIRE/wfsCP.aspx"
+CATASTRO_WFS_BU = "https://ovc.catastro.meh.es/INSPIRE/wfsBU.aspx"
 CATASTRO_WMS = "https://ovc.catastro.meh.es/cartografia/INSPIRE/spadgcwms.aspx"
 CATASTRO_FICHA = "https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC={rc}"
 

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block cabeza %}
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  .suelo { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 16px; }
+  #mapa-suelo { height: 72vh; border-radius: 14px; border: 1px solid var(--linea); }
+  .filtros { display: flex; flex-wrap: wrap; gap: 10px; align-items: end; margin-bottom: 12px; }
+  .filtros label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+  .filtros input[type=number] { width: 110px; padding: 9px 10px; border: 1px solid var(--linea); border-radius: 8px; font: inherit; }
+  .lista-suelo { height: 72vh; overflow-y: auto; border: 1px solid var(--linea); border-radius: 14px; background: #fff; }
+  .lista-suelo .item { padding: 10px 14px; border-bottom: 1px solid var(--linea); cursor: pointer; font-size: 14px; }
+  .lista-suelo .item:hover { background: #f4f7f6; }
+  .lista-suelo .item b { font-size: 15px; } .lista-suelo small { color: var(--suave); display: block; }
+  .estado-suelo { font-size: 14px; color: var(--suave); margin: 6px 0 10px; min-height: 20px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
+  .tag.v { background: #dff3ea; color: #15805d; } .tag.a { background: #fbf0dc; color: #8a5a12; }
+  @media (max-width: 900px) { .suelo { grid-template-columns: 1fr; } #mapa-suelo, .lista-suelo { height: 50vh; } }
+</style>
+{% endblock %}
+{% block contenido %}
+<h1>Buscador de suelo industrial disponible</h1>
+<p class="bajada">Acerca el mapa a la zona que quieras (hasta unos 2 × 2 km, nivel de barrio o polígono) y pulsa «Buscar». Salen las parcelas calificadas como actividad económica en el Mapa Urbanístic que están sin edificar o casi, según las construcciones del Catastro.</p>
+<div class="filtros">
+  <label>Superficie mínima (m²) <input type="number" id="f-sup" value="1000" min="0" step="100"></label>
+  <label>Edificado máximo (%) <input type="number" id="f-edif" value="10" min="0" max="100" step="5"></label>
+  <label style="display:flex;gap:6px;align-items:center;font-weight:500"><input type="checkbox" id="f-terc"> Incluir terciario y comercial</label>
+  <button class="btn" id="b-buscar">Buscar en esta zona</button>
+  <a class="btn btn-sec" id="b-excel" href="#" hidden>Descargar Excel</a>
+</div>
+<div class="estado-suelo" id="estado">Zona actual: acerca el mapa para empezar.</div>
+<div class="suelo">
+  <div id="mapa-suelo"></div>
+  <div class="lista-suelo" id="lista"></div>
+</div>
+<script>
+(function () {
+  const wms = (base, capa, f = "image/jpeg", t = false) => `${base}?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=${capa}&STYLES=&SRS=EPSG:3857&BBOX={bbox-epsg-3857}&WIDTH=256&HEIGHT=256&FORMAT=${f}${t ? "&TRANSPARENT=TRUE" : ""}`;
+  const fmt = (n) => Number(n).toLocaleString("es-ES");
+  const mapa = new maplibregl.Map({ container: "mapa-suelo", style: "https://tiles.openfreemap.org/styles/liberty", center: [2.0, 41.6], zoom: 9 });
+  mapa.addControl(new maplibregl.NavigationControl(), "top-right");
+  let datos = null;
+  mapa.on("load", () => {
+    mapa.addSource("orto", { type: "raster", tiles: [wms("https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wms", "orto-hibrida")], tileSize: 256 });
+    mapa.addLayer({ id: "orto", type: "raster", source: "orto", minzoom: 14, paint: { "raster-opacity": 0.85 } });
+    mapa.addSource("p", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    mapa.addLayer({ id: "p", type: "fill", source: "p", paint: { "fill-color": ["case", ["<", ["get", "pct_edificado"], 1], "#15805d", "#b7791f"], "fill-opacity": 0.45 } });
+    mapa.addLayer({ id: "p-b", type: "line", source: "p", paint: { "line-color": "#102e35", "line-width": 1.5 } });
+    mapa.on("click", "p", (e) => abrir(e.features[0].properties.rc));
+    mapa.on("mouseenter", "p", () => mapa.getCanvas().style.cursor = "pointer");
+    mapa.on("mouseleave", "p", () => mapa.getCanvas().style.cursor = "");
+  });
+  function zona() { const b = mapa.getBounds(); return [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()].map((v) => v.toFixed(5)).join(","); }
+  function km2() { const b = mapa.getBounds(); const dx = (b.getEast() - b.getWest()) * 111 * Math.cos(b.getCenter().lat * Math.PI / 180); const dy = (b.getNorth() - b.getSouth()) * 111; return dx * dy; }
+  mapa.on("moveend", () => { const k = km2(); document.getElementById("estado").textContent = k > 5 ? `Zona actual: ${k.toFixed(0)} km². Acerca el mapa hasta unos 5 km² para buscar.` : `Zona actual: ${k.toFixed(1)} km². Lista para buscar.`; });
+  function abrir(rc) {
+    const p = datos.parcelas.find((x) => x.rc === rc); if (!p) return;
+    new maplibregl.Popup().setLngLat([p.lon, p.lat]).setHTML(`<b>${p.rc}</b><br>${fmt(p.superficie_m2)} m² · ${p.pct_edificado} % edificado<br>${p.calificacion}<br><a href="/informe/${p.rc}" target="_blank">Ver informe</a> · <a href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC=${p.rc}" target="_blank">Catastro</a>`).addTo(mapa);
+  }
+  window.irA = (rc) => { const p = datos.parcelas.find((x) => x.rc === rc); mapa.flyTo({ center: [p.lon, p.lat], zoom: 17 }); setTimeout(() => abrir(rc), 900); };
+  document.getElementById("b-buscar").addEventListener("click", async () => {
+    if (km2() > 5) { alertar("Acerca el mapa: la zona es demasiado grande."); return; }
+    const q = `bbox=${zona()}&sup_min=${document.getElementById("f-sup").value}&max_edif=${document.getElementById("f-edif").value}&terciario=${document.getElementById("f-terc").checked}`;
+    const est = document.getElementById("estado"); est.textContent = "Buscando… consulta el Mapa Urbanístic y el Catastro (puede tardar hasta un minuto).";
+    document.getElementById("b-excel").hidden = true;
+    try {
+      const r = await fetch(`/api/admin/suelo?${q}`); const j = await r.json();
+      if (!r.ok) { est.textContent = j.detail || "No se ha podido buscar."; return; }
+      datos = j;
+      mapa.getSource("p").setData({ type: "FeatureCollection", features: j.parcelas.map((p) => ({ type: "Feature", geometry: p.geometria, properties: { rc: p.rc, pct_edificado: p.pct_edificado } })) });
+      est.textContent = `${j.resumen.parcelas} parcelas disponibles (${j.resumen.sin_edificar} sin ninguna construcción) · ${fmt(j.resumen.superficie_total_m2 || 0)} m² en total · ${j.resumen.zonas_actividad} zonas de actividad económica en la zona.`;
+      document.getElementById("lista").innerHTML = j.parcelas.map((p) => `<div class="item" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_m2)} m²</b><span class="tag ${p.pct_edificado < 1 ? "v" : "a"}">${p.pct_edificado < 1 ? "Sin edificar" : p.pct_edificado + " % edificado"}</span><small>${p.rc} · ${p.calificacion}</small></div>`).join("") || '<div class="item">No hay suelo disponible con estos filtros en esta zona.</div>';
+      const ex = document.getElementById("b-excel"); ex.href = `/admin/suelo.xlsx?${q}`; ex.hidden = !j.parcelas.length;
+    } catch (e) { est.textContent = "Error de conexión. Vuelve a intentarlo."; }
+  });
+  function alertar(t) { document.getElementById("estado").textContent = t; }
+})();
+</script>
+{% endblock %}

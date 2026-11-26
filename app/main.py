@@ -74,6 +74,8 @@ from app.rutas_agente import router as rutas_agente  # noqa: E402
 app.include_router(rutas_agente)
 from app.rutas_contacto import router as rutas_contacto  # noqa: E402
 app.include_router(rutas_contacto)
+from app.rutas_suelo import router as rutas_suelo  # noqa: E402
+app.include_router(rutas_suelo)
 
 _informes: dict[tuple, tuple[float, dict]] = {}
 TTL_INFORME = 3600

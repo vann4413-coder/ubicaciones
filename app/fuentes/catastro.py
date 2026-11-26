@@ -318,3 +318,39 @@ def parse_rccoor_distancia(d) -> list[dict]:
 
     recorrer(d)
     return sorted(salida, key=lambda x: x["distancia_m"] if x["distancia_m"] is not None else 1e9)
+
+
+
+def parse_gml_edificios(xml_texto: str) -> list:
+    """Huellas de los edificios (polígonos shapely en 25831) del GML INSPIRE de edificios (BU)."""
+    root = ET.fromstring(xml_texto.encode("utf-8") if isinstance(xml_texto, str) else xml_texto)
+    gml = NS["gml"]
+    salida = []
+    for b in root.iter():
+        if not (isinstance(b.tag, str) and b.tag.endswith("}Building")):
+            continue
+        for patch in b.iter(f"{{{gml}}}PolygonPatch"):
+            ext = patch.find(f"{{{gml}}}exterior//{{{gml}}}posList")
+            if ext is None or not ext.text:
+                continue
+            try:
+                g = Polygon(_poslist(ext.text))
+                salida.append(g if g.is_valid else g.buffer(0))
+            except ValueError:
+                continue
+    return salida
+
+
+async def edificios_en_bbox(b: tuple[float, float, float, float]) -> list:
+    xml = await http.get_text(
+        config.CATASTRO_WFS_BU,
+        {
+            "service": "wfs",
+            "version": "2.0.0",
+            "request": "GetFeature",
+            "typeNames": "BU:Building",
+            "srsname": f"EPSG::{config.EPSG_UTM}",
+            "bbox": geo.bbox_txt(b),
+        },
+    )
+    return parse_gml_edificios(xml)
