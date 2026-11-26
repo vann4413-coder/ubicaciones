@@ -124,8 +124,11 @@
       const { resultados } = await (await fetch(`/api/buscar?q=${encodeURIComponent(q)}`)).json();
       ul.innerHTML = "";
       if (!resultados || !resultados.length) { ul.innerHTML = "<li>No encontrado. Prueba con otro nombre.</li>"; setTimeout(() => ul.innerHTML = "", 2500); return; }
-      if (resultados.length === 1) return irA_lugar(resultados[0]);
-      resultados.forEach((r) => { const li = document.createElement("li"); li.textContent = r.etiqueta; li.onclick = () => irA_lugar(r); ul.appendChild(li); });
+      const n = (t) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim(), qq = n(q);
+      const exacto = resultados.find((r) => n(r.etiqueta) === qq);
+      if (exacto || resultados.length === 1) return irA_lugar(exacto || resultados[0]);
+      const peso = (r) => { const e = n(r.etiqueta); return e.endsWith(", " + qq) ? 0 : e.includes(qq) && !e.includes("[") ? 1 : e.includes(qq) ? 2 : 3; };
+      resultados.sort((a, b) => peso(a) - peso(b)).slice(0, 10).forEach((r) => { const li = document.createElement("li"); li.textContent = r.etiqueta; li.onclick = () => irA_lugar(r); ul.appendChild(li); });
     } catch (err) { ul.innerHTML = ""; }
   });
   function zona() { const b = mapa.getBounds(); return [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()].map((v) => v.toFixed(5)).join(","); }
