@@ -12,13 +12,15 @@ import time
 from shapely.geometry import box, mapping
 from shapely.ops import unary_union
 
-from app import config, geo
+from app import config, geo, http
 from app.fuentes import catastro, gencat_wfs, geocoder
 
 log = logging.getLogger(__name__)
 MAX_KM2 = 5.0       # zona máxima por búsqueda (unos 2 x 2 km)
 CELDA_M = 500       # el Catastro se consulta en cuadrículas de 500 m (las grandes tardan demasiado)
 PAUSA_S = 0.6
+PIEZA_MIN_M2 = 200  # parcelas más pequeñas no cuentan ni dentro de un conjunto
+MAX_FICHAS = 80     # fichas del Catastro consultadas por búsqueda (comprobación de construcciones)
 _cache: dict[tuple, tuple[float, dict]] = {}
 
 TIPOS = {
@@ -46,6 +48,41 @@ def _celdas(b: tuple[float, float, float, float]):
     for i in range(math.ceil((x1 - x0) / CELDA_M)):
         for j in range(math.ceil((y1 - y0) / CELDA_M)):
             yield (x0 + i * CELDA_M, y0 + j * CELDA_M, min(x1, x0 + (i + 1) * CELDA_M), min(y1, y0 + (j + 1) * CELDA_M))
+
+
+async def ficha_catastro(rc14: str) -> dict:
+    """Uso y superficie construida según la ficha del Catastro (Consulta_DNPRC)."""
+    d = catastro.parse_dnprc(await http.get_json(f"{config.CATASTRO_CALLEJERO}/Consulta_DNPRC", {"RefCat": rc14}))
+    if "error" in d:
+        return {"uso": "", "construido": None}
+    if "uso" not in d:  # varios inmuebles (división horizontal): está edificada
+        inm = d.get("inmuebles") or []
+        return {"uso": ", ".join(sorted({i.get("uso", "") for i in inm if i.get("uso")})) or "Varios inmuebles",
+                "construido": sum(i.get("superficie") or 0 for i in inm) or 1e9}
+    usos = sorted({c.get("uso", "").strip().capitalize() for c in d.get("construcciones") or [] if c.get("uso")})
+    return {"uso": d.get("uso", "") + (f" ({', '.join(usos)})" if usos else ""), "construido": d.get("sup_construida") or 0}
+
+
+def _agrupar(cands: list[dict]) -> None:
+    """Une parcelas vacías contiguas: cada una recibe grupo y superficie del conjunto."""
+    padre = list(range(len(cands)))
+
+    def raiz(i):
+        while padre[i] != i:
+            padre[i] = padre[padre[i]]
+            i = padre[i]
+        return i
+    for i in range(len(cands)):
+        for j in range(i + 1, len(cands)):
+            if cands[i]["g"].buffer(1.5).intersects(cands[j]["g"]):
+                padre[raiz(i)] = raiz(j)
+    grupos: dict[int, list[dict]] = {}
+    for i, c in enumerate(cands):
+        grupos.setdefault(raiz(i), []).append(c)
+    for n, miembros in enumerate(grupos.values(), start=1):
+        total = sum(m["area"] for m in miembros)
+        for m in miembros:
+            m["grupo"], m["n_grupo"], m["superficie_grupo"] = n, len(miembros), total
 
 
 async def buscar(bbox_wgs: tuple[float, float, float, float] | None = None, sup_min: float = 1000, max_edif_pct: float = 10,
@@ -98,11 +135,11 @@ async def buscar(bbox_wgs: tuple[float, float, float, float] | None = None, sup_
             log.warning("Buscador de suelo: cuadrícula %s sin datos (%s)", celda, e)
     huellas = unary_union(edificios) if edificios else None
 
-    salida = []
+    cands = []
     for rc, p in parcelas.items():
         g = p["geom"]
         area = g.area
-        if area < sup_min or not g.intersects(suelo) or not g.centroid.within(zona.buffer(1)):
+        if area < PIEZA_MIN_M2 or not g.intersects(suelo) or not g.centroid.within(zona.buffer(1)):
             continue
         pct_act = g.intersection(suelo).area / area * 100
         if pct_act < 50:
@@ -111,17 +148,43 @@ async def buscar(bbox_wgs: tuple[float, float, float, float] | None = None, sup_
         pct_edif = edif / area * 100
         if pct_edif > max_edif_pct:
             continue
+        cands.append({"rc": rc, "g": g, "area": area, "pct_act": pct_act, "pct_edif": pct_edif})
+
+    # La capa de edificios no incluye marquesinas, porches ni instalaciones: se contrasta con la ficha del Catastro
+    # (uso y m² construidos) de las candidatas, de mayor a menor.
+    cands.sort(key=lambda c: -c["area"])
+    for c in cands[:MAX_FICHAS]:
+        try:
+            c["ficha"] = await ficha_catastro(c["rc"][:14])
+            await asyncio.sleep(PAUSA_S / 2)
+        except Exception as e:  # noqa: BLE001
+            log.warning("Buscador de suelo: ficha %s sin datos (%s)", c["rc"], e)
+    def ocupada(c):
+        f = c.get("ficha") or {}
+        return f.get("construido") is not None and f["construido"] / c["area"] * 100 > max_edif_pct
+    cands = [c for c in cands if not ocupada(c)]
+    _agrupar(cands)
+
+    salida = []
+    for c in cands:
+        g, area = c["g"], c["area"]
+        if c["superficie_grupo"] < sup_min:
+            continue
         q = max(activ, key=lambda q: q["geom"].intersection(g).area if q["geom"].intersects(g) else 0)
-        c = g.centroid
-        lon, lat = geo.a_wgs84(c.x, c.y)
+        ce = g.centroid
+        lon, lat = geo.a_wgs84(ce.x, ce.y)
+        f = c.get("ficha") or {}
         salida.append({
-            "rc": rc[:14], "superficie_m2": round(area), "pct_edificado": round(pct_edif, 1), "pct_en_zona_actividad": round(pct_act),
-            "tipo": q["tipo"], "calificacion": f"{q['props'].get('CODI_QUAL_AJUNT', '')} {q['props'].get('DESC_QUAL_AJUNT', '')}".strip()
+            "rc": c["rc"][:14], "superficie_m2": round(area), "pct_edificado": round(c["pct_edif"], 1),
+            "pct_en_zona_actividad": round(c["pct_act"]), "tipo": q["tipo"],
+            "calificacion": f"{q['props'].get('CODI_QUAL_AJUNT', '')} {q['props'].get('DESC_QUAL_AJUNT', '')}".strip()
             or q["props"].get("DESC_QUAL_MUC", ""), "calificacion_muc": q["props"].get("DESC_QUAL_MUC", ""),
             "municipio_ine": str(q["props"].get("CODI_INE") or "")[:5], "lon": round(lon, 6), "lat": round(lat, 6),
+            "uso_catastro": f.get("uso", ""), "construido_catastro_m2": f.get("construido"),
+            "grupo": c["grupo"], "n_grupo": c["n_grupo"], "superficie_grupo_m2": round(c["superficie_grupo"]),
             "geometria": mapping(geo.geom_a_wgs84(g.simplify(0.5))),
         })
-    salida.sort(key=lambda x: -x["superficie_m2"])
+    salida.sort(key=lambda x: (-x["superficie_grupo_m2"], x["grupo"], -x["superficie_m2"]))
     # nombre del municipio de cada parcela (una consulta por municipio distinto)
     nombres: dict[tuple, str] = {}
     for x in salida:
@@ -135,7 +198,8 @@ async def buscar(bbox_wgs: tuple[float, float, float, float] | None = None, sup_
         x["municipio"] = nombres[k]
     res = {"parcelas": salida, "resumen": {"zonas_actividad": len(activ), "parcelas": len(salida),
                                             "sin_edificar": sum(1 for x in salida if x["pct_edificado"] < 1),
-                                            "superficie_total_m2": sum(x["superficie_m2"] for x in salida), "km2": round(km2, 1),
+                                            "superficie_total_m2": sum(x["superficie_m2"] for x in salida),
+                                            "conjuntos": len({x["grupo"] for x in salida}), "km2": round(km2, 1),
                                             "municipios": sorted({x["municipio"] for x in salida if x.get("municipio")})}}
     _cache[clave] = (time.time(), res)
     return res

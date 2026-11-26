@@ -20,6 +20,7 @@
   .ir-a ul { position: absolute; top: 46px; left: 0; right: 70px; z-index: 5; list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid var(--linea); border-radius: 8px; box-shadow: 0 6px 18px rgba(16,46,53,.12); }
   .ir-a ul:empty { display: none; } .ir-a li { padding: 9px 12px; cursor: pointer; font-size: 14px; } .ir-a li:hover { background: #f4f7f6; }
   .donde { font-weight: 700; color: var(--marca); }
+  .lista-suelo .item.sub { padding-left: 30px; background: #fafcfb; } .lista-suelo .item.conj { background: #eef7e3; }
   .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
   .tag.v { background: #dff3ea; color: #15805d; } .tag.a { background: #fbf0dc; color: #8a5a12; }
   @media (max-width: 900px) { .suelo { grid-template-columns: 1fr; } #mapa-suelo, .lista-suelo { height: 50vh; } }
@@ -145,7 +146,7 @@
   mapa.on("moveend", () => { if (vertices.length) return; const k = km2(); document.getElementById("estado").textContent = k > 5 ? `Zona actual: ${k.toFixed(0)} km². Acerca el mapa hasta unos 5 km² para buscar.` : `Zona actual: ${k.toFixed(1)} km². Lista para buscar.`; });
   function abrir(rc) {
     const p = datos.parcelas.find((x) => x.rc === rc); if (!p) return;
-    new maplibregl.Popup().setLngLat([p.lon, p.lat]).setHTML(`<b>${p.rc}</b><br>${fmt(p.superficie_m2)} m² · ${p.pct_edificado} % edificado<br>${p.municipio ? p.municipio + "<br>" : ""}${p.calificacion}<br><a href="/informe/${p.rc}" target="_blank">Ver informe</a> · <a href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC=${p.rc}" target="_blank">Catastro</a>`).addTo(mapa);
+    new maplibregl.Popup().setLngLat([p.lon, p.lat]).setHTML(`<b>${p.rc}</b><br>${fmt(p.superficie_m2)} m² · ${p.pct_edificado} % edificado<br>${p.municipio ? p.municipio + "<br>" : ""}${p.n_grupo > 1 ? "Conjunto de " + p.n_grupo + " parcelas contiguas: " + fmt(p.superficie_grupo_m2) + " m²<br>" : ""}${p.uso_catastro ? "Catastro: " + p.uso_catastro + "<br>" : ""}${p.calificacion}<br><a href="/informe/${p.rc}" target="_blank">Ver informe</a> · <a href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC=${p.rc}" target="_blank">Catastro</a>`).addTo(mapa);
   }
   window.irA = (rc) => { const p = datos.parcelas.find((x) => x.rc === rc); mapa.flyTo({ center: [p.lon, p.lat], zoom: 17 }); setTimeout(() => abrir(rc), 900); };
   document.getElementById("b-buscar").addEventListener("click", async () => {
@@ -169,14 +170,25 @@
       datos = j;
       mapa.getSource("p").setData({ type: "FeatureCollection", features: j.parcelas.map((p) => ({ type: "Feature", geometry: p.geometria, properties: { rc: p.rc, pct_edificado: p.pct_edificado } })) });
       const munis = (j.resumen.municipios || []).length ? ` en ${j.resumen.municipios.join(", ")}` : "";
-      est.textContent = `${j.resumen.parcelas} parcelas disponibles${munis} (${j.resumen.sin_edificar} sin ninguna construcción) · ${fmt(j.resumen.superficie_total_m2 || 0)} m² en total · ${j.resumen.zonas_actividad} zonas de actividad económica en la zona.`;
-      document.getElementById("lista").innerHTML = j.parcelas.map((p) => `<div class="item" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_m2)} m²</b><span class="tag ${p.pct_edificado < 1 ? "v" : "a"}">${p.pct_edificado < 1 ? "Sin edificar" : p.pct_edificado + " % edificado"}</span><small><b style="font-size:13px">${p.municipio || ""}</b> · ${p.rc} · ${p.calificacion}</small></div>`).join("") || (j.resumen.zonas_actividad ? '<div class="item">Hay suelo industrial en la zona, pero todo está edificado o las parcelas son más pequeñas que el mínimo. Prueba a subir el «Edificado máximo» o bajar la superficie mínima.</div>' : '<div class="item">En la zona buscada no hay suelo calificado como industrial. Muévete hasta el polígono industrial (con la ortofoto se ven las naves) y vuelve a buscar.</div>');
+      est.textContent = `${j.resumen.parcelas} parcelas disponibles${munis} (${j.resumen.conjuntos} solares o conjuntos de parcelas contiguas) (${j.resumen.sin_edificar} sin ninguna construcción) · ${fmt(j.resumen.superficie_total_m2 || 0)} m² en total · ${j.resumen.zonas_actividad} zonas de actividad económica en la zona.`;
+      const item = (p, sub) => `<div class="item${sub ? " sub" : ""}" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_m2)} m²</b>${etiqueta(p)}<small><b style="font-size:13px">${p.municipio || ""}</b> · ${p.rc} · ${p.calificacion}${p.uso_catastro ? "<br>Catastro: " + p.uso_catastro : ""}</small></div>`;
+      let html = "", visto = new Set();
+      j.parcelas.forEach((p) => {
+        if (visto.has(p.grupo)) return; visto.add(p.grupo);
+        const g = j.parcelas.filter((x) => x.grupo === p.grupo);
+        html += g.length === 1 ? item(p, false) : `<div class="item conj" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_grupo_m2)} m²</b><span class="tag v">${g.length} parcelas contiguas</span><small>Se pueden sumar: ${g.map((x) => fmt(x.superficie_m2) + " m²").join(" + ")}</small></div>` + g.map((x) => item(x, true)).join("");
+      });
+      document.getElementById("lista").innerHTML = html || (j.resumen.zonas_actividad ? '<div class="item">Hay suelo industrial en la zona, pero todo está edificado o las parcelas son más pequeñas que el mínimo. Prueba a subir el «Edificado máximo» o bajar la superficie mínima.</div>' : '<div class="item">En la zona buscada no hay suelo calificado como industrial. Muévete hasta el polígono industrial (con la ortofoto se ven las naves) y vuelve a buscar.</div>');
       if (conZona) { ex.href = "#"; ex.onclick = (ev) => { ev.preventDefault(); const f = document.createElement("form"); f.method = "post"; f.action = "/admin/suelo.xlsx";
         const i = document.createElement("input"); i.type = "hidden"; i.name = "datos"; i.value = JSON.stringify({ ...filtros, poligono: vertices }); f.appendChild(i); document.body.appendChild(f); f.submit(); f.remove(); }; }
       else { ex.href = `/admin/suelo.xlsx?${q}`; ex.onclick = null; }
       ex.hidden = !j.parcelas.length;
     } catch (e) { est.textContent = "La búsqueda ha tardado demasiado o ha fallado. Prueba con una zona más pequeña."; }
   });
+  function etiqueta(p) {
+    const solar = /sin edificar/i.test(p.uso_catastro || "");
+    return solar ? '<span class="tag v">Solar (Catastro)</span>' : p.pct_edificado < 1 && !p.construido_catastro_m2 ? '<span class="tag v">Sin edificar</span>' : `<span class="tag a">${p.construido_catastro_m2 ? fmt(p.construido_catastro_m2) + " m² construidos" : p.pct_edificado + " % edificado"}</span>`;
+  }
   function alertar(t) { document.getElementById("estado").textContent = t; }
 })();
 </script>
