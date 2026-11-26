@@ -21,6 +21,10 @@
   .ir-a ul:empty { display: none; } .ir-a li { padding: 9px 12px; cursor: pointer; font-size: 14px; } .ir-a li:hover { background: #f4f7f6; }
   .donde { font-weight: 700; color: var(--marca); }
   .lista-suelo .item.sub { padding-left: 30px; background: #fafcfb; } .lista-suelo .item.conj { background: #eef7e3; }
+  .leyenda { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--tinta); margin: 0 0 10px; }
+  .leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .leyenda .c { width: 16px; height: 12px; border: 1.5px solid; border-radius: 3px; display: inline-block; }
+  .leyenda .l { width: 22px; height: 0; border-top: 3px dashed; display: inline-block; }
   .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
   .tag.v { background: #dff3ea; color: #15805d; } .tag.a { background: #fbf0dc; color: #8a5a12; }
   @media (max-width: 900px) { .suelo { grid-template-columns: 1fr; } #mapa-suelo, .lista-suelo { height: 50vh; } }
@@ -40,6 +44,13 @@
   <a class="btn btn-sec" id="b-excel" href="#" hidden>Descargar Excel</a>
 </div>
 <div class="estado-suelo"><span class="donde" id="donde"></span> <span id="estado">Escribe un municipio arriba o acerca el mapa a la zona.</span></div>
+<div class="leyenda">
+  <span><i class="c" style="background:rgba(21,128,93,.55);border-color:#102e35"></i>Sin edificar: solar según el Catastro o sin ninguna construcción</span>
+  <span><i class="c" style="background:rgba(183,121,31,.55);border-color:#102e35"></i>Poco edificada: alguna construcción, por debajo del «Edificado máximo»</span>
+  <span><i class="l" style="border-color:#087f72"></i>Zona que has dibujado</span>
+  <span><i class="l" style="border-color:#102e35"></i>Zona buscada (lo que se veía en el mapa)</span>
+  <span><b class="tag v" style="margin:0">N parcelas contiguas</b> Parcelas vacías pegadas: se pueden sumar</span>
+</div>
 <div class="suelo">
   <div id="mapa-suelo"></div>
   <div class="lista-suelo" id="lista"></div>
