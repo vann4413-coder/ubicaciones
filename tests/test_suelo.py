@@ -59,6 +59,10 @@ def test_buscar(monkeypatch):
     assert r["parcelas"][0]["pct_edificado"] == 0 and r["parcelas"][0]["calificacion"] == "2d1 Zona industrial"
     r = asyncio.run(suelo.buscar((2.44, 41.54, lon1, lat1), sup_min=1000, max_edif_pct=60))
     assert {p["rc"] for p in r["parcelas"]} == {"1111111DF1111A", "2222222DF2222A"}
+    # zona dibujada que solo abarca la parcela vacía
+    pol = [geo.a_wgs84(x0, y0), geo.a_wgs84(x0 + 150, y0), geo.a_wgs84(x0 + 150, y0 + 150), geo.a_wgs84(x0, y0 + 150)]
+    r = asyncio.run(suelo.buscar(None, sup_min=1000, max_edif_pct=60, poligono_wgs=[list(v) for v in pol]))
+    assert [p["rc"] for p in r["parcelas"]] == ["1111111DF1111A"]
 
 
 def test_zona_grande():

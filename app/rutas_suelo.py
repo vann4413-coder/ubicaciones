@@ -39,12 +39,39 @@ async def api(request: Request, bbox: str, sup_min: float = 1000, max_edif: floa
         raise HTTPException(400, str(e)) from None
 
 
+@router.post("/api/admin/suelo")
+async def api_poligono(request: Request):
+    """Búsqueda en una zona dibujada: {poligono: [[lon, lat], ...], sup_min, max_edif, terciario}."""
+    _admin(request)
+    d = await request.json()
+    try:
+        return JSONResponse(await suelo.buscar(None, float(d.get("sup_min") or 1000), float(d.get("max_edif") or 10),
+                                               bool(d.get("terciario")), d.get("poligono")))
+    except ValueError as e:
+        raise HTTPException(400, str(e)) from None
+
+
+@router.post("/admin/suelo.xlsx")
+async def excel_poligono(request: Request):
+    _admin(request)
+    import json
+    form = await request.form()
+    d = json.loads(form.get("datos") or "{}")
+    res = await suelo.buscar(None, float(d.get("sup_min") or 1000), float(d.get("max_edif") or 10), bool(d.get("terciario")), d.get("poligono"))
+    return _excel(res)
+
+
 @router.get("/admin/suelo.xlsx")
 async def excel(request: Request, bbox: str, sup_min: float = 1000, max_edif: float = 10, terciario: bool = False):
     _admin(request)
     from openpyxl import Workbook
     from openpyxl.styles import Font, PatternFill
-    res = await suelo.buscar(_bbox(bbox), sup_min, max_edif, terciario)
+    return _excel(await suelo.buscar(_bbox(bbox), sup_min, max_edif, terciario))
+
+
+def _excel(res: dict) -> Response:
+    from openpyxl import Workbook
+    from openpyxl.styles import Font, PatternFill
     wb = Workbook()
     ws = wb.active
     ws.title = "Suelo disponible"

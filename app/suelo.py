@@ -48,19 +48,29 @@ def _celdas(b: tuple[float, float, float, float]):
             yield (x0 + i * CELDA_M, y0 + j * CELDA_M, min(x1, x0 + (i + 1) * CELDA_M), min(y1, y0 + (j + 1) * CELDA_M))
 
 
-async def buscar(bbox_wgs: tuple[float, float, float, float], sup_min: float = 1000, max_edif_pct: float = 10,
-                 incluir_terciario: bool = False) -> dict:
-    lon0, lat0, lon1, lat1 = bbox_wgs
-    x0, y0 = geo.a_utm(lon0, lat0)
-    x1, y1 = geo.a_utm(lon1, lat1)
-    b = (min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1))
-    km2 = (b[2] - b[0]) * (b[3] - b[1]) / 1e6
-    if km2 > MAX_KM2:
-        raise ValueError(f"La zona es de {km2:.0f} km²: acerca el mapa hasta unos {MAX_KM2:.0f} km² como máximo.")
-    clave = (tuple(round(v, -1) for v in b), sup_min, max_edif_pct, incluir_terciario)
+async def buscar(bbox_wgs: tuple[float, float, float, float] | None = None, sup_min: float = 1000, max_edif_pct: float = 10,
+                 incluir_terciario: bool = False, poligono_wgs: list | None = None) -> dict:
+    """Busca en el rectángulo visible (bbox_wgs) o en un polígono dibujado ([[lon, lat], ...])."""
+    from shapely.geometry import Polygon
+    if poligono_wgs and len(poligono_wgs) >= 3:
+        zona = Polygon([geo.a_utm(float(lon), float(lat)) for lon, lat in poligono_wgs])
+        if not zona.is_valid:
+            zona = zona.buffer(0)
+        if zona.is_empty or zona.area < 100:
+            raise ValueError("La zona dibujada no es válida: marca al menos tres puntos.")
+        b = zona.bounds
+    else:
+        lon0, lat0, lon1, lat1 = bbox_wgs
+        x0, y0 = geo.a_utm(lon0, lat0)
+        x1, y1 = geo.a_utm(lon1, lat1)
+        b = (min(x0, x1), min(y0, y1), max(x0, x1), max(y0, y1))
+        zona = box(*b)
+    km2 = zona.area / 1e6
+    if km2 > MAX_KM2 or (b[2] - b[0]) * (b[3] - b[1]) / 1e6 > MAX_KM2 * 3:
+        raise ValueError(f"La zona es de {km2:.1f} km²: como máximo unos {MAX_KM2:.0f} km² (acerca el mapa o dibuja una zona más pequeña).")
+    clave = (zona.wkt[:2000], sup_min, max_edif_pct, incluir_terciario)
     if clave in _cache and time.time() - _cache[clave][0] < 3600:
         return _cache[clave][1]
-    zona = box(*b)
 
     quals = await gencat_wfs.entidades(config.CAPA_MUC_QUALIF, zona, max_entidades=5000)
     activ = []
@@ -76,7 +86,7 @@ async def buscar(bbox_wgs: tuple[float, float, float, float], sup_min: float = 1
     parcelas: dict[str, dict] = {}
     edificios = []
     for celda in _celdas(b):
-        if not box(*celda).intersects(suelo):
+        if suelo.is_empty or not box(*celda).intersects(suelo):
             continue
         try:
             for p in await catastro.parcelas_en_bbox(celda):
@@ -92,7 +102,7 @@ async def buscar(bbox_wgs: tuple[float, float, float, float], sup_min: float = 1
     for rc, p in parcelas.items():
         g = p["geom"]
         area = g.area
-        if area < sup_min or not g.intersects(suelo):
+        if area < sup_min or not g.intersects(suelo) or not g.centroid.within(zona.buffer(1)):
             continue
         pct_act = g.intersection(suelo).area / area * 100
         if pct_act < 50:

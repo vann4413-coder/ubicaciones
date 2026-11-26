@@ -13,6 +13,8 @@
   .lista-suelo .item:hover { background: #f4f7f6; }
   .lista-suelo .item b { font-size: 15px; } .lista-suelo small { color: var(--suave); display: block; }
   .estado-suelo { font-size: 14px; color: var(--suave); margin: 6px 0 10px; min-height: 20px; }
+  .dibujando #mapa-suelo canvas { cursor: crosshair !important; }
+  #b-dibujar.activo { background: var(--acento); color: #102e35; border-color: var(--acento); }
   .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; }
   .tag.v { background: #dff3ea; color: #15805d; } .tag.a { background: #fbf0dc; color: #8a5a12; }
   @media (max-width: 900px) { .suelo { grid-template-columns: 1fr; } #mapa-suelo, .lista-suelo { height: 50vh; } }
@@ -20,12 +22,14 @@
 {% endblock %}
 {% block contenido %}
 <h1>Buscador de suelo industrial disponible</h1>
-<p class="bajada">Acerca el mapa a la zona que quieras (hasta unos 2 × 2 km, nivel de barrio o polígono) y pulsa «Buscar». Salen las parcelas calificadas como actividad económica en el Mapa Urbanístic que están sin edificar o casi, según las construcciones del Catastro.</p>
+<p class="bajada">Dos formas de elegir la zona: <b>dibújala</b> con el botón «Dibujar zona» (clic en cada esquina y doble clic o clic en el primer punto para cerrar) o, sin dibujar, se busca en <b>lo que se ve en el mapa</b>. Máximo unos 5 km² (un polígono industrial o un barrio). Salen las parcelas calificadas como actividad económica en el Mapa Urbanístic que están sin edificar o casi, según las construcciones del Catastro.</p>
 <div class="filtros">
   <label>Superficie mínima (m²) <input type="number" id="f-sup" value="1000" min="0" step="100"></label>
   <label>Edificado máximo (%) <input type="number" id="f-edif" value="10" min="0" max="100" step="5"></label>
   <label style="display:flex;gap:6px;align-items:center;font-weight:500"><input type="checkbox" id="f-terc"> Incluir terciario y comercial</label>
-  <button class="btn" id="b-buscar">Buscar en esta zona</button>
+  <button class="btn btn-sec" id="b-dibujar" type="button">Dibujar zona</button>
+  <button class="btn btn-sec" id="b-borrar" type="button" hidden>Borrar zona</button>
+  <button class="btn" id="b-buscar">Buscar</button>
   <a class="btn btn-sec" id="b-excel" href="#" hidden>Descargar Excel</a>
 </div>
 <div class="estado-suelo" id="estado">Zona actual: acerca el mapa para empezar.</div>
@@ -46,31 +50,94 @@
     mapa.addSource("p", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
     mapa.addLayer({ id: "p", type: "fill", source: "p", paint: { "fill-color": ["case", ["<", ["get", "pct_edificado"], 1], "#15805d", "#b7791f"], "fill-opacity": 0.45 } });
     mapa.addLayer({ id: "p-b", type: "line", source: "p", paint: { "line-color": "#102e35", "line-width": 1.5 } });
-    mapa.on("click", "p", (e) => abrir(e.features[0].properties.rc));
+    mapa.on("click", "p", (e) => { if (!dibujando) abrir(e.features[0].properties.rc); });
     mapa.on("mouseenter", "p", () => mapa.getCanvas().style.cursor = "pointer");
     mapa.on("mouseleave", "p", () => mapa.getCanvas().style.cursor = "");
   });
+  let vertices = [], cerrada = false, dibujando = false;
+  const capaDibujo = () => {
+    const coords = vertices.length ? (cerrada ? [[...vertices, vertices[0]]] : null) : null;
+    const f = [];
+    if (cerrada) f.push({ type: "Feature", geometry: { type: "Polygon", coordinates: coords }, properties: {} });
+    else if (vertices.length > 1) f.push({ type: "Feature", geometry: { type: "LineString", coordinates: vertices }, properties: {} });
+    vertices.forEach((v) => f.push({ type: "Feature", geometry: { type: "Point", coordinates: v }, properties: {} }));
+    mapa.getSource("dibujo").setData({ type: "FeatureCollection", features: f });
+  };
+  mapa.on("load", () => {
+    mapa.addSource("dibujo", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    mapa.addLayer({ id: "d-fill", type: "fill", source: "dibujo", filter: ["==", "$type", "Polygon"], paint: { "fill-color": "#a8e063", "fill-opacity": 0.15 } });
+    mapa.addLayer({ id: "d-line", type: "line", source: "dibujo", filter: ["!=", "$type", "Point"], paint: { "line-color": "#087f72", "line-width": 3, "line-dasharray": [2, 1] } });
+    mapa.addLayer({ id: "d-pt", type: "circle", source: "dibujo", filter: ["==", "$type", "Point"], paint: { "circle-radius": 5, "circle-color": "#fff", "circle-stroke-color": "#087f72", "circle-stroke-width": 2 } });
+  });
+  function areaKm2(vs) {
+    const lat0 = vs.reduce((a, v) => a + v[1], 0) / vs.length * Math.PI / 180;
+    const pts = vs.map((v) => [v[0] * 111.32 * Math.cos(lat0), v[1] * 110.57]);
+    let a = 0; for (let i = 0; i < pts.length; i++) { const [x1, y1] = pts[i], [x2, y2] = pts[(i + 1) % pts.length]; a += x1 * y2 - x2 * y1; }
+    return Math.abs(a) / 2;
+  }
+  function cerrar() {
+    if (vertices.length < 3) return;
+    cerrada = true; dibujando = false; document.body.classList.remove("dibujando");
+    document.getElementById("b-dibujar").classList.remove("activo"); document.getElementById("b-dibujar").textContent = "Dibujar zona";
+    mapa.doubleClickZoom.enable(); capaDibujo();
+    const k = areaKm2(vertices);
+    document.getElementById("estado").textContent = k > 5 ? `Zona dibujada: ${k.toFixed(1)} km². Es demasiado grande (máximo unos 5 km²): bórrala y dibuja una más pequeña.` : `Zona dibujada: ${k.toFixed(2)} km². Pulsa «Buscar».`;
+  }
+  document.getElementById("b-dibujar").addEventListener("click", () => {
+    if (dibujando) { cerrar(); return; }
+    vertices = []; cerrada = false; dibujando = true; capaDibujo();
+    document.body.classList.add("dibujando"); mapa.doubleClickZoom.disable();
+    const b = document.getElementById("b-dibujar"); b.classList.add("activo"); b.textContent = "Terminar zona";
+    document.getElementById("b-borrar").hidden = false;
+    document.getElementById("estado").textContent = "Haz clic en cada esquina de la zona. Doble clic, clic en el primer punto o «Terminar zona» para cerrarla.";
+  });
+  document.getElementById("b-borrar").addEventListener("click", () => {
+    vertices = []; cerrada = false; dibujando = false; capaDibujo(); mapa.doubleClickZoom.enable();
+    document.body.classList.remove("dibujando"); document.getElementById("b-borrar").hidden = true;
+    const b = document.getElementById("b-dibujar"); b.classList.remove("activo"); b.textContent = "Dibujar zona";
+    document.getElementById("estado").textContent = "Sin zona dibujada: se buscará en lo que se ve en el mapa.";
+  });
+  mapa.on("click", (e) => {
+    if (!dibujando) return;
+    const p = [e.lngLat.lng, e.lngLat.lat];
+    if (vertices.length >= 3) {
+      const a = mapa.project(vertices[0]), c = mapa.project(p);
+      if (Math.hypot(a.x - c.x, a.y - c.y) < 12) { cerrar(); return; }
+    }
+    vertices.push(p); capaDibujo();
+  });
+  mapa.on("dblclick", (e) => { if (dibujando) { e.preventDefault(); cerrar(); } });
   function zona() { const b = mapa.getBounds(); return [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()].map((v) => v.toFixed(5)).join(","); }
   function km2() { const b = mapa.getBounds(); const dx = (b.getEast() - b.getWest()) * 111 * Math.cos(b.getCenter().lat * Math.PI / 180); const dy = (b.getNorth() - b.getSouth()) * 111; return dx * dy; }
-  mapa.on("moveend", () => { const k = km2(); document.getElementById("estado").textContent = k > 5 ? `Zona actual: ${k.toFixed(0)} km². Acerca el mapa hasta unos 5 km² para buscar.` : `Zona actual: ${k.toFixed(1)} km². Lista para buscar.`; });
+  mapa.on("moveend", () => { if (vertices.length) return; const k = km2(); document.getElementById("estado").textContent = k > 5 ? `Zona actual: ${k.toFixed(0)} km². Acerca el mapa hasta unos 5 km² para buscar.` : `Zona actual: ${k.toFixed(1)} km². Lista para buscar.`; });
   function abrir(rc) {
     const p = datos.parcelas.find((x) => x.rc === rc); if (!p) return;
     new maplibregl.Popup().setLngLat([p.lon, p.lat]).setHTML(`<b>${p.rc}</b><br>${fmt(p.superficie_m2)} m² · ${p.pct_edificado} % edificado<br>${p.calificacion}<br><a href="/informe/${p.rc}" target="_blank">Ver informe</a> · <a href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCConCiud.aspx?RefC=${p.rc}" target="_blank">Catastro</a>`).addTo(mapa);
   }
   window.irA = (rc) => { const p = datos.parcelas.find((x) => x.rc === rc); mapa.flyTo({ center: [p.lon, p.lat], zoom: 17 }); setTimeout(() => abrir(rc), 900); };
   document.getElementById("b-buscar").addEventListener("click", async () => {
-    if (km2() > 5) { alertar("Acerca el mapa: la zona es demasiado grande."); return; }
-    const q = `bbox=${zona()}&sup_min=${document.getElementById("f-sup").value}&max_edif=${document.getElementById("f-edif").value}&terciario=${document.getElementById("f-terc").checked}`;
+    if (dibujando) cerrar();
+    const filtros = { sup_min: document.getElementById("f-sup").value, max_edif: document.getElementById("f-edif").value, terciario: document.getElementById("f-terc").checked };
+    const conZona = cerrada && vertices.length >= 3;
+    if (conZona && areaKm2(vertices) > 5) { alertar("La zona dibujada es demasiado grande (máximo unos 5 km²)."); return; }
+    if (!conZona && km2() > 5) { alertar("Acerca el mapa o dibuja una zona: lo que se ve es demasiado grande (máximo unos 5 km²)."); return; }
+    const q = `bbox=${zona()}&sup_min=${filtros.sup_min}&max_edif=${filtros.max_edif}&terciario=${filtros.terciario}`;
     const est = document.getElementById("estado"); est.textContent = "Buscando… consulta el Mapa Urbanístic y el Catastro (puede tardar hasta un minuto).";
-    document.getElementById("b-excel").hidden = true;
+    const ex = document.getElementById("b-excel"); ex.hidden = true;
     try {
-      const r = await fetch(`/api/admin/suelo?${q}`); const j = await r.json();
+      const r = conZona
+        ? await fetch("/api/admin/suelo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...filtros, poligono: vertices }) })
+        : await fetch(`/api/admin/suelo?${q}`);
+      const j = await r.json();
       if (!r.ok) { est.textContent = j.detail || "No se ha podido buscar."; return; }
       datos = j;
       mapa.getSource("p").setData({ type: "FeatureCollection", features: j.parcelas.map((p) => ({ type: "Feature", geometry: p.geometria, properties: { rc: p.rc, pct_edificado: p.pct_edificado } })) });
       est.textContent = `${j.resumen.parcelas} parcelas disponibles (${j.resumen.sin_edificar} sin ninguna construcción) · ${fmt(j.resumen.superficie_total_m2 || 0)} m² en total · ${j.resumen.zonas_actividad} zonas de actividad económica en la zona.`;
       document.getElementById("lista").innerHTML = j.parcelas.map((p) => `<div class="item" onclick="irA('${p.rc}')"><b>${fmt(p.superficie_m2)} m²</b><span class="tag ${p.pct_edificado < 1 ? "v" : "a"}">${p.pct_edificado < 1 ? "Sin edificar" : p.pct_edificado + " % edificado"}</span><small>${p.rc} · ${p.calificacion}</small></div>`).join("") || '<div class="item">No hay suelo disponible con estos filtros en esta zona.</div>';
-      const ex = document.getElementById("b-excel"); ex.href = `/admin/suelo.xlsx?${q}`; ex.hidden = !j.parcelas.length;
+      if (conZona) { ex.href = "#"; ex.onclick = (ev) => { ev.preventDefault(); const f = document.createElement("form"); f.method = "post"; f.action = "/admin/suelo.xlsx";
+        const i = document.createElement("input"); i.type = "hidden"; i.name = "datos"; i.value = JSON.stringify({ ...filtros, poligono: vertices }); f.appendChild(i); document.body.appendChild(f); f.submit(); f.remove(); }; }
+      else { ex.href = `/admin/suelo.xlsx?${q}`; ex.onclick = null; }
+      ex.hidden = !j.parcelas.length;
     } catch (e) { est.textContent = "Error de conexión. Vuelve a intentarlo."; }
   });
   function alertar(t) { document.getElementById("estado").textContent = t; }
